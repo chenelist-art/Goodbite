@@ -1,0 +1,760 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0}[hidden]{display:none!important}</style></head><body>
+<title>GoodBite</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: one phone-sized column. Cream ground, soft rounded cards, deep leaf green for actions,
+   a wooden shelf for the pantry. Single light look on purpose, to match the GoodBite mockup. */
+:root{
+  color-scheme:light;
+  --cream:#FBF5E6; --cream-2:#F4ECD8; --card:#FFFDF8; --line:#EBE2CC;
+  --green:#2F7D32; --green-d:#1E5E26; --green-s:#E2F0D6; --green-t:#F0F7E8;
+  --ink:#1F2B1D; --muted:#7B8273; --red:#D8452F; --red-s:#FCE4D8; --amber:#EFB52E; --amber-s:#FCF0CC;
+  --wood:#C98B4E; --wood-l:#E3AE72; --wood-d:#9A6230; --stage:#E9E2CE;
+  --display:"Fredoka","Nunito",ui-rounded,"Segoe UI",system-ui,sans-serif;
+  --body:"Nunito",ui-rounded,"Segoe UI",system-ui,sans-serif;
+  --r:18px; --shadow:0 2px 10px rgba(92,70,30,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{margin:0;background:var(--stage);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.4;
+  display:flex;align-items:center;justify-content:center;overflow:hidden}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;padding:0}
+:focus-visible{outline:3px solid #7fb96f;outline-offset:2px}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance;letter-spacing:.1px}
+h1{font-size:22px} h2{font-size:17px} h3{font-size:15px}
+p{margin:0}
+
+#app{position:relative;width:100%;height:100%;background:var(--cream);display:flex;flex-direction:column;overflow:hidden}
+.status{display:none}
+@media (min-width:520px) and (min-height:560px){
+  #app{width:392px;height:min(830px,calc(100% - 28px));border-radius:46px;border:10px solid #23261f;
+    box-shadow:0 24px 60px rgba(60,50,20,.28)}
+  .status{display:flex;justify-content:space-between;align-items:center;padding:10px 26px 2px;font-weight:800;font-size:13px;flex:none}
+  .status i{display:inline-block;width:22px;height:11px;border:1.5px solid var(--ink);border-radius:3px;position:relative}
+  .status i::after{content:"";position:absolute;inset:1.5px;right:4px;background:var(--ink);border-radius:1px}
+}
+#screen{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#screen::-webkit-scrollbar{display:none}
+.pg{padding:14px 16px 24px;display:flex;flex-direction:column;gap:16px;min-height:100%}
+.pg.flush{padding:0;gap:0}
+@keyframes inR{from{transform:translateX(28px);opacity:0}to{transform:none;opacity:1}}
+@keyframes inL{from{transform:translateX(-28px);opacity:0}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.a-fwd{animation:inR .22s ease-out} .a-back{animation:inL .22s ease-out} .a-fade{animation:fade .18s ease-out}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* nav */
+#nav{flex:none;display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px 6px 8px}
+#nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;font-weight:700;color:var(--muted);padding:4px 0;border-radius:12px}
+#nav button.on{color:var(--green)}
+#nav svg{width:22px;height:22px}
+#nav button.on svg{fill:var(--green-s)}
+svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* common */
+.top{display:flex;align-items:center;gap:10px;min-height:36px}
+.top h1{flex:1;min-width:0}
+.top.c h1{text-align:center}
+.ib{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;position:relative}
+.ib:active{background:var(--cream-2)}
+.ib.sp{visibility:hidden}
+.dot{position:absolute;top:6px;right:7px;width:9px;height:9px;border-radius:50%;background:var(--red);border:2px solid var(--cream)}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:14px}
+.row{display:flex;align-items:center;gap:10px}
+.grow{flex:1;min-width:0}
+.muted{color:var(--muted)} .sm{font-size:12.5px} .xs{font-size:11.5px} .b{font-weight:800}
+.red{color:var(--red)} .grn{color:var(--green)} .ctr{text-align:center}
+.sec{display:flex;align-items:center;justify-content:space-between}
+.link{color:var(--green);font-weight:800;font-size:13px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px 16px;border-radius:14px;font-weight:800;font-size:15px;
+  background:var(--green);color:#fff;box-shadow:0 3px 0 var(--green-d)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--green-d)}
+.btn.soft{background:var(--cream-2);color:var(--ink);box-shadow:none}
+.btn.ghost{background:none;color:var(--ink);box-shadow:none}
+.btn.danger{background:var(--red-s);color:var(--red);box-shadow:none}
+.btn.sm{padding:8px 14px;width:auto;font-size:13px;border-radius:999px;box-shadow:none}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.search{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--muted)}
+.search input{border:0;background:none;outline:0;flex:1;min-width:0;color:var(--ink)}
+.tabs{display:flex;background:var(--cream-2);border-radius:999px;padding:3px;gap:2px}
+.tabs button{flex:1;padding:8px 6px;border-radius:999px;font-weight:700;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.tabs button.on{background:var(--green);color:#fff}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:2px 16px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:7px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-weight:700;font-size:12.5px;display:flex;align-items:center;gap:5px}
+.chip.on{background:var(--green);border-color:var(--green);color:#fff}
+.tag{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--green-s);color:var(--green-d);font-weight:800;font-size:11.5px}
+.tag.amber{background:var(--amber-s);color:#8a6200} .tag.red{background:var(--red-s);color:var(--red)}
+.fe{font-size:34px;line-height:1;filter:drop-shadow(0 3px 2px rgba(60,40,10,.22))}
+.list{display:flex;flex-direction:column}
+.li{display:flex;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px solid var(--line);text-align:left;width:100%}
+.li:last-child{border-bottom:0}
+.li .e{font-size:26px;width:34px;text-align:center;flex:none}
+.li .chev{color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:28px 10px;display:flex;flex-direction:column;gap:10px;align-items:center}
+.empty .fe{font-size:44px}
+
+/* home */
+.hello{display:flex;align-items:center;gap:12px}
+.ava{width:46px;height:46px;border-radius:50%;background:#F7D9B8;display:grid;place-items:center;font-size:26px;flex:none}
+.hello h1{color:var(--green);line-height:1.15}
+.alert{display:flex;align-items:center;gap:12px;background:var(--red-s);border-radius:var(--r);padding:12px 14px;width:100%;text-align:left}
+.alert b{color:var(--red);font-family:var(--display);font-weight:600;font-size:16px;line-height:1.25}
+.alert.ok{background:var(--green-s)} .alert.ok b{color:var(--green-d)}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.quick button{display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:700;font-size:11.5px}
+.quick span{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--card);box-shadow:var(--shadow);color:var(--green)}
+.quick span.fill{background:var(--green);color:#fff}
+.quick span.fill2{background:#5DAA4E;color:#fff}
+.quick svg{width:26px;height:26px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%}
+.stat{background:var(--green-t);border-radius:14px;padding:12px 6px;text-align:center;display:flex;flex-direction:column;gap:2px;align-items:center}
+.stat .n{font-family:var(--display);font-weight:600;font-size:18px;font-variant-numeric:tabular-nums}
+.stat .l{font-size:11px;color:var(--muted);font-weight:700}
+.stat .i{font-size:22px}
+.card .stat{background:var(--card);box-shadow:var(--shadow)}
+.prev{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.prev button{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.prev b{font-size:12px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.prev small{font-size:10.5px;color:var(--muted);font-weight:700}
+
+/* shelf */
+.shelf{background:var(--wood-d);border-radius:16px;padding:8px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;box-shadow:var(--shadow)}
+.cell{position:relative;aspect-ratio:1/.95;border-radius:8px;background:linear-gradient(180deg,#D9A163 0%,var(--wood-l) 55%,#D49A5B 100%);
+  border-bottom:9px solid var(--wood);box-shadow:inset 0 6px 10px rgba(90,50,10,.28);display:flex;align-items:center;justify-content:center;color:#fff;min-width:0}
+.cell .fe{font-size:44px;margin-top:-10px}
+.cell .cq,.cell .cd{position:absolute;left:7px;font-weight:800;text-shadow:0 1px 2px rgba(60,30,0,.6);font-size:11px;line-height:1.1}
+.cell .cq{bottom:15px} .cell .cd{bottom:3px}
+.cell.soon .cd{color:#FFE9A6} .cell.dead .cd{color:#FFD0C2}
+.cell.dead .fe{filter:grayscale(.7) drop-shadow(0 3px 2px rgba(60,40,10,.22))}
+.cell.blank{box-shadow:inset 0 6px 10px rgba(90,50,10,.28)}
+.cell .rm{position:absolute;top:-4px;right:-4px;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;border:2px solid #fff}
+.cell .rm svg{width:12px;height:12px;stroke-width:3.5}
+
+/* scan */
+.view{position:relative;border-radius:22px;overflow:hidden;background:radial-gradient(circle at 50% 40%,#6f7f4a,#2f3a22 75%);aspect-ratio:1/1.12;display:grid;place-items:center}
+.view.flash{background:radial-gradient(circle at 50% 40%,#b9c98c,#56653a 75%)}
+.view .big{font-size:150px;filter:drop-shadow(0 10px 12px rgba(0,0,0,.35))}
+.view .lbl{position:absolute;left:50%;top:38%;transform:translateX(-50%) rotate(-6deg);background:#fff;color:#222;padding:6px 10px;border-radius:6px;font-weight:800;font-size:11px;text-align:center;white-space:nowrap;box-shadow:0 3px 8px rgba(0,0,0,.3)}
+.bars{height:26px;margin-top:4px;background:repeating-linear-gradient(90deg,#111 0 2px,#fff 2px 4px,#111 4px 5px,#fff 5px 8px,#111 8px 11px,#fff 11px 12px)}
+.frame{position:absolute;inset:14% 14% 26%;pointer-events:none}
+.frame::before,.frame::after{content:"";position:absolute;inset:0;border:4px solid #fff;border-radius:14px;
+  clip-path:polygon(0 0,22% 0,22% 4px,78% 4px,78% 0,100% 0,100% 22%,calc(100% - 4px) 22%,calc(100% - 4px) 78%,100% 78%,100% 100%,78% 100%,78% calc(100% - 4px),22% calc(100% - 4px),22% 100%,0 100%,0 78%,4px 78%,4px 22%,0 22%)}
+.frame::after{display:none}
+.demo{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.55);color:#fff;font-weight:800;font-size:11px;padding:4px 10px;border-radius:999px;letter-spacing:.4px;text-transform:uppercase}
+.scanmsg{position:absolute;left:12px;right:12px;bottom:12px;background:var(--card);border-radius:14px;padding:10px 12px;display:flex;gap:10px;align-items:center}
+.line{position:absolute;left:14%;right:14%;height:3px;background:#b6f08a;box-shadow:0 0 12px #b6f08a;top:16%;animation:sweep 1.1s ease-in-out infinite alternate}
+@keyframes sweep{to{top:72%}}
+.camrow{display:flex;justify-content:space-around;align-items:center}
+.camrow button{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:700}
+.camrow .rb{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);display:grid;place-items:center}
+.camrow .rb.on{background:var(--amber-s);border-color:var(--amber)}
+.shut{width:68px;height:68px;border-radius:50%;background:var(--green);display:grid;place-items:center;box-shadow:0 3px 0 var(--green-d)}
+.camrow .shut{justify-content:center}
+.shut::after{content:"";width:40px;height:40px;border-radius:50%;border:3px solid #fff;background:rgba(255,255,255,.9)}
+
+/* forms */
+.field{display:flex;flex-direction:column;gap:6px}
+.field label,.flabel{font-weight:800;font-size:12.5px;color:var(--muted)}
+.inp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 12px;width:100%;outline:0;min-width:0}
+.inp:focus{border-color:var(--green)}
+textarea.inp{resize:none;min-height:70px}
+.kv{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.kv:last-child{border:0}
+.kv .inp{width:auto;max-width:170px;padding:8px 10px}
+.step{display:flex;align-items:center;gap:14px}
+.step button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);display:grid;place-items:center}
+.step b{min-width:22px;text-align:center;font-size:17px;font-variant-numeric:tabular-nums}
+.hero-food{font-size:120px;line-height:1.1;text-align:center;filter:drop-shadow(0 10px 10px rgba(60,40,10,.2))}
+.bar{height:12px;border-radius:999px;background:var(--cream-2);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:999px;background:var(--green)}
+.bar>i.amber{background:var(--amber)} .bar>i.red{background:var(--red)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.mini .v{font-family:var(--display);font-weight:600;font-size:16px}
+.toggle{width:46px;height:28px;border-radius:999px;background:#d6cfbb;position:relative;flex:none;transition:background .15s}
+.toggle::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .15s}
+.toggle.on{background:var(--green)} .toggle.on::after{left:21px}
+.check{width:22px;height:22px;border-radius:6px;border:2px solid #cfc7b0;display:grid;place-items:center;flex:none;color:#fff}
+.check.on{background:var(--green);border-color:var(--green)}
+.check svg{width:14px;height:14px;stroke-width:3.5}
+
+/* recipes */
+.photo{position:relative;border-radius:16px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;overflow:hidden}
+.photo::before{content:"";position:absolute;width:62%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.88);box-shadow:0 6px 14px rgba(0,0,0,.15),inset 0 0 0 8px rgba(255,255,255,.6)}
+.photo span{position:relative;filter:drop-shadow(0 4px 4px rgba(0,0,0,.2))}
+.rcard{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;position:relative;text-align:left;width:100%;display:block}
+.rcard .photo{height:118px;border-radius:0;font-size:58px}
+.rcard .photo::before{width:auto;height:84%}
+.rcard .inf{padding:10px 44px 12px 14px}
+.heart{position:absolute;width:34px;height:34px;border-radius:50%;background:var(--card);display:grid;place-items:center;color:var(--red);box-shadow:var(--shadow)}
+.heart.on svg{fill:var(--red)}
+.rcard .heart{right:10px;bottom:10px}
+.sug{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sug button{text-align:left;min-width:0}
+.sug .photo{aspect-ratio:1;font-size:36px;border-radius:14px}
+.sug b{display:block;font-size:12px;margin-top:5px;line-height:1.2}
+.rhero{height:190px;border-radius:0;font-size:96px}
+.rhero::before{width:auto;height:80%}
+.over{position:absolute;top:10px;left:12px;right:12px;display:flex;justify-content:space-between}
+.over .ib{background:var(--card);box-shadow:var(--shadow)}
+.stepn{width:26px;height:26px;border-radius:8px;background:var(--green);color:#fff;font-weight:800;display:grid;place-items:center;flex:none;font-size:13px}
+
+/* rewards / misc */
+.pts{font-family:var(--display);font-weight:600;font-size:30px;line-height:1}
+.coin{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE28A,#EFB52E);display:grid;place-items:center;font-size:22px;box-shadow:0 2px 0 #c98f12}
+.logo{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:24px;background:var(--green-t);flex:none}
+.plan{border:2px solid var(--line);border-radius:16px;padding:12px;text-align:center;background:var(--card);position:relative}
+.plan.on{border-color:var(--green);background:var(--green-t)}
+.plan .v{font-family:var(--display);font-weight:600;font-size:18px}
+.opt{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:14px;text-align:left;width:100%}
+details{border-bottom:1px solid var(--line);padding:12px 0}
+details:last-child{border:0}
+summary{font-weight:800;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+
+/* sheet + toast */
+#sheet{position:absolute;inset:0;background:rgba(40,35,20,.45);display:flex;align-items:flex-end;z-index:20;animation:fade .15s}
+#sheet .sh{background:var(--cream);border-radius:24px 24px 0 0;padding:20px 18px 22px;width:100%;display:flex;flex-direction:column;gap:12px;max-height:88%;overflow-y:auto;animation:up .2s ease-out}
+@keyframes up{from{transform:translateY(40px)}to{transform:none}}
+#toast{position:absolute;left:16px;right:16px;bottom:84px;z-index:30;background:var(--ink);color:#fff;border-radius:14px;padding:12px 14px;font-weight:700;font-size:13.5px;text-align:center;animation:fade .15s;pointer-events:none}
+</style>
+
+<div id="app">
+  <div class="status" aria-hidden="true"><span>9:41</span><i></i></div>
+  <main id="screen"></main>
+  <nav id="nav" aria-label="Main"></nav>
+  <div id="sheet" hidden></div>
+  <div id="toast" role="status" hidden></div>
+</div>
+<script>
+/* ---------- sample catalogue (prices are rough Malaysian supermarket prices, in RM) ---------- */
+const FOODS={
+  tomato:{n:'Tomato',e:'🍅',c:'Vegetables',p:1.2,co:.15,life:7,u:'piece'},
+  banana:{n:'Banana',e:'🍌',c:'Fruits',p:.8,co:.1,life:6,u:'piece'},
+  milk:{n:'Milk',e:'🥛',c:'Dairy',p:7.5,co:1.2,life:8,u:'carton'},
+  egg:{n:'Eggs',e:'🥚',c:'Dairy',p:.6,co:.3,life:14,u:'piece'},
+  carrot:{n:'Carrot',e:'🥕',c:'Vegetables',p:.9,co:.1,life:10,u:'piece'},
+  broccoli:{n:'Broccoli',e:'🥦',c:'Vegetables',p:4.5,co:.3,life:7,u:'head'},
+  chicken:{n:'Chicken',e:'🍗',c:'Meat',p:9,co:1.8,life:4,u:'pack'},
+  lettuce:{n:'Lettuce',e:'🥬',c:'Vegetables',p:3.5,co:.3,life:6,u:'head'},
+  onion:{n:'Onion',e:'🧅',c:'Vegetables',p:.7,co:.1,life:21,u:'piece'},
+  rice:{n:'Rice',e:'🍚',c:'Pantry',p:14,co:2.5,life:180,u:'bag'},
+  cheese:{n:'Cheese',e:'🧀',c:'Dairy',p:8.9,co:1.5,life:14,u:'block'},
+  pepper:{n:'Red Capsicum',e:'🫑',c:'Vegetables',p:3.2,co:.2,life:8,u:'piece'},
+  bread:{n:'Bread',e:'🍞',c:'Pantry',p:4.2,co:.6,life:5,u:'loaf'},
+  pasta:{n:'Pasta',e:'🍝',c:'Pantry',p:5.5,co:.8,life:240,u:'pack'},
+  mango:{n:'Mango',e:'🥭',c:'Fruits',p:4,co:.3,life:5,u:'piece'},
+  garlic:{n:'Garlic',e:'🧄',c:'Vegetables',p:1.5,co:.05,life:30,u:'bulb'},
+  chilli:{n:'Chilli',e:'🌶️',c:'Vegetables',p:.4,co:.03,life:10,u:'piece'},
+  oil:{n:'Cooking oil',e:'🫒',c:'Pantry',p:8,co:1,life:300,u:'bottle'},
+  soy:{n:'Soy sauce',e:'🍶',c:'Pantry',p:5,co:.4,life:300,u:'bottle'},
+  anchovy:{n:'Ikan bilis',e:'🐟',c:'Pantry',p:6,co:.9,life:90,u:'pack'},
+  flour:{n:'Flour',e:'🌾',c:'Pantry',p:3.5,co:.5,life:180,u:'pack'},
+  sugar:{n:'Sugar',e:'🧂',c:'Pantry',p:3,co:.4,life:300,u:'pack'},
+  santan:{n:'Coconut milk',e:'🥥',c:'Pantry',p:2.8,co:.5,life:120,u:'box'},
+  noodles:{n:'Yellow noodles',e:'🍜',c:'Pantry',p:2.5,co:.4,life:5,u:'pack'},
+  potato:{n:'Potato',e:'🥔',c:'Vegetables',p:.9,co:.1,life:28,u:'piece'},
+  ginger:{n:'Ginger',e:'🫚',c:'Vegetables',p:1,co:.05,life:21,u:'piece'},
+  cucumber:{n:'Cucumber',e:'🥒',c:'Vegetables',p:1.5,co:.1,life:7,u:'piece'},
+  mushroom:{n:'Mushrooms',e:'🍄',c:'Vegetables',p:5.5,co:.3,life:5,u:'pack'},
+  prawn:{n:'Prawns',e:'🦐',c:'Meat',p:15,co:2.2,life:2,u:'pack'},
+  fish:{n:'Fish',e:'🐟',c:'Meat',p:12,co:1.6,life:2,u:'piece'},
+  beef:{n:'Beef',e:'🥩',c:'Meat',p:18,co:5,life:3,u:'pack'},
+  apple:{n:'Apple',e:'🍎',c:'Fruits',p:1.8,co:.1,life:21,u:'piece'},
+  watermelon:{n:'Watermelon',e:'🍉',c:'Fruits',p:9,co:.5,life:6,u:'piece'},
+  lime:{n:'Limau kasturi',e:'🍋',c:'Fruits',p:.3,co:.02,life:14,u:'piece'},
+  butter:{n:'Butter',e:'🧈',c:'Dairy',p:11,co:2,life:60,u:'block'},
+  corn:{n:'Sweetcorn',e:'🌽',c:'Vegetables',p:2,co:.2,life:5,u:'piece'},
+  cabbage:{n:'Cabbage',e:'🥗',c:'Vegetables',p:3,co:.2,life:10,u:'head'}
+};
+const CATS=['Fruits','Vegetables','Dairy','Meat','Pantry'];
+const CAT_EMOJI={Fruits:'🍊',Vegetables:'🥗',Dairy:'🥛',Meat:'🍖',Pantry:'🥫'};
+
+const RECIPES=[
+ {id:'tomato-pasta',n:'Tomato Chicken Pasta',e:'🍝',a:'#F7C873',b:'#E5673A',t:20,diff:'Easy',rate:4.8,rev:320,veg:false,
+  ing:[['tomato','3 tomatoes'],['chicken','1 pack chicken'],['pasta','200 g pasta'],['onion','1 onion'],['garlic','3 cloves garlic'],['oil','2 tbsp cooking oil']],
+  steps:['Boil the pasta in salted water until just soft. Drain and keep a cup of the water.','Chop the tomatoes, onion and garlic. Cut the chicken into bite-sized pieces.','Fry the onion and garlic in oil until they smell good, then add the chicken and cook until golden.','Add the tomatoes and a splash of pasta water. Simmer for 8 minutes until saucy.','Toss in the pasta, season with salt and pepper, and serve hot.']},
+ {id:'telur-tomato',n:'Tomato Egg Stir-Fry',e:'🍳',a:'#FFE08A',b:'#F08A4B',t:10,diff:'Easy',rate:4.7,rev:512,veg:true,
+  ing:[['tomato','2 tomatoes'],['egg','3 eggs'],['onion','1/2 onion'],['garlic','2 cloves garlic'],['soy','1 tsp soy sauce']],
+  steps:['Beat the eggs with a pinch of salt. Cut the tomatoes into wedges.','Scramble the eggs in a hot oiled pan until just set. Take them out.','Fry the onion and garlic, add the tomatoes and cook until soft and juicy.','Return the eggs, add soy sauce and stir gently. Serve with rice.']},
+ {id:'nasi-goreng',n:'Nasi Goreng Kampung',e:'🍛',a:'#F3D08B',b:'#B9772E',t:20,diff:'Easy',rate:4.9,rev:864,veg:false,
+  ing:[['rice','2 cups cooked rice'],['egg','2 eggs'],['onion','1 onion'],['garlic','3 cloves garlic'],['chilli','3 chillies'],['anchovy','A handful of ikan bilis']],
+  steps:['Pound or blend the onion, garlic and chillies into a rough paste.','Fry the ikan bilis until crispy, then set aside.','Fry the paste until fragrant. Push it aside and scramble the eggs in the same wok.','Add the rice and stir-fry on high heat. Season with salt and a little soy sauce.','Top with the crispy ikan bilis and serve.']},
+ {id:'ayam-merah',n:'Ayam Masak Merah',e:'🥘',a:'#F4A27A',b:'#B8322A',t:40,diff:'Medium',rate:4.8,rev:431,veg:false,
+  ing:[['chicken','1 pack chicken'],['tomato','2 tomatoes'],['onion','2 onions'],['garlic','4 cloves garlic'],['chilli','5 chillies'],['ginger','A thumb of ginger']],
+  steps:['Rub the chicken with salt and turmeric, then fry until lightly golden.','Blend the onion, garlic, ginger and chillies into a paste.','Fry the paste in oil until the oil separates and it turns deep red.','Add chopped tomatoes, a little sugar and water. Simmer until thick.','Add the chicken, coat it well and cook for 10 more minutes.']},
+ {id:'lettuce-wrap',n:'Chicken Lettuce Wraps',e:'🥬',a:'#CBE8A6',b:'#5DAA4E',t:15,diff:'Easy',rate:4.6,rev:198,veg:false,
+  ing:[['lettuce','1 head lettuce'],['chicken','1 pack chicken'],['carrot','1 carrot'],['garlic','2 cloves garlic'],['soy','1 tbsp soy sauce']],
+  steps:['Wash the lettuce and separate the leaves into cups.','Mince the chicken and grate the carrot.','Fry the garlic, add the chicken and cook through. Stir in the carrot and soy sauce.','Spoon the filling into the lettuce cups and eat with your hands.']},
+ {id:'broccoli-garlic',n:'Garlic Broccoli Stir-Fry',e:'🥦',a:'#D7EDB5',b:'#3F8E46',t:10,diff:'Easy',rate:4.5,rev:276,veg:true,
+  ing:[['broccoli','1 head broccoli'],['carrot','1 carrot'],['garlic','4 cloves garlic'],['soy','1 tbsp soy sauce']],
+  steps:['Cut the broccoli into florets and slice the carrot thinly.','Blanch both in boiling water for 1 minute, then drain.','Fry the garlic until golden, add the vegetables and soy sauce, and toss for 2 minutes.']},
+ {id:'cekodok',n:'Cekodok Pisang',e:'🍩',a:'#FFE9A8',b:'#D9962E',t:15,diff:'Easy',rate:4.9,rev:647,veg:true,
+  ing:[['banana','3 ripe bananas'],['flour','1 cup flour'],['sugar','1 tbsp sugar'],['oil','Oil for frying']],
+  steps:['Mash the bananas with a fork. The riper the better.','Mix in the flour, sugar and a pinch of salt to make a thick batter.','Drop spoonfuls into hot oil and fry until deep golden brown.','Drain on paper and eat while warm.']},
+ {id:'bubur-ayam',n:'Bubur Ayam',e:'🥣',a:'#FBEFC9',b:'#D8B15E',t:35,diff:'Easy',rate:4.7,rev:389,veg:false,
+  ing:[['rice','1/2 cup rice'],['chicken','1 pack chicken'],['ginger','A thumb of ginger'],['onion','1 onion']],
+  steps:['Rinse the rice and boil it with 6 cups of water, the ginger and the chicken.','When the chicken is cooked, take it out, shred it and put it back.','Keep simmering and stirring until the rice breaks down and turns creamy.','Season with salt and white pepper. Top with fried onion.']},
+ {id:'cheese-toast',n:'Cheesy Egg Toastie',e:'🥪',a:'#FFE39A',b:'#E0A23C',t:10,diff:'Easy',rate:4.6,rev:233,veg:true,
+  ing:[['bread','2 slices bread'],['egg','2 eggs'],['cheese','2 slices cheese'],['butter','A little butter']],
+  steps:['Beat the eggs and cook a thin omelette in a buttered pan.','Lay the cheese on the omelette and fold it to the size of the bread.','Sandwich it between the bread and toast both sides until crisp and golden.']},
+ {id:'sup-sayur',n:'Sup Sayur',e:'🍲',a:'#E3F1C4',b:'#7FB65A',t:25,diff:'Easy',rate:4.4,rev:154,veg:true,
+  ing:[['carrot','2 carrots'],['broccoli','1/2 head broccoli'],['tomato','1 tomato'],['onion','1 onion'],['garlic','2 cloves garlic'],['potato','1 potato']],
+  steps:['Chop all the vegetables into bite-sized pieces.','Fry the onion and garlic in a pot until soft.','Add the carrot, potato and 4 cups of water. Boil for 12 minutes.','Add the broccoli and tomato and cook 5 more minutes. Season with salt and pepper.']},
+ {id:'mee-goreng',n:'Mee Goreng Mamak',e:'🍜',a:'#F6C98A',b:'#C6532B',t:20,diff:'Medium',rate:4.8,rev:702,veg:false,
+  ing:[['noodles','1 pack yellow noodles'],['egg','2 eggs'],['tomato','1 tomato'],['potato','1 boiled potato'],['chilli','2 chillies'],['lime','1 limau kasturi']],
+  steps:['Mix soy sauce, chilli paste and a little tomato sauce in a bowl.','Fry sliced chillies and garlic, then add the noodles and the sauce.','Push the noodles aside, scramble the eggs, then mix everything together.','Add the potato and tomato, toss on high heat and squeeze lime over the top.']},
+ {id:'susu-lobak',n:'Carrot Milk Juice',e:'🥤',a:'#FFD9A8',b:'#F08A3C',t:5,diff:'Easy',rate:4.5,rev:176,veg:true,
+  ing:[['carrot','2 carrots'],['milk','1 cup milk'],['sugar','1 tbsp sugar']],
+  steps:['Peel and chop the carrots.','Blend the carrots with the milk, sugar and a few ice cubes until smooth.','Pour into a glass and drink it cold.']}
+].map(r=>({...r,ing:r.ing.map(([k,q])=>({k,q}))}));
+
+/* All partners below are made up for the demo. */
+const REWARDS=[
+ {id:'r1',n:'Pasar Segar Grocer',d:'RM5 e-voucher',e:'🛒',pts:100},
+ {id:'r3',n:'Kopi Kawan Café',d:'Free drink',e:'🥤',pts:150},
+ {id:'r2',n:'Hijau Living Pack',d:'Reusable food bag',e:'🛍️',pts:200},
+ {id:'r5',n:'Dapur Daun Studio',d:'10% off a cooking class',e:'👩‍🍳',pts:250},
+ {id:'r4',n:'Pasar Segar Grocer',d:'RM15 e-voucher',e:'🧺',pts:400}
+];
+const PARTNERS={donate:'Kongsi Makan Food Bank',recycle:'Tanah Subur Compost Hub'};
+const AREAS=['Subang Jaya','Petaling Jaya','Kuala Lumpur','Shah Alam','Puchong','Cheras','Bangsar'];
+const SLOTS=['9am – 12pm','12pm – 3pm','3pm – 6pm','6pm – 9pm'];
+const SCAN={camera:['lettuce','mango','mushroom','cucumber','apple','prawn'],barcode:['milk','cheese','bread','butter','noodles','santan']};
+/* ---------- helpers ---------- */
+const KEY='goodbite.v1';
+const scr=document.getElementById('screen'),navEl=document.getElementById('nav'),sheetEl=document.getElementById('sheet'),toastEl=document.getElementById('toast');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=()=>{const d=new Date();d.setHours(0,0,0,0);return d};
+const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const addDays=n=>{const d=today();d.setDate(d.getDate()+n);return iso(d)};
+const parse=s=>{const[a,b,c]=String(s).split('-').map(Number);return new Date(a,(b||1)-1,c||1)};
+const diff=(a,b)=>Math.round((parse(a)-parse(b))/864e5);
+const daysLeft=it=>diff(it.expiry,iso(today()));
+const fmtDate=s=>parse(s).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+const rm=n=>{const v=Math.round(n*100)/100;return 'RM '+(Number.isInteger(v)?v:v.toFixed(2))};
+const kg=n=>(Math.round(n*10)/10).toFixed(1)+' kg';
+const uid=()=>Math.random().toString(36).slice(2,9);
+const dayLabel=d=>d<0?'Expired':d===0?'Expires today':d===1?'1 day left':d+' days left';
+const units=it=>{const u=it.u||'piece',q=it.qty;if(q===1)return'1 '+u;return q+' '+(u==='loaf'?'loaves':/(ch|x)$/.test(u)?u+'es':u+'s')};
+const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',box:'M3 8l9-5 9 5v8l-9 5-9-5zM3 8l9 5 9-5M12 13v8',
+ chef:'M7 14a4 4 0 1 1 1.5-7.7 4 4 0 0 1 7 0A4 4 0 1 1 17 14v6H7zM7 17h10',medal:'M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM9 14l-2 7 5-3 5 3-2-7',
+ more:'M5 12h.01M12 12h.01M19 12h.01',back:'M15 5l-7 7 7 7',chev:'M9 5l7 7-7 7',bell:'M6 9a6 6 0 0 1 12 0c0 6 2 7 2 7H4s2-1 2-7zM10 20a2 2 0 0 0 4 0',
+ search:'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4',heart:'M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z',
+ camera:'M4 8h3l2-3h6l2 3h3v11H4zM12 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',plus:'M12 5v14M5 12h14',minus:'M5 12h14',
+ leaf:'M5 19c0-9 5-14 14-14 0 9-5 14-14 14zM5 19l8-8',image:'M4 5h16v14H4zM4 16l5-5 4 4 3-3 4 4M9 9h.01',flash:'M13 3L5 13h6l-1 8 8-10h-6z',
+ clock:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2',check:'M5 12l5 5 9-10',x:'M6 6l12 12M18 6L6 18',
+ gear:'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2',
+ help:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01',info:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5M12 8h.01',
+ activity:'M3 12h4l3-8 4 16 3-8h4',calendar:'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',edit:'M4 20h4L19 9l-4-4L4 16z',crown:'M3 8l4 4 5-7 5 7 4-4-2 11H5z'};
+const ic=(n,c='')=>`<svg class="ic ${c}" viewBox="0 0 24 24" aria-hidden="true"><path d="${IC[n]}"/></svg>`;
+
+/* ---------- state ---------- */
+let state,stack=[{s:'home'}];
+const ui={invCat:'All',invEdit:false,invQ:'',homeQ:'',recTab:'mine',recChip:null,recQ:'',recFav:false,insTab:'week',rewTab:'rewards',
+  scanMode:'camera',flash:false,scanning:false,scanIdx:{camera:0,barcode:0},rTab:'ing',plan:'yearly',draft:{},rdraft:{},cook:null};
+
+function mkItem(key,qty,expiry,o={}){const f=FOODS[key]||{};
+  return{id:uid(),key,name:o.name||f.n||key,e:o.e||f.e||CAT_EMOJI[o.cat]||'🍽️',cat:o.cat||f.c||'Pantry',qty,expiry,added:o.added||iso(today()),
+    price:f.p??3,co:f.co??.3,u:f.u||'piece'}}
+function seed(){
+  const inv=[['tomato',4,2,5],['banana',5,4,2],['milk',1,6,2],['egg',6,7,7],['carrot',3,5,5],['broccoli',2,6,1],['chicken',2,3,1],['lettuce',1,4,2],
+    ['onion',3,10,11],['rice',1,20,40],['cheese',1,8,6],['pepper',2,5,3],['bread',1,3,2],['pasta',1,60,30],['mango',1,-1,6]];
+  const L=(t,key,qty,ago,r,co)=>({t,key,name:FOODS[key].n,e:FOODS[key].e,qty,d:addDays(-ago),rm:r,co});
+  return{v:1,user:{name:'May',email:'may@email.com',plan:null},loggedOut:false,
+    inventory:inv.map(([k,q,d,a])=>mkItem(k,q,addDays(d),{added:addDays(-a)})),
+    log:[L('used','milk',1,1,7.5,.5),L('used','chicken',2,2,18,1.2),L('used','tomato',2,3,1,.2),L('used','egg',3,4,1.5,.5),
+      L('used','carrot',1,12,1,.3),L('used','onion',1,20,1,.2),L('used','fish',2,40,5,2.3),
+      L('wasted','banana',2,3,1.6,.2),L('wasted','banana',1,10,.8,.1),L('wasted','banana',2,24,1.6,.2),L('wasted','banana',1,45,.8,.1),
+      L('wasted','lettuce',1,5,3.5,.3),L('wasted','lettuce',1,17,3.5,.3),L('wasted','lettuce',1,38,3.5,.3),
+      L('wasted','milk',1,13,7.5,1.2),L('wasted','milk',1,50,7.5,1.2)],
+    points:320,
+    hist:[{d:addDays(-1),label:'Used Milk',pts:10},{d:addDays(-2),label:'Cooked Ayam Masak Merah',pts:30},{d:addDays(-3),label:'Used Tomato',pts:15},
+      {d:addDays(-4),label:'Used Eggs',pts:15},{d:addDays(-9),label:'Welcome bonus',pts:250}],
+    fav:['tomato-pasta'],redeemed:[],rescue:[],settings:{notif:true,days:3},notifSeen:''};
+}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.v===1&&Array.isArray(s.inventory))return s}catch(e){}return null}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+state=load()||seed();
+
+/* ---------- logic ---------- */
+function sweep(){let ch=false;state.inventory.forEach(it=>{if(daysLeft(it)<0&&!it.wasted){it.wasted=true;ch=true;
+  state.log.push({t:'wasted',key:it.key,name:it.name,e:it.e,qty:it.qty,d:iso(today()),rm:it.price*it.qty,co:it.co*it.qty})}});if(ch)save()}
+function addPts(pts,label){state.points+=pts;state.hist.unshift({d:iso(today()),label,pts})}
+function dropItem(it){state.inventory=state.inventory.filter(x=>x!==it)}
+function useFood(it,qty,label){qty=Math.min(qty,it.qty);const pts=qty*5+(daysLeft(it)<=state.settings.days?5:0);
+  state.log.push({t:'used',key:it.key,name:it.name,e:it.e,qty,d:iso(today()),rm:it.price*qty,co:it.co*qty});
+  if(label!==false)addPts(pts,label||'Used '+it.name);it.qty-=qty;if(it.qty<=0)dropItem(it);return pts}
+function wasteFood(it){if(!it.wasted)state.log.push({t:'wasted',key:it.key,name:it.name,e:it.e,qty:it.qty,d:iso(today()),rm:it.price*it.qty,co:it.co*it.qty});dropItem(it)}
+const byId=id=>state.inventory.find(i=>i.id===id);
+const sorted=()=>[...state.inventory].sort((a,b)=>daysLeft(a)-daysLeft(b));
+const expiring=()=>sorted().filter(i=>{const d=daysLeft(i);return d>=0&&d<=state.settings.days});
+const expired=()=>sorted().filter(i=>daysLeft(i)<0);
+const owned=k=>state.inventory.filter(i=>i.key===k&&daysLeft(i)>=0).sort((a,b)=>daysLeft(a)-daysLeft(b));
+const have=r=>r.ing.filter(g=>owned(g.k).length);
+const urgency=r=>have(r).reduce((s,g)=>s+1+6/(daysLeft(owned(g.k)[0])+1),0);
+const ingName=k=>(FOODS[k]||{}).n||k;
+function stats(days){const from=days?addDays(-days+1):'0000';const r={saved:0,rm:0,co:0,wasted:0,wrm:0};
+  state.log.forEach(l=>{if(l.d<from)return;if(l.t==='used'){r.saved+=l.qty;r.rm+=l.rm;r.co+=l.co}else{r.wasted+=l.qty;r.wrm+=l.rm}});return r}
+function topWasted(){const m={};state.log.filter(l=>l.t==='wasted').forEach(l=>{(m[l.name]=m[l.name]||{name:l.name,e:l.e,key:l.key,n:0}).n++});
+  return Object.values(m).sort((a,b)=>b.n-a.n).slice(0,3)}
+const notifSig=()=>[...expired(),...expiring()].map(i=>i.id+daysLeft(i)).join(',');
+
+/* ---------- shell ---------- */
+function go(s,p={},replace){if(replace)stack.pop();stack.push({s,p});render('fwd')}
+function back(){if(stack.length>1)stack.pop();else stack=[{s:'home'}];render('back')}
+function tab(s){stack=[{s}];render('fade')}
+function toast(m){toastEl.textContent=m;toastEl.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>toastEl.hidden=true,2400)}
+function sheet(h){sheetEl.innerHTML=`<div class="sh" role="dialog" aria-modal="true">${h}</div>`;sheetEl.hidden=false}
+function closeSheet(){sheetEl.hidden=true;sheetEl.innerHTML=''}
+const TABS=[['home','Home','home'],['inventory','Inventory','box'],['recipes','Recipes','chef'],['rewards','Rewards','medal'],['more','More','more']];
+function render(anim){
+  sweep();
+  if(state.loggedOut){scr.innerHTML=`<div class="pg a-fade">${welcome()}</div>`;navEl.hidden=true;return}
+  const cur=stack[stack.length-1],S=SCREENS[cur.s],keep=anim==='keep'?scr.scrollTop:0;
+  scr.innerHTML=`<div class="pg ${S.flush?'flush':''} ${anim&&anim!=='keep'?'a-'+anim:''}">${S.html(cur.p||{})}</div>`;
+  scr.scrollTop=keep;
+  navEl.hidden=!S.nav;
+  navEl.innerHTML=TABS.map(([s,l,i])=>`<button data-a="tab" data-s="${s}" class="${stack[0].s===s?'on':''}" ${stack[0].s===s?'aria-current="page"':''}>${ic(i)}${l}</button>`).join('');
+}
+const topBar=(title,o={})=>`<div class="top ${o.center?'c':''}">${o.noback?'':`<button class="ib" data-a="back" aria-label="Back">${ic('back')}</button>`}<h1>${title}</h1>${o.right||(o.center?'<span class="ib sp"></span>':'')}</div>`;
+const tabsH=(key,opts)=>`<div class="tabs" role="tablist">${opts.map(([v,l])=>`<button role="tab" data-a="set" data-k="${key}" data-v="${v}" class="${ui[key]===v?'on':''}">${l}</button>`).join('')}</div>`;
+const photo=(r,cls='')=>`<div class="photo ${cls}" style="--a:${r.a};--b:${r.b}"><span>${r.e}</span></div>`;
+
+/* ---------- screens ---------- */
+const SCREENS={};
+
+SCREENS.home={nav:true,html(){
+  const hr=new Date().getHours(),g=hr<12?'Good morning':hr<18?'Good afternoon':'Good evening';
+  const unseen=state.settings.notif&&notifSig()&&notifSig()!==state.notifSeen;
+  return`<div class="hello"><div class="ava">👩🏻</div><h1 class="grow">${g},<br>${esc(state.user.name)}! 👋</h1>
+    <button class="ib" data-a="go" data-s="notifs" aria-label="Notifications" style="color:var(--amber)">${ic('bell')}${unseen?'<span class="dot"></span>':''}</button></div>
+  <label class="search">${ic('search')}<input id="home-q" type="search" placeholder="Search your food, recipes or tips..." data-q="home" value="${esc(ui.homeQ)}" autocomplete="off"></label>
+  <div id="homeBody" style="display:flex;flex-direction:column;gap:16px">${homeBody()}</div>`}};
+function homeBody(){
+  const q=ui.homeQ.trim().toLowerCase();
+  if(q){const f=state.inventory.filter(i=>i.name.toLowerCase().includes(q)),r=RECIPES.filter(r=>r.n.toLowerCase().includes(q)||r.ing.some(g=>ingName(g.k).toLowerCase().includes(q)));
+    const tip=topWasted().find(t=>t.name.toLowerCase().includes(q));
+    if(!f.length&&!r.length)return`<div class="empty"><span class="fe">🔍</span><p>Nothing found for "${esc(ui.homeQ)}".<br>Try another word, like "tomato".</p></div>`;
+    return(f.length?`<div><h2>Your food</h2><div class="list">${f.map(foodRow).join('')}</div></div>`:'')+
+      (r.length?`<div><h2>Recipes</h2><div class="list">${r.map(x=>`<button class="li" data-a="go" data-s="recipe" data-id="${x.id}"><span class="e">${x.e}</span><span class="grow"><b>${x.n}</b><br><span class="sm muted">${x.t} mins • Uses ${have(x).length} of your ingredients</span></span>${ic('chev','chev')}</button>`).join('')}</div></div>`:'')+
+      (tip?`<div class="card" style="background:var(--green-s)"><b>GoodBite Tip</b><p class="sm">You often don't finish ${tip.name.toLowerCase()}. Try buying a smaller quantity next time!</p></div>`:'')}
+  const ex=expiring(),s=stats(0),pv=sorted().filter(i=>daysLeft(i)>=0).slice(0,4);
+  return`<button class="alert ${ex.length?'':'ok'}" data-a="go" data-s="expiring"><span class="fe">${ex.length?ex[0].e:'🥳'}</span>
+    <b class="grow">${ex.length?`You have ${ex.length} item${ex.length>1?'s':''}<br>expiring soon!`:'Nothing is expiring soon.<br>Nice work!'}</b>${ic('chev')}</button>
+  <div class="quick">
+    <button data-a="go" data-s="scan"><span class="fill">${ic('camera')}</span>Scan Food</button>
+    <button data-a="addNew"><span class="fill2">${ic('plus')}</span>Add Food</button>
+    <button data-a="tab" data-s="recipes"><span style="color:#E8833A">${ic('chef')}</span>Recipes</button>
+    <button data-a="go" data-s="rescue"><span>${ic('leaf')}</span>Food Rescue</button></div>
+  <div><div class="sec" style="margin-bottom:8px"><h2>Your Impact</h2><button class="link" data-a="go" data-s="insights">See insights ›</button></div>
+    <button class="stats" data-a="go" data-s="insights" aria-label="Open Waste Insights">
+      <span class="stat"><span class="i">🌱</span><span class="n">${s.saved}</span><span class="l">Meals saved</span></span>
+      <span class="stat"><span class="i">💰</span><span class="n">${rm(s.rm)}</span><span class="l">Money saved</span></span>
+      <span class="stat"><span class="i">☁️</span><span class="n">${kg(s.co)}</span><span class="l">CO2 reduced</span></span></button></div>
+  <div><div class="sec" style="margin-bottom:8px"><h2>Your Food Inventory</h2><button class="link" data-a="tab" data-s="inventory">See All ›</button></div>
+    ${pv.length?`<div class="prev">${pv.map(i=>`<button data-a="go" data-s="food" data-id="${i.id}"><span class="fe">${i.e}</span><b>${esc(i.name)}</b><small class="${daysLeft(i)<=state.settings.days?'red':''}">${dayLabel(daysLeft(i))}</small></button>`).join('')}</div>`
+      :`<div class="empty card"><p>Your shelf is empty.</p><button class="btn sm" data-a="addNew">Add your first food</button></div>`}</div>`}
+const foodRow=i=>{const d=daysLeft(i);return`<button class="li" data-a="go" data-s="food" data-id="${i.id}"><span class="e">${i.e}</span><span class="grow"><b>${esc(i.name)}</b><br><span class="sm muted">${units(i)}</span></span><span class="tag ${d<0?'red':d<=state.settings.days?'amber':''}">${dayLabel(d)}</span>${ic('chev','chev')}</button>`};
+
+SCREENS.expiring={html(){const ex=expiring(),dead=expired();
+  return topBar('Expiring soon')+(ex.length?`<p class="muted sm">Use these within ${state.settings.days} days so they don't go to waste.</p><div class="card list">${ex.map(foodRow).join('')}</div>
+    <button class="btn" data-a="recipesFor" data-k="${ex[0].key}">${ic('chef')}Find recipes for these</button>`
+    :`<div class="empty"><span class="fe">🥳</span><p>Nothing is expiring in the next ${state.settings.days} days.</p></div>`)+
+    (dead.length?`<h2>Already expired</h2><div class="card list">${dead.map(foodRow).join('')}</div><button class="btn soft" data-a="rescueForm" data-type="recycle">${ic('leaf')}Send for Food Recycling</button>`:'')}};
+
+SCREENS.inventory={nav:true,html(){
+  return topBar('My Food Inventory',{noback:true,right:`<button class="btn sm ${ui.invEdit?'':'soft'}" data-a="invEdit">${ic(ui.invEdit?'check':'edit')}${ui.invEdit?'Done':'Edit'}</button>`})+
+  `<label class="search">${ic('search')}<input id="inv-q" type="search" placeholder="Search food..." data-q="inv" value="${esc(ui.invQ)}" autocomplete="off"></label>
+  <div class="chips">${['All',...CATS].map(c=>`<button class="chip ${ui.invCat===c?'on':''}" data-a="set" data-k="invCat" data-v="${c}">${c}</button>`).join('')}</div>
+  ${ui.invEdit?'<p class="sm muted">Tap the red button on a food to remove it.</p>':''}
+  <div id="invGrid">${shelf()}</div>
+  <button class="btn soft" data-a="addNew">${ic('plus')}Add Food</button>`}};
+function shelf(){const q=ui.invQ.trim().toLowerCase();
+  const it=sorted().filter(i=>(ui.invCat==='All'||i.cat===ui.invCat)&&(!q||i.name.toLowerCase().includes(q)));
+  if(!it.length)return`<div class="empty card"><span class="fe">🧺</span><p>${state.inventory.length?'No food matches that.':'Your shelf is empty. Add some food to get started.'}</p></div>`;
+  const blanks=(3-it.length%3)%3;
+  return`<div class="shelf">${it.map(i=>{const d=daysLeft(i);return`<button class="cell ${d<0?'dead':d<=state.settings.days?'soon':''}" data-a="${ui.invEdit?'removeAsk':'go'}" data-s="food" data-id="${i.id}" aria-label="${esc(i.name)}, ${i.qty}, ${dayLabel(d)}">
+    <span class="fe">${i.e}</span><span class="cq">x${i.qty}</span><span class="cd">${dayLabel(d)}</span>${ui.invEdit?`<span class="rm">${ic('minus')}</span>`:''}</button>`}).join('')}${'<span class="cell blank"></span>'.repeat(blanks)}</div>`}
+
+SCREENS.scan={nav:true,html(){const k=SCAN[ui.scanMode][ui.scanIdx[ui.scanMode]%6],f=FOODS[k],cam=ui.scanMode==='camera';
+  return topBar('Add Food',{center:true})+tabsH('scanMode',[['camera','Scan with Camera'],['barcode','Scan Barcode']])+
+  `<div class="view ${ui.flash?'flash':''}"><span class="big">${f.e}</span>
+    <div class="lbl">${cam?`FRESH ${f.n.toUpperCase()}<br>EXP: ${fmtDate(addDays(f.life)).toUpperCase()}`:f.n.toUpperCase()}<div class="bars"></div>9 555123 456789</div>
+    <div class="frame"></div><span class="demo">Demo scan</span>${ui.scanning?'<div class="line"></div>':''}
+    <div class="scanmsg"><span style="font-size:20px">${ui.scanning?'✨':'📷'}</span><span class="grow sm"><b>${ui.scanning?'Scanning...':cam?'Point at your food':'Point at the barcode'}</b><br><span class="muted">${ui.scanning?'Detecting food item and expiry date':'Tap the green button. This demo uses a sample item.'}</span></span></div></div>
+  <div class="camrow"><button data-a="capture" data-src="gallery"><span class="rb">${ic('image')}</span>Gallery</button>
+    <button class="shut" data-a="capture" aria-label="Capture"></button>
+    <button data-a="flash" aria-pressed="${ui.flash}"><span class="rb ${ui.flash?'on':''}">${ic('flash')}</span>Flash ${ui.flash?'on':''}</button></div>`}};
+
+SCREENS.scanResult={html(){const d=ui.draft;
+  return topBar('',{right:'<span class="tag amber">Demo scan</span>'})+`<h1 class="ctr">We found:</h1><div class="hero-food">${d.e}</div><h1 class="ctr">${esc(d.name)}</h1>
+  <div class="card">${formRows(d)}</div>
+  <button class="btn" data-a="saveFood">Add to Inventory</button>
+  <button class="btn soft" data-a="go" data-s="add">Edit Details</button>
+  <button class="btn ghost" data-a="back">Scan Again</button>`}};
+const formRows=d=>`<div class="kv"><span class="flabel">Quantity</span><span class="step"><button data-a="dq" data-n="-1" aria-label="Less">${ic('minus')}</button><b>${d.qty}</b><button data-a="dq" data-n="1" aria-label="More">${ic('plus')}</button></span></div>
+  <div class="kv"><label class="flabel" for="f-exp">Expiry date</label><input class="inp" id="f-exp" type="date" data-bind="expiry" value="${d.expiry}"></div>
+  <div class="kv"><label class="flabel" for="f-cat">Category</label><select class="inp" id="f-cat" data-bind="cat">${CATS.map(c=>`<option ${d.cat===c?'selected':''}>${c}</option>`).join('')}</select></div>`;
+
+SCREENS.add={html(){const d=ui.draft;
+  return topBar(d.id?'Edit food':'Add Food',{center:true})+`<div class="hero-food" style="font-size:72px">${d.e||CAT_EMOJI[d.cat]}</div>
+  <div class="field"><label for="f-name">Food name</label><input class="inp" id="f-name" list="foodnames" data-bind="name" value="${esc(d.name)}" placeholder="e.g. Tomato" autocomplete="off">
+    <datalist id="foodnames">${Object.values(FOODS).map(f=>`<option value="${f.n}">`).join('')}</datalist></div>
+  <div class="card">${formRows(d)}</div>
+  <button class="btn" data-a="saveFood">${d.id?'Save changes':'Add to Inventory'}</button>
+  ${d.id?'':`<button class="btn soft" data-a="go" data-s="scan" data-replace="1">${ic('camera')}Scan instead</button>`}`}};
+
+SCREENS.food={html(p){const it=byId(p.id);
+  if(!it)return topBar('Food')+`<div class="empty"><span class="fe">🧺</span><p>This food is no longer in your inventory.</p><button class="btn sm" data-a="tab" data-s="inventory">Back to inventory</button></div>`;
+  const d=daysLeft(it),tot=Math.max(1,diff(it.expiry,it.added)),st=d<0?'red':d<=state.settings.days?'amber':'';
+  const pct=d<0?100:Math.max(6,Math.min(100,d/tot*100));
+  const rec=RECIPES.filter(r=>r.ing.some(g=>g.k===it.key)).sort((a,b)=>urgency(b)-urgency(a)).slice(0,3);
+  return topBar('',{right:`<button class="ib" data-a="foodMenu" data-id="${it.id}" aria-label="More options">${ic('more')}</button>`})+
+  `<div class="hero-food">${it.e}</div>
+  <div class="row"><h1 class="grow" style="font-size:26px">${esc(it.name)}</h1><span class="tag">${it.cat}</span></div>
+  <div class="two"><div class="mini"><div class="xs muted b">Quantity</div><div class="v">${units(it)}</div></div>
+    <div class="mini"><div class="xs muted b">Expiry date</div><div class="v ${st?'red':''}">${dayLabel(d)}</div><div class="xs muted">${fmtDate(it.expiry)}</div></div></div>
+  <div class="mini"><div class="sec" style="margin-bottom:8px"><b class="sm">Freshness</b><span class="tag ${st}">${d<0?'Expired':st?'Use soon':'Fresh'}</span></div><div class="bar"><i class="${st}" style="width:${pct}%"></i></div></div>
+  ${d<0?`<p class="sm muted">This has passed its date and was counted as waste. You can still give it a better purpose.</p>
+    <div class="two"><button class="btn danger" data-a="removeDo" data-id="${it.id}" data-why="bin">Bin it</button><button class="btn" data-a="rescueForm" data-type="recycle" data-id="${it.id}">Recycle it</button></div>`
+  :`<div class="two"><button class="btn soft" data-a="usedSome" data-id="${it.id}">${ic('minus')}Used some</button><button class="btn soft" data-a="addMore" data-id="${it.id}">${ic('plus')}Add more</button></div>`}
+  <div class="sec"><h2>Suggested Recipes</h2>${rec.length?`<button class="link" data-a="recipesFor" data-k="${it.key}">See more ›</button>`:''}</div>
+  ${rec.length?`<div class="sug">${rec.map(r=>`<button data-a="go" data-s="recipe" data-id="${r.id}">${photo(r)}<b>${r.n}</b><span class="xs muted">${r.t} mins</span></button>`).join('')}</div>`
+    :`<p class="sm muted">No recipes for this yet. <button class="link" data-a="tab" data-s="recipes">Browse all recipes</button></p>`}`}};
+
+SCREENS.recipes={nav:true,html(){
+  const chips=sorted().filter(i=>daysLeft(i)>=0&&RECIPES.some(r=>r.ing.some(g=>g.k===i.key))).slice(0,6);
+  return topBar('Recipes for You',{noback:true,right:`<button class="ib ${ui.recFav?'grn':''}" data-a="recFav" aria-label="Show saved recipes only" aria-pressed="${ui.recFav}" style="${ui.recFav?'background:var(--red-s);color:var(--red)':''}">${ic('heart')}</button>`})+
+  `<label class="search">${ic('search')}<input id="rec-q" type="search" placeholder="Search recipes..." data-q="rec" value="${esc(ui.recQ)}" autocomplete="off"></label>
+  <div class="chips">${[['mine','Use My Ingredients'],['popular','Popular'],['quick','Quick & Easy'],['veg','Vegetarian']].map(([v,l])=>`<button class="chip ${ui.recTab===v?'on':''}" data-a="set" data-k="recTab" data-v="${v}">${l}</button>`).join('')}</div>
+  ${ui.recTab==='mine'?`<div><b class="sm">Based on what you have:</b><div class="chips" style="margin-top:8px">${chips.map(i=>`<button class="chip ${ui.recChip===i.key?'on':''}" data-a="recChip" data-k="${i.key}">${i.e} ${esc(i.name)}</button>`).join('')}<button class="chip" data-a="addNew" aria-label="Add food">${ic('plus')}</button></div></div>`:''}
+  <div id="recList" style="display:flex;flex-direction:column;gap:12px">${recList()}</div>`}};
+function recList(){let l=[...RECIPES];const q=ui.recQ.trim().toLowerCase();
+  if(ui.recTab==='mine'){l=l.filter(r=>have(r).length).sort((a,b)=>urgency(b)-urgency(a));if(ui.recChip)l=l.filter(r=>r.ing.some(g=>g.k===ui.recChip))}
+  else if(ui.recTab==='popular')l.sort((a,b)=>b.rev-a.rev);
+  else if(ui.recTab==='quick')l=l.filter(r=>r.t<=15).sort((a,b)=>a.t-b.t);
+  else l=l.filter(r=>r.veg);
+  if(ui.recFav)l=l.filter(r=>state.fav.includes(r.id));
+  if(q)l=l.filter(r=>r.n.toLowerCase().includes(q)||r.ing.some(g=>ingName(g.k).toLowerCase().includes(q)));
+  if(!l.length)return`<div class="empty card"><span class="fe">🍽️</span><p>${ui.recFav?'No saved recipes here yet. Tap a heart to save one.':'No recipes match. Try another tab or search.'}</p></div>`;
+  return l.map(r=>{const h=have(r),soon=h.map(g=>owned(g.k)[0]).filter(i=>daysLeft(i)<=state.settings.days)[0];
+    return`<div class="rcard"><button style="display:block;width:100%;text-align:left" data-a="go" data-s="recipe" data-id="${r.id}">${photo(r)}
+      <div class="inf"><b>${r.n}</b><div class="sm muted">${r.t} mins • ${h.length?`Uses ${h.length} of your ingredient${h.length>1?'s':''}`:'You have none of these yet'}</div>
+      ${soon?`<span class="tag amber" style="margin-top:6px">Uses your ${esc(soon.name.toLowerCase())} (${dayLabel(daysLeft(soon)).toLowerCase()})</span>`:''}</div></button>
+      <button class="heart ${state.fav.includes(r.id)?'on':''}" data-a="fav" data-id="${r.id}" aria-label="Save ${r.n}" aria-pressed="${state.fav.includes(r.id)}">${ic('heart')}</button></div>`}).join('')}
+
+SCREENS.recipe={flush:true,html(p){const r=RECIPES.find(x=>x.id===p.id),h=have(r);
+  return`<div style="position:relative">${photo(r,'rhero')}<div class="over"><button class="ib" data-a="back" aria-label="Back">${ic('back')}</button>
+    <button class="ib heart ${state.fav.includes(r.id)?'on':''}" style="position:static" data-a="fav" data-id="${r.id}" aria-label="Save recipe">${ic('heart')}</button></div></div>
+  <div style="padding:16px;display:flex;flex-direction:column;gap:14px;flex:1"><h1>${r.n}</h1>
+  <div class="row sm" style="gap:16px;flex-wrap:wrap"><span>⭐ <b>${r.rate}</b> <span class="muted">(${r.rev} sample reviews)</span></span><span class="row" style="gap:4px">${ic('clock')}${r.t} mins</span><span>${r.diff}</span></div>
+  ${tabsH('rTab',[['ing','Ingredients'],['steps','Steps']])}
+  ${ui.rTab==='ing'?`<b>Ingredients (${h.length}/${r.ing.length} you have)</b><div class="list">${r.ing.map(g=>{const o=owned(g.k),f=FOODS[g.k]||{},n=o.reduce((s,i)=>s+i.qty,0);
+      return`<button class="li" data-a="${o.length?'go':'addNamed'}" data-s="food" data-id="${o.length?o[0].id:''}" data-k="${g.k}"><span class="check ${o.length?'on':''}">${o.length?ic('check'):''}</span><span class="e">${f.e||'🍽️'}</span>
+        <span class="grow"><b>${g.q}</b><br><span class="sm ${o.length?'grn':'muted'}">${o.length?'You have '+n:'Not in inventory. Tap to add'}</span></span>${ic('chev','chev')}</button>`}).join('')}</div>`
+   :`<div style="display:flex;flex-direction:column;gap:12px">${r.steps.map((s,i)=>`<div class="row" style="align-items:flex-start"><span class="stepn">${i+1}</span><p class="grow">${s}</p></div>`).join('')}</div>`}
+  <div style="margin-top:auto;padding-top:6px"><button class="btn" data-a="cookStart" data-id="${r.id}">Start Cooking</button></div></div>`}};
+
+SCREENS.cook={html(p){const r=RECIPES.find(x=>x.id===p.id),i=ui.cook.step,last=i===r.steps.length-1;
+  return topBar(r.n,{center:true})+`<div class="bar"><i style="width:${(i+1)/r.steps.length*100}%"></i></div>
+  <div class="card" style="flex:1;display:flex;flex-direction:column;gap:14px;justify-content:center;text-align:center;padding:26px 18px">
+    <div style="font-size:64px">${r.e}</div><span class="tag" style="align-self:center">Step ${i+1} of ${r.steps.length}</span><p style="font-size:18px;font-weight:700">${r.steps[i]}</p></div>
+  <div class="two"><button class="btn soft" data-a="cookStep" data-n="-1" ${i?'':'disabled'}>Back</button>
+    ${last?`<button class="btn" data-a="cookFinish" data-id="${r.id}">${ic('check')}Finish cooking</button>`:`<button class="btn" data-a="cookStep" data-n="1">Next step</button>`}</div>`}};
+SCREENS.cookDone={html(){const c=ui.cook||{used:[],pts:0,name:''};
+  return`<div class="empty" style="flex:1;justify-content:center"><span class="fe" style="font-size:72px">🎉</span><h1>Nice cooking!</h1><p>You made ${esc(c.name)}.</p>
+    <div class="card" style="width:100%;text-align:left"><b>Taken off your shelf</b><p class="sm muted">${c.used.length?c.used.map(esc).join(', '):'Nothing. You did not have these ingredients in your inventory.'}</p>
+    <div class="row" style="margin-top:10px"><span class="coin">⭐</span><b>+${c.pts} points earned</b></div></div>
+    <button class="btn" data-a="tab" data-s="home">Back to Home</button><button class="btn soft" data-a="go" data-s="insights" data-replace="1">See my impact</button></div>`}};
+
+SCREENS.insights={nav:true,html(){const days={week:7,month:30,all:0}[ui.insTab],s=stats(days),tw=topWasted(),tot=s.saved+s.wasted,pc=tot?Math.round(s.saved/tot*100):0;
+  return topBar('Your Waste Insights')+tabsH('insTab',[['week','This Week'],['month','This Month'],['all','All Time']])+
+  `<div class="stats card" style="padding:0;background:none;box-shadow:none">
+    <span class="stat"><span class="i">🌱</span><span class="n">${s.saved}</span><span class="l">Food saved</span></span>
+    <span class="stat"><span class="i">💰</span><span class="n">${rm(s.rm)}</span><span class="l">Money saved</span></span>
+    <span class="stat"><span class="i">☁️</span><span class="n">${kg(s.co)}</span><span class="l">CO2 reduced</span></span></div>
+  <div class="card"><div class="sec"><b>Used vs wasted</b><span class="sm muted">${tot?pc+'% used':'No activity yet'}</span></div>
+    <div class="bar" style="margin:10px 0;background:${tot?'var(--red-s)':'var(--cream-2)'}"><i style="width:${pc}%"></i></div>
+    <p class="sm muted">${s.wasted} item${s.wasted===1?'':'s'} went to waste (${rm(s.wrm)}).</p></div>
+  <div><h2 style="margin-bottom:6px">Top foods you often don't use</h2>
+    ${tw.length?`<div class="card list">${tw.map(t=>`<button class="li" data-a="recipesFor" data-k="${t.key}"><span class="e">${t.e}</span><span class="grow"><b>${esc(t.name)}</b><br><span class="sm muted">Not used ${t.n} time${t.n>1?'s':''}</span></span>${ic('chev','chev')}</button>`).join('')}</div>`
+      :'<p class="sm muted">Nothing wasted so far. Keep it up!</p>'}</div>
+  <div class="card row" style="background:var(--green-s);align-items:flex-start"><span style="font-size:30px">💡</span><div class="grow"><b>GoodBite Tip</b>
+    <p class="sm">${tw.length?`You often don't finish ${esc(tw[0].name.toLowerCase())}. Try buying a smaller quantity next time!`:'Plan two or three meals before you shop, so everything you buy has a job.'}</p></div><span style="font-size:30px">${tw.length?tw[0].e:'🛒'}</span></div>`}};
+
+SCREENS.rewards={nav:true,html(){const next=REWARDS.filter(r=>r.pts>state.points)[0],cheapest=REWARDS[0];
+  return topBar('Your Rewards',{noback:true,right:'<span style="font-size:26px">🌿</span>'})+
+  `<div class="row"><span class="coin">⭐</span><div><div><span class="pts">${state.points}</span> <b>points</b></div><div class="xs muted">Keep going! Use your food and earn rewards.</div></div></div>
+  <div class="card" style="background:var(--amber-s)">${next?`<div class="row"><div class="bar grow" style="background:#fff"><i style="width:${Math.min(100,state.points/next.pts*100)}%"></i></div><b class="sm">${state.points} / ${next.pts} points</b></div>
+    <div class="row" style="margin-top:10px"><span style="font-size:26px">🎁</span><div><div class="xs b muted">Next reward</div><b>${next.d}</b></div></div>`
+    :`<div class="row"><span style="font-size:26px">🎁</span><b>You can redeem any reward below.</b></div>`}</div>
+  ${tabsH('rewTab',[['rewards','Rewards'],['history','History']])}
+  ${ui.rewTab==='rewards'?`<div class="sec"><h2>Available Rewards</h2><span class="tag amber">Sample rewards</span></div>
+    <div class="list">${REWARDS.map(r=>{const ok=state.points>=r.pts;return`<div class="li"><span class="logo">${r.e}</span><span class="grow"><b>${r.n}</b><br><span class="sm muted">${r.d}</span><br><b class="sm red">${r.pts} points</b></span>
+      <button class="btn sm" data-a="redeem" data-id="${r.id}" ${ok?'':'disabled'}>${ok?'Redeem':'Need '+(r.pts-state.points)}</button></div>`}).join('')}</div>
+    <p class="xs muted ctr">Demo only. These partners are made up and vouchers can't be used in shops.</p>`
+  :`<div class="card list">${state.hist.length?state.hist.map(h=>`<div class="li"><span class="grow"><b>${esc(h.label)}</b><br><span class="sm muted">${fmtDate(h.d)}</span></span><b class="${h.pts<0?'red':'grn'}">${h.pts>0?'+':''}${h.pts}</b></div>`).join(''):'<p class="muted sm">No points activity yet.</p>'}</div>`}`}};
+
+SCREENS.rescue={nav:true,html(){
+  return topBar('Food Rescue')+`<div class="ctr"><div style="font-size:74px;line-height:1.1">🧺</div><h1>Have surplus food?</h1><p class="muted">Don't throw it away. Give your food a second life.</p></div>
+  <button class="opt" data-a="rescueForm" data-type="donate"><span class="logo">🤝</span><span class="grow"><b>Donate Food</b><br><span class="sm muted">For people in need</span></span>${ic('chev')}</button>
+  <button class="opt" data-a="rescueForm" data-type="recycle"><span class="logo">🌱</span><span class="grow"><b>Food Recycling</b><br><span class="sm muted">Turn food waste into fertiliser</span></span>${ic('chev')}</button>
+  <div><h2 style="margin-bottom:10px">How it works</h2><div style="display:flex;flex-direction:column;gap:12px">
+    ${[['Request a collection','Tell us what food you have'],['Partner collects','Our partner will pick it up'],['Food gets a better purpose','E.g. to food banks or turned into fertiliser']].map((s,i)=>`<div class="row"><span class="stepn">${i+1}</span><span><b>${s[0]}</b><br><span class="sm muted">${s[1]}</span></span></div>`).join('')}</div></div>
+  ${state.rescue.length?`<div><h2 style="margin-bottom:6px">My requests</h2><div class="card list">${state.rescue.map(r=>`<button class="li" data-a="go" data-s="rescueDone" data-id="${r.id}"><span class="e">${r.type==='donate'?'🤝':'🌱'}</span><span class="grow"><b>${r.type==='donate'?'Donation':'Recycling'} • ${r.ref}</b><br><span class="sm muted">${fmtDate(r.date)}, ${r.slot}</span></span><span class="tag">Booked</span></button>`).join('')}</div></div>`:''}
+  <p class="xs muted ctr">Demo only. Partners are sample partners and no real collection is booked.</p>`}};
+
+SCREENS.rescueForm={html(){const d=ui.rdraft,don=d.type==='donate';
+  const items=sorted().filter(i=>don?daysLeft(i)>=0:true).sort((a,b)=>don?0:daysLeft(a)-daysLeft(b));
+  return topBar(don?'Donate Food':'Food Recycling',{center:true})+`<p class="muted sm">${don?'Pick food that is still good to eat. Our sample partner, '+PARTNERS.donate+', will collect it.':'Pick expired food or scraps. Our sample partner, '+PARTNERS.recycle+', turns it into fertiliser.'}</p>
+  <div><span class="flabel">What food do you have?</span>${items.length?`<div class="card list" style="margin-top:6px;max-height:230px;overflow-y:auto">${items.map(i=>`<button class="li" data-a="rsel" data-id="${i.id}" role="checkbox" aria-checked="${!!d.sel[i.id]}"><span class="check ${d.sel[i.id]?'on':''}">${d.sel[i.id]?ic('check'):''}</span><span class="e">${i.e}</span><span class="grow"><b>${esc(i.name)}</b> <span class="sm muted">x${i.qty}</span></span><span class="tag ${daysLeft(i)<0?'red':''}">${dayLabel(daysLeft(i))}</span></button>`).join('')}</div>`:'<p class="sm muted" style="margin-top:6px">Nothing in your inventory fits. Describe your food below.</p>'}</div>
+  <div class="field"><label for="r-other">Anything else? (optional)</label><input class="inp" id="r-other" data-bind="other" data-obj="rdraft" value="${esc(d.other)}" placeholder="${don?'e.g. 2 unopened packs of biscuits':'e.g. vegetable peels, old rice'}"></div>
+  <div class="two"><div class="field"><label for="r-area">Pickup area</label><select class="inp" id="r-area" data-bind="area" data-obj="rdraft">${AREAS.map(a=>`<option ${d.area===a?'selected':''}>${a}</option>`).join('')}</select></div>
+    <div class="field"><label for="r-date">Pickup date</label><input class="inp" id="r-date" type="date" min="${iso(today())}" data-bind="date" data-obj="rdraft" value="${d.date}"></div></div>
+  <div class="field"><label for="r-slot">Time</label><select class="inp" id="r-slot" data-bind="slot" data-obj="rdraft">${SLOTS.map(a=>`<option ${d.slot===a?'selected':''}>${a}</option>`).join('')}</select></div>
+  <div class="field"><label for="r-note">Notes for the collector (optional)</label><textarea class="inp" id="r-note" data-bind="note" data-obj="rdraft" placeholder="e.g. Leave with the guard at Block B">${esc(d.note)}</textarea></div>
+  <button class="btn" data-a="rescueSend">Request collection</button>`}};
+SCREENS.rescueDone={html(p){const r=state.rescue.find(x=>x.id===p.id);if(!r)return topBar('Request')+'<div class="empty"><p>Request not found.</p></div>';
+  return`<div class="empty" style="flex:1;justify-content:center"><span class="fe" style="font-size:72px">${r.type==='donate'?'🤝':'🌱'}</span><h1>Collection requested!</h1><p>Thank you for giving your food a better purpose.</p>
+  <div class="card" style="width:100%;text-align:left"><div class="kv"><span class="muted sm">Reference</span><b>${r.ref}</b></div><div class="kv"><span class="muted sm">Partner</span><b style="text-align:right">${r.partner}<br><span class="tag amber">Sample partner</span></b></div>
+    <div class="kv"><span class="muted sm">Food</span><b style="text-align:right">${esc(r.summary)}</b></div><div class="kv"><span class="muted sm">Pickup</span><b style="text-align:right">${fmtDate(r.date)}<br>${r.slot}, ${r.area}</b></div></div>
+  <p class="xs muted">Demo only. No real collection has been booked.</p>
+  <button class="btn" data-a="tab" data-s="home">Back to Home</button><button class="btn soft" data-a="backTo" data-s="rescue">Food Rescue</button></div>`}};
+
+SCREENS.more={nav:true,html(){const pr=state.user.plan;
+  const row=(i,l,s)=>`<button class="li" data-a="go" data-s="${s}">${ic(i)}<b class="grow">${l}</b>${ic('chev','chev')}</button>`;
+  return`<div class="hello"><div class="ava" style="width:60px;height:60px;font-size:34px">👩🏻</div><div class="grow"><h1>${esc(state.user.name)}</h1><span class="muted sm">${esc(state.user.email)}</span></div><span style="font-size:24px">🌿</span></div>
+  <button class="opt" style="background:var(--green-s)" data-a="go" data-s="premium"><span style="font-size:28px">👑</span><span class="grow"><b class="grn">${pr?'GoodBite Premium':'GoodBite Free'}</b><br><span class="sm muted">${pr?(pr==='yearly'?'Yearly':'Monthly')+' plan (demo)':'Upgrade to Premium'}</span></span>${ic('chev')}</button>
+  <div class="card list" style="padding:4px 14px">${row('activity','My Activity','insights')}${row('bell','Notifications','notifs')}${row('gear','Settings','settings')}${row('help','Help & Support','help')}${row('info','About GoodBite','about')}</div>
+  <button class="btn danger" data-a="logoutAsk">Log Out</button>`}};
+
+SCREENS.premium={html(){const pr=state.user.plan;
+  return topBar('GoodBite Premium',{center:true})+`<div class="ctr"><div style="font-size:64px;line-height:1.1">👑</div><h1>Unlock more features</h1><p class="muted sm">for a smarter, less wasteful lifestyle.</p></div>
+  <div class="list">${[['📷','AI food scanning'],['🧾','Receipt scanning'],['🛒','Automatic grocery tracking'],['📊','Detailed waste insights'],['🍳','Personalised recipes'],['🎁','Exclusive rewards']].map(b=>`<div class="row" style="padding:7px 0"><span style="font-size:18px;width:26px;text-align:center">${b[0]}</span><b>${b[1]}</b></div>`).join('')}</div>
+  <div class="two"><button class="plan ${ui.plan==='monthly'?'on':''}" data-a="set" data-k="plan" data-v="monthly" aria-pressed="${ui.plan==='monthly'}"><div class="xs b muted">Monthly</div><div class="v">RM 9.90</div><div class="xs muted">per month</div></button>
+    <button class="plan ${ui.plan==='yearly'?'on':''}" data-a="set" data-k="plan" data-v="yearly" aria-pressed="${ui.plan==='yearly'}"><div class="xs b muted">Yearly</div><div class="v">RM 89.00</div><div class="xs red b">25% off • RM 7.42/month</div></button></div>
+  ${pr?`<div class="card ctr" style="background:var(--green-s)"><b>You're on Premium (${pr}, demo).</b></div><button class="btn" data-a="upgradeAsk">Switch to ${ui.plan} plan</button><button class="btn soft" data-a="downgrade">Go back to GoodBite Free</button>`
+    :`<button class="btn" data-a="upgradeAsk">Upgrade to Premium</button>`}
+  <p class="xs muted ctr">Demo only. No payment is taken.</p>`}};
+
+SCREENS.notifs={html(){const sig=notifSig();if(state.notifSeen!==sig){state.notifSeen=sig;save()}
+  const n=[...expired().map(i=>[i,`${i.name} has expired`,'Send it for recycling so it gets a better purpose.']),...expiring().map(i=>[i,`${i.name}: ${dayLabel(daysLeft(i)).toLowerCase()}`,'Cook it soon. Tap to see recipe ideas.'])];
+  return topBar('Notifications')+(!state.settings.notif?`<div class="empty"><span class="fe">🔕</span><p>Expiry reminders are turned off.</p><button class="btn sm" data-a="go" data-s="settings">Open Settings</button></div>`
+   :`${n.length?`<div class="card list">${n.map(([i,t,s])=>`<button class="li" data-a="go" data-s="food" data-id="${i.id}"><span class="e">${i.e}</span><span class="grow"><b>${esc(t)}</b><br><span class="sm muted">${s}</span></span>${ic('chev','chev')}</button>`).join('')}</div>`:`<div class="empty"><span class="fe">🔔</span><p>You're all caught up. Nothing is expiring soon.</p></div>`}
+   <button class="opt" data-a="go" data-s="insights"><span class="logo">📊</span><span class="grow"><b>Your weekly summary is ready</b><br><span class="sm muted">See how much food and money you saved.</span></span>${ic('chev')}</button>`)}};
+
+SCREENS.settings={html(){const s=state.settings;
+  return topBar('Settings')+`<div class="field"><label for="s-name">Your name</label><input class="inp" id="s-name" data-bind="name" data-obj="user" value="${esc(state.user.name)}" maxlength="24"></div>
+  <div class="field"><label for="s-email">Email</label><input class="inp" id="s-email" type="email" data-bind="email" data-obj="user" value="${esc(state.user.email)}"></div>
+  <div class="card"><div class="kv"><span><b>Expiry reminders</b><br><span class="sm muted">Alert me before food expires</span></span><button class="toggle ${s.notif?'on':''}" data-a="notifToggle" role="switch" aria-checked="${s.notif}" aria-label="Expiry reminders"></button></div>
+    <div class="kv"><label for="s-days"><b>Remind me</b><br><span class="sm muted">How early to warn you</span></label><select class="inp" id="s-days" data-bind="days" data-obj="settings">${[1,2,3,5,7].map(n=>`<option value="${n}" ${s.days===n?'selected':''}>${n} day${n>1?'s':''} before</option>`).join('')}</select></div></div>
+  <div class="card"><b>Sample data</b><p class="sm muted" style="margin:4px 0 12px">Put the app back to how it looked on first open. Your own changes will be removed.</p><button class="btn danger" data-a="resetAsk">Reset to sample data</button></div>
+  <p class="xs muted ctr">Your data is saved on this device only.</p>`}};
+
+SCREENS.help={html(){const f=[['How do I add food?','Tap Add Food on the Home page to type it in, or Scan Food to use the camera. In this demo, scanning picks a sample item.'],
+  ['How does GoodBite know when food expires?','You set the expiry date when you add food. GoodBite counts down the days and warns you before the date.'],
+  ['How do I earn points?','Use food before it expires. Tap "Used some" on a food, or cook a recipe and tap "Finish cooking". Food close to its date earns bonus points.'],
+  ['What counts as waste?','Food that passes its expiry date while still on your shelf. It shows up in Waste Insights so you can spot patterns.'],
+  ['Are the rewards and collections real?','Not yet. This is a prototype, so rewards, partners and payments are samples only.']];
+  return topBar('Help & Support')+`<div class="card" style="padding:4px 14px">${f.map(x=>`<details><summary>${x[0]}</summary><p class="sm">${x[1]}</p></details>`).join('')}</div>
+  <div class="card"><b>Still stuck?</b><p class="sm muted" style="margin:4px 0 10px">Email the team (sample address):</p><div class="row"><span class="inp grow" id="help-mail" style="user-select:all">hello@goodbite.example</span><button class="btn sm" data-a="copyMail">Copy</button></div></div>`}};
+SCREENS.about={html(){return topBar('About GoodBite')+`<div class="ctr"><div style="font-size:64px;line-height:1.1">🥬</div><h1 class="grn">GoodBite</h1><p class="muted sm">Version 0.1 (prototype)</p></div>
+  <div class="card"><b>Waste less, eat better</b><p class="sm" style="margin-top:6px">GoodBite helps households in Malaysia cut food waste. Track your groceries, get a nudge before food expires, and find recipes that use what you already have. If you still end up with surplus, Food Rescue gives it a better purpose.</p></div>
+  <div class="card"><b>About this prototype</b><p class="sm" style="margin-top:6px">Everything here is sample content for testing: the groceries, prices, recipe ratings, reward partners, collection partners and Premium plans. Scanning is simulated and no payment is ever taken. Money and CO2 figures are rough estimates.</p></div>
+  <button class="btn soft" data-a="go" data-s="help">Help & Support</button>`}};
+function welcome(){return`<div class="empty" style="flex:1;justify-content:center"><span class="fe" style="font-size:80px">🥬</span><h1 class="grn" style="font-size:30px">GoodBite</h1><p>You've logged out.<br>Your food list is still saved on this device.</p><button class="btn" data-a="login">Jump back in</button><p class="xs muted">No account needed for this demo.</p></div>`}
+
+/* ---------- actions ---------- */
+const newDraft=(key,o={})=>{const f=FOODS[key]||{};return{key:key||'',name:f.n||o.name||'',e:f.e||'',cat:f.c||'Vegetables',qty:1,expiry:addDays(f.life||5),...o}};
+const matchFood=name=>{const n=name.trim().toLowerCase();return Object.keys(FOODS).find(k=>k===n||FOODS[k].n.toLowerCase()===n||FOODS[k].n.toLowerCase()===n+'s'||FOODS[k].n.toLowerCase()+'s'===n)};
+const A={
+  go(d){const p={...d};delete p.a;delete p.s;delete p.replace;if(d.s==='add'&&!ui.draft.name&&!ui.draft.key)ui.draft=newDraft();go(d.s,p,!!d.replace)},
+  tab(d){tab(d.s)},back,
+  backTo(d){stack=[{s:'home'},{s:d.s}];render('back')},
+  set(d){ui[d.k]=d.v;if(d.k==='recTab')ui.recChip=null;render('keep')},
+  addNew(){ui.draft=newDraft();go('add')},
+  addNamed(d){ui.draft=newDraft(d.k);go('add')},
+  dq(d){ui.draft.qty=Math.max(1,Math.min(99,ui.draft.qty+Number(d.n)));render('keep')},
+  saveFood(){const d=ui.draft,name=(d.name||'').trim();
+    if(!name)return toast('Please type a food name.');
+    if(!d.expiry)return toast('Please pick an expiry date.');
+    const key=matchFood(name)||name.toLowerCase().replace(/\s+/g,'-'),f=FOODS[key];
+    if(d.id){const it=byId(d.id);if(it)Object.assign(it,{name,key,cat:d.cat,qty:d.qty,expiry:d.expiry,e:f?f.e:(it.key===key?it.e:CAT_EMOJI[d.cat]),wasted:daysLeft({expiry:d.expiry})<0?it.wasted:false});
+      save();toast('Changes saved.');return back()}
+    const same=state.inventory.find(i=>i.key===key&&i.expiry===d.expiry);
+    if(same)same.qty+=d.qty;else state.inventory.push(mkItem(key,d.qty,d.expiry,{name:f?f.n:name,cat:d.cat}));
+    save();ui.draft={};ui.invCat='All';ui.invQ='';stack=[{s:'inventory'}];render('fwd');toast(`${f?f.n:name} added to your inventory.`)},
+  capture(d){if(ui.scanning)return;ui.scanning=true;render('keep');const mode=ui.scanMode;
+    setTimeout(()=>{ui.scanning=false;const k=SCAN[mode][ui.scanIdx[mode]%6];ui.scanIdx[mode]++;ui.draft=newDraft(k);
+      if(stack[stack.length-1].s==='scan'){go('scanResult');if(d.src==='gallery')toast('Picked a sample photo from the gallery.')}},1100)},
+  flash(){ui.flash=!ui.flash;render('keep')},
+  invEdit(){ui.invEdit=!ui.invEdit;render('keep')},
+  usedSome(d){const it=byId(d.id);if(!it)return;const pts=useFood(it,1);save();
+    if(!byId(d.id)){toast(`All used up! +${pts} points`);back()}else{render('keep');toast(`Nice! +${pts} points`)}},
+  addMore(d){const it=byId(d.id);if(!it)return;it.qty++;save();render('keep');toast(`Now ${units(it)}.`)},
+  foodMenu(d){const it=byId(d.id);sheet(`<h2>${esc(it.name)}</h2><button class="btn soft" data-a="editFood" data-id="${it.id}">${ic('edit')}Edit details</button><button class="btn danger" data-a="removeAsk" data-id="${it.id}">Remove from inventory</button><button class="btn ghost" data-a="close">Cancel</button>`)},
+  editFood(d){const it=byId(d.id);closeSheet();ui.draft={id:it.id,key:it.key,name:it.name,e:it.e,cat:it.cat,qty:it.qty,expiry:it.expiry};go('add')},
+  removeAsk(d){const it=byId(d.id);if(!it)return;const dead=daysLeft(it)<0;
+    sheet(`<div class="ctr" style="font-size:48px">${it.e}</div><h2 class="ctr">${dead?`${esc(it.name)} has expired`:`What happened to the ${esc(it.name.toLowerCase())}?`}</h2>
+      ${dead?`<button class="btn" data-a="rescueForm" data-type="recycle" data-id="${it.id}">Send for Food Recycling</button><button class="btn danger" data-a="removeDo" data-id="${it.id}" data-why="bin">Bin it</button>`
+      :`<button class="btn" data-a="removeDo" data-id="${it.id}" data-why="used">I used it all</button><button class="btn danger" data-a="removeDo" data-id="${it.id}" data-why="waste">It went bad</button><button class="btn soft" data-a="removeDo" data-id="${it.id}" data-why="mistake">Added by mistake</button>`}
+      <button class="btn ghost" data-a="close">Cancel</button>`)},
+  removeDo(d){const it=byId(d.id);if(!it)return;closeSheet();let m=`${it.name} removed.`;
+    if(d.why==='used'){m=`Great! +${useFood(it,it.qty)} points`}else if(d.why==='waste'||d.why==='bin'){wasteFood(it);if(d.why==='waste')m=`${it.name} removed and counted as waste.`}else dropItem(it);
+    save();if(stack[stack.length-1].s==='food')back();else render('keep');toast(m)},
+  close:closeSheet,
+  fav(d){const i=state.fav.indexOf(d.id);if(i<0)state.fav.push(d.id);else state.fav.splice(i,1);save();render('keep');toast(i<0?'Saved to your favourites.':'Removed from favourites.')},
+  recFav(){ui.recFav=!ui.recFav;render('keep')},
+  recChip(d){ui.recChip=ui.recChip===d.k?null:d.k;render('keep')},
+  recipesFor(d){ui.recTab='mine';ui.recQ='';ui.recFav=false;ui.recChip=owned(d.k).length?d.k:null;if(!ui.recChip){ui.recTab='popular';ui.recQ=ingName(d.k)}tab('recipes')},
+  cookStart(d){ui.cook={step:0};go('cook',{id:d.id})},
+  cookStep(d){ui.cook.step+=Number(d.n);render('keep')},
+  cookFinish(d){const r=RECIPES.find(x=>x.id===d.id),used=[];let pts=20;
+    have(r).forEach(g=>{const it=owned(g.k)[0];used.push(it.name);pts+=useFood(it,1,false)});
+    addPts(pts,'Cooked '+r.n);save();ui.cook={used,pts,name:r.n};stack=[{s:'home'}];go('cookDone')},
+  redeem(d){const r=REWARDS.find(x=>x.id===d.id);sheet(`<div class="ctr" style="font-size:48px">${r.e}</div><h2 class="ctr">Redeem ${r.d}?</h2><p class="ctr muted sm">${r.n} • This uses ${r.pts} of your ${state.points} points.</p><button class="btn" data-a="redeemDo" data-id="${r.id}">Yes, redeem</button><button class="btn ghost" data-a="close">Not now</button>`)},
+  redeemDo(d){const r=REWARDS.find(x=>x.id===d.id);if(state.points<r.pts)return closeSheet();addPts(-r.pts,`Redeemed: ${r.d} (${r.n})`);const code='DEMO-'+uid().slice(0,5).toUpperCase();state.redeemed.push({id:r.id,code,d:iso(today())});save();render('keep');
+    sheet(`<div class="ctr" style="font-size:48px">🎉</div><h2 class="ctr">Reward redeemed!</h2><p class="ctr sm muted">${r.d} from ${r.n}</p><div class="card ctr"><div class="xs muted b">Your sample code</div><div class="pts" style="font-size:22px;user-select:all">${code}</div></div><p class="xs muted ctr">Demo only. This code can't be used in a real shop.</p><button class="btn" data-a="close">Done</button>`)},
+  rescueForm(d){closeSheet();ui.rdraft={type:d.type,sel:d.id?{[d.id]:true}:{},other:'',area:AREAS[0],date:addDays(1),slot:SLOTS[0],note:''};
+    if(d.type==='recycle'&&!d.id)expired().forEach(i=>ui.rdraft.sel[i.id]=true);go('rescueForm')},
+  rsel(d){ui.rdraft.sel[d.id]=!ui.rdraft.sel[d.id];render('keep')},
+  rescueSend(){const d=ui.rdraft,items=state.inventory.filter(i=>d.sel[i.id]);
+    if(!items.length&&!d.other.trim())return toast('Tell us what food you have first.');
+    if(!d.date||d.date<iso(today()))return toast('Please pick a pickup date from today onwards.');
+    const summary=[...items.map(i=>`${i.name} x${i.qty}`),d.other.trim()].filter(Boolean).join(', ');
+    items.forEach(i=>{if(d.type==='donate')useFood(i,i.qty,false);else wasteFood(i)});
+    const r={id:uid(),ref:'GB-'+uid().slice(0,5).toUpperCase(),type:d.type,summary,area:d.area,date:d.date,slot:d.slot,partner:PARTNERS[d.type]};
+    state.rescue.unshift(r);addPts(20,d.type==='donate'?'Food donation requested':'Food recycling requested');save();go('rescueDone',{id:r.id},true);toast('+20 points for rescuing food')},
+  upgradeAsk(){sheet(`<div class="ctr" style="font-size:48px">👑</div><h2 class="ctr">Start GoodBite Premium?</h2><p class="ctr muted sm">${ui.plan==='yearly'?'Yearly plan, RM 89.00 per year':'Monthly plan, RM 9.90 per month'}</p><div class="card ctr sm" style="background:var(--amber-s)"><b>Demo only.</b> No payment details are needed and nothing is charged.</div><button class="btn" data-a="upgradeDo">Confirm demo upgrade</button><button class="btn ghost" data-a="close">Cancel</button>`)},
+  upgradeDo(){state.user.plan=ui.plan;save();render('keep');sheet(`<div class="ctr" style="font-size:48px">🎉</div><h2 class="ctr">Welcome to Premium!</h2><p class="ctr muted sm">This is a demo confirmation. No payment was taken.</p><button class="btn" data-a="close">Done</button>`)},
+  downgrade(){state.user.plan=null;save();render('keep');toast('You are back on GoodBite Free.')},
+  notifToggle(){state.settings.notif=!state.settings.notif;save();render('keep')},
+  resetAsk(){sheet(`<h2 class="ctr">Reset to sample data?</h2><p class="ctr muted sm">This removes everything you've added on this device and brings back the sample groceries, points and history.</p><button class="btn danger" data-a="resetDo">Yes, reset</button><button class="btn ghost" data-a="close">Cancel</button>`)},
+  resetDo(){state=seed();save();closeSheet();Object.assign(ui,{invCat:'All',invEdit:false,invQ:'',homeQ:'',recTab:'mine',recChip:null,recQ:'',recFav:false,draft:{}});tab('home');toast('Sample data restored.')},
+  logoutAsk(){sheet(`<h2 class="ctr">Log out of GoodBite?</h2><p class="ctr muted sm">Your food list stays saved on this device.</p><button class="btn danger" data-a="logoutDo">Log Out</button><button class="btn ghost" data-a="close">Stay</button>`)},
+  logoutDo(){closeSheet();state.loggedOut=true;save();render()},
+  login(){state.loggedOut=false;save();tab('home');toast(`Welcome back, ${state.user.name}!`)},
+  copyMail(){const t='hello@goodbite.example',sel=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('help-mail'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Address selected. Copy it from here.')};
+    try{navigator.clipboard.writeText(t).then(()=>toast('Email address copied.'),sel)}catch(e){sel()}}
+};
+const Q={home(v){ui.homeQ=v;document.getElementById('homeBody').innerHTML=homeBody()},inv(v){ui.invQ=v;document.getElementById('invGrid').innerHTML=shelf()},rec(v){ui.recQ=v;document.getElementById('recList').innerHTML=recList()}};
+const OBJ={draft:()=>ui.draft,rdraft:()=>ui.rdraft,user:()=>state.user,settings:()=>state.settings};
+
+document.getElementById('app').addEventListener('click',e=>{
+  if(e.target===sheetEl)return closeSheet();
+  const el=e.target.closest('[data-a]');if(!el||el.disabled)return;
+  const fn=A[el.dataset.a];if(fn)fn({...el.dataset},el)});
+document.getElementById('app').addEventListener('input',e=>{const el=e.target;
+  if(el.dataset.q)return Q[el.dataset.q](el.value);
+  if(el.dataset.bind){const o=OBJ[el.dataset.obj||'draft'](),k=el.dataset.bind;o[k]=k==='days'?Number(el.value):el.value;
+    if(el.dataset.obj==='user'||el.dataset.obj==='settings')save()}});
+document.getElementById('app').addEventListener('change',e=>{const el=e.target;
+  if(el.dataset.bind==='name'&&!el.dataset.obj){const k=matchFood(el.value);if(k&&!ui.draft.id){const f=FOODS[k];Object.assign(ui.draft,{key:k,e:f.e,cat:f.c,expiry:addDays(f.life)});render('keep')}}
+  if(el.dataset.obj==='user'&&!el.value.trim()){state.user[el.dataset.bind]=el.dataset.bind==='name'?'Friend':'';save()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!sheetEl.hidden)closeSheet()});
+render();
+</script>
+</body></html>
