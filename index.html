@@ -119,6 +119,19 @@ svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;strok
 .prev b{font-size:12px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .prev small{font-size:10.5px;color:var(--muted);font-weight:700}
 
+.quick.three{grid-template-columns:repeat(3,1fr)}
+.quick.three span{width:62px;height:62px;border-radius:50%}
+.quick.three svg{width:30px;height:30px;stroke-width:2.4}
+.quick.three button{font-size:13px}
+.impact{background:var(--green-s);border-radius:var(--r);padding:14px;width:100%;text-align:left;display:flex;flex-direction:column;gap:8px}
+.impact .stat{background:none;padding:2px}
+.impact .stat .n{font-size:24px;color:var(--green-d)}
+.impact .stat .l{color:var(--ink);font-size:11.5px}
+.pg.hasfab{padding-bottom:64px}
+#nav{position:relative}
+.fab{position:absolute;left:50%;top:-40px;transform:translateX(-50%);width:92px;height:41px;flex:none!important;border-radius:92px 92px 0 0!important;
+  background:var(--card);border:1px solid var(--line);border-bottom:0;color:var(--green)!important;display:grid!important;place-items:center;padding:8px 0 0!important}
+#nav .fab svg{width:30px;height:30px;fill:none}
 /* shelf */
 .shelf{background:var(--wood-d);border-radius:16px;padding:8px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;box-shadow:var(--shadow)}
 .cell{position:relative;aspect-ratio:1/.95;border-radius:8px;background:linear-gradient(180deg,#D9A163 0%,var(--wood-l) 55%,#D49A5B 100%);
@@ -348,7 +361,7 @@ const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',box:'M
  clock:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2',check:'M5 12l5 5 9-10',x:'M6 6l12 12M18 6L6 18',
  gear:'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2',
  help:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01',info:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5M12 8h.01',
- activity:'M3 12h4l3-8 4 16 3-8h4',calendar:'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',edit:'M4 20h4L19 9l-4-4L4 16z',crown:'M3 8l4 4 5-7 5 7 4-4-2 11H5z'};
+ activity:'M3 12h4l3-8 4 16 3-8h4',calendar:'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',edit:'M4 20h4L19 9l-4-4L4 16z',crown:'M3 8l4 4 5-7 5 7 4-4-2 11H5z',chart:'M5 20V11M12 20V4M19 20v-7'};
 const ic=(n,c='')=>`<svg class="ic ${c}" viewBox="0 0 24 24" aria-hidden="true"><path d="${IC[n]}"/></svg>`;
 
 /* ---------- state ---------- */
@@ -414,10 +427,10 @@ function render(anim){
   sweep();
   if(state.loggedOut){scr.innerHTML=`<div class="pg a-fade">${welcome()}</div>`;navEl.hidden=true;return}
   const cur=stack[stack.length-1],S=SCREENS[cur.s],keep=anim==='keep'?scr.scrollTop:0;
-  scr.innerHTML=`<div class="pg ${S.flush?'flush':''} ${anim&&anim!=='keep'?'a-'+anim:''}">${S.html(cur.p||{})}</div>`;
+  scr.innerHTML=`<div class="pg ${S.flush?'flush':''} ${S.fab?'hasfab':''} ${anim&&anim!=='keep'?'a-'+anim:''}">${S.html(cur.p||{})}</div>`;
   scr.scrollTop=keep;
   navEl.hidden=!S.nav;
-  navEl.innerHTML=TABS.map(([s,l,i])=>`<button data-a="tab" data-s="${s}" class="${stack[0].s===s?'on':''}" ${stack[0].s===s?'aria-current="page"':''}>${ic(i)}${l}</button>`).join('');
+  navEl.innerHTML=TABS.map(([s,l,i])=>`<button data-a="tab" data-s="${s}" class="${stack[0].s===s?'on':''}" ${stack[0].s===s?'aria-current="page"':''}>${ic(i)}${l}</button>`).join('')+(cur.s==='home'?`<button class="fab" data-a="go" data-s="scan" aria-label="Scan food">${ic('camera')}</button>`:'');
 }
 const topBar=(title,o={})=>`<div class="top ${o.center?'c':''}">${o.noback?'':`<button class="ib" data-a="back" aria-label="Back">${ic('back')}</button>`}<h1>${title}</h1>${o.right||(o.center?'<span class="ib sp"></span>':'')}</div>`;
 const tabsH=(key,opts)=>`<div class="tabs" role="tablist">${opts.map(([v,l])=>`<button role="tab" data-a="set" data-k="${key}" data-v="${v}" class="${ui[key]===v?'on':''}">${l}</button>`).join('')}</div>`;
@@ -426,7 +439,7 @@ const photo=(r,cls='')=>`<div class="photo ${cls}" style="--a:${r.a};--b:${r.b}"
 /* ---------- screens ---------- */
 const SCREENS={};
 
-SCREENS.home={nav:true,html(){
+SCREENS.home={nav:true,fab:true,html(){
   const hr=new Date().getHours(),g=hr<12?'Good morning':hr<18?'Good afternoon':'Good evening';
   const unseen=state.settings.notif&&notifSig()&&notifSig()!==state.notifSeen;
   return`<div class="hello"><div class="ava">👩🏻</div><h1 class="grow">${g},<br>${esc(state.user.name)}! 👋</h1>
@@ -441,22 +454,18 @@ function homeBody(){
     return(f.length?`<div><h2>Your food</h2><div class="list">${f.map(foodRow).join('')}</div></div>`:'')+
       (r.length?`<div><h2>Recipes</h2><div class="list">${r.map(x=>`<button class="li" data-a="go" data-s="recipe" data-id="${x.id}"><span class="e">${x.e}</span><span class="grow"><b>${x.n}</b><br><span class="sm muted">${x.t} mins • Uses ${have(x).length} of your ingredients</span></span>${ic('chev','chev')}</button>`).join('')}</div></div>`:'')+
       (tip?`<div class="card" style="background:var(--green-s)"><b>GoodBite Tip</b><p class="sm">You often don't finish ${tip.name.toLowerCase()}. Try buying a smaller quantity next time!</p></div>`:'')}
-  const ex=expiring(),s=stats(0),pv=sorted().filter(i=>daysLeft(i)>=0).slice(0,4);
+  const ex=expiring(),s=stats(0);
   return`<button class="alert ${ex.length?'':'ok'}" data-a="go" data-s="expiring"><span class="fe">${ex.length?ex[0].e:'🥳'}</span>
     <b class="grow">${ex.length?`You have ${ex.length} item${ex.length>1?'s':''}<br>expiring soon!`:'Nothing is expiring soon.<br>Nice work!'}</b>${ic('chev')}</button>
-  <div class="quick">
-    <button data-a="go" data-s="scan"><span class="fill">${ic('camera')}</span>Scan Food</button>
+  <div class="quick three">
     <button data-a="addNew"><span class="fill2">${ic('plus')}</span>Add Food</button>
-    <button data-a="tab" data-s="recipes"><span style="color:#E8833A">${ic('chef')}</span>Recipes</button>
-    <button data-a="go" data-s="rescue"><span>${ic('leaf')}</span>Food Rescue</button></div>
-  <div><div class="sec" style="margin-bottom:8px"><h2>Your Impact</h2><button class="link" data-a="go" data-s="insights">See insights ›</button></div>
-    <button class="stats" data-a="go" data-s="insights" aria-label="Open Waste Insights">
-      <span class="stat"><span class="i">🌱</span><span class="n">${s.saved}</span><span class="l">Meals saved</span></span>
-      <span class="stat"><span class="i">💰</span><span class="n">${rm(s.rm)}</span><span class="l">Money saved</span></span>
-      <span class="stat"><span class="i">☁️</span><span class="n">${kg(s.co)}</span><span class="l">CO2 reduced</span></span></button></div>
-  <div><div class="sec" style="margin-bottom:8px"><h2>Your Food Inventory</h2><button class="link" data-a="tab" data-s="inventory">See All ›</button></div>
-    ${pv.length?`<div class="prev">${pv.map(i=>`<button data-a="go" data-s="food" data-id="${i.id}"><span class="fe">${i.e}</span><b>${esc(i.name)}</b><small class="${daysLeft(i)<=state.settings.days?'red':''}">${dayLabel(daysLeft(i))}</small></button>`).join('')}</div>`
-      :`<div class="empty card"><p>Your shelf is empty.</p><button class="btn sm" data-a="addNew">Add your first food</button></div>`}</div>`}
+    <button data-a="go" data-s="insights"><span class="fill2">${ic('chart')}</span>Waste Insights</button>
+    <button data-a="go" data-s="rescue"><span class="fill2">${ic('leaf')}</span>Food Rescue</button></div>
+  <button class="impact" data-a="go" data-s="insights" aria-label="Open Waste Insights"><h2>Your Impact 🌿</h2>
+    <span class="stats">
+      <span class="stat"><span class="n">${s.saved}</span><span class="l">Meals saved</span></span>
+      <span class="stat"><span class="n">${rm(s.rm)}</span><span class="l">Money saved</span></span>
+      <span class="stat"><span class="n">${kg(s.co)}</span><span class="l">CO2 reduced</span></span></span></button>`}
 const foodRow=i=>{const d=daysLeft(i);return`<button class="li" data-a="go" data-s="food" data-id="${i.id}"><span class="e">${i.e}</span><span class="grow"><b>${esc(i.name)}</b><br><span class="sm muted">${units(i)}</span></span><span class="tag ${d<0?'red':d<=state.settings.days?'amber':''}">${dayLabel(d)}</span>${ic('chev','chev')}</button>`};
 
 SCREENS.expiring={html(){const ex=expiring(),dead=expired();
