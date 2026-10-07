@@ -1,0 +1,396 @@
+# Credit note · version #	02 Credit note · version 1.1
+# Invoice · version #	01 Invoice · version 1.1
+# Jalan Contoh #/#, Taman Demo, # Subang Jaya, Selangor	12 Jalan Contoh 1/1, Taman Demo, 47500 Subang Jaya, Selangor
+# Jalan Contoh #/#, Taman Demo, #, Subang Jaya, Selangor	12 Jalan Contoh 1/1, Taman Demo, 47500, Subang Jaya, Selangor
+# Jalan Ujian, # Shah Alam, Selangor	3 Jalan Ujian, 40000 Shah Alam, Selangor
+# L	11.36 L
+# L left. Minimum is # L.	5 L left. Minimum is 12 L.
+# L of {X} (expired), worth RM#. Stock was reduced.	1 L of Fresh milk (expired), worth RM 7.50. Stock was reduced.
+# L of {X} logged as waste (RM#)	1 L of Fresh milk logged as waste (RM 7.50)
+# L · RM#	5 L · RM 37.50
+# Lorong Contoh #, # Petaling Jaya, Selangor	7 Lorong Contoh 2, 46000 Petaling Jaya, Selangor
+# Lorong Contoh #, #, Petaling Jaya, Selangor	7 Lorong Contoh 2, 46000, Petaling Jaya, Selangor
+# Restaurants (example code, check your own)	56101 Restaurants (example code, check your own)
+# Service Tax	02 Service Tax
+# bill on hold	1 bill on hold
+# bills · see each day ›	2236 bills · see each day ›
+# bills · see them ›	70 bills · see them ›
+# day	1 day
+# days	84 days
+# days of walk-in sales, RM# in total. Sales that already have their own e-invoice are left out.	30 days of walk-in sales, RM 51,969.05 in total. Sales that already have their own e-invoice are left out.
+# dishes on the menu.	44 dishes on the menu.
+# entries in the last # months · # kg · RM#	5 entries in the last 2 months · 3.42 kg · RM 47.95
+# entry in the last # months · # kg · RM#	1 entry in the last 2 months · 1.5 kg · RM 8.25
+# item · RM#	1 item · RM 273.75
+# item · held at {TIME}	1 item · held at 7:09 pm
+# items expiring in # days	5 items expiring in 2 days
+# items passed the expiry date	2 items passed the expiry date
+# items still to come · expected {DATE}	5 items still to come · expected 7 Oct
+# items still to come · expected {DATE} · part received	3 items still to come · expected 7 Oct · part received
+# items · RM#	2 items · RM 278.00
+# kg	2.61 kg
+# kg left. Minimum is # kg.	2.5 kg left. Minimum is 4 kg.
+# kg of {X} will go back into stock, as if it was never thrown away.	0.6 kg of Mushrooms will go back into stock, as if it was never thrown away.
+# kg · RM#	1.16 kg · RM 19.69
+# kg · see every entry ›	5.38 kg · see every entry ›
+# kg · see why ›	4.35 kg · see why ›
+# loaf	1.16 loaf
+# loaves	5 loaves
+# more item below minimum stock	1 more item below minimum stock
+# new batches added from order ##. The order is now complete.	5 new batches added from order #107. The order is now complete.
+# on order	4 on order
+# order waiting for delivery.	1 order waiting for delivery.
+# orders waiting for delivery.	2 orders waiting for delivery.
+# piece	2.07 piece
+# piece · RM#	1 piece · RM 1.20
+# pieces	32.95 pieces
+# pieces left. Minimum is # pieces.	14 pieces left. Minimum is 30 pieces.
+# pieces · RM#	2 pieces · RM 11.00
+# sales have no e-invoice yet	2 sales have no e-invoice yet
+# supplier bill is overdue	1 supplier bill is overdue
+# to do	3 to do
+# x {X}	1 x Orange Juice
+# x {X} (Iced)	1 x Latte (Iced)
+# × {X}	1 × Butter Croissant
+# × {X} (Iced)	1 × Latte (Iced)
+#. How much?	2. How much?
+#. How much? (L)	2. How much? (L)
+#. How much? (kg)	2. How much? (kg)
+#. The dish	1. The dish
+#. The recipe for one portion	2. The recipe for one portion
+#. What was thrown away?	1. What was thrown away?
+#. Why?	3. Why?
+(# L left)	(5 L left)
+(# hours left).	(71 hours left).
+(# kg left)	(2.48 kg left)
+(# pieces left)	(14 pieces left)
+(RM#) for Aina Binti Demo (DEMO).	(RM 25.65) for Aina Binti Demo (DEMO).
+(RM#) for General Public.	(RM 51,969.05) for General Public.
+(RM#) for Syarikat Contoh Maju Sdn Bhd (DEMO).	(RM 16.30) for Syarikat Contoh Maju Sdn Bhd (DEMO).
++# kg	+4 kg
++# loaves	+6 loaves
++# pieces	+20 pieces
+, expires in # days. Who should collect it?	, expires in 3 days. Who should collect it?
+-RM#	-RM 0.02
+A #-digit code from LHDN that says what kind of item this is. # means Others and # means a combined (consolidated) e-invoice.	A 3-digit code from LHDN that says what kind of item this is. 022 means Others and 004 means a combined (consolidated) e-invoice.
+A code from LHDN. # means Service Tax and # means no tax applies.	A code from LHDN. 02 means Service Tax and 06 means no tax applies.
+A valid e-invoice can be cancelled for # hours. After that the button is locked and you issue a credit note instead. Open an older one from the list to show it.	A valid e-invoice can be cancelled for 72 hours. After that the button is locked and you issue a credit note instead. Open an older one from the list to show it.
+A valid e-invoice can be cancelled for # hours. After that, use "Issue credit note".	A valid e-invoice can be cancelled for 72 hours. After that, use "Issue credit note".
+About RM# of {X}	About RM 4.50 of Lettuce
+Add at least # item first.	Add at least 1 item first.
+Add cheese +RM#	Add cheese +RM 2.00
+Add egg +RM#	Add egg +RM 2.50
+Add to bill · RM#	Add to bill · RM 12.50
+All # item will be removed from the bill. Nothing has been paid, so no stock or sales change.	All 1 item will be removed from the bill. Nothing has been paid, so no stock or sales change.
+Amount is missing. Type the total on the bill, for example #.	Amount is missing. Type the total on the bill, for example 245.50.
+An e-invoice is sent as XML or JSON in the UBL # layout. Invoice version # is the one where the digital signature is checked. The fields in this app follow that list (supplier, buyer, number, date and time, lines, tax type and amount, totals, currency).	An e-invoice is sent as XML or JSON in the UBL 2.1 layout. Invoice version 1.1 is the one where the digital signature is checked. The fields in this app follow that list (supplier, buyer, number, date and time, lines, tax type and amount, totals, currency).
+August #	August 2026
+Average of the last # days	Average of the last 14 days
+B###	B16-9999-99999999
+Back as Owner. The "{X} is low" card on Home opens this order, already filled in. Press "Save and check the order", then "Send order".	Back as Owner. The "Fresh milk is low" card on Home opens this order, already filled in. Press "Save and check the order", then "Send order".
+Bakery · from {X}	Bakery · from Roti Rumah Bakery Supply (demo)
+Bill INV-C#	Bill INV-C-2102
+Bill INV-C# marked as not paid	Bill INV-C-2102 marked as not paid
+Bill INV-D#	Bill INV-D-2101
+Bill INV-D# marked as not paid	Bill INV-D-2101 marked as not paid
+Bill INV-K#	Bill INV-K-2103
+Bill INV-K# marked as paid	Bill INV-K-2103 marked as paid
+Bill INV-M#	Bill INV-M-2104
+Bill INV-M# marked as paid	Bill INV-M-2104 marked as paid
+Bill INV-P#	Bill INV-P-2105
+Bill INV-P# marked as not paid	Bill INV-P-2105 marked as not paid
+Bill INV-P# marked as paid	Bill INV-P-2105 marked as paid
+C#	C99000000050
+CREDIT NOTE {DOC}	CREDIT NOTE CN-26-00005
+Cancel e-invoice {DOC}?	Cancel e-invoice EINV-26-00005?
+Cancel order ##?	Cancel order #107?
+Change dish: {X}	Change dish: Latte
+Close order ##?	Close order #106?
+Code #	Code 207
+Code # · has options	Code 402 · has options
+Code #. Changes reach the till when you press "Save dish".	Code 404. Changes reach the till when you press "Save dish".
+Coffee and drinks · from {X}	Coffee and drinks · from Biji Hitam Coffee Roasters (demo)
+Combined (walk-in sales) · RM#	Combined (walk-in sales) · RM 51,969.05
+Combined e-invoice for September # walk-in sales is due by {DATE}	Combined e-invoice for September 2026 walk-in sales is due by 7 Oct
+Combined e-invoice {DOC}	Combined e-invoice EINV-26-00005
+Confirm payment of RM#	Confirm payment of RM 14.85
+Corrects: {DOC}	Corrects: EINV-26-00002
+Cost of ingredients: RM# (demo prices).	Cost of ingredients: RM 5.29 (demo prices).
+Credit note {DOC}	Credit note CN-26-00006
+Credit note {DOC} is valid	Credit note CN-26-00005 is valid
+Credit note · RM#	Credit note · RM 25.65
+Daily sales for October #	Daily sales for October 2026
+Dairy · from {X}	Dairy · from Lembah Fresh Dairy Sdn Bhd (demo)
+Date: {DATE}	Date: 6 Oct 2026, 11:10 pm
+Delete {X}?	Delete Espresso?
+Delivers in # day	Delivers in 1 day
+Delivers in # day · # item running low	Delivers in 1 day · 1 item running low
+Delivers in # days	Delivers in 2 days
+Delivers in # days · # item running low	Delivers in 2 days · 1 item running low
+Delivery from {X} is due today	Delivery from Roti Rumah Bakery Supply (demo) is due today
+Demo tour · step # of #	Demo tour · step 5 of 12
+Dine-in · Table #	Dine-in · Table 5
+Dine-in, table #	Dine-in, table 3
+Draft {DOC} saved. Find it under Invoices, Drafts.	Draft EINV-26-00003 saved. Find it under Invoices, Drafts.
+Draft {DOC} will be removed. It was never sent, so nothing else changes.	Draft EINV-26-00003 will be removed. It was never sent, so nothing else changes.
+Dry goods · from {X}	Dry goods · from Kedai Kering Dry Goods (demo)
+E-INVOICE {DOC}	E-INVOICE EINV-26-00001
+E-invoice for receipt #	E-invoice for receipt 14687
+E-invoice {DOC}	E-invoice EINV-26-00003
+E-invoice {DOC} as JSON (simplified UBL # layout)	E-invoice CN-26-00005 as JSON (simplified UBL 2.1 layout)
+E-invoice {DOC} cancelled	E-invoice CN-26-00005 cancelled
+E-invoice {DOC} is valid	E-invoice EINV-26-00005 is valid
+E-invoice {DOC} was rejected	E-invoice EINV-26-00003 was rejected
+E-invoice · RM#	E-invoice · RM 23.30
+EI#	EI00000000010
+Edit {X}	Edit Fresh milk
+Entry removed. {X} is back in stock.	Entry removed. Fresh milk is back in stock.
+Every price, cost, weight and sales figure. The # months of history are generated by the app.	Every price, cost, weight and sales figure. The 2 months of history are generated by the app.
+Exact RM#	Exact RM 14.85
+Example: RM# of food, dine-in	Example: RM 20.00 of food, dine-in
+Expected on {DATE}. When it arrives, open the order and press "Receive goods". (Demo: nothing was really sent.)	Expected on 8 Oct 2026. When it arrives, open the order and press "Receive goods". (Demo: nothing was really sent.)
+Extra chicken +RM#	Extra chicken +RM 5.00
+Extra coffee shot +RM#	Extra coffee shot +RM 3.00
+Fix the # point in the red box first.	Fix the 1 point in the red box first.
+Fix the # points in the red box first.	Fix the 6 points in the red box first.
+Fix the count: {X}	Fix the count: Fresh milk
+Food and drink services are taxed at #% service tax (they stayed at #% when the general rate went to #% on {DATE}). An outlet only has to register once its yearly sales pass RM#,#,#. On the e-invoice this is tax type # (Service Tax).	Food and drink services are taxed at 6% service tax (they stayed at 6% when the general rate went to 8% on 1 Mar 2024). An outlet only has to register once its yearly sales pass RM1,500,000. On the e-invoice this is tax type 02 (Service Tax).
+For example C#	For example C12345678900
+For example IG#	For example IG12345678900
+For example: #	For example: 2
+For example: INV#	For example: INV-1234
+For example: Iced {X} Tea	For example: Iced Lemon Tea
+For example: {X}	For example: Oat milk
+For order ##	For order #106
+From {DATE}uary # a single sale above RM#,# cannot go into the combined e-invoice. It needs its own. Rare for a cafe, but it applies to catering orders.	From 1 January 2026 a single sale above RM10,000 cannot go into the combined e-invoice. It needs its own. Rare for a cafe, but it applies to catering orders.
+G#, Jalan Demo #/#, # Subang Jaya	G-01, Jalan Demo 15/4, 47500 Subang Jaya
+G#, Jalan Demo #/#, # Subang Jaya, Selangor	G-01, Jalan Demo 15/4, 47500 Subang Jaya, Selangor
+Go to payment · RM#	Go to payment · RM 30.30
+Held bills (#)	Held bills (0)
+Help: Bill INV-C#	Help: Bill INV-C-2102
+Help: Bill INV-D#	Help: Bill INV-D-2101
+Help: Bill INV-K#	Help: Bill INV-K-2103
+Help: Bill INV-M#	Help: Bill INV-M-2104
+Help: Bill INV-P#	Help: Bill INV-P-2105
+Help: Combined e-invoice {DOC}	Help: Combined e-invoice EINV-26-00005
+Help: Credit note {DOC}	Help: Credit note CN-26-00005
+Help: E-invoice {DOC}	Help: E-invoice EINV-26-00003
+Help: Order ##	Help: Order #107
+Help: Receipt #	Help: Receipt 14716
+Help: Sales by day, October #	Help: Sales by day, October 2026
+Help: Waste entries, October #	Help: Waste entries, October 2026
+Help: Waste history: {X}	Help: Waste history: Fresh milk
+Help: {DOC}	Help: CN-26-00005
+Help: {X}	Help: Lembah Fresh Dairy Sdn Bhd (demo)
+IG#	IG99123456780
+INV-C#	INV-C-2102
+INV-D#	INV-D-2101
+INV-K#	INV-K-2103
+INV-M#	INV-M-2104
+INV-P#	INV-P-2105
+Iced +RM#	Iced +RM 1.00
+If a customer does not ask for an e-invoice, the outlet gives a normal receipt and sends one consolidated e-invoice within # calendar days after the month ends. Buyer name is "General Public", buyer TIN is EI#, and the other buyer details are "NA". Lines can be a list of receipt numbers. Classification code # marks a consolidated e-invoice.	If a customer does not ask for an e-invoice, the outlet gives a normal receipt and sends one consolidated e-invoice within 7 calendar days after the month ends. Buyer name is "General Public", buyer TIN is EI00000000010, and the other buyer details are "NA". Lines can be a list of receipt numbers. Classification code 004 marks a consolidated e-invoice.
+In # days	In 19 days
+Ingredients used by receipt #	Ingredients used by receipt 14717
+Items + tax + rounding = RM#, the same as receipt #.	Items + tax + rounding = RM 8.50, the same as receipt 14585.
+Items + tax + rounding = RM#.	Items + tax + rounding = RM 51,969.05.
+LHDN e-Invoice Guideline, version # ({DATE})	LHDN e-Invoice Guideline, version 4.8 (30 Aug 2026)
+LHDN e-Invoice Specific Guideline, version # ({DATE})	LHDN e-Invoice Specific Guideline, version 4.9 (7 Sep 2026)
+LHDN lists # data fields needed to issue an e-invoice. This demo fills the main ones and leaves out optional ones such as shipping and customs details.	LHDN lists 55 data fields needed to issue an e-invoice. This demo fills the main ones and leaves out optional ones such as shipping and customs details.
+Less {X}	Less Garlic
+Malaysia has no # sen coins, so the final bill is rounded to the nearest # sen.	Malaysia has no 1 sen coins, so the final bill is rounded to the nearest 5 sen.
+Meat and seafood · from {X}	Meat and seafood · from Ayam & Laut Fresh Proteins (demo)
+Minimum # L	Minimum 5 L
+Minimum # kg	Minimum 3 kg
+Minimum # loaves	Minimum 6 loaves
+Minimum # pieces	Minimum 15 pieces
+Minimum stock is missing. Type a number, for example #.	Minimum stock is missing. Type a number, for example 2.
+More {X}	More Sambal paste
+Most wasted items, August #	Most wasted items, August 2026
+Most wasted items, October #	Most wasted items, October 2026
+Most wasted items, September #	Most wasted items, September 2026
+Moved to the waste log automatically (RM#).	Moved to the waste log automatically (RM 19.05).
+MyInvois SDK: Invoice v# fields	MyInvois SDK: Invoice v1.1 fields
+Not saved yet. Fix the # points in the red box first.	Not saved yet. Fix the 3 points in the red box first.
+Now viewing as Cashier, so the menu is shorter. Tap {X}, pick Iced, press "Add to bill". Tap {X}. Type table #.	Now viewing as Cashier, so the menu is shorter. Tap Latte, pick Iced, press "Add to bill". Tap Butter Croissant. Type table 5.
+Now viewing as Kitchen staff. {X} went down by the latte. Batches are listed oldest first, and the oldest is used first.	Now viewing as Kitchen staff. Fresh milk went down by the latte. Batches are listed oldest first, and the oldest is used first.
+October #	October 2026
+Offer {X} for rescue	Offer Limau kasturi for rescue
+One e-invoice covers every sale where nobody asked for their own. LHDN wants it within # days after the month ends.	One e-invoice covers every sale where nobody asked for their own. LHDN wants it within 7 days after the month ends.
+One less {X}	One less Banana Bread Slice
+One more {X}	One more Bagel with Cream Cheese
+Open credit note {DOC}	Open credit note CN-26-00005
+Open order ##	Open order #105
+Open receipt #	Open receipt 14585
+Order ##	Order #108
+Order ## (part received)	Order #106 (part received)
+Order ## cancelled	Order #109 cancelled
+Order ## closed	Order #106 closed
+Order ## from {X}	Order #107 from Pasar Pagi Produce (demo)
+Order ## from {X}. Change anything that is different from what arrived.	Order #109 from Lembah Fresh Dairy Sdn Bhd (demo). Change anything that is different from what arrived.
+Order ## sent	Order #109 sent
+Order ## · {X}	Order #106 · Roti Rumah Bakery Supply (demo)
+Order from {X}	Order from Biji Hitam Coffee Roasters (demo)
+Order sent to {X}	Order sent to Lembah Fresh Dairy Sdn Bhd (demo)
+Order to {X}. Expected {DATE}.	Order to Lembah Fresh Dairy Sdn Bhd (demo). Expected 8 Oct 2026.
+Price is missing. Type a number, for example #.	Price is missing. Type a number, for example 7.50.
+Produce · from {X}	Produce · from Pasar Pagi Produce (demo)
+Puts back the made-up cafe: # dishes, # ingredients, # suppliers and # months of sales and waste. Everything you added or changed in this browser is erased.	Puts back the made-up cafe: 44 dishes, 60 ingredients, 6 suppliers and 2 months of sales and waste. Everything you added or changed in this browser is erased.
+RM #	RM 300
+RM #k	RM 2k
+RM#	RM 1.77
+RM# (#% of sales)	RM 70.27 (0.6% of sales)
+RM# / L	RM 28.00 / L
+RM# / kg	RM 60.00 / kg
+RM# / loaf	RM 9.00 / loaf
+RM# / piece	RM 1.60 / piece
+RM# each	RM 8.00 each
+RM# in total.	RM 295.00 in total.
+RM# of ingredients · how? ›	RM 2,615.98 of ingredients · how? ›
+Reason given: Wrong buyer details · cancelled {DATE}	Reason given: Wrong buyer details · cancelled 7 Oct 2026, 7:20 pm
+Receipt #	Receipt 14693
+Receipt # is now void. Ingredients are back in stock.	Receipt 14585 is now void. Ingredients are back in stock.
+Receipts # to # on {DATE}	Receipts 13206 to 13264 on 18 Sep 2026
+Receipts from the last # days.	Receipts from the last 3 days.
+Right now # batches would be on the "Expiring soon" list.	Right now 3 batches would be on the "Expiring soon" list.
+Round the final bill to the nearest # sen	Round the final bill to the nearest 5 sen
+SST #%	SST 6%
+SST (#%)	SST (6%)
+SST no. B###	SST no. B16-9999-99999999
+Sales by day, October #	Sales by day, October 2026
+Sales per day in August #	Sales per day in August 2026
+Sales per day in October #	Sales per day in October 2026
+Sales per day in September #	Sales per day in September 2026
+Sales per day, August #	Sales per day, August 2026
+Sales per day, October #	Sales per day, October 2026
+Sales per day, September #	Sales per day, September 2026
+Saved as goodbite-sales##.csv	Saved as goodbite-sales-2026-10.csv
+Saved as goodbite-waste##.csv	Saved as goodbite-waste-2026-10.csv
+Saved as {DOC}.json	Saved as EINV-26-00002.json
+Saved changes to {X}	Saved changes to Fresh milk
+Saved. Warning # day before expiry.	Saved. Warning 1 day before expiry.
+Saved. Warning # days before expiry.	Saved. Warning 7 days before expiry.
+Send order to {X}	Send order to Lembah Fresh Dairy Sdn Bhd
+September #	September 2026
+Service charge #%	Service charge 10%
+Service charge (#%)	Service charge (10%)
+Service charge, SST and # sen rounding are worked out for you. Tap the RM # chip and press "Confirm payment". (Next does it for you.)	Service charge, SST and 5 sen rounding are worked out for you. Tap the RM 50 chip and press "Confirm payment". (Next does it for you.)
+Statuses and the #-hour rule	Statuses and the 72-hour rule
+Step # of #	Step 1 of 3
+Step #: pick the order that arrived. Step #: check the amount, expiry date and price of each item. Step #: confirm.	Step 1: pick the order that arrived. Step 2: check the amount, expiry date and price of each item. Step 3: confirm.
+Step #: pick the supplier. Step #: set how much of each item you want. Step #: check and send.	Step 1: pick the supplier. Step 2: set how much of each item you want. Step 3: check and send.
+Stock was reduced for # ingredients, oldest batches first.	Stock was reduced for 3 ingredients, oldest batches first.
+Stuck? Help explains the page you are on in # lines. You can replay this tour or start the demo tour from there.	Stuck? Help explains the page you are on in 3 lines. You can replay this tour or start the demo tour from there.
+Suggested order amounts. They use minimum stock and the last # days of use, which is a rough guide.	Suggested order amounts. They use minimum stock and the last 14 days of use, which is a rough guide.
+TIN C# · ID #	TIN C99123456780 · ID 209901999991
+TIN C# · Reg. # · SST B###	TIN C99999999990 · Reg. 209901999999 · SST B16-9999-99999999
+TIN EI# · ID NA	TIN EI00000000010 · ID NA
+TIN IG# · ID #	TIN IG99123456780 · ID 990101999999
+Table #	Table 8
+Table ? · RM#	Table ? · RM 16.30
+Tap the first "quick fill" buyer, then follow the green button through the # steps to Submit. Nothing is sent to LHDN.	Tap the first "quick fill" buyer, then follow the green button through the 4 steps to Submit. Nothing is sent to LHDN.
+The # sen rounding rule was not checked against a Bank Negara source today. It is a switch in Settings.	The 5 sen rounding rule was not checked against a Bank Negara source today. It is a switch in Settings.
+The #-hour limit for cancelling has passed. To reverse it, press "Issue credit note".	The 72-hour limit for cancelling has passed. To reverse it, press "Issue credit note".
+The LHDN timeline web page still says the exemption is "less than RM#,#,#" (page last updated {DATE}). The newer guideline PDF says RM#,#,#. This app follows the newer PDF. Ask LHDN or an accountant before relying on either number.	The LHDN timeline web page still says the exemption is "less than RM1,000,000" (page last updated 7 Dec 2025). The newer guideline PDF says RM3,000,000. This app follows the newer PDF. Ask LHDN or an accountant before relying on either number.
+The RM#,# rule	The RM10,000 rule
+The business activity code (MSIC) # and classification code # (Others) for food items are placeholders. A real business must look up its own codes.	The business activity code (MSIC) 56101 and classification code 022 (Others) for food items are placeholders. A real business must look up its own codes.
+The exact shape of a TIN was not checked. The app only looks for # or # letters followed by numbers.	The exact shape of a TIN was not checked. The app only looks for 1 or 2 letters followed by numbers.
+The example on the right shows what a RM# bill becomes.	The example on the right shows what a RM 20.00 bill becomes.
+The issuer can cancel within # hours from the time the e-invoice became valid, and must give a reason. After that the system refuses, so a credit note is needed.	The issuer can cancel within 72 hours from the time the e-invoice became valid, and must give a reason. After that the system refuses, so a credit note is needed.
+The order to {X} will be marked as cancelled and nothing will be expected. In real life you would also need to tell the supplier.	The order to Pasar Pagi Produce (demo) will be marked as cancelled and nothing will be expected. In real life you would also need to tell the supplier.
+The phases: over RM# million turnover from {DATE}; RM# to # million from {DATE}; RM# to # million from {DATE}; up to RM# million from {DATE}. The guideline dated {DATE} says businesses with yearly turnover below RM#,#,# are exempt (with exceptions for businesses owned by, or related to, bigger companies). So most small cafes do not have to issue e-invoices today.	The phases: over RM100 million turnover from 1 Aug 2024; RM25 to 100 million from 1 Jan 2025; RM5 to 25 million from 1 Jul 2025; up to RM5 million from 1 Jan 2026. The guideline dated 30 Aug 2026 says businesses with yearly turnover below RM3,000,000 are exempt (with exceptions for businesses owned by, or related to, bigger companies). So most small cafes do not have to issue e-invoices today.
+The price is missing. Type a number above #, for example #.	The price is missing. Type a number above 0, for example 12.00.
+The same order as takeaway comes to RM#.	The same order as takeaway comes to RM 23.30.
+There are # steps, shown in the bar at the top. The green button always takes you to the next one.	There are 4 steps, shown in the bar at the top. The green button always takes you to the next one.
+To {X} · # item · RM#	To Lembah Fresh Dairy Sdn Bhd (demo) · 1 item · RM 270.00
+Today, {TIME}	Today, 7:11 pm
+Turn into an order (# item)	Turn into an order (1 item)
+Unique ID: {ID}	Unique ID: DEMO718BKHKFENABTG6C2FB88P
+View bill (#) · RM#	View bill (1) · RM 19.10
+Void receipt #?	Void receipt 14715?
+Waiting for # L	Waiting for 36 L
+Waiting for # kg	Waiting for 4 kg
+Waiting for # loaves	Waiting for 6 loaves
+Waiting for # pieces	Waiting for 12 pieces
+Waste entries, October #	Waste entries, October 2026
+Waste history: {X}	Waste history: Tomato
+Waste log for October #	Waste log for October 2026
+What was checked against official sources on {DATE}ober #, and what was not.	What was checked against official sources on 7 October 2026, and what was not.
+Worked out from minimum stock and how much was used in the last # days. You can change the amounts before sending.	Worked out from minimum stock and how much was used in the last 14 days. You can change the amounts before sending.
+You can cancel it within # hours if something is wrong. After that you need a credit note.	You can cancel it within 72 hours if something is wrong. After that you need a credit note.
+by Card · Receipt #	by Card · Receipt 14717
+by Cash · Receipt #	by Cash · Receipt 14717
+by DuitNow QR · Receipt #	by DuitNow QR · Receipt 14717
+by E-wallet · Receipt #	by E-wallet · Receipt 14717
+now # kg	now 8.2 kg
+now # loaves	now 18.8 loaves
+now # pieces	now 59.93 pieces
+of {X} (worth RM#) will leave the stock and go into the waste log as "Spoiled".	of Chicken breast (worth RM 59.50) will leave the stock and go into the waste log as "Spoiled".
+small outlets are mostly exempt. A cafe with yearly turnover under RM# million does not have to issue e-invoices under the current guideline, and one under RM# million does not charge SST. So for GoodBite's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today.	small outlets are mostly exempt. A cafe with yearly turnover under RM3 million does not have to issue e-invoices under the current guideline, and one under RM1.5 million does not charge SST. So for GoodBite's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today.
+{DATE}	5 Oct
+{DATE} · Expired	11 Sep · Expired
+{DATE} · Overproduced	11 Aug · Overproduced
+{DATE} · Prep error	19 Aug · Prep error
+{DATE} · Returned	27 Aug · Returned
+{DATE} · Spoiled	18 Sep · Spoiled
+{DOC}	EINV-26-00001
+{DOC} ({ID})	EINV-26-00002 (DEMO6DF4AC1D90AK65ERGV47BW)
+{ID}	DEMO94ZX8A64QZ2ZESCTN8YH92
+{TIME}	12:16 pm
+{X}	Lembah Fresh Dairy Sdn Bhd (demo)
+{X} (# L in stock)	Oat milk (10.22 L in stock)
+{X} (# kg in stock)	Mango (4.89 kg in stock)
+{X} (# loaf in stock)	Sourdough loaf (12.8 loaf in stock)
+{X} (# piece in stock)	Burger bun (59.93 piece in stock)
+{X} (L)	Olive oil (L)
+{X} (kg)	Butter (kg)
+{X} (loaf)	Sourdough loaf (loaf)
+{X} (piece)	Beef patty (piece)
+{X} +RM#	Oat milk +RM 2.00
+{X} added to the bill	Chicken Caesar Wrap added to the bill
+{X} deleted from the menu	Espresso deleted from the menu
+{X} is low	Croissant (frozen dough) is low
+{X} logged as waste	Fresh milk logged as waste
+{X} removed from the bill	Mango Smoothie removed from the bill
+{X} removed from the recipe	Coffee beans removed from the recipe
+{X} saved	Espresso saved
+{X} · sent {DATE} · expected {DATE}	Pasar Pagi Produce (demo) · sent 3 Oct 2026 · expected 4 Oct 2026
+{X} · {DATE}	Teduh Daun Cafe (demo) · 7 Oct 2026
+{X}, {X}	Big Breakfast, Mushroom Aglio Olio
+{X}, {X}, {X}	Berry Smoothie, Berry Yogurt Bowl, Berry Muffin
+{X}, {X}, {X}, {X}	Mushroom Aglio Olio, Prawn Aglio Olio, Tomato Chicken Pasta, Garlic Toast
+{X}, {X}, {X}, {X} and more	Lettuce, Sourdough loaf, Chicken breast, Spinach and more
+{X}, {X}, {X}, {X}, {X}	Banana Pancakes, Chocolate Brownie, Banana Bread Slice, Berry Muffin, Gula Melaka Cake Slice
+{X}, {X}, {X}, {X}, {X}, {X}, {X}	Teh Tarik Special, Limau Kasturi Cooler, Almond Croissant, Chocolate Brownie, Banana Bread Slice, Burnt Cheesecake Slice, Berry Muffin
+{X}, {X}, {X}, {X}, {X}, {X}, {X}, {X}, {X}	Espresso, Americano, Latte, Cappuccino, Flat White, Mocha, Caramel Latte, Gula Melaka Latte, Iced Long Black
+{X}, {X}, {X}, {X}, {X}, {X}, {X}, {X}, {X}, {X}	Big Breakfast, Scrambled Eggs on Toast, Banana Pancakes, Butter Croissant, Almond Croissant, Chocolate Brownie, Banana Bread Slice, Berry Muffin, Gula Melaka Cake Slice, Garlic Toast
+{X}, {X}, {X}, {X}, {X}, {X}, {X}, {X}, {X}, {X}, {X}	Latte, Cappuccino, Flat White, Mocha, Caramel Latte, Gula Melaka Latte, Matcha Latte, Hot Chocolate, Teh Tarik Special, Banana Pancakes, Berry Muffin
+☕ {X}	☕ Flat White
+🌯 {X}	🌯 Chicken Caesar Wrap
+🍊 {X}	🍊 Orange Juice
+🍋 {X}	🍋 Lemon Honey Soda
+🍌 {X}	🍌 Banana Bread Slice
+🍔 {X}	🍔 Beef Burger
+🍚 {X}	🍚 Nasi Goreng Kampung
+🍛 {X}	🍛 Nasi Lemak Ayam
+🍝 {X}	🍝 Mushroom Aglio Olio
+🍞 {X}	🍞 Garlic Toast
+🍟 {X}	🍟 Fries
+🍫 {X}	🍫 Hot Chocolate
+🍰 {X}	🍰 Gula Melaka Cake Slice
+🍳 {X}	🍳 Big Breakfast
+🍵 {X}	🍵 Matcha Latte
+🥐 {X}	🥐 Butter Croissant
+🥑 {X}	🥑 Avocado Toast
+🥗 {X}	🥗 Garden Salad
+🥞 {X}	🥞 Banana Pancakes
+🥣 {X}	🥣 Berry Yogurt Bowl
+🥤 {X}	🥤 Limau Kasturi Cooler
+🥪 {X}	🥪 Tuna Melt Sandwich
+🥬 {X}	🥬 Teduh Daun Cafe (demo)
+🥭 {X}	🥭 Mango Smoothie
+🥯 {X}	🥯 Bagel with Cream Cheese
+🧁 {X}	🧁 Berry Muffin
+🧊 {X}	🧊 Iced Long Black
+🫐 {X}	🫐 Berry Smoothie
+🫖 {X}	🫖 Teh Tarik Special

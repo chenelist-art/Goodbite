@@ -1,0 +1,216 @@
+521 || Ditawarkan || 已提供
+522 || Ditawarkan untuk diselamatkan || 已提供给救援
+526 || Catatan lama dikunci || 旧记录已锁定
+527 || Kelompok paling lama luput || 最旧批次到期
+528 || Dalam pesanan || 已订货
+529 || Satu e-invois merangkumi setiap jualan yang tiada sesiapa meminta e-invois sendiri. || 一张电子发票涵盖所有没人要求单独开发票的销售。
+530 || Satu baris untuk setiap hari dalam bulan. || 当月每天一行。
+531 || Hanya jualan beberapa hari lepas tanpa e-invois disenaraikan. || 只列出最近几天还没有电子发票的销售。
+532 || Buka || 打开
+533 || Buka Selamatkan Makanan › || 打开食物救援 ›
+534 || Buka bil ditahan || 打开暂存的账单
+535 || Buka e-invoisnya || 打开它的电子发票
+536 || Buka laporan › || 打开报表 ›
+537 || Buka e-invois || 打开电子发票
+538 || Buka bil pembekal || 打开供应商账单
+539 || Buka kaunter untuk membawa balik bil. || 打开收银台把账单取回。
+540 || Buka item ini dalam Stok || 在库存中打开此品项
+541 || Buka pesanan ini || 打开这张订单
+542 || Buka › || 打开 ›
+543 || Pilihan yang juruwang boleh pilih (ketik untuk hidup atau mati) || 收银员可选的选项（点一下开或关）
+544 || Pesanan || 订单
+545 || Pesan daripada pembekal ini lagi || 再向这家供应商订货
+546 || Pesan berapa banyak || 订多少
+547 || Pesan lagi || 再订货
+548 || Pesan lagi, atau terima penghantaran. || 再订货，或收货。
+549 || Pesan sekarang || 现在订货
+550 || Pesanan dihantar || 订单已发送
+551 || Jumlah pesanan || 订单总额
+552 || Jumlah pesanan (harga demo) || 订单总额（演示价格）
+553 || Dipesan || 已订
+554 || Pesanan || 订货
+555 || Butiran pembeli lain || 其他买方资料
+556 || Jika tidak, tekan "Jualan baharu" untuk melayan pelanggan seterusnya. || 否则按“新销售”服务下一位顾客。
+557 || Habis stok || 缺货
+558 || Nama kedai (pada resit) || 店名（印在收据上）
+559 || Tertunggak || 逾期
+560 || Terlebih buat || 做太多
+561 || Pemilik / Pengurus || 店主 / 经理
+562 || Pemilik ▾ || 店主 ▾
+564 || Dibayar || 已付
+565 || Dibayar dengan || 付款方式
+566 || Sebahagian || 部分
+567 || Diterima sebahagian || 部分到货
+568 || Rakan kongsi || 伙伴
+569 || Nombor pasport || 护照号码
+570 || Bayar sebelum || 付款期限
+571 || Bayaran || 付款
+572 || Bayaran diterima || 已收款
+573 || Bayaran. Butang tunai, kad, DuitNow QR dan e-dompet tidak memindahkan wang atau berhubung dengan mana-mana bank atau terminal. || 付款。现金、刷卡、DuitNow QR 和电子钱包按钮不会转移任何钱，也不连接任何银行或刷卡机。
+576 || Telefon || 电话
+577 || Pilih || 选择
+578 || Pilih bulan di atas. Setiap angka di bawah adalah untuk bulan itu. || 在顶部选择月份。下面的每个数字都是那个月的。
+579 || Pilih sebab dahulu. || 请先选原因。
+580 || Pilih bahan || 选择食材
+581 || Pilih bahan dahulu. || 请先选食材。
+582 || Pilih item || 选择品项
+583 || Pilih item dahulu. || 请先选品项。
+584 || Pilih pesanan lain || 选另一张订单
+585 || Pilih cara pelanggan membayar. || 选择顾客的付款方式。
+586 || Pilih bulan || 选择月份
+587 || Pilih pesanan || 选择订单
+588 || Pilih pembekal || 选择供应商
+589 || Pilih item, tetapkan jumlah, ketik sebab, kemudian tekan "Simpan log pembaziran". || 选品项、设数量、点原因，然后按“保存浪费记录”。
+590 || Pilih bahasa untuk seluruh aplikasi pada peranti ini. || 为这台设备上的整个应用选择语言。
+591 || Pilih jualan || 选择销售
+592 || Pilih › || 选择 ›
+593 || Gambar pada butang kaunter || 收银台按钮上的图片
+623 || Poskod || 邮编
+624 || Silap penyediaan || 备料出错
+625 || Tekan "Tambah hidangan" untuk meletakkan hidangan baharu pada menu. Ketik baris untuk mengubah atau memadam hidangan. || 按“添加菜品”把新菜品放上菜单。点一行可修改或删除菜品。
+626 || Tekan "Tanda sebagai sudah dibayar" setelah anda membayarnya. || 付了款之后按“标记为已付”。
+627 || Tekan "Simpan bil". Anda boleh menandanya sebagai dibayar kemudian. || 按“保存账单”。之后可以再标记为已付。
+628 || Tekan "Simpan kiraan" di bawah apabila selesai. Hanya kotak yang anda ubah dikemas kini. || 完成后按底部的“保存盘点”。只有您改过的格子会更新。
+629 || Tekan "Simpan hidangan" apabila selesai. "Padam hidangan" membuangnya dari kaunter, tetapi resit lama mengekalkannya. || 完成后按“保存菜品”。“删除菜品”会把它从收银台移除，但旧收据仍保留。
+630 || Tekan "Simpan item". Kemudian anda boleh menerima penghantaran atau membetulkan kiraan untuk menambah stok. || 按“保存品项”。之后可以收货或更正数量来增加库存。
+631 || Tekan Kembali untuk pulang ke tempat tadi. || 按“返回”回到刚才的地方。
+632 || Tekan butang hijau untuk selesai. Setiap bayaran di sini olok-olok, tiada wang berpindah. || 按绿色按钮完成。这里的每笔付款都是模拟的，没有钱转移。
+633 || Olok-olok (simulasi) || 模拟的
+634 || Harga || 价格
+635 || Harga seliter (RM) || 每升价格（RM）
+636 || Harga sekilo (RM) || 每公斤价格（RM）
+637 || Harga sebuku (RM) || 每条价格（RM）
+638 || Harga sebiji (RM) || 每个价格（RM）
+639 || Cetak || 打印
+640 || Cetak atau simpan sebagai PDF || 打印或另存为 PDF
+641 || Paparan cetak || 打印视图
+642 || Sayur dan buah || 蔬果
+644 || Kod QR dan ID || 二维码和编号
+645 || Kuantiti || 数量
+646 || Isian pantas untuk demo (pembeli rekaan) || 演示用快速填写（虚构买方）
+647 || Kadar || 税率
+648 || Temu bual dan ujian sebenar dengan pemilik kafe. Demo ini belum dicuba oleh mana-mana pemilik kafe. || 与咖啡店店主的真实访谈和测试。还没有店主试用过这个演示。
+649 || Log masuk dan kebenaran sebenar untuk setiap staf. || 每位员工真正的登录和权限。
+650 || Sebab || 原因
+651 || Sebab (anda boleh taip sendiri) || 原因（可以自己输入）
+652 || Resit || 收据
+653 || Sokongan pencetak resit, laci tunai dan pengimbas kod bar. || 支持收据打印机、钱箱和条码扫描器。
+654 || Terima penghantaran || 收货
+655 || Terima barang || 收货
+656 || Diterima || 已收到
+657 || Diterima sekarang || 这次收到
+658 || Jualan terkini || 最近的销售
+659 || Pembaziran terkini || 最近的浪费
+660 || Nama perniagaan berdaftar || 注册公司名称
+661 || No. pendaftaran || 注册号
+662 || Pendaftaran dengan MyInvois untuk akses API, sijil digital untuk menandatangani setiap e-invois, sambungan sebenar yang menghantar dokumen dan membaca jawapan LHDN, serta penyimpanan selamat setiap e-invois. Semua itu tiada dalam demo ini. || 向 MyInvois 注册以取得 API 权限、用来签署每张电子发票的数字证书、真正发送文件并读取 LHDN 回复的连接，以及安全保存每张电子发票。这个演示里都没有。
+663 || Buang || 移除
+664 || Buang catatan || 移除记录
+665 || Buang catatan pembaziran ini? || 移除这条浪费记录？
+666 || Ulang lawatan pengenalan || 重看欢迎导览
+667 || Ulang lawatan pengenalan, atau mulakan lawatan demo langkah demi langkah. || 重看欢迎导览，或开始一步一步的演示导览。
+668 || Laporan || 报表
+669 || Diselamatkan, bukan dibuang || 获救而没有丢掉
+670 || Set semula semua data demo? || 重置所有演示数据？
+671 || Set semula data demo || 重置演示数据
+672 || Dipulangkan || 退回
+673 || Semakan || 复核
+674 || Semak sebelum menghantar || 发送前复核
+675 || Pembundaran || 进位
+676 || Kastam Diraja Malaysia (MySST): Soalan lazim cukai perkhidmatan || 马来西亚皇家关税局（MySST）：服务税常见问题
+678 || SST % || SST %
+679 || No. SST || SST 号
+680 || Nombor SST (kosongkan jika tiada) || SST 号码（没有就留空）
+681 || SST atas makanan dan minuman || 餐饮的 SST
+682 || Nombor pendaftaran SST || SST 注册号码
+684 || Jualan selesai || 销售完成
+685 || Jualan selesai, stok dikemas kini || 销售完成，库存已更新
+686 || Jualan (dengan cukai) || 销售额（含税）
+687 || Cukai Jualan dan Perkhidmatan. Kedai makanan dan minuman yang berdaftar menambah cukai perkhidmatan pada bil dan membayarnya kepada Kastam. || 销售与服务税。已注册的餐饮店会在账单上加收服务税，并缴给关税局。
+688 || Jualan sebelum cukai || 税前销售额
+689 || Jualan bulan ini || 本月销售额
+690 || Jualan hari ini || 今天销售额
+692 || Simpan dan semak pesanan || 保存并检查订单
+693 || Simpan dan pergi ke Semak item || 保存并去检查品项
+694 || Simpan dan pergi ke Sahkan || 保存并去确认
+695 || Simpan bil || 保存账单
+696 || Simpan perubahan || 保存更改
+697 || Simpan kiraan || 保存盘点
+698 || Simpan hidangan || 保存菜品
+699 || Simpan draf dan tutup || 保存草稿并关闭
+700 || Simpan item || 保存品项
+701 || Simpan pembekal || 保存供应商
+702 || Simpan kiraan baharu || 保存新数量
+703 || Simpan log pembaziran || 保存浪费记录
+704 || Disimpan secara automatik semasa anda menaip. || 输入时自动保存。
+705 || Disimpan secara automatik. || 已自动保存。
+706 || Disimpan secara automatik. Bil baharu menggunakan tetapan baharu. Resit lama mengekalkan kadar semasa ia dijual. || 已自动保存。新账单使用新设置。旧收据保留售出时的税率。
+707 || Kata: "Inilah yang pemilik lihat dahulu." Tunjuk pada kad Perlu dibuat. Setiap satu membuka penyelesaiannya. Kemudian tekan Seterusnya. || 可以说：“这是店主最先看到的。”指着“待办”卡片。每张都会打开处理的地方。然后按“下一步”。
+708 || Cari mengikut nama atau kod item || 按名称或品项代码搜索
+709 || Cari mengikut nombor, pembeli atau resit || 按号码、买方或收据搜索
+710 || Cari mengikut nombor resit || 按收据号码搜索
+711 || Cari mengikut pembekal atau nombor pesanan || 按供应商或订单号搜索
+712 || Cari item || 搜索品项
+713 || Cari log mengikut item || 按品项搜索记录
+714 || Cari menu || 搜索菜单
+715 || Cari item pembekal ini || 搜索这家供应商的品项
+716 || Second Serve PJ (rakan demo) || Second Serve PJ（演示伙伴）
+717 || Lihat semua e-invois || 查看所有电子发票
+718 || Lihat semua pembaziran item ini || 查看此品项的所有浪费
+719 || Lihat bil || 查看账单
+720 || Lihat stok || 查看库存
+721 || Lihat senarai had penuh || 查看完整的局限清单
+722 || Lihat senarai || 查看清单
+723 || Lihat laporan bulanan || 查看月报
+724 || Lihat jualan hari ini || 查看今天的销售
+725 || Lihat log pembaziran || 查看浪费记录
+726 || Lihat apa yang hampir luput || 查看快过期的东西
+727 || Lihat apa yang digunakan || 查看用了什么
+728 || Nampak semuanya: jualan, stok, pembekal, laporan, e-invois dan tetapan. || 可看全部：销售、库存、供应商、报表、电子发票和设置。
+729 || Nampak stok, penghantaran dan log pembaziran. Sesuai digunakan pada telefon. || 可看库存、到货和浪费记录。适合在手机上用。
+730 || Nampak kaunter sahaja: ambil pesanan, terima bayaran, cetak resit. || 只看收银台：点单、收款、打印收据。
+732 || Jual || 销售
+733 || Harga jualan (RM, sebelum cukai) || 售价（RM，税前）
+734 || Menghantar pesanan kepada pembekal. Tiada e-mel atau mesej dihantar. || 向供应商发送订单。不会发出任何电邮或消息。
+735 || Menghantar ke LHDN (olok-olok)... || 正在发送给 LHDN（模拟）...
+736 || Dihantar || 发出日期
+737 || Dihantar, menunggu penghantaran || 已发送，等待到货
+738 || Caj perkhidmatan || 服务费
+739 || Caj perkhidmatan % || 服务费 %
+740 || Cukai perkhidmatan || 服务税
+741 || Tetapkan berapa banyak yang anda mahu. Jumlah cadangan diisi untuk item yang rendah. || 设定您要订多少。库存偏低的品项已填好建议数量。
+742 || Sediakan aplikasi untuk kedai anda. || 为您的店设置应用。
+743 || Tetapkan nama, kumpulan dan harga. Gambar dan pilihan adalah tambahan. || 设定名称、分组和价格。图片和选项是附加的。
+744 || Tetapan || 设置
+745 || Tunjuk JSON || 显示 JSON
+746 || Langkau lawatan || 跳过导览
+747 || Sebahagiannya sudah dipesan. || 其中一些已经订货。
+748 || Sumber: || 来源：
+749 || Tahap pedas || 辣度
+750 || Rosak || 变质
+751 || Peranan staf. Tiada kata laluan, sesiapa sahaja boleh menukar peranan. || 员工角色。没有密码，任何人都能切换角色。
+752 || Mulakan lawatan demo || 开始演示导览
+753 || Negeri || 州
+754 || Status || 状态
+755 || Status: || 状态：
+757 || Status || 状态
+758 || Stok || 库存
+759 || Kiraan stok disimpan || 库存盘点已保存
+760 || Stok dikemas kini || 库存已更新
+761 || Berhenti menunggu e-invois || 不再等待电子发票
+762 || Hantar || 提交
+763 || Hantar e-invois (demo) || 提交电子发票（演示）
+764 || Dihantar || 已提交
+765 || Jumlah kecil || 小计
+766 || Cadangan || 建议
+767 || Pembekal || 供应商
+768 || Pembekal (perniagaan anda) || 供应方（您的店）
+769 || Bil pembekal || 供应商账单
+770 || Nama pembekal || 供应商名称
+771 || Nama pembekal tiada. Taip nama, kemudian simpan. || 缺少供应商名称。请输入名称后再保存。
+772 || Pembekal disimpan || 供应商已保存
+773 || E-invois pembekal || 供应商的电子发票
+774 || Pembekal || 供应商
+775 || Hidupkan atau matikan setiap caj dan tetapkan peratusannya. || 开或关每项收费，并设定百分比。
+779 || JUMLAH (RM) || 合计（RM）
+780 || Meja || 桌号

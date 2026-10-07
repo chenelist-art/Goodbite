@@ -1,0 +1,50 @@
+D75 || Kod 3 digit daripada LHDN yang menyatakan jenis item ini. 022 bermaksud Lain-lain dan 004 bermaksud e-invois gabungan (disatukan). || LHDN 的 3 位数代码，说明这是什么类型的品项。022 表示“其他”，004 表示合并电子发票。
+D76 || Kod daripada LHDN. 02 bermaksud Cukai Perkhidmatan dan 06 bermaksud tiada cukai dikenakan. || LHDN 的代码。02 表示服务税，06 表示不适用任何税。
+D77 || E-invois yang sah boleh dibatalkan dalam masa 72 jam. Selepas itu butang dikunci dan anda mengeluarkan nota kredit. Buka yang lebih lama daripada senarai untuk menunjukkannya. || 有效的电子发票可在 72 小时内取消。之后按钮会锁住，要改开贷项通知单。从清单打开一张较旧的来展示。
+D78 || E-invois yang sah boleh dibatalkan dalam masa 72 jam. Selepas itu, guna "Keluarkan nota kredit". || 有效的电子发票可在 72 小时内取消。之后请用“开贷项通知单”。
+D86 || E-invois dihantar sebagai XML atau JSON dalam susun atur UBL 2.1. Invois versi 1.1 ialah versi yang tandatangan digitalnya disemak. Medan dalam aplikasi ini mengikut senarai itu (pembekal, pembeli, nombor, tarikh dan masa, baris, jenis dan jumlah cukai, jumlah, mata wang). || 电子发票以 UBL 2.1 格式的 XML 或 JSON 发送。发票 1.1 版会检查数字签名。这个应用的栏位按照那份清单（供应方、买方、号码、日期和时间、明细行、税种和税额、合计、货币）。
+D148 || Setiap harga, kos, berat dan angka jualan. Sejarah 2 bulan dijana oleh aplikasi. || 每个价格、成本、重量和销售数字。2 个月的历史记录是应用生成的。
+D157 || Perkhidmatan makanan dan minuman dikenakan cukai perkhidmatan 6% (kekal 6% apabila kadar am naik kepada 8% pada 1 Mac 2024). Kedai hanya perlu berdaftar apabila jualan tahunannya melebihi RM1,500,000. Pada e-invois ini ialah jenis cukai 02 (Cukai Perkhidmatan). || 餐饮服务的服务税是 6%（一般税率在 2024 年 3 月 1 日升到 8% 时，餐饮仍是 6%）。店铺年销售额超过 RM1,500,000 才需要注册。在电子发票上这是税种 02（服务税）。
+D165 || Mulai 1 Januari 2026, satu jualan melebihi RM10,000 tidak boleh dimasukkan ke dalam e-invois gabungan. Ia perlukan e-invois sendiri. Jarang untuk kafe, tetapi terpakai untuk pesanan katering. || 从 2026 年 1 月 1 日起，单笔超过 RM10,000 的销售不能放进合并电子发票，必须单独开。咖啡店很少遇到，但外烩订单适用。
+D192 || Jika pelanggan tidak meminta e-invois, kedai memberi resit biasa dan menghantar satu e-invois disatukan dalam masa 7 hari kalendar selepas bulan berakhir. Nama pembeli ialah "General Public", TIN pembeli ialah EI00000000010, dan butiran pembeli lain ialah "NA". Baris boleh berupa senarai nombor resit. Kod klasifikasi 004 menandakan e-invois disatukan. || 如果顾客没有要求电子发票，店铺给普通收据，并在月底后 7 个日历日内发送一张合并电子发票。买方名称是“General Public”，买方 TIN 是 EI00000000010，其他买方资料填“NA”。明细行可以是收据号码清单。分类代码 004 表示合并电子发票。
+D199 || LHDN menyenaraikan 55 medan data yang diperlukan untuk mengeluarkan e-invois. Demo ini mengisi yang utama dan meninggalkan yang pilihan seperti butiran penghantaran dan kastam. || LHDN 列出开电子发票所需的 55 个数据栏位。这个演示填写主要的栏位，省略运输和报关等可选栏位。
+D201 || Malaysia tiada syiling 1 sen, jadi bil akhir dibundarkan kepada 5 sen terdekat. || 马来西亚没有 1 仙硬币，所以最后的账单会进位到最接近的 5 仙。
+D219 || Satu e-invois merangkumi setiap jualan yang tiada sesiapa meminta e-invois sendiri. LHDN mahukannya dalam masa 7 hari selepas bulan berakhir. || 一张电子发票涵盖所有没人要求单独开发票的销售。LHDN 要求在月底后 7 天内开出。
+D238 || Mengembalikan kafe rekaan: 44 hidangan, 60 bahan, 6 pembekal dan 2 bulan jualan dan pembaziran. Semua yang anda tambah atau ubah dalam pelayar ini dipadam. || 恢复虚构的咖啡店：44 道菜品、60 种食材、6 家供应商，以及 2 个月的销售和浪费记录。您在这个浏览器里添加或修改的一切都会被清除。
+D277 || Caj perkhidmatan, SST dan pembundaran 5 sen dikira untuk anda. Ketik cip RM 50 dan tekan "Sahkan bayaran". (Seterusnya melakukannya untuk anda.) || 服务费、SST 和 5 仙进位都替您算好了。点 RM 50 的按钮，然后按“确认付款”。（按“下一步”会替您完成。）
+D278 || Status dan peraturan 72 jam || 状态和 72 小时规则
+D280 || Langkah 1: pilih pesanan yang tiba. Langkah 2: semak jumlah, tarikh luput dan harga setiap item. Langkah 3: sahkan. || 第 1 步：选择到货的订单。第 2 步：检查每个品项的数量、到期日和价格。第 3 步：确认。
+D281 || Langkah 1: pilih pembekal. Langkah 2: tetapkan berapa banyak setiap item yang anda mahu. Langkah 3: semak dan hantar. || 第 1 步：选择供应商。第 2 步：设定每个品项要订多少。第 3 步：检查并发送。
+D283 || Tersekat? Bantuan menerangkan halaman semasa dalam 3 baris. Anda boleh mengulang lawatan ini atau memulakan lawatan demo dari situ. || 卡住了？“帮助”用 3 行说明您所在的页面。在那里可以重看这个导览或开始演示导览。
+D284 || Jumlah pesanan cadangan. Ia menggunakan stok minimum dan penggunaan 14 hari lepas, iaitu panduan kasar. || 建议订货量。它用最低库存和过去 14 天的用量来算，只是粗略的参考。
+D291 || Ketik pembeli "isian pantas" yang pertama, kemudian ikut butang hijau melalui 4 langkah hingga Hantar. Tiada apa dihantar ke LHDN. || 点第一个“快速填写”买方，然后跟着绿色按钮走完 4 个步骤到“提交”。不会发送任何东西给 LHDN。
+D292 || Peraturan pembundaran 5 sen tidak disemak dengan sumber Bank Negara hari ini. Ia suis dalam Tetapan. || 5 仙进位规则今天没有对照国家银行的来源核实。它是设置里的一个开关。
+D293 || Had 72 jam untuk membatalkan telah berlalu. Untuk membalikkannya, tekan "Keluarkan nota kredit". || 72 小时的取消期限已过。要冲销它，请按“开贷项通知单”。
+D294 || Halaman web garis masa LHDN masih menyatakan pengecualian ialah "kurang daripada RM1,000,000" (halaman dikemas kini kali terakhir pada 7 Dis 2025). PDF garis panduan yang lebih baharu menyatakan RM3,000,000. Aplikasi ini mengikut PDF yang lebih baharu. Tanya LHDN atau akauntan sebelum bergantung pada mana-mana angka. || LHDN 时间表网页仍写豁免门槛是“少于 RM1,000,000”（网页最后更新于 2025 年 12 月 7 日）。较新的指南 PDF 写的是 RM3,000,000。这个应用依照较新的 PDF。采用任何一个数字前，请先问 LHDN 或会计。
+D295 || Peraturan RM10,000 || RM10,000 规则
+D296 || Kod aktiviti perniagaan (MSIC) 56101 dan kod klasifikasi 022 (Lain-lain) untuk item makanan ialah contoh sementara. Perniagaan sebenar mesti mencari kodnya sendiri. || 业务活动代码（MSIC）56101 和食品品项的分类代码 022（其他）只是占位用。真正的商家必须查自己的代码。
+D297 || Bentuk tepat TIN tidak disemak. Aplikasi hanya mencari 1 atau 2 huruf diikuti nombor. || TIN 的确切格式没有核实。应用只检查是不是 1 或 2 个字母后面接数字。
+D298 || Contoh di sebelah kanan menunjukkan bil RM 20.00 menjadi berapa. || 右边的例子显示 RM 20.00 的账单会变成多少。
+D299 || Pengeluar boleh membatalkan dalam masa 72 jam dari masa e-invois menjadi sah, dan mesti memberi sebab. Selepas itu sistem menolak, jadi nota kredit diperlukan. || 开票方可在电子发票生效后 72 小时内取消，而且必须说明原因。之后系统会拒绝，所以需要开贷项通知单。
+D301 || Fasa-fasanya: perolehan melebihi RM100 juta mulai 1 Ogos 2024; RM25 hingga 100 juta mulai 1 Jan 2025; RM5 hingga 25 juta mulai 1 Jul 2025; sehingga RM5 juta mulai 1 Jan 2026. Garis panduan bertarikh 30 Ogos 2026 menyatakan perniagaan dengan perolehan tahunan di bawah RM3,000,000 dikecualikan (dengan pengecualian bagi perniagaan yang dimiliki oleh, atau berkaitan dengan, syarikat lebih besar). Jadi kebanyakan kafe kecil tidak perlu mengeluarkan e-invois hari ini. || 各阶段：年营业额超过 RM1 亿的从 2024 年 8 月 1 日开始；RM2500 万到 1 亿的从 2025 年 1 月 1 日；RM500 万到 2500 万的从 2025 年 7 月 1 日；RM500 万以下的从 2026 年 1 月 1 日。2026 年 8 月 30 日的指南说，年营业额低于 RM3,000,000 的商家可豁免（由较大公司拥有或有关联的商家除外）。所以大多数小咖啡店现在不必开电子发票。
+D304 || Ada 4 langkah, ditunjukkan dalam bar di atas. Butang hijau sentiasa membawa anda ke langkah seterusnya. || 一共 4 个步骤，显示在顶部的进度条里。绿色按钮总是带您去下一步。
+D318 || Apa yang disemak dengan sumber rasmi pada 7 Oktober 2026, dan apa yang tidak. || 2026 年 10 月 7 日对照官方来源核实了哪些，哪些没有。
+D319 || Dikira daripada stok minimum dan jumlah yang digunakan dalam 14 hari lepas. Anda boleh mengubah jumlah sebelum menghantar. || 根据最低库存和过去 14 天的用量算出。发送前可以修改数量。
+D320 || Anda boleh membatalkannya dalam masa 72 jam jika ada yang salah. Selepas itu anda perlukan nota kredit. || 如果有错，可在 72 小时内取消。之后就需要开贷项通知单。
+D329 || kedai kecil kebanyakannya dikecualikan. Kafe dengan perolehan tahunan di bawah RM3 juta tidak perlu mengeluarkan e-invois di bawah garis panduan semasa, dan yang di bawah RM1.5 juta tidak mengenakan SST. Jadi bagi pelanggan sasaran GoodBite, e-invois ialah ciri "sedia apabila anda berkembang, atau apabila pelanggan syarikat meminta", bukan kewajipan undang-undang hari ini. || 小店大多可豁免。年营业额低于 RM300 万的咖啡店，按目前的指南不必开电子发票；低于 RM150 万的不收 SST。所以对 GoodBite 的目标客户来说，电子发票是“等您壮大了，或有公司客户要求时就能用”的功能，现在并不是法律上必须的。
+D254 || Resit daripada 3 hari lepas. || 最近 3 天的收据。
+D150 || Contoh: makanan RM 20.00, makan di sini || 例子：RM 20.00 的食物，堂食
+D162 || Contohnya: Teh Lemon Ais || 例如：冰柠檬茶
+D163 || Contohnya: Susu oat || 例如：燕麦奶
+D160 || Contohnya: 2 || 例如：2
+D161 || Contohnya: INV-1234 || 例如：INV-1234
+D158 || Contohnya C12345678900 || 例如 C12345678900
+D159 || Contohnya IG12345678900 || 例如 IG12345678900
+D85 || Jumlah tiada. Taip jumlah pada bil, contohnya 245.50. || 缺少金额。请输入账单上的总额，例如 245.50。
+D207 || Stok minimum tiada. Taip nombor, contohnya 2. || 缺少最低库存。请输入数字，例如 2。
+D236 || Harga tiada. Taip nombor, contohnya 7.50. || 缺少价格。请输入数字，例如 7.50。
+D302 || Harga tiada. Taip nombor melebihi 0, contohnya 12.00. || 缺少价格。请输入大于 0 的数字，例如 12.00。
+D215 || Kini melihat sebagai Juruwang, jadi menu lebih pendek. Ketik Latte, pilih Ais, tekan "Tambah ke bil". Ketik Butter Croissant. Taip meja 5. || 现在以收银员身份查看，所以菜单比较短。点拿铁，选“冰”，按“加入账单”。点牛油可颂。输入 5 号桌。
+D216 || Kini melihat sebagai staf Dapur. Susu segar berkurang kerana latte tadi. Kelompok disenaraikan yang paling lama dahulu, dan yang paling lama digunakan dahulu. || 现在以厨房员工身份查看。鲜奶因为刚才的拿铁减少了。批次按最旧的排在前面，最旧的先用。
+D90 || Kembali sebagai Pemilik. Kad "Susu segar rendah" di Utama membuka pesanan ini, sudah diisi. Tekan "Simpan dan semak pesanan", kemudian "Hantar pesanan". || 回到店主身份。首页的“鲜奶 库存偏低”卡片会打开这张已填好的订单。按“保存并检查订单”，然后按“发送订单”。
+D151 || Dijangka pada {DATE}. Apabila tiba, buka pesanan dan tekan "Terima barang". (Demo: tiada apa benar-benar dihantar.) || 预计 {DATE} 到货。货到后，打开订单并按“收货”。（演示：实际上没有发送任何东西。）

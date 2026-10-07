@@ -1,0 +1,102 @@
+// End-to-end flow test: sale -> stock -> waste -> order -> receive -> report -> e-invoice issue and cancel.
+const {chromium}=require('playwright');const path=require('path');
+(async()=>{const b=await chromium.launch();const pg=await b.newPage({viewport:{width:1280,height:800}});const errs=[];
+ pg.on('console',m=>{if(m.type()==='error'&&!/Failed to load resource/.test(m.text()))errs.push(m.text())});pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));
+ await pg.route(/fonts\.g/,r=>r.abort());await pg.goto('file://'+path.resolve('dist/index.html')+'#notour');await pg.waitForTimeout(300);
+ pg.setDefaultTimeout(5000);
+ const ev=(f,a)=>pg.evaluate(f,a);const click=async t=>{await pg.getByRole('button',{name:t,exact:false}).first().click();await pg.waitForTimeout(40)};
+ const ok=(c,m)=>{console.log((c?'PASS ':'FAIL ')+m);if(!c)process.exitCode=1};
+ const near=(a,b)=>Math.abs(a-b)<0.0011;
+ const MK=await ev(()=>{const m=new Date();return m.getFullYear()+'-'+String(m.getMonth()+1).padStart(2,'0')});
+ await ev(()=>GB.reset('cashier'));
+ // --- bill maths
+ const maths=await ev(()=>{const f=GB.fn.billTotals,tx={scOn:true,scRate:10,scTakeaway:false,sstOn:true,sstRate:6,sstOnSc:true,round5:true};const L=[{price:1300,modTotal:0,qty:1},{price:800,modTotal:0,qty:1}];
+   return [f(L,'dine',tx),f(L,'take',tx),f([{price:999,modTotal:0,qty:3}],'dine',tx),f([{price:700,modTotal:0,qty:1}],'take',{...tx,sstOn:false,round5:false})]});
+ ok(maths[0].sub===2100&&maths[0].sc===210&&maths[0].sst===139&&maths[0].total===2450&&maths[0].round===1,'Dine-in RM21.00: service charge 2.10, SST 1.39, 24.49 rounds to RM24.50');
+ ok(maths[1].sc===0&&maths[1].sst===126&&maths[1].total===2225&&maths[1].round===-1,'Takeaway RM21.00: no service charge, SST 1.26, 22.26 rounds to RM22.25');
+ ok(maths[2].total%5===0&&maths[2].sub+maths[2].sc+maths[2].sst+maths[2].round===maths[2].total,'Subtotal + service charge + SST + rounding always equals the total, ending in 0 or 5 sen');
+ ok(maths[3].total===700&&maths[3].sst===0,'With SST and rounding switched off, RM7.00 stays RM7.00');
+ // --- a sale as cashier
+ const before=await ev(MK=>({milk:GB.fn.onHand('milk'),beans:GB.fn.onHand('beans'),cro:GB.fn.onHand('croissant'),butter:GB.fn.onHand('butter'),sales:GB.fn.monthStats(MK).sales}),MK);
+ await click('New sale');
+ await pg.locator('.mi',{hasText:'Latte'}).first().click();await click('Add to bill');
+ await pg.locator('.mi',{hasText:'Butter Croissant'}).click();
+ ok(await pg.locator('#paybtn').isDisabled(),'"Go to payment" is locked, with a hint, until the table number is typed');
+ await pg.fill('#tableno','5');await pg.waitForTimeout(40);
+ await pg.locator('#paybtn').click();
+ ok(await pg.locator('#paidbtn').isDisabled(),'"Confirm payment" is locked until enough cash is entered');
+ await pg.fill('#cashin','50');await pg.waitForTimeout(40);
+ await pg.locator('#paidbtn').click();await pg.waitForTimeout(40);
+ const sale=await ev(()=>GB.state().sales[GB.state().sales.length-1]);
+ ok(sale.sub===2000&&sale.sc===200&&sale.sst===132&&sale.total===2330&&sale.change===2670,'Sale: RM20.00 + 2.00 service charge + 1.32 SST = 23.32, rounded to RM23.30. Change from RM50 is RM26.70');
+ const after=await ev(()=>({milk:GB.fn.onHand('milk'),beans:GB.fn.onHand('beans'),cro:GB.fn.onHand('croissant'),butter:GB.fn.onHand('butter')}));
+ ok(near(before.milk-after.milk,0.2)&&near(before.beans-after.beans,0.018)&&near(before.cro-after.cro,1)&&near(before.butter-after.butter,0.005),'Stock dropped by the recipes: milk 0.2 L, coffee beans 0.018 kg, 1 croissant, butter 0.005 kg');
+ ok((await ev(()=>GB.info().screen))==='saleDone','Payment lands on the "Sale done" screen');
+ // --- e-invoice from the success screen
+ await click('Issue e-invoice for this sale');
+ await pg.locator('#wiznext').click();await pg.waitForTimeout(40);
+ ok(await pg.locator('#errbox').count()===1,'Empty buyer form shows the red box listing what is missing');
+ await pg.locator('#errbox button').first().click();await pg.waitForTimeout(80);
+ ok((await ev(()=>document.activeElement.id))==='f-name','"Fix it" jumps to the missing field');
+ await pg.locator('.chip',{hasText:'demo company'}).click();await pg.waitForTimeout(40);
+ await pg.locator('#wiznext').click();await pg.locator('#wiznext').click();
+ ok(!(await pg.locator('#wizsubmit').isDisabled()),'Submit unlocks once the details are complete');
+ await pg.locator('#wizsubmit').click();await pg.waitForTimeout(100);
+ ok(/Submitted/.test(await pg.locator('#scr').innerText()),'Status shows Submitted while waiting');
+ await pg.waitForTimeout(1700);
+ const inv=await ev(()=>GB.state().invoices[GB.state().invoices.length-1]);
+ ok(inv.status==='Valid'&&inv.tot.payable===sale.total&&inv.tot.excl===2200&&inv.tot.tax===132&&inv.tot.round===-2,'E-invoice is Valid: 22.00 before tax + 1.32 tax - 0.02 rounding = RM23.30, same as the receipt');
+ ok((await ev(()=>{const s=GB.state(),sl=s.sales[s.sales.length-1];return sl.inv===s.invoices[s.invoices.length-1].id&&s.days[sl.dt.slice(0,10)].ex.n>=1})),'Sale is linked to its e-invoice and left out of the combined e-invoice');
+ await pg.locator('#openinv').click();await pg.waitForTimeout(40);
+ ok(!(await pg.locator('#cancelbtn').isDisabled()),'A fresh e-invoice can be cancelled');
+ await pg.locator('#cancelbtn').click();ok(await pg.locator('#cancelyes').isDisabled(),'Cancelling asks for a reason first');
+ await pg.locator('#modal .chip').first().click();await pg.locator('#cancelyes').click();await pg.waitForTimeout(40);
+ ok((await ev(()=>{const s=GB.state();return s.invoices[s.invoices.length-1].status+'|'+s.sales[s.sales.length-1].inv}))==='Cancelled|null','E-invoice cancelled, and the sale is free to get a new one');
+ await ev(()=>{GB.state().role='owner';const o=GB.state().invoices.find(i=>i.status==='Valid'&&!GB.fn.canCancel(i));GB.root('invoices');GB.go('inv',{id:o.id})});await pg.waitForTimeout(40);
+ ok(await pg.locator('#cancelbtn').isDisabled()&&/72-hour limit/.test(await pg.locator('#scr').innerText()),'An e-invoice older than 72 hours cannot be cancelled, and the page says why');
+ await pg.locator('#cnbtn').click();await pg.locator('.chip',{hasText:'returned'}).click();await pg.locator('#wiznext').click();await pg.locator('#wiznext').click();await pg.locator('#wizsubmit').click();await pg.waitForTimeout(1700);
+ ok((await ev(()=>{const i=GB.state().invoices;return i[i.length-1].type+i[i.length-1].status}))==='02Valid','Credit note issued for the old e-invoice and Valid');
+ await ev(()=>{const s=GB.state(),sl=s.sales[s.sales.length-1];GB.root('invoices');GB.go('invWiz',{sale:sl.id})});await pg.waitForTimeout(40);
+ await pg.locator('.chip',{hasText:'wrong TIN'}).click();await pg.locator('#wiznext').click();await pg.locator('#wiznext').click();await pg.locator('#wizsubmit').click();await pg.waitForTimeout(1700);
+ ok(/rejected/.test(await pg.locator('#scr').innerText()),'A wrong TIN comes back Invalid with a plain explanation');
+ await click('Fix buyer details');await pg.locator('.chip',{hasText:'demo individual'}).click();await pg.locator('#wiznext').click();await pg.locator('#wiznext').click();await pg.locator('#wizsubmit').click();await pg.waitForTimeout(1700);
+ ok((await ev(()=>{const s=GB.state(),sl=s.sales[s.sales.length-1];return sl.inv&&GB.fn.invBy(sl.inv).status}))==='Valid','After fixing and sending again it is Valid');
+ // combined e-invoice
+ await ev(()=>GB.root('invoices'));await pg.waitForTimeout(40);await pg.locator('#consalert').click();await pg.locator('#wiznext').click();await pg.locator('#wiznext').click();
+ const cons=await ev(()=>{const s=GB.state(),i=s.invoices[s.invoices.length-1];let t=0;Object.keys(s.days).filter(d=>d.slice(0,7)===i.month).forEach(d=>t+=s.days[d].total-s.days[d].ex.total);return {b:i.buyer.tin,n:i.buyer.name,pay:i.tot.payable,t,errs:GB.fn.validateInv(i).length,cls:i.lines[0].cls}});
+ ok(cons.b==='EI00000000010'&&cons.n==='General Public'&&cons.pay===cons.t&&cons.errs===0&&cons.cls==='004','Combined e-invoice: buyer General Public, TIN EI00000000010, code 004, total equals last month\'s walk-in sales (RM'+(cons.pay/100).toFixed(2)+')');
+ await pg.locator('#wizsubmit').click();await pg.waitForTimeout(1700);
+ ok((await ev(()=>Object.keys(GB.state().cons).length===1)),'Combined e-invoice is Valid and the reminder is cleared');
+ // --- low stock -> order -> receive
+ await ev(()=>GB.root('home'));await pg.waitForTimeout(40);
+ await pg.locator('.alert',{hasText:'Fresh milk is low'}).click();await pg.waitForTimeout(40);
+ const pre=await ev(()=>({s:GB.info().screen,q:GB.info().p.qty.milk,step:GB.info().p.step}));
+ ok(pre.s==='newOrder'&&pre.step===2&&parseFloat(pre.q)>0,'"Fresh milk is low" opens an order with milk already filled in ('+pre.q+' L)');
+ await pg.locator('#ordreview').click();await pg.locator('#ordsend').click();await pg.waitForTimeout(40);
+ const ord=await ev(()=>{const o=GB.state().orders;return o[o.length-1]});
+ ok(ord.status==='sent'&&ord.lines.some(l=>l.ing==='milk'),'Order saved as "Sent, waiting for delivery"');
+ await ev(()=>{GB.state().role='kitchen';GB.root('home')});await pg.waitForTimeout(40);
+ await click('Receive delivery');await pg.locator('.alert',{hasText:'#'+ord.no}).click();
+ const milkBefore=await ev(()=>GB.fn.onHand('milk'));const mi=ord.lines.findIndex(l=>l.ing==='milk');
+ await pg.fill('#rq-'+mi,String(ord.lines[mi].qty-2));await pg.locator('#recvnext').click();await pg.locator('#recvdo').click();await pg.waitForTimeout(40);
+ const rec=await ev(()=>{const o=GB.state().orders;return {st:o[o.length-1].status,milk:GB.fn.onHand('milk'),scr:GB.info().screen}});
+ ok(rec.st==='part'&&near(rec.milk-milkBefore,ord.lines[mi].qty-2)&&rec.scr==='receiveDone','Part delivery: milk +'+(ord.lines[mi].qty-2)+' L in a new batch, order stays open as "Part received"');
+ // --- waste
+ await click('Back to Home');await click('Log waste');
+ const w0=await ev(MK=>({n:GB.state().waste.length,t:GB.fn.onHand('tomato'),st:GB.fn.monthStats(MK).wRM}),MK);
+ ok(await pg.locator('#wastesave').isDisabled(),'"Save waste log" is locked until an item and a reason are picked');
+ await pg.selectOption('#w-ing','tomato');await pg.fill('#w-qty','0.5');await pg.waitForTimeout(40);await pg.locator('.chip',{hasText:'Spoiled'}).click();await pg.locator('#wastesave').click();await pg.waitForTimeout(40);
+ const w1=await ev(MK=>({n:GB.state().waste.length,t:GB.fn.onHand('tomato'),st:GB.fn.monthStats(MK).wRM,last:GB.state().waste[GB.state().waste.length-1]}),MK);
+ ok(w1.n===w0.n+1&&near(w0.t-w1.t,0.5)&&w1.last.cost===300&&w1.st===w0.st+300,'Waste log: tomato down 0.5 kg, RM3.00, and the month\'s waste in Reports went up by RM3.00');
+ await pg.locator('#toast button').click();await pg.waitForTimeout(40);
+ ok(near(await ev(()=>GB.fn.onHand('tomato')),w0.t),'Undo puts the tomato back in stock');
+ // --- report
+ const rep=await ev(MK=>{const s=GB.state(),st=GB.fn.monthStats(MK);let t=0;Object.keys(s.days).filter(d=>d.slice(0,7)===MK).forEach(d=>t+=s.days[d].total);return {a:st.sales,b:t}},MK);
+ ok(rep.a===rep.b&&rep.a-before.sales===sale.total,'Reports: this month\'s sales went up by exactly the sale (RM23.30)');
+ // --- void
+ const vd=await ev(()=>{GB.state().role='owner';const s=GB.state(),sl=s.sales.filter(x=>!x.inv&&x.status==='paid').pop();GB.root('pos');GB.go('receipt',{id:sl.id});return {id:sl.id,total:sl.total,day:s.days[sl.dt.slice(0,10)].total,d:sl.dt.slice(0,10)}});
+ await pg.waitForTimeout(40);await click('Void this sale');await pg.locator('#modal .opt').first().click();await click('Yes, void this sale');await pg.waitForTimeout(40);
+ ok(await ev(v=>{const s=GB.state();return s.sales.find(x=>x.id===v.id).status==='void'&&s.days[v.d].total===v.day-v.total},vd),'Void: receipt marked Void and the day\'s sales drop by that amount');
+ ok(await ev(()=>GB.state().waste.some(w=>w.auto&&w.ing==='banana'&&w.dt.slice(0,10)===GB.state().seeded)),'A batch past its expiry date was moved to the waste log automatically');
+ ok(errs.length===0,'No console errors during the whole flow '+errs.join(' | '));
+ await b.close()})().catch(e=>{console.log('CRASH',e.message.split('\n').slice(0,6).join(' '));process.exit(1)});

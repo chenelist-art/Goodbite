@@ -1,0 +1,396 @@
+// ---- units and amounts
+{n} kg || {n} kg || {n} 公斤
+{n} L || {n} L || {n} 升
+{n} piece || {n} biji || {n} 个
+{n} pieces || {n} biji || {n} 个
+{n} loaf || {n} buku || {n} 条
+{n} loaves || {n} buku || {n} 条
+L || L || 升
+pieces || biji || 个
+loaves || buku || 条
+{q} left. Minimum is {q2}. || Tinggal {q}. Minimum ialah {q2}. || 剩 {q}。最低是 {q2}。
+({q} left) || (tinggal {q}) || （剩 {q}）
+({n} hours left). || (tinggal {n} jam). || （还剩 {n} 小时）。
+({n} hour left). || (tinggal {n} jam). || （还剩 {n} 小时）。
+Minimum {q} || Minimum {q} || 最低 {q}
+Waiting for {q} || Menunggu {q} || 还在等 {q}
+now {q} || kini {q} || 现在 {q}
+{n} on order || {n} dalam pesanan || 已订 {n}
+{m} / {u} || {m} / {u} || {m} / {u}
+{m} each || {m} satu || 每份 {m}
+{m} in total. || {m} semuanya. || 共 {m}。
+{m} of ingredients || bahan {m} || 食材 {m}
+{m} ({n}% of sales) || {m} ({n}% daripada jualan) || {m}（占销售额 {n}%）
+how? › || bagaimana? › || 怎么算？ ›
+see each day › || lihat setiap hari › || 看每一天 ›
+see them › || lihat › || 查看 ›
+see every entry › || lihat setiap catatan › || 看每条记录 ›
+see why › || lihat sebabnya › || 看原因 ›
+{n} day || {n} hari || {n} 天
+{n} days || {n} hari || {n} 天
+{n} bill || {n} bil || {n} 张账单
+{n} bills || {n} bil || {n} 张账单
+{n} item || {n} item || {n} 个品项
+{n} items || {n} item || {n} 个品项
+{n} dish on the menu. || {n} hidangan pada menu. || 菜单上有 {n} 道菜品。
+{n} dishes on the menu. || {n} hidangan pada menu. || 菜单上有 {n} 道菜品。
+{n} to do || {n} perlu dibuat || {n} 项待办
+// ---- home and alerts
+Good morning. What would you like to do? || Selamat pagi. Apa yang anda mahu buat? || 早上好。您想做什么？
+Good afternoon. What would you like to do? || Selamat tengah hari. Apa yang anda mahu buat? || 下午好。您想做什么？
+This demo data was made on {d}, so some dates look old. || Data demo ini dibuat pada {d}, jadi sesetengah tarikh nampak lama. || 这些演示数据是 {d} 生成的，所以有些日期看起来旧了。
+Refresh demo data || Segarkan data demo || 刷新演示数据
+Demo data refreshed. All dates now match today. || Data demo disegarkan. Semua tarikh kini sepadan dengan hari ini. || 演示数据已刷新。所有日期现在都对上今天。
+All caught up || Semua selesai || 都处理好了
+Nothing needs your attention right now. || Tiada apa yang memerlukan perhatian anda sekarang. || 现在没有需要您处理的事。
+{n} item passed the expiry date || {n} item melepasi tarikh luput || {n} 个品项过了到期日
+{n} items passed the expiry date || {n} item melepasi tarikh luput || {n} 个品项过了到期日
+Moved to the waste log automatically ({m}). || Dipindahkan ke log pembaziran secara automatik ({m}). || 已自动移到浪费记录（{m}）。
+{n} item expiring in {n2} day || {n} item akan luput dalam {n2} hari || {n} 个品项将在 {n2} 天内过期
+{n} item expiring in {n2} days || {n} item akan luput dalam {n2} hari || {n} 个品项将在 {n2} 天内过期
+{n} items expiring in {n2} day || {n} item akan luput dalam {n2} hari || {n} 个品项将在 {n2} 天内过期
+{n} items expiring in {n2} days || {n} item akan luput dalam {n2} hari || {n} 个品项将在 {n2} 天内过期
+{x} and more || {x} dan lain-lain || {x} 等
+Delivery from {x} is due today || Penghantaran daripada {x} dijangka hari ini || {x} 的货今天到
+Delivery from {x} is due || Penghantaran daripada {x} sudah dijangka || {x} 的货该到了
+{x} is low || {x} rendah || {x} 库存偏低
+{n} more item below minimum stock || {n} lagi item di bawah stok minimum || 还有 {n} 个品项低于最低库存
+{n} more items below minimum stock || {n} lagi item di bawah stok minimum || 还有 {n} 个品项低于最低库存
+{n} sale has no e-invoice yet || {n} jualan belum ada e-invois || {n} 笔销售还没开电子发票
+{n} sales have no e-invoice yet || {n} jualan belum ada e-invois || {n} 笔销售还没开电子发票
+{n} bill on hold || {n} bil ditahan || {n} 张账单暂存中
+{n} bills on hold || {n} bil ditahan || {n} 张账单暂存中
+Combined e-invoice for {mth} walk-in sales is due by {d} || E-invois gabungan untuk jualan pelanggan biasa {mth} perlu dibuat sebelum {d} || {mth}散客销售的合并电子发票须在 {d} 前开出
+Combined e-invoice for {mth} walk-in sales is overdue || E-invois gabungan untuk jualan pelanggan biasa {mth} sudah lewat || {mth}散客销售的合并电子发票已逾期
+E-invoice {no} was rejected || E-invois {no} ditolak || 电子发票 {no} 被拒绝了
+{n} supplier bill is overdue || {n} bil pembekal tertunggak || {n} 张供应商账单逾期
+{n} supplier bills are overdue || {n} bil pembekal tertunggak || {n} 张供应商账单逾期
+Order #{n} || Pesanan #{n} || 订单 #{n}
+Order #{n} (part received) || Pesanan #{n} (diterima sebahagian) || 订单 #{n}（部分到货）
+// ---- months
+January {n} || Januari {n} || {n}年1月
+February {n} || Februari {n} || {n}年2月
+March {n} || Mac {n} || {n}年3月
+April {n} || April {n} || {n}年4月
+May {n} || Mei {n} || {n}年5月
+June {n} || Jun {n} || {n}年6月
+July {n} || Julai {n} || {n}年7月
+August {n} || Ogos {n} || {n}年8月
+September {n} || September {n} || {n}年9月
+October {n} || Oktober {n} || {n}年10月
+November {n} || November {n} || {n}年11月
+December {n} || Disember {n} || {n}年12月
+Today, {t} || Hari ini, {t} || 今天 {t}
+In {n} days || Dalam {n} hari || {n} 天后
+// ---- till
+Add at least 1 item first. || Tambah sekurang-kurangnya 1 item dahulu. || 请先加至少 1 个品项。
+Add to bill || Tambah ke bil || 加入账单
+Go to payment || Pergi ke bayaran || 去付款
+Held bills ({n}) || Bil ditahan ({n}) || 暂存的账单（{n}）
+View bill ({n}) || Lihat bil ({n}) || 查看账单（{n}）
+Code {n} || Kod {n} || 代码 {n}
+has options || ada pilihan || 有选项
+{x} +RM {n} || {x} +RM {n} || {x} +RM {n}
+{x} added to the bill || {x} ditambah ke bil || {x} 已加入账单
+{x} removed from the bill || {x} dibuang dari bil || {x} 已从账单移除
+One less {x} || Kurang satu {x} || {x} 减一
+One more {x} || Tambah satu {x} || {x} 加一
+Less {x} || Kurang {x} || 减少 {x}
+More {x} || Lebih {x} || 增加 {x}
+Table {t} || Meja {t} || {t} 号桌
+Table ? || Meja ? || 桌号未填
+Dine-in, table {t} || Makan di sini, meja {t} || 堂食，{t} 号桌
+held at {t} || ditahan pada {t} || {t} 暂存
+All {q} will be removed from the bill. Nothing has been paid, so no stock or sales change. || Kesemua {q} akan dibuang dari bil. Tiada bayaran dibuat, jadi stok dan jualan tidak berubah. || 全部 {q} 会从账单移除。还没有付款，所以库存和销售都不变。
+No menu item matches "{q}" || Tiada item menu sepadan dengan "{q}" || 没有菜品符合“{q}”
+No menu item matches "{q}". Check the spelling. || Tiada item menu sepadan dengan "{q}". Semak ejaan. || 没有菜品符合“{q}”。请检查拼写。
+Check the spelling or clear the search. || Semak ejaan atau kosongkan carian. || 请检查拼写，或清除搜索。
+Clear search || Kosongkan carian || 清除搜索
+Confirm payment of {m} || Sahkan bayaran {m} || 确认收款 {m}
+Exact {m} || Tepat {m} || 刚好 {m}
+The cash given is less than the total. Type {m} or more. || Tunai yang diberi kurang daripada jumlah. Taip {m} atau lebih. || 收到的现金少于总额。请输入 {m} 或更多。
+There is no bill to pay || Tiada bil untuk dibayar || 没有要付款的账单
+Go back to the till and add an item. || Kembali ke kaunter dan tambah item. || 回到收银台加一个品项。
+by {p} || dengan {p} || 付款方式：{p}
+Receipt {n} || Resit {n} || 收据 {n}
+Stock was reduced for {n} ingredient, oldest batches first. || Stok dikurangkan untuk {n} bahan, kelompok paling lama dahulu. || 已扣减 {n} 种食材的库存，先扣最旧的批次。
+Stock was reduced for {n} ingredients, oldest batches first. || Stok dikurangkan untuk {n} bahan, kelompok paling lama dahulu. || 已扣减 {n} 种食材的库存，先扣最旧的批次。
+Stock count may be off for: {x}. The app had less in stock than this sale needed. || Kiraan stok mungkin tidak tepat untuk: {x}. Stok dalam aplikasi kurang daripada yang diperlukan jualan ini. || 这些品项的库存数可能不准：{x}。应用里的库存比这笔销售需要的少。
+Ingredients used by receipt {n} || Bahan yang digunakan oleh resit {n} || 收据 {n} 用掉的食材
+Cost of ingredients: {m} (demo prices). || Kos bahan: {m} (harga demo). || 食材成本：{m}（演示价格）。
+{n} x {x} || {n} x {x} || {n} x {x}
+{n} × {x} || {n} × {x} || {n} × {x}
+{x} ({y}) || {x} ({y}) || {x}（{y}）
+SST {n}% || SST {n}% || SST {n}%
+SST ({n}%) || SST ({n}%) || SST（{n}%）
+SST no. {x} || No. SST {x} || SST 号 {x}
+Service charge {n}% || Caj perkhidmatan {n}% || 服务费 {n}%
+Service charge ({n}%) || Caj perkhidmatan ({n}%) || 服务费（{n}%）
+Void receipt {n}? || Batalkan resit {n}? || 作废收据 {n}？
+Receipt {n} is now void. || Resit {n} kini batal. || 收据 {n} 已作废。
+Receipt {n} is now void. Ingredients are back in stock. || Resit {n} kini batal. Bahan dikembalikan ke stok. || 收据 {n} 已作废。食材已退回库存。
+Receipts from the last 3 days. || Resit daripada 3 hari lepas. || 最近 3 天的收据。
+No receipt matches "{q}" || Tiada resit sepadan dengan "{q}" || 没有收据符合“{q}”
+No sales on this day yet || Belum ada jualan pada hari ini || 这一天还没有销售
+Sales you make on the till show up here. || Jualan yang anda buat di kaunter muncul di sini. || 您在收银台做的销售会显示在这里。
+Check the number, or clear the search. || Semak nombor, atau kosongkan carian. || 请检查号码，或清除搜索。
+Make the first sale || Buat jualan pertama || 做第一笔销售
+// ---- stock
+{x} ({q} in stock) || {x} ({q} dalam stok) || {x}（库存 {q}）
+from {x} || daripada {x} || 来自 {x}
+Fix the count: {x} || Betulkan kiraan: {x} || 更正数量：{x}
+Edit {x} || Edit {x} || 编辑 {x}
+Saved changes to {x} || Perubahan pada {x} disimpan || {x} 的更改已保存
+{x} count changed by {q} || Kiraan {x} berubah sebanyak {q} || {x} 的数量变动 {q}
+Type a number that is 0 or more. || Taip nombor 0 atau lebih. || 请输入 0 或更大的数字。
+Check the form: the name cannot be empty and the numbers must be 0 or more. || Semak borang: nama tidak boleh kosong dan nombor mesti 0 atau lebih. || 请检查表格：名称不能空白，数字必须是 0 或更大。
+{x} logged as waste || {x} dicatat sebagai pembaziran || {x} 已记为浪费
+of {x} (worth {m}) will leave the stock and go into the waste log as "{r}". || {x} (bernilai {m}) akan keluar dari stok dan masuk ke log pembaziran sebagai "{r}". || 的{x}（价值 {m}）会离开库存，并以“{r}”记入浪费记录。
+Nothing is expiring in the next {q} || Tiada apa yang akan luput dalam {q} akan datang || 未来 {q} 内没有东西会过期
+Good news. Check again tomorrow. || Berita baik. Semak lagi esok. || 好消息。明天再看看。
+See all items || Lihat semua item || 查看全部品项
+No item matches "{q}" || Tiada item sepadan dengan "{q}" || 没有品项符合“{q}”
+Nothing matches "{q}" || Tiada yang sepadan dengan "{q}" || 没有符合“{q}”的结果
+Nothing is below minimum stock || Tiada yang di bawah stok minimum || 没有品项低于最低库存
+Every item has enough on the shelf. || Setiap item cukup di rak. || 每个品项在货架上都够。
+Fix the boxes marked in red first. || Betulkan kotak bertanda merah dahulu. || 请先改正红色标出的格子。
+Numbers only || Nombor sahaja || 只能填数字
+{n} item changed || {n} item berubah || {n} 个品项有变动
+{n} items changed || {n} item berubah || {n} 个品项有变动
+{n} item updated. || {n} item dikemas kini. || 已更新 {n} 个品项。
+{n} items updated. || {n} item dikemas kini. || 已更新 {n} 个品项。
+{x} added. It has no stock yet. || {x} ditambah. Ia belum ada stok. || {x} 已添加。它还没有库存。
+Price is missing. Type a number, for example 7.50. || Harga tiada. Taip nombor, contohnya 7.50. || 缺少价格。请输入数字，例如 7.50。
+"Keeps for" must be 1 day or more. || "Tahan selama" mesti 1 hari atau lebih. || “可保存”必须是 1 天或更多。
+Not saved yet. Fix the {n} point in the red box first. || Belum disimpan. Betulkan {n} perkara dalam kotak merah dahulu. || 还没保存。请先改正红色框里的 {n} 点。
+Not saved yet. Fix the {n} points in the red box first. || Belum disimpan. Betulkan {n} perkara dalam kotak merah dahulu. || 还没保存。请先改正红色框里的 {n} 点。
+Fix the {n} point in the red box first. || Betulkan {n} perkara dalam kotak merah dahulu. || 请先改正红色框里的 {n} 点。
+Fix the {n} points in the red box first. || Betulkan {n} perkara dalam kotak merah dahulu. || 请先改正红色框里的 {n} 点。
+// ---- orders
+Delivers in {n} day || Hantar dalam {n} hari || {n} 天送到
+Delivers in {n} days || Hantar dalam {n} hari || {n} 天送到
+{n} item running low || {n} item hampir habis || {n} 个品项快用完
+{n} items running low || {n} item hampir habis || {n} 个品项快用完
+{n} order waiting for delivery. || {n} pesanan menunggu penghantaran. || {n} 张订单等待到货。
+{n} orders waiting for delivery. || {n} pesanan menunggu penghantaran. || {n} 张订单等待到货。
+Order from suppliers and take in deliveries. || Pesan daripada pembekal dan terima penghantaran. || 向供应商订货和收货。
+Order from {x} || Pesan daripada {x} || 向 {x} 订货
+Order sent to {x} || Pesanan dihantar kepada {x} || 订单已发给 {x}
+Send order to {x} || Hantar pesanan kepada {x} || 发送订单给 {x}
+Order to {x}. Expected {d}. || Pesanan kepada {x}. Dijangka {d}. || 给 {x} 的订单。预计 {d} 到货。
+Order #{n} sent || Pesanan #{n} dihantar || 订单 #{n} 已发送
+Order #{n} cancelled || Pesanan #{n} dibatalkan || 订单 #{n} 已取消
+Order #{n} closed || Pesanan #{n} ditutup || 订单 #{n} 已结束
+Order #{n} from {x} || Pesanan #{n} daripada {x} || 来自 {x} 的订单 #{n}
+Order #{n} from {x}. Change anything that is different from what arrived. || Pesanan #{n} daripada {x}. Ubah apa-apa yang berbeza daripada yang tiba. || 来自 {x} 的订单 #{n}。和实际到货不一样的地方请修改。
+To {x} || Kepada {x} || 给 {x}
+Expected on {d}. When it arrives, open the order and press "Receive goods". (Demo: nothing was really sent.) || Dijangka pada {d}. Apabila tiba, buka pesanan dan tekan "Terima barang". (Demo: tiada apa benar-benar dihantar.) || 预计 {d} 到货。货到后，打开订单并按“收货”。（演示：实际上没有发送任何东西。）
+sent {d} || dihantar {d} || {d} 发出
+expected {d} || dijangka {d} || 预计 {d}
+part received || diterima sebahagian || 部分到货
+{n} item still to come || {n} item belum sampai || 还有 {n} 个品项没到
+{n} items still to come || {n} item belum sampai || 还有 {n} 个品项没到
+Cancel order #{n}? || Batalkan pesanan #{n}? || 取消订单 #{n}？
+Close order #{n}? || Tutup pesanan #{n}? || 结束订单 #{n}？
+The order to {x} will be marked as cancelled and nothing will be expected. In real life you would also need to tell the supplier. || Pesanan kepada {x} akan ditanda sebagai dibatalkan dan tiada apa dijangka. Dalam keadaan sebenar anda juga perlu memberitahu pembekal. || 给 {x} 的订单会标记为已取消，不再等待到货。现实中您还需要通知供应商。
+Turn into an order ({q}) || Tukar menjadi pesanan ({q}) || 转成订单（{q}）
+Nothing needs ordering right now || Tiada apa perlu dipesan sekarang || 现在没有需要订的货
+Every item is above its minimum stock or already on order. || Setiap item melebihi stok minimum atau sudah dipesan. || 每个品项都高于最低库存，或已经订货。
+Create an order anyway || Buat pesanan juga || 还是要新建订单
+No deliveries are expected || Tiada penghantaran dijangka || 没有等待中的到货
+Goods are received against an order. Create an order first. || Barang diterima berdasarkan pesanan. Buat pesanan dahulu. || 收货要对应订单。请先新建订单。
+Create an order || Buat pesanan || 新建订单
+Add suggested {n} || Tambah cadangan {n} || 加入建议量 {n}
+{n} new batch added from order #{n2}. The order is now complete. || {n} kelompok baharu ditambah daripada pesanan #{n2}. Pesanan kini lengkap. || 已从订单 #{n2} 增加 {n} 个新批次。订单已完成。
+{n} new batches added from order #{n2}. The order is now complete. || {n} kelompok baharu ditambah daripada pesanan #{n2}. Pesanan kini lengkap. || 已从订单 #{n2} 增加 {n} 个新批次。订单已完成。
+{n} new batch added from order #{n2}. The order stays open for the items that did not arrive. || {n} kelompok baharu ditambah daripada pesanan #{n2}. Pesanan kekal dibuka untuk item yang belum tiba. || 已从订单 #{n2} 增加 {n} 个新批次。订单保持开启，等待没到的品项。
+{n} new batches added from order #{n2}. The order stays open for the items that did not arrive. || {n} kelompok baharu ditambah daripada pesanan #{n2}. Pesanan kekal dibuka untuk item yang belum tiba. || 已从订单 #{n2} 增加 {n} 个新批次。订单保持开启，等待没到的品项。
+{n} item did not arrive and will stay "on order". || {n} item tidak tiba dan akan kekal "dalam pesanan". || {n} 个品项没到，会保持“已订货”。
+{n} items did not arrive and will stay "on order". || {n} item tidak tiba dan akan kekal "dalam pesanan". || {n} 个品项没到，会保持“已订货”。
+For order #{n} || Untuk pesanan #{n} || 对应订单 #{n}
+Open order #{n} || Buka pesanan #{n} || 打开订单 #{n}
+Not linked to an order || Tidak dikaitkan dengan pesanan || 没有对应的订单
+Bill {no} || Bil {no} || 账单 {no}
+Bill {no} saved || Bil {no} disimpan || 账单 {no} 已保存
+Bill {no} marked as paid || Bil {no} ditanda sebagai sudah dibayar || 账单 {no} 已标记为已付
+Bill {no} marked as not paid || Bil {no} ditanda sebagai belum dibayar || 账单 {no} 已标记为未付
+"Pay by" date is missing. || Tarikh "Bayar sebelum" tiada. || 缺少“付款期限”日期。
+Bill date is missing. || Tarikh bil tiada. || 缺少账单日期。
+// ---- waste
+1. What was thrown away? || 1. Apa yang dibuang? || 1. 丢掉了什么？
+2. How much? || 2. Berapa banyak? || 2. 多少？
+2. How much? ({u}) || 2. Berapa banyak? ({u}) || 2. 多少？（{u}）
+3. Why? || 3. Mengapa? || 3. 为什么？
+About {m} of {x} || Kira-kira {m} {x} || 大约 {m} 的{x}
+Type an amount above 0. || Taip jumlah melebihi 0. || 请输入大于 0 的数量。
+Only {q} in stock. Lower the amount, or fix the count in Stock first. || Hanya {q} dalam stok. Kurangkan jumlah, atau betulkan kiraan dalam Stok dahulu. || 库存只有 {q}。请减少数量，或先在库存里更正数量。
+{q} of {x} logged as waste ({m}) || {q} {x} dicatat sebagai pembaziran ({m}) || {q} 的{x}已记为浪费（{m}）
+{q} of {x} ({r}), worth {m}. Stock was reduced. || {q} {x} ({r}), bernilai {m}. Stok dikurangkan. || {q} 的{x}（{r}），价值 {m}。库存已减少。
+expired || luput || 过期
+spoiled || rosak || 变质
+overproduced || terlebih buat || 做太多
+prep error || silap penyediaan || 备料出错
+returned || dipulangkan || 退回
+Entry removed. {x} is back in stock. || Catatan dibuang. {x} kembali ke stok. || 记录已移除。{x} 已回到库存。
+{q} of {x} will go back into stock, as if it was never thrown away. || {q} {x} akan kembali ke stok, seolah-olah ia tidak pernah dibuang. || {q} 的{x}会回到库存，就像从没丢掉一样。
+No entry matches "{q}" || Tiada catatan sepadan dengan "{q}" || 没有记录符合“{q}”
+No waste logged yet || Belum ada pembaziran dicatat || 还没有浪费记录
+Use the form above to log the first one. || Guna borang di atas untuk mencatat yang pertama. || 用上面的表格记第一条。
+Nothing was logged because there is no stock of this item. || Tiada apa dicatat kerana item ini tiada stok. || 这个品项没有库存，所以没有记录。
+Offer {x} for rescue || Tawarkan {x} untuk diselamatkan || 把{x}提供给救援
+, expires in {n} days. Who should collect it? || , luput dalam {n} hari. Siapa yang patut mengambilnya? || ，{n} 天后过期。由谁来领取？
+, expires today. Who should collect it? || , luput hari ini. Siapa yang patut mengambilnya? || ，今天过期。由谁来领取？
+Offered to {p}. Mark it as collected when they pick it up. || Ditawarkan kepada {p}. Tanda sebagai sudah diambil apabila mereka mengambilnya. || 已提供给 {p}。他们来领取后请标记为已领取。
+{x} collected. It left the stock and is not counted as waste. || {x} telah diambil. Ia keluar dari stok dan tidak dikira sebagai pembaziran. || {x} 已被领取。它离开了库存，不算浪费。
+Take back this offer? || Tarik balik tawaran ini? || 收回这次提供？
+{x} will stay in your stock and the partner will no longer be expected to collect it. || {x} akan kekal dalam stok anda dan rakan kongsi tidak lagi dijangka mengambilnya. || {x} 会留在您的库存，伙伴不会再来领取。
+Yes, take it back || Ya, tarik balik || 是，收回
+No, keep the offer || Tidak, kekalkan tawaran || 不，保留
+Offer taken back || Tawaran ditarik balik || 已收回
+Collected || Sudah diambil || 已领取
+Taken back || Ditarik balik || 已收回
+Expired before collection || Luput sebelum diambil || 领取前已过期
+Nothing more to do || Tiada apa lagi perlu dibuat || 没有其他要做的
+Nothing is close to expiry right now || Tiada apa yang hampir luput sekarang || 现在没有快过期的东西
+Items show up here when they have {q} or less left. || Item muncul di sini apabila tinggal {q} atau kurang. || 品项剩下 {q} 或更少时会显示在这里。
+See all stock || Lihat semua stok || 查看全部库存
+Waste history: {x} || Sejarah pembaziran: {x} || 浪费记录：{x}
+{n} entry in the last 2 months || {n} catatan dalam 2 bulan lepas || 过去 2 个月有 {n} 条记录
+{n} entries in the last 2 months || {n} catatan dalam 2 bulan lepas || 过去 2 个月有 {n} 条记录
+Back to the waste log || Kembali ke log pembaziran || 回到浪费记录
+That is a good thing. || Itu perkara yang baik. || 这是好事。
+// ---- reports
+Most wasted items, {mth} || Item paling banyak dibazir, {mth} || 浪费最多的品项，{mth}
+Sales per day, {mth} || Jualan sehari, {mth} || 每日销售额，{mth}
+Sales per day in {mth} || Jualan sehari pada {mth} || {mth}每日销售额
+Sales by day, {mth} || Jualan mengikut hari, {mth} || 按日销售，{mth}
+Waste entries, {mth} || Catatan pembaziran, {mth} || 浪费记录，{mth}
+Waste log for {mth} || Log pembaziran untuk {mth} || {mth}的浪费记录
+Daily sales for {mth} || Jualan harian untuk {mth} || {mth}的每日销售
+No waste logged this month || Tiada pembaziran dicatat bulan ini || 这个月没有浪费记录
+No waste logged this month. || Tiada pembaziran dicatat bulan ini. || 这个月没有浪费记录。
+No sales yet this month. || Belum ada jualan bulan ini. || 这个月还没有销售。
+Open the waste log || Buka log pembaziran || 打开浪费记录
+Saved as {f} || Disimpan sebagai {f} || 已保存为 {f}
+Press Ctrl+C to copy the selected text. || Tekan Ctrl+C untuk menyalin teks yang dipilih. || 请按 Ctrl+C 复制选中的文字。
+Average of the last 14 days || Purata 14 hari lepas || 过去 14 天的平均
+// ---- invoices
+E-invoice {no} || E-invois {no} || 电子发票 {no}
+Credit note {no} || Nota kredit {no} || 贷项通知单 {no}
+Combined e-invoice {no} || E-invois gabungan {no} || 合并电子发票 {no}
+E-INVOICE {no} || E-INVOIS {no} || 电子发票 {no}
+CREDIT NOTE {no} || NOTA KREDIT {no} || 贷项通知单 {no}
+E-invoice {no} is valid || E-invois {no} sah || 电子发票 {no} 有效
+Credit note {no} is valid || Nota kredit {no} sah || 贷项通知单 {no} 有效
+E-invoice {no} cancelled || E-invois {no} dibatalkan || 电子发票 {no} 已取消
+E-invoice {no} as JSON (simplified UBL 2.1 layout) || E-invois {no} sebagai JSON (susun atur UBL 2.1 ringkas) || 电子发票 {no} 的 JSON（简化的 UBL 2.1 格式）
+Cancel e-invoice {no}? || Batalkan e-invois {no}? || 取消电子发票 {no}？
+E-invoice for receipt {n} || E-invois untuk resit {n} || 收据 {n} 的电子发票
+Open receipt {n} || Buka resit {n} || 打开收据 {n}
+Open credit note {no} || Buka nota kredit {no} || 打开贷项通知单 {no}
+Corrects: {x} || Membetulkan: {x} || 更正对象：{x}
+Date: {d} || Tarikh: {d} || 日期：{d}
+Unique ID: {x} || ID unik: {x} || 唯一编号：{x}
+Status: {s} || Status: {s} || 状态：{s}
+Reason given: {r} || Sebab diberi: {r} || 填写的原因：{r}
+cancelled {d} || dibatalkan {d} || {d} 取消
+({m}) for {x}. || ({m}) untuk {x}. || （{m}），买方是 {x}。
+Draft {no} saved. Find it under Invoices, Drafts. || Draf {no} disimpan. Cari di bawah Invois, Draf. || 草稿 {no} 已保存。可在“发票”的“草稿”里找到。
+Draft {no} will be removed. It was never sent, so nothing else changes. || Draf {no} akan dibuang. Ia tidak pernah dihantar, jadi tiada apa lain berubah. || 草稿 {no} 会被移除。它从没发送过，所以其他都不变。
+Items + tax + rounding = {m}, the same as receipt {n}. || Item + cukai + pembundaran = {m}, sama seperti resit {n}. || 品项 + 税 + 进位 = {m}，和收据 {n} 一样。
+Items + tax + rounding = {m}. || Item + cukai + pembundaran = {m}. || 品项 + 税 + 进位 = {m}。
+{n} day of walk-in sales, {m} in total. Sales that already have their own e-invoice are left out. || {n} hari jualan pelanggan biasa, {m} semuanya. Jualan yang sudah ada e-invois sendiri ditinggalkan. || {n} 天的散客销售，共 {m}。已经单独开了电子发票的销售不计入。
+{n} days of walk-in sales, {m} in total. Sales that already have their own e-invoice are left out. || {n} hari jualan pelanggan biasa, {m} semuanya. Jualan yang sudah ada e-invois sendiri ditinggalkan. || {n} 天的散客销售，共 {m}。已经单独开了电子发票的销售不计入。
+Receipts {n} to {n2} on {d} || Resit {n} hingga {n2} pada {d} || {d} 的收据 {n} 至 {n2}
+Receipts {n} to {n2} on {d} (leaving out {q} that got its own e-invoice) || Resit {n} hingga {n2} pada {d} (tidak termasuk {q} yang ada e-invois sendiri) || {d} 的收据 {n} 至 {n2}（不含已单独开电子发票的 {q}）
+{n} receipt || {n} resit || {n} 张收据
+{n} receipts || {n} resit || {n} 张收据
+01 Invoice || 01 Invois || 01 发票
+02 Credit note || 02 Nota kredit || 02 贷项通知单
+version 1.1 || versi 1.1 || 1.1 版
+02 Service Tax || 02 Cukai Perkhidmatan || 02 服务税
+06 Not Applicable || 06 Tidak Berkenaan || 06 不适用
+Missing || Tiada || 缺少
+Totals need fixing || Jumlah perlu dibetulkan || 合计需要更正
+Work the totals out again || Kira semula jumlah || 重新计算合计
+Totals worked out again || Jumlah dikira semula || 合计已重新计算
+No sales are waiting || Tiada jualan menunggu || 没有等待中的销售
+When a customer asks for an e-invoice, it shows up here until you issue it. || Apabila pelanggan meminta e-invois, ia muncul di sini sehingga anda mengeluarkannya. || 顾客要求电子发票时，会显示在这里，直到您开出为止。
+No e-invoices yet || Belum ada e-invois || 还没有电子发票
+Issue your first e-invoice || Keluarkan e-invois pertama anda || 开第一张电子发票
+No supplier bills yet || Belum ada bil pembekal || 还没有供应商账单
+No sales to invoice || Tiada jualan untuk diinvois || 没有可开发票的销售
+Check the number on the receipt. Sales that already have an e-invoice are not listed. || Semak nombor pada resit. Jualan yang sudah ada e-invois tidak disenaraikan. || 请检查收据上的号码。已有电子发票的销售不会列出。
+Make a sale first || Buat jualan dahulu || 请先做一笔销售
+This sale already has an e-invoice || Jualan ini sudah ada e-invois || 这笔销售已有电子发票
+You can open it, or cancel it there first if it is wrong. || Anda boleh membukanya, atau batalkannya di sana dahulu jika salah. || 您可以打开它；如果有错，先在那里取消。
+The 72-hour limit has passed. Issue a credit note instead. || Had 72 jam telah berlalu. Keluarkan nota kredit. || 72 小时期限已过。请改开贷项通知单。
+Buyer TIN does not look right. It should be 1 or 2 letters followed by numbers, with no spaces. || TIN pembeli nampak tidak betul. Ia sepatutnya 1 atau 2 huruf diikuti nombor, tanpa ruang. || 买方 TIN 看起来不对。应该是 1 或 2 个字母后面接数字，没有空格。
+Buyer phone number should be numbers only, for example 0123456789. || Nombor telefon pembeli mesti nombor sahaja, contohnya 0123456789. || 买方电话号码只能是数字，例如 0123456789。
+Buyer email does not look right. Check for a missing @ or dot. || E-mel pembeli nampak tidak betul. Semak jika @ atau titik tertinggal. || 买方电邮看起来不对。请检查是否漏了 @ 或点。
+LHDN e-Invoice Guideline, version 4.8 (30 Aug 2026) || Garis Panduan e-Invois LHDN, versi 4.8 (30 Ogos 2026) || LHDN 电子发票指南 4.8 版（2026 年 8 月 30 日）
+LHDN e-Invoice Specific Guideline, version 4.9 (7 Sep 2026) || Garis Panduan Khusus e-Invois LHDN, versi 4.9 (7 Sep 2026) || LHDN 电子发票特定指南 4.9 版（2026 年 9 月 7 日）
+MyInvois SDK: Invoice v1.1 fields || MyInvois SDK: medan Invois v1.1 || MyInvois SDK：发票 v1.1 栏位
+MyInvois SDK: Cancel Document || MyInvois SDK: Batal Dokumen || MyInvois SDK：取消文件
+MyInvois SDK: FAQ || MyInvois SDK: Soalan lazim || MyInvois SDK：常见问题
+MyInvois SDK: classification codes || MyInvois SDK: kod klasifikasi || MyInvois SDK：分类代码
+MyInvois SDK: tax type codes || MyInvois SDK: kod jenis cukai || MyInvois SDK：税种代码
+// ---- settings and menu editor
+Round the final bill to the nearest 5 sen || Bundarkan bil akhir kepada 5 sen terdekat || 把最后的账单进位到最接近的 5 仙
+The same order as takeaway comes to {m}. || Pesanan yang sama sebagai bungkus berjumlah {m}. || 同样的订单外带是 {m}。
+Right now {n} batch would be on the "Expiring soon" list. || Sekarang {n} kelompok akan berada dalam senarai "Hampir luput". || 现在会有 {n} 个批次在“快过期”清单上。
+Right now {n} batches would be on the "Expiring soon" list. || Sekarang {n} kelompok akan berada dalam senarai "Hampir luput". || 现在会有 {n} 个批次在“快过期”清单上。
+Saved. Warning {n} day before expiry. || Disimpan. Amaran {n} hari sebelum luput. || 已保存。到期前 {n} 天提醒。
+Saved. Warning {n} days before expiry. || Disimpan. Amaran {n} hari sebelum luput. || 已保存。到期前 {n} 天提醒。
+1. The dish || 1. Hidangan || 1. 菜品
+2. The recipe for one portion || 2. Resipi untuk satu hidangan || 2. 一份的配方
+Change dish: {x} || Ubah hidangan: {x} || 修改菜品：{x}
+Code {n}. Changes reach the till when you press "Save dish". || Kod {n}. Perubahan sampai ke kaunter apabila anda menekan "Simpan hidangan". || 代码 {n}。按“保存菜品”后，更改才会到收银台。
+Delete {x}? || Padam {x}? || 删除 {x}？
+{x} saved || {x} disimpan || {x} 已保存
+{x} deleted from the menu || {x} dipadam dari menu || {x} 已从菜单删除
+{x} is now on the menu (code {n}) || {x} kini ada pada menu (kod {n}) || {x} 已加入菜单（代码 {n}）
+{x} added to the recipe. Check the amount. || {x} ditambah ke resipi. Semak jumlahnya. || {x} 已加入配方。请检查用量。
+{x} removed from the recipe || {x} dibuang dari resipi || {x} 已从配方移除
+Another dish already has this name. Use a different name. || Hidangan lain sudah mempunyai nama ini. Guna nama lain. || 已有另一道菜品用这个名称。请换一个名称。
+The price is missing. Type a number above 0, for example 12.00. || Harga tiada. Taip nombor melebihi 0, contohnya 12.00. || 缺少价格。请输入大于 0 的数字，例如 12.00。
+Type a name for the new group, or pick an existing group. || Taip nama untuk kumpulan baharu, atau pilih kumpulan sedia ada. || 请输入新分组的名称，或选一个现有的分组。
+{x}: type how much one portion uses, for example 0.2. || {x}: taip berapa banyak satu hidangan gunakan, contohnya 0.2. || {x}：请输入一份的用量，例如 0.2。
+Name of the new group || Nama kumpulan baharu || 新分组的名称
+For example: Iced Lemon Tea || Contohnya: Teh Lemon Ais || 例如：冰柠檬茶
+For example: Desserts || Contohnya: Pencuci mulut || 例如：甜品
+For example: Oat milk || Contohnya: Susu oat || 例如：燕麦奶
+The menu is empty || Menu kosong || 菜单是空的
+Add the first dish so the till has something to sell. || Tambah hidangan pertama supaya kaunter ada sesuatu untuk dijual. || 添加第一道菜品，收银台才有东西可卖。
+Add your first dish || Tambah hidangan pertama anda || 添加第一道菜品
+No dish matches "{q}" || Tiada hidangan sepadan dengan "{q}" || 没有菜品符合“{q}”
+This dish was deleted || Hidangan ini telah dipadam || 这道菜品已删除
+Back to Settings || Kembali ke Tetapan || 回到设置
+Language changed. || Bahasa telah ditukar. || 语言已更改。
+Help: {x} || Bantuan: {x} || 帮助：{x}
+What does {x} mean? || Apakah maksud {x}? || {x}是什么意思？
+Picture {e} || Gambar {e} || 图片 {e}
+Now viewing as {r} || Kini melihat sebagai {r} || 现在以{r}身份查看
+Step {n} of {n2} || Langkah {n} daripada {n2} || 第 {n} 步，共 {n2} 步
+step {n} of {n2} || langkah {n} daripada {n2} || 第 {n} 步，共 {n2} 步
+Welcome to GoodBite for business || Selamat datang ke GoodBite untuk perniagaan || 欢迎使用 GoodBite 商家版
+🥬 Welcome to GoodBite for business || 🥬 Selamat datang ke GoodBite untuk perniagaan || 🥬 欢迎使用 GoodBite 商家版
+One place for a small cafe to sell, track stock and expiry dates, order from suppliers, log waste and prepare e-invoices. || Satu tempat untuk kafe kecil menjual, menjejak stok dan tarikh luput, memesan daripada pembekal, mencatat pembaziran dan menyediakan e-invois. || 小咖啡店可以在这一个地方销售、追踪库存和到期日、向供应商订货、记录浪费，以及准备电子发票。
+Everything here is a demo with made-up data. Nothing is sent anywhere. || Semua di sini ialah demo dengan data rekaan. Tiada apa dihantar ke mana-mana. || 这里的一切都是用虚构数据做的演示。不会发送任何东西到任何地方。
+Skip for now || Langkau dahulu || 先跳过
+Show me around (5 short steps) || Tunjukkan kepada saya (5 langkah ringkas) || 带我看一遍（5 个简短步骤）
+This page could not be shown || Halaman ini tidak dapat dipaparkan || 这一页无法显示
+Go back and try again. || Kembali dan cuba lagi. || 请返回再试一次。
+// ---- payment names and misc data
+DuitNow QR || DuitNow QR || DuitNow QR
+Card || Kad || 刷卡
+Cash || Tunai || 现金
+E-wallet || E-dompet || 电子钱包
+Oat milk || Susu oat || 燕麦奶
+Fresh milk || Susu segar || 鲜奶
+Vanilla syrup || Sirap vanila || 香草糖浆
+Add egg || Tambah telur || 加蛋
+Add cheese || Tambah keju || 加芝士
+Extra chicken || Tambah ayam || 加鸡肉
+Sugar || Gula || 糖度
+Others || Lain-lain || 其他

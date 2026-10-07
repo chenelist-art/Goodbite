@@ -1,0 +1,217 @@
+251 || E-invois diterima || 已收到电子发票
+252 || E-invois dihantar || 电子发票已发送
+253 || E-invois tidak dihantar ke LHDN MyInvois. Status, ID unik dan gambar QR adalah rekaan, dan tiada apa ditandatangani secara digital. || 电子发票没有发到 LHDN MyInvois。状态、唯一编号和二维码图片都是虚构的，也没有数字签名。
+254 || E-invois yang anda keluarkan, dan yang dihantar oleh pembekal anda. || 您开出的电子发票，以及供应商发给您的。
+255 || E-dompet || 电子钱包
+256 || E-dompet (olok-olok) || 电子钱包（模拟）
+257 || Setiap kad ialah perkara yang perlu diberi perhatian. Ketik kad dan ia terus membawa anda ke penyelesaiannya. || 每张卡片是一件需要处理的事。点卡片就直接带您去处理。
+258 || Setiap kad membuka satu kumpulan tetapan. || 每张卡片打开一组设置。
+259 || Setiap item menjadi kelompok baharu dalam stok dengan tarikh luputnya sendiri. || 每个品项会成为库存里的新批次，有自己的到期日。
+260 || Setiap perkara ada pautan ke halaman rasmi sumbernya. || 每一点都有链接，通往它来源的官方页面。
+261 || Setiap jualan hidangan ini menolak bahan ini daripada stok secara automatik. || 每卖出这些菜品，就会自动从库存扣除这种食材。
+262 || Edit butiran || 编辑资料
+263 || Edit item || 编辑品项
+264 || Edit pembekal || 编辑供应商
+265 || E-mel || 电邮
+266 || E-mel (untuk menghantar e-invois) || 电邮（用来发送电子发票）
+267 || Tamat lawatan || 结束导览
+269 || Bahasa Inggeris, Bahasa Melayu atau Cina untuk seluruh aplikasi. || 整个应用可用英文、马来文或中文。
+270 || Masukkan bil pembekal || 输入供应商账单
+271 || Masukkan bil pembekal || 输入供应商账单
+272 || Catatan dibuang. Stok dikembalikan. || 记录已移除。库存已恢复。
+273 || Anggaran atau rekaan || 估算或虚构
+274 || Setiap hidangan di kaunter disenaraikan di sini dengan harga dan kos bahannya. || 收银台上的每道菜品都列在这里，附价格和食材成本。
+275 || Setiap bahan disenaraikan dengan baki dan bila kelompok paling lama akan luput. || 每种食材都列出剩余数量，以及最旧批次的到期时间。
+276 || Setiap resit beberapa hari lepas disenaraikan di sini. || 最近几天的每张收据都列在这里。
+277 || Setiap jualan, pesanan, catatan pembaziran, e-invois dan tetapan yang anda ubah dalam pelayar ini akan dipadam dan diganti dengan data demo asal. Anda tidak boleh membuat asal. || 您在这个浏览器里改过的每笔销售、订单、浪费记录、电子发票和设置都会被清除，换回最初的演示数据。此操作无法撤销。
+278 || Setiap kali item ini dibuang disenaraikan di sini, yang terbaru dahulu. || 这个品项每次被丢弃都列在这里，最新的在前。
+279 || Setiap catatan pembaziran bulan ini, yang terbaru dahulu. || 当月的每条浪费记录，最新的在前。
+280 || Semuanya sudah sepadan. Tiada apa diubah. || 全部都对得上。没有任何更改。
+281 || Dijangka || 预计到货
+282 || Luput || 过期
+283 || Luput pada || 到期
+284 || Hampir luput || 快过期
+285 || Tarikh luput pada bungkusan || 包装上的到期日
+286 || Tambahan syot kopi || 加一份浓缩
+287 || Lebih pedas || 加辣
+288 || Ekstra || 额外
+289 || Isi nama dan cara anda mengukurnya (kg, L, biji). || 填写名称和计量方式（公斤、升、个）。
+290 || Tapis mengikut kategori || 按类别筛选
+291 || Tamat || 完成
+292 || Tamat di sini: apa yang disemak dengan sumber LHDN, apa yang tidak, dan apa yang masih diperlukan oleh produk sebenar. Tamat demo. || 在这里结束：哪些已对照 LHDN 来源核实，哪些没有，以及真正的产品还需要什么。演示结束。
+293 || Betulkan dan hantar semula || 改正后再发送
+294 || Betulkan butiran pembeli || 改正买方资料
+295 || Betulkan || 去改正
+296 || Betulkan kemudian || 稍后再改
+297 || Betulkan butiran pembeli dan hantar semula. || 改正买方资料后再发送。
+298 || Betulkan kiraan || 更正数量
+299 || Selamatkan Makanan || 食物救援
+300 || Selamatkan Makanan. Rakan kongsi adalah rekaan dan tiada sesiapa diberitahu tentang tawaran. || 食物救援。伙伴是虚构的，没有人会收到通知。
+301 || Kos makanan || 食材成本
+302 || Kos makanan % || 食材成本 %
+303 || Kos makanan % = kos bahan yang digunakan dalam apa yang dijual, dibahagi dengan jualan sebelum cukai dan caj perkhidmatan. || 食材成本 % = 卖出食物所用食材的成本，除以税和服务费之前的销售额。
+304 || Kos makanan pada harga ini || 这个价格下的食材成本
+305 || Kos makanan bulan ini || 本月食材成本
+306 || Makanan yang melepasi tarikh luput ditambah ke log ini dengan sendiri. || 过了到期日的食物会自动加进这份记录。
+307 || Untuk tunai, taip jumlah yang diberi pelanggan. Aplikasi mengira bakinya. || 收现金时，输入顾客给的金额。应用会算出找零。
+308 || Untuk pesanan || 对应订单
+309 || Format || 格式
+310 || Daripada pembekal || 来自供应商
+311 || Nama penuh seperti dalam ID || 证件上的全名
+313 || Beri sebab untuk nota kredit. || 请填写开贷项通知单的原因。
+314 || Kembali || 返回
+315 || Kembali ke Laporan untuk menukar bulan. || 回到报表可更换月份。
+316 || Pergi ke bayaran || 去付款
+317 || Selamat petang. Apa yang anda mahu buat? || 晚上好。您想做什么？
+319 || Barang diterima || 已收货
+320 || Faham || 明白了
+321 || Kumpulan || 分组
+322 || Kumpulan di kaunter || 收银台上的分组
+323 || Ada nota kredit || 有贷项通知单
+324 || Bil ditahan || 暂存的账单
+325 || Bantuan || 帮助
+326 || Bantuan di setiap halaman || 每一页都有帮助
+356 || Sejarah › || 记录 ›
+357 || Tahan bil || 暂存账单
+358 || Utama || 首页
+359 || Utama: semakan pagi || 首页：早上的检查
+360 || Panas || 热
+361 || Panas atau ais || 热或冰
+362 || Cara caj perkhidmatan patut ditunjukkan pada e-invois (sebagai baris sendiri, atau sebagai fi pada invois) tidak dapat disahkan. Demo ini menunjukkannya sebagai baris sendiri. || 服务费在电子发票上该怎么显示（单独一行，还是作为发票上的费用）未能确认。这个演示把它显示为单独一行。
+363 || Cara kos makanan dikira || 食材成本怎么算
+364 || Bagaimana pelanggan membayar? || 顾客用什么方式付款？
+365 || Cara ia dikira › || 怎么算的 ›
+366 || Berapa banyak medan || 有多少栏位
+367 || Prestasi kedai. || 店铺的经营情况。
+372 || Ais || 冰
+373 || Jika hanya sebahagian pesanan sampai, taip jumlah yang benar-benar tiba. Bakinya kekal "dalam pesanan". || 如果只到了一部分，输入实际到货的数量。其余的保持“已订货”。
+374 || Jika ada yang tertinggal, kotak merah memberitahu anda dan butang "Betulkan" membawa anda ke medan itu. || 如果有漏填的，红色框会告诉您，“去改正”按钮会带您到那个栏位。
+375 || Jika pelanggan mahu e-invois, tekan "Keluarkan e-invois untuk jualan ini". || 如果顾客要电子发票，按“为这笔销售开电子发票”。
+376 || Jika pembekal tidak akan menghantar bakinya, tekan "Tutup pesanan". || 如果供应商不会再送剩下的货，按“结束订单”。
+377 || Jika anda datang dari pesanan, pembekal dan jumlah sudah diisi. || 如果您是从订单进来的，供应商和金额已经填好。
+378 || Dalam stok || 库存
+379 || Bahan || 食材
+380 || Kos bahan || 食材成本
+381 || Kos bahan || 食材成本
+382 || Kos bahan (harga demo) || 食材成本（演示价格）
+383 || Bahan dikembalikan ke stok. || 食材会退回库存。
+384 || Bahan kekal digunakan. Catat makanan sebagai pembaziran jika ia dibuang. || 食材算已用掉。如果食物被丢掉，请记为浪费。
+385 || Bahan digunakan || 已用食材
+386 || Tidak sah || 无效
+387 || Invois || 发票
+388 || Keluarkan e-invois baharu untuk jualan ini || 为这笔销售重新开电子发票
+389 || Keluarkan nota kredit || 开贷项通知单
+390 || Keluarkan e-invois || 开电子发票
+391 || Keluarkan e-invois untuk jualan ini || 为这笔销售开电子发票
+392 || Keluarkan e-invois › || 开电子发票 ›
+393 || Keluarkan satu daripada jualan. || 从一笔销售开一张。
+394 || Keluarkan || 去开
+395 || Dikeluarkan secara tersilap || 开错了
+396 || Ia sentiasa di skrin. Ketik perkataan untuk pergi ke bahagian itu. Halaman semasa berwarna hijau. || 它一直在屏幕上。点文字就能去那个部分。您所在的页面是绿色的。
+397 || Ia muncul di kaunter sebaik sahaja anda menyimpannya. || 一保存就会出现在收银台上。
+398 || Ia akan hilang dari kaunter dan senarai menu. Resit dan laporan lama mengekalkannya. Bil di kaunter yang sudah mengandunginya kekal seperti sedia ada. || 它会从收银台和菜单列表消失。旧收据和报表仍保留它。收银台上已含有它的账单保持不变。
+399 || Item || 品项
+400 || Nama item || 品项名称
+401 || Nama item tiada. || 缺少品项名称。
+402 || Item, jumlah dan sebab telah diisi sebagai contoh. Tekan "Simpan log pembaziran". Makanan luput ditambah ke log ini dengan sendiri. || 品项、数量和原因已填好作为例子。按“保存浪费记录”。过期的食物会自动加进这份记录。
+403 || Item || 品项
+404 || Item dan harga || 品项和价格
+405 || Item yang hampir habis sudah diisi dengan jumlah cadangan. || 快用完的品项已填好建议数量。
+409 || Tahan selama (hari) || 可保存（天）
+411 || Tersilap masuk (tiada apa dibuat) || 输入错误（没有制作）
+412 || Kind Kitchen KL (rakan demo) || Kind Kitchen KL（演示伙伴）
+413 || Staf dapur / stor || 厨房 / 仓库员工
+414 || Dapur melihat stok || 厨房查看库存
+415 || Staf dapur menyemak jumlah dan tarikh luput dengan pesanan, kemudian mengesahkan. Setiap item menjadi kelompok baharu. || 厨房员工对照订单检查数量和到期日，然后确认。每个品项成为一个新批次。
+416 || Dapur ▾ || 厨房 ▾
+418 || LHDN meminta kod MSIC yang menerangkan perniagaan anda. Semak kod anda sendiri sebelum menggunakan sistem sebenar. || LHDN 要求提供描述您业务的 MSIC 代码。使用真正的系统前，请先查清自己的代码。
+419 || LHDN memanggilnya e-invois disatukan. Satu e-invois yang merangkumi semua jualan pelanggan biasa dalam sebulan yang pelanggannya tidak meminta e-invois sendiri. || LHDN 称之为合并电子发票。一张电子发票涵盖一个月里顾客没有要求单独开发票的所有散客销售。
+420 || LHDN telah menyemak dan menerimanya. Anda boleh memberikannya kepada pembeli. || LHDN 已检查并接受。您可以交给买方。
+421 || LHDN tidak dapat memadankan TIN pembeli dengan nombor ID (penolakan ini adalah simulasi). || LHDN 无法把买方 TIN 和证件号码对上（这次拒绝是模拟的）。
+422 || Halaman garis masa pelaksanaan e-Invois LHDN || LHDN 电子发票实施时间表页面
+423 || LHDN menolaknya. Betulkan yang salah dan hantar semula. || LHDN 拒绝了。请改正错误后再发送。
+424 || LHDN menolak e-invois ini || LHDN 拒绝了这张电子发票
+425 || LHDN menetapkan butiran pembeli ini untuk e-invois gabungan, jadi tiada apa perlu ditaip. || 合并电子发票的买方资料由 LHDN 规定，所以不用输入。
+426 || Bahasa || 语言
+427 || Bahasa telah ditukar. || 语言已更改。
+429 || Catatan terkini || 最新记录
+430 || Biarkan kotak seperti sedia ada jika jumlahnya betul. || 数量正确的话，格子不用改。
+431 || Baki dalam stok || 库存剩余
+432 || Kurang || 减少
+433 || Kurang manis || 少糖
+434 || Had || 局限
+435 || Jumlah baris || 小计
+436 || Catat item lain || 再记一项
+437 || Catat sebagai pembaziran || 记为浪费
+438 || Catat makanan yang dibuang. || 记录被丢弃的食物。
+439 || Catat kelompok ini sebagai pembaziran? || 把这个批次记为浪费？
+440 || Catat pembaziran || 记录浪费
+441 || Catat pembaziran dengan tiga ketikan || 点三下就记好浪费
+442 || Lihat sebabnya. Jika kebanyakannya "Luput", cuba pesan kurang atau lebih kerap. || 看看原因。如果大多是“过期”，试着少订一点或订得更勤。
+443 || Nampak betul, pergi ke Semakan || 没问题，去复核
+444 || Rendah || 偏低
+445 || Stok rendah menjadi pesanan || 库存偏低变成订单
+447 || Rakan kongsi rekaan untuk demo. Tiada mesej dihantar. || 为演示而虚构的伙伴。不会发送任何消息。
+448 || Hidangan utama || 主食
+449 || Buat kumpulan baharu... || 新建一个分组...
+450 || Tanda sebagai sudah diambil || 标记为已领取
+451 || Tanda sebagai belum dibayar || 标记为未付
+452 || Tanda sebagai sudah dibayar || 标记为已付
+453 || Tanda e-invois sebagai diterima || 标记电子发票为已收到
+454 || Ditanda sebagai menunggu e-invois. Ia kini muncul di bawah Invois. || 已标记为等待电子发票。现在会显示在“发票”里。
+455 || Diukur dalam || 计量单位
+456 || Daging dan makanan laut || 肉类和海鲜
+458 || Menu dan resipi || 菜单和配方
+459 || Kurang pedas || 微辣
+460 || Susu || 牛奶
+461 || Minimum || 最低
+462 || Stok minimum || 最低库存
+463 || Stok minimum (L) || 最低库存（升）
+464 || Stok minimum ialah jumlah paling rendah yang anda mahu di rak. || 最低库存是您希望货架上至少有的数量。
+465 || Bulan ini setakat ini || 本月至今
+466 || Lagi || 更多
+467 || Pendaftaran API MyInvois, sijil digital untuk tandatangan, dan pengendalian jawapan serta ralat sebenar LHDN. || MyInvois API 注册、用于签名的数字证书，以及处理 LHDN 真正的回复和错误。
+472 || MyInvois menggunakan empat status: Dihantar, Sah, Tidak sah, Dibatalkan. "Draf" dalam aplikasi ini ialah istilah kami sendiri untuk "belum dihantar". || MyInvois 使用四种状态：已提交、有效、无效、已取消。这个应用里的“草稿”是我们自己的说法，意思是“还没发送”。
+473 || Nombor MyKad || MyKad 号码
+475 || Nama || 名称
+476 || Nama, alamat, TIN dan nombor pendaftaran yang digunakan pada resit dan e-invois. || 收据和电子发票上用的名称、地址、TIN 和注册号码。
+477 || Nama yang anda taip sendiri, seperti hidangan baharu, kekal seperti yang anda taip. || 您自己输入的名称（例如新菜品）会保持原样。
+478 || Perlukan e-invois? Tanya staf kami. || 需要电子发票？请问我们的员工。
+480 || Hidangan baharu || 新菜品
+481 || Pesanan baharu || 新订单
+482 || Jualan baharu || 新销售
+483 || Seterusnya || 下一步
+484 || Tiada bil ditahan || 没有暂存的账单
+485 || Tiada perubahan. Kiraan sudah sepadan. || 没有更改。数量本来就对。
+486 || Belum ada e-invois || 还没有电子发票
+487 || Tiada e-invois dengan status ini || 没有这个状态的电子发票
+488 || Belum ada bahan. Tanpa resipi, menjual hidangan ini tidak akan mengurangkan stok. || 还没有食材。没有配方的话，卖出这道菜不会减少库存。
+489 || Belum ada item. Ketik item menu untuk menambahnya. || 还没有品项。点菜单上的品项来添加。
+490 || Tidak lagi menunggu e-invois. || 不再等待电子发票。
+491 || Belum ada tawaran || 还没有提供记录
+492 || Tanpa gula || 无糖
+493 || Tiada pembaziran dicatat untuk item ini. || 这个品项没有浪费记录。
+494 || Tidak, kembali || 不，返回
+495 || Tidak, kekalkan || 不，保留
+496 || Tidak, kekalkan data saya || 不，保留我的数据
+497 || Tidak, kekalkan jualan || 不，保留这笔销售
+498 || No. || 号码
+499 || Biasa || 正常
+500 || Gula biasa || 正常糖
+501 || Belum disahkan || 未确认
+502 || Belum dihantar || 还没送到
+503 || Belum dibayar || 还没付
+504 || Belum diterima || 还没收到
+505 || Belum dihantar. Selesaikan langkah dan tekan Hantar. || 还没发送。完成步骤后按“提交”。
+506 || Belum digunakan dalam mana-mana resipi. || 还没有用在任何配方里。
+507 || Belum ada perubahan || 还没有更改
+508 || Tiada stok || 没有库存
+509 || Tiada apa yang benar-benar dihantar dalam demo ini. || 这个演示不会真的发送任何东西。
+510 || Tiada apa dihantar ke LHDN. Ini latihan sahaja. || 不会发送任何东西给 LHDN。这只是练习。
+514 || Nombor || 号码
+515 || Angka sepintas lalu || 数字一览
+516 || OK || 正常
+517 || Tawarkan item daripada senarai di atas dan ia akan muncul di sini. || 从上面的清单提供一个品项，它就会显示在这里。
+518 || Tawarkan makanan yang hampir luput kepada badan amal makanan dan bukannya membuangnya. Rakan kongsi di sini adalah rekaan untuk demo. || 把快过期的食物提供给食物慈善机构，而不是丢掉。这里的伙伴是为演示虚构的。
+519 || Tawarkan makanan yang hampir luput kepada badan amal makanan. || 把快过期的食物提供给食物慈善机构。
+520 || Tawar untuk diselamatkan || 提供给救援

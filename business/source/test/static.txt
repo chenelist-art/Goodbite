@@ -1,0 +1,999 @@
+"Copy as spreadsheet" gives you the figures to paste into Excel or Google Sheets.
+"Copy as spreadsheet" gives you the list for Excel.
+"Fix the count" is for when the shelf does not match the app.
+"Food Rescue" lets you offer food that is close to expiry to a partner instead of binning it (demo partners only).
+"Hold bill" and "Clear bill" work once the bill has an item.
+"Hold bill" parks a bill so you can serve someone else. Find it again under "Held bills".
+"Ingredient cost" is what the food sold that day cost you to make.
+"Issue e-invoice for this sale" starts the e-invoice steps with this sale already filled in.
+"Open this item in Stock" shows what is on the shelf now.
+"Order more" starts an order to this item's supplier with a suggested amount.
+"Reset demo data" at the bottom puts everything back to how it started.
+"Show JSON" and "Printable view" are the two ways to take the e-invoice out of the app.
+"Suggested" lists what is running low. One button turns it into an order.
+"Void this sale" cancels the sale. Use it only for mistakes.
+"Waiting" lists sales where the customer asked for an e-invoice that has not been made yet.
+(made up)
+(not filled in yet)
+(pick any, or none)
+(pick one)
+*** VOID: Keyed in by mistake (nothing was made) ***
+, expires tomorrow. Who should collect it?
+. Count what is really on the shelf and type it here.
+. It comes off today's sales. You cannot undo this.
+A Malaysian person
+A Malaysian person gives a TIN, or a MyKad number, or both. A foreign person gives a TIN, or a passport number with LHDN's general TIN.
+A bigger number gives you more time to use the food or offer it for rescue.
+A business
+A customer asks for an e-invoice
+A delivery arrives
+A digital invoice that is sent to LHDN to be checked before the buyer gets it. LHDN calls its system MyInvois.
+A document that corrects or reverses an e-invoice once it can no longer be cancelled.
+A foreign person
+A licensed payment partner for card, DuitNow QR and e-wallets.
+A new ingredient or supply to keep track of.
+A real e-invoice has a link and QR code that open LHDN's site. This demo shows a placeholder picture that cannot be scanned.
+A real till would talk to a card terminal or payment company here. In this demo, just press the green button when the customer has paid.
+A server and database, so data is shared between devices and not stuck in one browser.
+A valid e-invoice gets a unique ID from LHDN, and the QR code is made from a validation link that includes that ID.
+A way to work when the internet is down and sync later.
+Activity code
+Add a dish
+Add a service charge to dine-in bills
+Add an ingredient
+Add dish
+Add item
+Add items
+Add supplier
+Add to recipe
+Add, change or delete dishes, their prices and recipes.
+Add-ons
+Added automatically
+Address
+Aina Binti Demo (DEMO)
+Aina Demo (demo individual)
+Alerts
+All
+All in
+All items
+All numbers are made up
+All numbers here are made up. Replace them only for your own testing.
+Also add it to takeaway bills
+Also consulted:
+Amount
+Amount for one portion
+Amount left
+Amount received (L)
+Amount received (kg)
+Amount received (loaf)
+Amount received (piece)
+Amount to pay (RM)
+An e-invoice is a digital invoice that LHDN checks. This page lists every one you made.
+An extra charge some outlets add to dine-in bills. It goes to the outlet, not the government.
+App says
+Ask the customer for their receipt number.
+Ask the customer for these details. Everything else is filled in from the sale.
+Ask the supplier to send their e-invoice for this bill.
+At the current pace
+Back
+Back as Owner. Waste in kg and RM, the most wasted items, and food cost against sales. Tap any number to see what is behind it. All figures are made up.
+Back to Home
+Back to Invoices
+Back to Orders
+Back to Stock
+Back to buyer details
+Back to items
+Back to menu
+Back to pick month
+Back to reason
+Back to the bill
+Back to the till
+Bahasa Melayu
+Bakery
+Barcode scanning. You search by name or type the item code instead.
+Batches
+Be honest about what is pretend
+Before tax
+Big buttons for everyday jobs
+Bill
+Bill cleared
+Bill date
+Bill is back on the till
+Bill is back on the till. The bill you were on is now on hold.
+Bill number (printed on the bill)
+Bill number is missing. Copy it from the supplier's bill.
+Bill put on hold. Find it under "Held bills".
+Bill summary
+Bill to
+Bills
+Breakfast
+Bring back ›
+Business activity code
+Business activity description
+Business details
+Business registration no.
+Business registration number
+Buyer
+Buyer ID number is missing.
+Buyer TIN
+Buyer TIN is missing.
+Buyer address is missing.
+Buyer city is missing.
+Buyer details
+Buyer details filled in
+Buyer name
+Buyer name is missing.
+Buyer phone number is missing.
+Buyer with a wrong TIN (shows a rejection)
+Campus Pantry Subang (demo partner)
+Cancel
+Cancel order
+Cancel the e-invoice first
+Cancel this e-invoice
+Cancelled
+Cancelling
+Card
+Card (pretend)
+Cash
+Cash received (RM)
+Cashier
+Cashier makes a sale
+Cashier ▾
+Change
+Change items
+Change something
+Change supplier
+Change to give
+Change to give:
+Change ›
+Changes are saved as soon as you make them.
+Changes save as you type.
+Charge SST (only if the outlet is registered for it)
+Charge SST on the service charge too
+Check and send
+Check items
+Check link
+Check status now
+Check the buyer TIN and ID number with the customer, fix them, then send again.
+Check the items
+Check the right rates with Customs or your accountant. The starting values are only common examples.
+Checked against official sources
+Checked on
+Checks by an accountant on tax, rounding and e-invoice rules.
+Choose Dine-in or Takeaway, then press the green "Go to payment" button.
+Choose how early the app should warn you about food that is about to expire.
+Choose the language
+Choose the sale the customer wants an e-invoice for.
+City
+Classification code
+Clear bill
+Clear this bill?
+Close
+Close help
+Close order (the rest is not coming)
+Close to expiry and still good
+Code
+Coffee
+Coffee and drinks
+Combined (walk-in sales)
+Combined e-invoice
+Combined e-invoice for walk-in sales
+Confirm
+Confirm goods received
+Continue this e-invoice
+Copied. Paste it into Excel, Sheets or Notepad.
+Copy all
+Copy as spreadsheet
+Copy daily sales as spreadsheet
+Copy the details from the bill (invoice) the supplier gave you.
+Copy waste log as spreadsheet
+Corrects
+Cost
+Cost of the ingredients used in the food you sold, divided by sales before tax and service charge. Lower is better.
+Cost per L
+Cost per kg
+Cost per loaf
+Cost per piece
+Count saved
+Count stock
+Counted amount (L)
+Create it
+Create order
+Credit note
+Currency
+Customer cancelled (food was already made)
+Customer returned the order
+Customer will ask for an e-invoice later
+DEMO
+DEMO - not connected to LHDN MyInvois. Not a valid tax document.
+Dairy
+Date
+Date and time
+Day
+Day of the month along the bottom. Hover or tap a bar to see the amount.
+Delete dish
+Delete draft
+Delete this draft?
+Delivers in
+Delivers in (days)
+Demo data
+Demo data reset. Everything is back to the start.
+Demo data: every figure here is made up
+Demo only. A real system would pull this status from LHDN MyInvois.
+Demo only: partners are made up, nothing is sent
+Demo picture only. It cannot be scanned.
+Demo receipt. All prices are made up.
+Demo tour
+Demo tour ended. Start it again from the top bar.
+Description
+Did the supplier send an e-invoice?
+Different from the original brief:
+Dine-in
+Dish
+Dish name
+Document
+Done
+Done, back to Settings
+Download file
+Draft
+Draft deleted
+Drafts
+Drinks
+Dry goods
+DuitNow QR
+DuitNow QR (pretend)
+E-invoice
+E-invoice Valid
+E-invoice documents keep their official English field names where LHDN uses them.
+E-invoice from supplier
+E-invoice marked as received
+E-invoice notes
+E-invoice received
+E-invoice sent
+E-invoices are not sent to LHDN MyInvois. The statuses, unique IDs and QR pictures are made up, and nothing is digitally signed.
+E-invoices you issued, and the ones your suppliers sent you.
+E-wallet
+E-wallet (pretend)
+Each card is something that needs attention. Tap a card and it takes you straight to the fix.
+Each card opens one group of settings.
+Each item becomes a new batch in stock with its own expiry date.
+Each point has a link to the official page it came from.
+Each sale of these takes this ingredient off the stock automatically.
+Edit details
+Edit item
+Edit supplier
+Email
+Email (to send the e-invoice to)
+End tour
+English
+English, Bahasa Melayu or Chinese for the whole app.
+Enter supplier bill
+Enter the supplier bill
+Entry removed. The stock is back.
+Estimated or made up
+Every dish on the till is listed here with its price and what its ingredients cost.
+Every ingredient is listed with how much is left and when the oldest batch expires.
+Every receipt from the last few days is listed here.
+Every sale, order, waste entry, e-invoice and setting you changed in this browser will be erased and replaced with the starting demo data. You cannot undo this.
+Every time this item was thrown away is listed here, newest first.
+Every waste entry of the month, newest first.
+Everything already matched. Nothing was changed.
+Expected
+Expired
+Expires
+Expiring soon
+Expiry date on the pack
+Extra coffee shot
+Extra spicy
+Extras
+Fill in the name and how you measure it (kg, L, piece).
+Filter by category
+Finish
+Finish here: what was checked against LHDN sources, what was not, and what a real product still needs. End of the demo.
+Fix and send again
+Fix buyer details
+Fix it
+Fix it later
+Fix the buyer details and send it again.
+Fix the count
+Food Rescue
+Food Rescue. The partners are invented and nobody is told about an offer.
+Food cost
+Food cost %
+Food cost % = cost of the ingredients used in what you sold, divided by sales before tax and service charge.
+Food cost at this price
+Food cost this month
+Food that passes its expiry date is added to this log by itself.
+For cash, type what the customer gave you. The app works out the change.
+For order
+Format
+From suppliers
+Full name as on ID
+General Public
+Give a reason for the credit note.
+Go back
+Go back to Reports to change the month.
+Go to payment
+Good evening. What would you like to do?
+GoodBite
+Goods received
+Got it
+Group
+Group on the till
+Has a credit note
+Held bills
+Help
+Help on every page
+Help: Add item
+Help: Alerts
+Help: Business details
+Help: Count saved
+Help: Count stock
+Help: E-invoice notes
+Help: Enter supplier bill
+Help: Goods received
+Help: Home
+Help: Invoices
+Help: Language
+Help: Limitations
+Help: Menu and recipes
+Help: New dish
+Help: New order
+Help: Order sent
+Help: Orders
+Help: Payment
+Help: Pick the sale
+Help: Printable view
+Help: Receive goods
+Help: Recent sales
+Help: Reports
+Help: Sale done
+Help: Sell
+Help: Settings
+Help: Stock
+Help: Tax and rounding
+Help: Waste
+History ›
+Hold bill
+Home
+Home: the morning check
+Hot
+Hot or iced
+How a service charge should be shown on an e-invoice (as its own line, or as a fee on the invoice) was not confirmed. This demo shows it as its own line.
+How food cost is worked out
+How is the customer paying?
+How it is worked out ›
+How many fields
+How the outlet is doing.
+ID (BRN)
+ID (NA)
+ID (NRIC)
+ID (PASSPORT)
+Iced
+If only part of the order came, type the amount that really arrived. The rest stays "on order".
+If something is missing, a red box tells you what and a "Fix it" button takes you to the field.
+If the customer wants an e-invoice, press "Issue e-invoice for this sale".
+If the supplier will not deliver the rest, press "Close order".
+If you came here from an order, the supplier and amount are already filled in.
+In stock
+Ingredient
+Ingredient cost
+Ingredients cost
+Ingredients cost (demo prices)
+Ingredients go back into stock.
+Ingredients stay used. Log the food as waste if it was thrown away.
+Ingredients used
+Invalid
+Invoices
+Issue a new e-invoice for this sale
+Issue credit note
+Issue e-invoice
+Issue e-invoice for this sale
+Issue e-invoice ›
+Issue one from a sale.
+Issue them
+Issued by mistake
+It is always on screen. Tap a word to move to that part of the app. The page you are on is green.
+It shows on the till as soon as you save it.
+It will disappear from the till and the menu list. Old receipts and reports keep it. Any bill on the till that already has it stays as it is.
+Item
+Item name
+Item name is missing.
+Item, amount, reason are filled in as an example. Press "Save waste log". Expired food is added to this log by itself.
+Items
+Items and prices
+Items that are running low are already filled in with a suggested amount.
+Johor
+Kedah
+Kedai Ujian Enterprise (DEMO)
+Keeps for (days)
+Kelantan
+Keyed in by mistake (nothing was made)
+Kind Kitchen KL (demo partner)
+Kitchen / Store staff
+Kitchen sees the stock
+Kitchen staff check the amounts and expiry dates against the order, then confirm. Each item becomes a new batch.
+Kitchen ▾
+L
+LHDN asks for the MSIC code that describes what your business does. Check your own code before using a real system.
+LHDN calls this a consolidated e-invoice. One e-invoice that covers all the walk-in sales of a month where the customer did not ask for their own e-invoice.
+LHDN checked it and accepted it. You can give it to the buyer.
+LHDN could not match the buyer TIN with the ID number (this rejection is simulated).
+LHDN e-Invoice implementation timeline page
+LHDN rejected it. Fix what is wrong and send it again.
+LHDN rejected this e-invoice
+LHDN sets these buyer details for combined e-invoices, so there is nothing to type.
+Language
+Language changed.
+Language · Bahasa · 语言
+Latest entries
+Leave a box as it is when the amount is right.
+Left in stock
+Less
+Less sugar
+Limitations
+Line total
+Log another item
+Log as waste
+Log food that was thrown away.
+Log this batch as waste?
+Log waste
+Log waste in three taps
+Look at the reasons. If most are "Expired", try ordering less or more often.
+Looks right, go to Review
+Low
+Low stock becomes an order
+MYR
+Made-up partner for the demo. No message is sent.
+Mains
+Make a new group...
+Mark as collected
+Mark as not paid
+Mark as paid
+Mark e-invoice as received
+Marked as waiting for an e-invoice. It now shows under Invoices.
+Measured in
+Meat and seafood
+Melaka
+Menu and recipes
+Mild
+Milk
+Minimum
+Minimum stock
+Minimum stock (L)
+Minimum stock is the lowest amount you want on the shelf.
+Month so far
+More
+MyInvois API registration, a digital certificate for signing, and handling of LHDN's real replies and errors.
+MyInvois SDK: Cancel Document
+MyInvois SDK: FAQ
+MyInvois SDK: classification codes
+MyInvois SDK: tax type codes
+MyInvois uses four statuses: Submitted, Valid, Invalid, Cancelled. "Draft" in this app is our own word for "not sent yet".
+MyKad number
+NA
+Name
+Name, address, TIN and registration numbers used on receipts and e-invoices.
+Names you typed yourself, such as a new dish, stay the way you typed them.
+Need an e-invoice? Ask our staff.
+Negeri Sembilan
+New dish
+New order
+New sale
+Next
+No bills on hold
+No change. The count already matched.
+No e-invoice yet
+No e-invoices with this status
+No ingredients yet. Without a recipe, selling this dish will not reduce any stock.
+No items yet. Tap a menu item to add it.
+No longer waiting for an e-invoice.
+No offers yet
+No sugar
+No waste logged for this item.
+No, go back
+No, keep it
+No, keep my data
+No, keep the sale
+No.
+Normal
+Normal sugar
+Not confirmed
+Not delivered yet
+Not paid yet
+Not received yet
+Not sent yet. Finish the steps and press Submit.
+Not used in any recipe yet.
+Nothing changed yet
+Nothing in stock
+Nothing is really sent in this demo.
+Nothing is sent to LHDN. This is a practice run.
+Now viewing as Cashier
+Now viewing as Kitchen / Store staff
+Now viewing as Owner / Manager
+Number
+Numbers at a glance
+OK
+Offer an item from the list above and it will show here.
+Offer food that is close to expiry to a food charity instead of throwing it away. The partners here are made up for the demo.
+Offer food that is close to expiry to a food charity.
+Offer for rescue
+Offered
+Offered for rescue
+Offered to Campus Pantry Subang (demo partner). Mark it as collected when they pick it up.
+Offered to Kind Kitchen KL (demo partner). Mark it as collected when they pick it up.
+Offered to Second Serve PJ (demo partner). Mark it as collected when they pick it up.
+Older entries are locked
+Oldest batch expires
+On order
+One e-invoice covers every sale where nobody asked for their own.
+One row for each day of the month.
+Only sales from the last few days without an e-invoice are listed.
+Open
+Open Food Rescue ›
+Open held bills
+Open its e-invoice
+Open report ›
+Open the e-invoice
+Open the supplier bill
+Open the till to bring a bill back.
+Open this item in Stock
+Open this order
+Open ›
+Options the cashier can pick (tap to switch on or off)
+Order
+Order from this supplier again
+Order how much
+Order more
+Order more, or receive a delivery.
+Order now
+Order sent
+Order total
+Order total (demo prices)
+Ordered
+Orders
+Other buyer details
+Otherwise press "New sale" to serve the next customer.
+Out of stock
+Outlet name (on receipts)
+Overdue
+Overproduced
+Owner / Manager
+Owner ▾
+Pahang
+Paid
+Paid by
+Part
+Part received
+Partner
+Passport number
+Pay by
+Payment
+Payment received
+Payments. Cash, card, DuitNow QR and e-wallet buttons do not move money or talk to any bank or terminal.
+Perak
+Perlis
+Phone
+Pick
+Pick a month at the top. Every number below is for that month.
+Pick a reason first.
+Pick an ingredient
+Pick an ingredient first.
+Pick an item
+Pick an item first.
+Pick another order
+Pick how the customer is paying.
+Pick month
+Pick order
+Pick supplier
+Pick the item, set the amount, tap the reason, then press "Save waste log".
+Pick the language for the whole app on this device.
+Pick the sale
+Pick ›
+Picture on the till button
+Picture ☕
+Picture 🌯
+Picture 🍌
+Picture 🍔
+Picture 🍗
+Picture 🍚
+Picture 🍛
+Picture 🍜
+Picture 🍝
+Picture 🍞
+Picture 🍟
+Picture 🍪
+Picture 🍫
+Picture 🍰
+Picture 🍳
+Picture 🍵
+Picture 🍽️
+Picture 🐟
+Picture 🥐
+Picture 🥑
+Picture 🥗
+Picture 🥞
+Picture 🥣
+Picture 🥤
+Picture 🥪
+Picture 🥯
+Picture 🧁
+Picture 🧃
+Picture 🧊
+Postcode
+Prep error
+Press "Add dish" to put a new dish on the menu. Tap a row to change or delete a dish.
+Press "Mark as paid" once you have paid it.
+Press "Save bill". You can mark it as paid later.
+Press "Save count" at the bottom when you are done. Only the boxes you changed are updated.
+Press "Save dish" when you are done. "Delete dish" removes it from the till, but old receipts keep it.
+Press "Save item". You can then receive a delivery or fix the count to add stock.
+Press Back to return to where you were.
+Press the green button to finish. Every payment here is pretend, no money moves.
+Pretend (simulated)
+Price
+Price per L (RM)
+Price per kg (RM)
+Price per loaf (RM)
+Price per piece (RM)
+Print
+Print or save as PDF
+Printable view
+Produce
+Pulau Pinang
+QR code and ID
+Qty
+Quick fill for the demo (made-up buyers)
+Rate
+Real interviews and testing with cafe owners. This demo has not been tried by one.
+Real logins and permissions for each staff member.
+Reason
+Reason (you can type your own)
+Receipt
+Receipt printer, cash drawer and barcode scanner support.
+Receive delivery
+Receive goods
+Received
+Received now
+Recent sales
+Recent waste
+Registered business name
+Registration no.
+Registration with MyInvois for API access, a digital certificate to sign each e-invoice, a real connection that sends the document and reads back LHDN's answer, and secure storage of every e-invoice. None of that exists in this demo.
+Remove
+Remove entry
+Remove this waste entry?
+Replay the welcome tour
+Replay the welcome tour, or start the step-by-step demo tour.
+Reports
+Rescued instead of binned
+Reset all demo data?
+Reset demo data
+Returned
+Review
+Review before sending
+Rounding
+Royal Malaysian Customs (MySST): service tax FAQ
+SST
+SST %
+SST no.
+SST number (leave empty if none)
+SST on food and drink
+SST registration number
+Sabah
+Sale done
+Sale done, stock updated
+Sales (with tax)
+Sales and Service Tax. Food and drink outlets that are registered for it add service tax to the bill and pay it to Customs.
+Sales before tax
+Sales this month
+Sales today
+Sarawak
+Save and check the order
+Save and go to Check items
+Save and go to Confirm
+Save bill
+Save changes
+Save count
+Save dish
+Save draft and close
+Save item
+Save supplier
+Save the new count
+Save waste log
+Saved automatically as you type.
+Saved automatically.
+Saved automatically. New bills use the new settings. Old receipts keep the rates they were sold at.
+Say: "This is what the owner sees first." Point at the To do cards. Each one opens the fix. Then press Next.
+Search by name or item code
+Search by number, buyer or receipt
+Search by receipt number
+Search by supplier or order number
+Search items
+Search the log by item
+Search the menu
+Search this supplier's items
+Second Serve PJ (demo partner)
+See all e-invoices
+See all waste for this item
+See bills
+See stock
+See the full limitations list
+See the list
+See the monthly report
+See today's sales
+See waste log
+See what is expiring soon
+See what was used
+Sees everything: sales, stock, suppliers, reports, e-invoices and settings.
+Sees stock, deliveries and the waste log. Works well on a phone.
+Sees the till only: take orders, take payment, print receipts.
+Selangor
+Sell
+Selling price (RM, before tax)
+Sending orders to suppliers. Nothing is emailed or messaged.
+Sending to LHDN (pretend)...
+Sent
+Sent, waiting for delivery
+Service charge
+Service charge %
+Service tax
+Set how much you want. Suggested amounts are filled in for items that are low.
+Set the app up for your outlet.
+Set the name, group and price. The picture and options are extras.
+Settings
+Show JSON
+Skip the tour
+Some of them are already on order.
+Source:
+Spice level
+Spoiled
+Staff roles. There are no passwords, anyone can switch role.
+Start the demo tour
+State
+Status
+Status:
+Status: Valid
+Statuses
+Stock
+Stock count saved
+Stock updated
+Stop waiting for an e-invoice
+Submit
+Submit e-invoice (demo)
+Submitted
+Subtotal
+Suggested
+Supplier
+Supplier (your business)
+Supplier bills
+Supplier name
+Supplier name is missing. Type the name, then save.
+Supplier saved
+Supplier's e-invoice
+Suppliers
+Switch each charge on or off and set its percentage.
+Syarikat Contoh Maju Sdn Bhd (DEMO)
+Syarikat Contoh Maju Sdn Bhd (demo company)
+TIN
+TOTAL (RM)
+Table
+Take back offer
+Take payment
+Takeaway
+Tap a menu item to add it to the bill on the right. Type a name or item code in the search box to find it faster.
+Tap a number or a row to see what is behind it.
+Tap a reason.
+Tap a row to open the receipt. From there you can issue an e-invoice or void the sale.
+Tap a row to see its batches, order more, or log waste.
+Tap a row to see the full waste history of that item.
+Tap an item to see its stock.
+Tap an item to see its stock. Tap an order to open it.
+Tap any row to open it. The green button on each order shows the next step.
+Tap here to switch between Owner, Cashier and Kitchen staff. The menu changes to show only what that person needs.
+Tax
+Tax Identification Number. The number LHDN (the tax office) gives every taxpayer. Companies and people each have one.
+Tax and rounding
+Tax type
+Tax, service charge and rounding
+Teduh Daun Enterprise (DEMO)
+Terengganu
+Test sale
+That a supplier's e-invoice is your proof of the expense is how LHDN describes it in general material, but the exact wording was not re-checked today.
+That is the tour. Replay it any time from Help.
+The Bahasa Melayu and Chinese wording was written by Claude and has not been checked by a native speaker.
+The ID LHDN gives each e-invoice it has checked. In this demo the ID is made up.
+The LHDN rules this demo follows, with sources.
+The app adds up each recipe every time an item is sold. All prices here are demo prices.
+The app thinks there is
+The big DEMO stamp stays on because this is not a real tax document.
+The big round buttons start the jobs you do most often.
+The cards under "To do" are things that need attention. Tap a card to go straight to the fix.
+The change applies straight away, for every role on this device.
+The change shows on Home and in Stock straight away.
+The coloured label at the top is the status. The line next to it says what to do next.
+The coloured label shows the status. Tap a row to see what to do next.
+The customer asked for an e-invoice.
+The dish name is missing.
+The e-invoice line shows whether the supplier has sent you their e-invoice for this bill.
+The e-invoice will be marked as
+The end date of LHDN's grace period for penalties was only seen on non-official websites, so it is left out.
+The green button is always the main thing to do on a page.
+The green button starts a new order to this supplier.
+The items that have not arrived will no longer be expected. Stock already received stays as it is.
+The kilograms per piece or loaf used to turn waste into kg.
+The lowest amount you want to have on the shelf. Below this the app tells you to order more.
+The main menu
+The menu changes to show only what each person needs. This demo has no passwords.
+The monthly report
+The number SSM gives a business when it is registered.
+The percentages the till adds to each bill.
+The recipe is what the till takes off the stock each time the dish is sold.
+The recipe lists what one portion uses. Each sale takes these amounts off the stock, oldest batch first.
+The sale is saved and the stock dropped by the recipe. Press "See what was used" to show the ingredients.
+The sale is saved and the stock has been reduced by the recipe.
+The same list is in the README file.
+The second list is what could not be confirmed. Treat those as open questions.
+The stock that expires soonest is always used first, so less food is thrown away.
+The supplier has sent a checked e-invoice for this bill. Keep it with your records.
+The tax rates in Settings are common examples, not advice.
+The top batch in the list is the oldest, and it is always used first.
+These are starting values, not official rates for your outlet. Check before you rely on them.
+These came straight from the daily sales. You only need to look them over.
+These came straight from the receipt. You only need to look them over.
+These details print on receipts and go on every e-invoice.
+These start the things you do most: make a sale, receive a delivery, log waste, count stock.
+This cancels the sale of
+This credit note reverses e-invoice
+This e-invoice was cancelled and no longer counts.
+This is a bill from a supplier.
+This is a demo. Pressing the button saves the order here but does not email or message the supplier.
+This is everything that would go to LHDN, laid out the way LHDN lists the fields.
+This is how the e-invoice looks on paper or as a PDF.
+This is the receipt the customer gets.
+This is what each sale takes off the stock.
+This is where you order from suppliers and take in deliveries.
+This one
+This page is the honest list of what the demo does not really do.
+This page lists the LHDN rules this demo was built around.
+This page shows the supplier's contact details, what you buy from them and at what price.
+This sale has an e-invoice. A sale cannot be voided while its e-invoice is still valid.
+This shows what was ordered and what has arrived so far.
+Thrown away
+Time
+To do
+Today
+Today's sales
+Tomorrow
+Total
+Total excluding tax
+Total including tax
+Total payable (MYR)
+Total tax
+Totals add up
+Tours
+Type
+Type how much cash the customer gave you.
+Type the receipt number
+Type the receipt number from their receipt to find it fast.
+Type the table number first.
+Type what is really on the shelf. Go through each group, then save once.
+Undo
+Undo this entry
+Unique ID
+Unit price
+Use "Viewing as" at the top to see the app the way another staff member sees it.
+Use it when someone asks "is this real?" during a presentation.
+Use oldest first
+Use oldest first: the top row is used before the others.
+Use the menu to move around.
+Use the search box to find a receipt number.
+Use the tabs to see only what is low or expiring soon.
+Used
+Used in these menu items
+Used on receipts and e-invoices.
+Used per day
+Usual price per L (RM)
+Usual price per unit (RM)
+Valid
+Value
+View receipt
+Viewing as:
+Void
+Void this sale
+W.P. Kuala Lumpur
+W.P. Labuan
+W.P. Putrajaya
+Waiting
+Waiting for e-invoice
+Waiting for the check. This takes a moment.
+Walk the shelves and type what you really have next to each item.
+Warn me when food has this many days left, or fewer:
+Waste
+Waste compared with sales before tax
+Waste log
+Waste logged
+Waste on top of that
+Waste per week in kilograms
+Waste per week in ringgit
+Waste per week, in RM
+Waste per week, in kg
+Waste this month
+Weight
+Welcome tour
+What a real product would still need
+What does Business activity code mean?
+What does Business registration number mean?
+What does Classification code mean?
+What does Combined e-invoice mean?
+What does Credit note mean?
+What does E-invoice mean?
+What does Food Rescue mean?
+What does Food cost % mean?
+What does Minimum stock mean?
+What does Rounding mean?
+What does SST mean?
+What does Service charge mean?
+What does TIN mean?
+What does Tax type mean?
+What does Unique ID mean?
+What does Use oldest first mean?
+What is on the shelf right now.
+What is pretend in this demo and what a real product still needs.
+What is pretend, what is estimated, and what a real product would still need.
+What this status means:
+What to do
+When
+When a customer asks for one
+When a customer needs more time, press "Hold bill" and the bill waits here.
+When the app is opened from your own web link, a Print button appears here. In the print window choose "Save as PDF".
+When the delivery comes, press the green "Receive goods" button.
+When to warn about food that is close to expiry.
+Whether service tax is charged on top of the service charge could not be confirmed from an official Customs page today. It is a switch in Settings, on by default.
+Which delivery arrived?
+Which month?
+Which sale is this e-invoice for?
+Who are you ordering from?
+Who has to do it, and when
+Who is the buyer?
+Who is using the app
+Who is using the app?
+Why food was wasted
+Why is a credit note needed?
+Why? (LHDN asks for a reason)
+Why? (pick one)
+Will last about
+Wrong buyer details
+Wrong items or amounts
+Yes, cancel the order
+Yes, cancel this e-invoice
+Yes, clear the bill
+Yes, close the order
+Yes, delete the draft
+Yes, delete this dish
+Yes, log as waste
+Yes, received
+Yes, remove the entry
+Yes, reset everything
+Yes, void this sale
+Yesterday
+You are here
+You can cancel until
+You counted
+Your rescue offers
+Your to-do list
+accounts@contohmaju.example
+aina@demo.example
+and will no longer count.  You cannot undo this.
+and will no longer count. The sale itself stays, and you can issue a new e-invoice for it. You cannot undo this.
+beans@bijihitam.example
+for business
+hello@rotirumah.example
+kedai@ujian.example
+kg
+loaf
+order@ayamlaut.example
+orders@lembahdairy.example
+orders@pasarpagi.example
+piece
+sales@kedaikering.example

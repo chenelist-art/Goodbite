@@ -1,0 +1,245 @@
+1 || "Salin sebagai hamparan" memberi anda angka untuk ditampal ke Excel atau Google Sheets. || “复制为表格”会给出数字，方便粘贴到 Excel 或 Google Sheets。
+2 || "Salin sebagai hamparan" memberi anda senarai untuk Excel. || “复制为表格”会给出清单，方便放进 Excel。
+3 || "Betulkan kiraan" digunakan apabila rak tidak sama dengan aplikasi. || 货架上的数量和应用不一样时，用“更正数量”。
+4 || "Selamatkan Makanan" membolehkan anda menawarkan makanan yang hampir luput kepada rakan kongsi dan bukannya membuangnya (rakan kongsi demo sahaja). || “食物救援”让您把快过期的食物提供给合作伙伴，而不是丢掉（仅为演示伙伴）。
+5 || "Tahan bil" dan "Kosongkan bil" berfungsi apabila bil ada item. || 账单有品项后，“暂存账单”和“清空账单”才能用。
+6 || "Tahan bil" menyimpan bil sementara supaya anda boleh melayan orang lain. Cari semula di bawah "Bil ditahan". || “暂存账单”把账单先放一边，让您先服务别人。在“暂存的账单”里可以找回。
+7 || "Kos bahan" ialah kos membuat makanan yang dijual pada hari itu. || “食材成本”是当天卖出的食物的制作成本。
+8 || "Keluarkan e-invois untuk jualan ini" memulakan langkah e-invois dengan jualan ini sudah diisi. || “为这笔销售开电子发票”会开始电子发票步骤，并已填好这笔销售。
+9 || "Buka item ini dalam Stok" menunjukkan apa yang ada di rak sekarang. || “在库存中打开此品项”显示现在货架上有什么。
+10 || "Pesan lagi" memulakan pesanan kepada pembekal item ini dengan jumlah cadangan. || “再订货”会向此品项的供应商开始一张订单，并填好建议数量。
+11 || "Set semula data demo" di bawah mengembalikan semuanya seperti asal. || 底部的“重置演示数据”会把一切恢复到最初的样子。
+12 || "Tunjuk JSON" dan "Paparan cetak" ialah dua cara untuk membawa e-invois keluar dari aplikasi. || “显示 JSON”和“打印视图”是把电子发票带出应用的两种方法。
+13 || "Cadangan" menyenaraikan apa yang hampir habis. Satu butang menukarnya menjadi pesanan. || “建议”列出快用完的东西。按一个按钮就能变成订单。
+14 || "Batalkan jualan ini" membatalkan jualan. Guna hanya untuk kesilapan. || “作废这笔销售”会取消销售。只在出错时使用。
+15 || "Menunggu" menyenaraikan jualan yang pelanggan minta e-invois tetapi belum dibuat. || “等待中”列出顾客要求电子发票但还没开的销售。
+16 || (rekaan) || （虚构）
+17 || (belum diisi) || （还没填）
+18 || (pilih mana-mana, atau tiada) || （可多选，也可不选）
+19 || (pilih satu) || （选一个）
+20 || *** BATAL: Tersilap masuk (tiada apa dibuat) *** || *** 作废：输入错误（没有制作） ***
+21 || , luput esok. Siapa yang patut mengambilnya? || ，明天过期。由谁来领取？
+22 || . Kira apa yang benar-benar ada di rak dan taip di sini. || 。请数一数货架上真正有多少，然后在这里输入。
+23 || . Ia ditolak daripada jualan hari ini. Anda tidak boleh membuat asal. || 。它会从今天的销售额中扣除。此操作无法撤销。
+24 || Orang Malaysia || 马来西亚个人
+25 || Orang Malaysia memberi TIN, atau nombor MyKad, atau kedua-duanya. Orang asing memberi TIN, atau nombor pasport bersama TIN am LHDN. || 马来西亚个人提供 TIN 或 MyKad 号码，或两者都提供。外国人提供 TIN，或提供护照号码并使用 LHDN 的通用 TIN。
+26 || Nombor yang lebih besar memberi anda lebih masa untuk menggunakan makanan atau menawarkannya untuk diselamatkan. || 数字越大，您就有越多时间用掉食物或提供给救援伙伴。
+27 || Perniagaan || 公司
+28 || Pelanggan meminta e-invois || 顾客要求电子发票
+29 || Penghantaran tiba || 货到了
+30 || Invois digital yang dihantar kepada LHDN untuk disemak sebelum pembeli menerimanya. LHDN menamakan sistemnya MyInvois. || 一种数字发票，先发给 LHDN 检查，买方才收到。LHDN 把这个系统叫做 MyInvois。
+31 || Dokumen yang membetulkan atau membalikkan e-invois apabila ia tidak boleh dibatalkan lagi. || 当电子发票不能再取消时，用来更正或冲销它的文件。
+32 || Orang asing || 外国人
+33 || Rakan pembayaran berlesen untuk kad, DuitNow QR dan e-dompet. || 有执照的支付伙伴，用于刷卡、DuitNow QR 和电子钱包。
+34 || Bahan atau bekalan baharu untuk dijejak. || 要追踪的新食材或用品。
+35 || E-invois sebenar mempunyai pautan dan kod QR yang membuka laman LHDN. Demo ini menunjukkan gambar contoh yang tidak boleh diimbas. || 真正的电子发票有链接和二维码，可打开 LHDN 网站。这个演示只显示一张不能扫描的示意图。
+36 || Mesin juruwang sebenar akan berhubung dengan terminal kad atau syarikat pembayaran di sini. Dalam demo ini, tekan sahaja butang hijau apabila pelanggan sudah membayar. || 真正的收银机会在这里连接刷卡机或支付公司。在这个演示里，顾客付款后按绿色按钮就可以。
+37 || Pelayan dan pangkalan data, supaya data dikongsi antara peranti dan tidak terperangkap dalam satu pelayar. || 服务器和数据库，让数据能在不同设备间共享，而不是困在一个浏览器里。
+38 || E-invois yang sah mendapat ID unik daripada LHDN, dan kod QR dibuat daripada pautan pengesahan yang mengandungi ID itu. || 有效的电子发票会从 LHDN 得到唯一编号，二维码由包含该编号的验证链接生成。
+39 || Cara untuk terus bekerja apabila internet terputus dan menyegerak kemudian. || 断网时也能继续工作、之后再同步的方法。
+40 || Kod aktiviti || 业务代码
+41 || Tambah hidangan || 添加菜品
+42 || Tambah caj perkhidmatan pada bil makan di sini || 堂食账单加收服务费
+43 || Tambah bahan || 添加食材
+44 || Tambah hidangan || 添加菜品
+45 || Tambah item || 添加品项
+46 || Tambah item || 添加品项
+47 || Tambah pembekal || 添加供应商
+48 || Tambah ke resipi || 加入配方
+49 || Tambah, ubah atau padam hidangan, harga dan resipinya. || 添加、修改或删除菜品，以及价格和配方。
+50 || Tambahan || 加料
+51 || Ditambah secara automatik || 自动添加
+52 || Alamat || 地址
+55 || Amaran || 提醒
+56 || Semua || 全部
+57 || Semua sampai || 已到齐
+58 || Semua item || 全部品项
+59 || Semua nombor adalah rekaan || 所有号码都是虚构的
+60 || Semua nombor di sini adalah rekaan. Gantikan hanya untuk ujian anda sendiri. || 这里的号码都是虚构的。只在自己测试时才替换。
+61 || Tambah juga pada bil bungkus || 外带账单也加收
+62 || Juga dirujuk: || 另外参考：
+63 || Jumlah || 数量
+64 || Jumlah untuk satu hidangan || 一份的用量
+65 || Baki || 剩余数量
+66 || Jumlah diterima (L) || 收到数量（升）
+67 || Jumlah diterima (kg) || 收到数量（公斤）
+68 || Jumlah diterima (buku) || 收到数量（条）
+69 || Jumlah diterima (biji) || 收到数量（个）
+70 || Jumlah perlu dibayar (RM) || 应付金额（RM）
+71 || E-invois ialah invois digital yang disemak oleh LHDN. Halaman ini menyenaraikan semua yang anda buat. || 电子发票是由 LHDN 检查的数字发票。这一页列出您开过的每一张。
+72 || Caj tambahan yang dikenakan oleh sesetengah kedai pada bil makan di sini. Ia untuk kedai, bukan kerajaan. || 有些店对堂食账单加收的费用。归店家所有，不是政府收的。
+73 || Aplikasi kata || 应用显示
+74 || Minta nombor resit daripada pelanggan. || 请向顾客要收据号码。
+75 || Minta butiran ini daripada pelanggan. Yang lain diisi daripada jualan. || 请向顾客要这些资料。其余的会从销售记录自动填好。
+76 || Minta pembekal menghantar e-invois mereka untuk bil ini. || 请供应商发来这张账单的电子发票。
+77 || Pada kadar sekarang || 按目前的速度
+78 || Kembali || 返回
+79 || Kembali sebagai Pemilik. Pembaziran dalam kg dan RM, item paling banyak dibazir, dan kos makanan berbanding jualan. Ketik mana-mana angka untuk melihat butirannya. Semua angka adalah rekaan. || 回到店主身份。浪费的公斤数和金额、浪费最多的品项，以及食材成本占销售的比例。点任何数字可看明细。所有数字都是虚构的。
+80 || Kembali ke Utama || 回到首页
+81 || Kembali ke Invois || 回到发票
+82 || Kembali ke Pesanan || 回到订货
+83 || Kembali ke Stok || 回到库存
+84 || Kembali ke butiran pembeli || 回到买方资料
+85 || Kembali ke item || 回到品项
+86 || Kembali ke menu || 回到菜单
+87 || Kembali ke pilih bulan || 回到选择月份
+88 || Kembali ke sebab || 回到原因
+89 || Kembali ke bil || 回到账单
+90 || Kembali ke kaunter || 回到收银台
+92 || Bakeri || 烘焙
+93 || Imbasan kod bar. Anda cari mengikut nama atau taip kod item. || 条码扫描。您改用名称搜索或输入品项代码。
+94 || Kelompok || 批次
+95 || Jujur tentang apa yang olok-olok || 坦白说明哪些是模拟的
+96 || Sebelum cukai || 税前
+97 || Butang besar untuk kerja harian || 日常工作的大按钮
+98 || Bil || 账单
+99 || Bil dikosongkan || 账单已清空
+100 || Tarikh bil || 账单日期
+101 || Bil kembali ke kaunter || 账单已回到收银台
+102 || Bil kembali ke kaunter. Bil yang anda buat tadi kini ditahan. || 账单已回到收银台。您刚才那张账单现在已暂存。
+103 || Nombor bil (tercetak pada bil) || 账单号码（印在账单上）
+104 || Nombor bil tiada. Salin daripada bil pembekal. || 缺少账单号码。请从供应商的账单上抄下来。
+105 || Bil ditahan. Cari di bawah "Bil ditahan". || 账单已暂存。可在“暂存的账单”里找到。
+106 || Ringkasan bil || 账单摘要
+107 || Bil kepada || 开给
+108 || Bil || 账单数
+109 || Sarapan || 早餐
+110 || Bawa balik › || 取回 ›
+111 || Kod aktiviti perniagaan || 业务活动代码
+112 || Keterangan aktiviti perniagaan || 业务活动说明
+113 || Butiran perniagaan || 商家资料
+114 || No. pendaftaran perniagaan || 商业注册号
+115 || Nombor pendaftaran perniagaan || 商业注册号码
+116 || Pembeli || 买方
+117 || Nombor ID pembeli tiada. || 缺少买方证件号码。
+118 || TIN pembeli || 买方 TIN
+119 || TIN pembeli tiada. || 缺少买方 TIN。
+120 || Alamat pembeli tiada. || 缺少买方地址。
+121 || Bandar pembeli tiada. || 缺少买方城市。
+122 || Butiran pembeli || 买方资料
+123 || Butiran pembeli telah diisi || 买方资料已填好
+124 || Nama pembeli || 买方名称
+125 || Nama pembeli tiada. || 缺少买方名称。
+126 || Nombor telefon pembeli tiada. || 缺少买方电话号码。
+127 || Pembeli dengan TIN yang salah (menunjukkan penolakan) || TIN 错误的买方（演示被拒绝）
+128 || Campus Pantry Subang (rakan demo) || Campus Pantry Subang（演示伙伴）
+129 || Batal || 取消
+130 || Batalkan pesanan || 取消订单
+131 || Batalkan e-invois dahulu || 请先取消电子发票
+132 || Batalkan e-invois ini || 取消这张电子发票
+133 || Dibatalkan || 已取消
+134 || Pembatalan || 取消
+135 || Kad || 刷卡
+136 || Kad (olok-olok) || 刷卡（模拟）
+137 || Tunai || 现金
+138 || Tunai diterima (RM) || 收到现金（RM）
+139 || Juruwang || 收银员
+140 || Juruwang membuat jualan || 收银员做一笔销售
+141 || Juruwang ▾ || 收银员 ▾
+142 || Baki wang || 找零
+143 || Ubah item || 修改品项
+144 || Ubah sesuatu || 修改一下
+145 || Tukar pembekal || 换供应商
+146 || Baki untuk diberi || 应找零
+147 || Baki untuk diberi: || 应找零：
+148 || Ubah › || 修改 ›
+149 || Perubahan disimpan sebaik sahaja anda membuatnya. || 您一修改就会保存。
+150 || Perubahan disimpan semasa anda menaip. || 输入时自动保存。
+151 || Kenakan SST (hanya jika kedai berdaftar untuknya) || 收取 SST（只有已注册的店才收）
+152 || Kenakan SST atas caj perkhidmatan juga || 服务费也收 SST
+153 || Semak dan hantar || 检查并发送
+154 || Semak item || 检查品项
+155 || Pautan semakan || 验证链接
+156 || Semak status sekarang || 现在查看状态
+157 || Semak TIN dan nombor ID pembeli dengan pelanggan, betulkan, kemudian hantar semula. || 请和顾客核对买方 TIN 和证件号码，改正后再发送。
+158 || Semak item || 检查品项
+159 || Semak kadar yang betul dengan Kastam atau akauntan anda. Nilai permulaan hanyalah contoh biasa. || 请向关税局或您的会计确认正确的税率。初始数值只是常见的例子。
+160 || Disemak dengan sumber rasmi || 已对照官方来源核实
+161 || Disemak pada || 检查时间
+162 || Semakan oleh akauntan tentang cukai, pembundaran dan peraturan e-invois. || 由会计检查税务、进位和电子发票规则。
+163 || Pilih Makan di sini atau Bungkus, kemudian tekan butang hijau "Pergi ke bayaran". || 选择堂食或外带，然后按绿色的“去付款”按钮。
+164 || Pilih seawal mana aplikasi patut memberi amaran tentang makanan yang hampir luput. || 选择应用要提前多久提醒您食物快过期。
+165 || Pilih bahasa || 选择语言
+166 || Pilih jualan yang pelanggan mahukan e-invois. || 选择顾客要开电子发票的那笔销售。
+167 || Bandar || 城市
+168 || Kod klasifikasi || 分类代码
+169 || Kosongkan bil || 清空账单
+170 || Kosongkan bil ini? || 清空这张账单？
+171 || Tutup || 关闭
+172 || Tutup bantuan || 关闭帮助
+173 || Tutup pesanan (baki tidak akan sampai) || 结束订单（剩下的不会来了）
+174 || Hampir luput dan masih elok || 快过期但还好
+175 || Kod || 代码
+176 || Kopi || 咖啡
+177 || Kopi dan minuman || 咖啡和饮料
+178 || Gabungan (jualan pelanggan biasa) || 合并（散客销售）
+179 || E-invois gabungan || 合并电子发票
+180 || E-invois gabungan untuk jualan pelanggan biasa || 散客销售的合并电子发票
+181 || Sahkan || 确认
+182 || Sahkan barang diterima || 确认收货
+183 || Teruskan e-invois ini || 继续这张电子发票
+184 || Disalin. Tampal ke Excel, Sheets atau Notepad. || 已复制。可粘贴到 Excel、Sheets 或记事本。
+185 || Salin semua || 全部复制
+186 || Salin sebagai hamparan || 复制为表格
+187 || Salin jualan harian sebagai hamparan || 把每日销售复制为表格
+188 || Salin butiran daripada bil (invois) yang diberi pembekal. || 把供应商给您的账单（发票）上的资料抄进来。
+189 || Salin log pembaziran sebagai hamparan || 把浪费记录复制为表格
+190 || Membetulkan || 更正对象
+191 || Kos || 成本
+192 || Kos bahan yang digunakan dalam makanan yang dijual, dibahagi dengan jualan sebelum cukai dan caj perkhidmatan. Lebih rendah lebih baik. || 卖出食物所用食材的成本，除以税和服务费之前的销售额。越低越好。
+193 || Kos seliter || 每升成本
+194 || Kos sekilo || 每公斤成本
+195 || Kos sebuku || 每条成本
+196 || Kos sebiji || 每个成本
+197 || Kiraan disimpan || 盘点已保存
+198 || Kira stok || 盘点库存
+199 || Jumlah dikira (L) || 实际数量（升）
+200 || Buat sekarang || 现在开
+201 || Buat pesanan || 新建订单
+202 || Nota kredit || 贷项通知单
+203 || Mata wang || 货币
+204 || Pelanggan batalkan (makanan sudah dibuat) || 顾客取消（食物已做好）
+205 || Pelanggan memulangkan pesanan || 顾客退回订单
+206 || Pelanggan akan minta e-invois kemudian || 顾客之后会要电子发票
+208 || DEMO - tidak disambung ke LHDN MyInvois. Bukan dokumen cukai yang sah. || 演示 - 没有连接 LHDN MyInvois。不是有效的税务文件。
+209 || Tenusu || 乳制品
+210 || Tarikh || 日期
+211 || Tarikh dan masa || 日期和时间
+212 || Hari || 日期
+213 || Hari dalam bulan di bahagian bawah. Tuding atau ketik bar untuk melihat jumlahnya. || 底部是当月的日期。把鼠标移到柱子上或点一下可看金额。
+214 || Padam hidangan || 删除菜品
+215 || Padam draf || 删除草稿
+216 || Padam draf ini? || 删除这份草稿？
+217 || Hantar dalam || 送货时间
+218 || Hantar dalam (hari) || 送货时间（天）
+219 || Data demo || 演示数据
+220 || Data demo diset semula. Semuanya kembali seperti asal. || 演示数据已重置。一切回到最初。
+221 || Data demo: semua angka di sini adalah rekaan || 演示数据：这里的数字都是虚构的
+222 || Demo sahaja. Sistem sebenar akan mengambil status ini daripada LHDN MyInvois. || 仅为演示。真正的系统会从 LHDN MyInvois 取得这个状态。
+223 || Demo sahaja: rakan kongsi adalah rekaan, tiada apa dihantar || 仅为演示：伙伴是虚构的，没有发送任何东西
+224 || Gambar demo sahaja. Tidak boleh diimbas. || 仅为演示图片，不能扫描。
+225 || Resit demo. Semua harga adalah rekaan. || 演示收据。所有价格都是虚构的。
+226 || Lawatan demo || 演示导览
+227 || Lawatan demo tamat. Mulakan semula dari bar atas. || 演示导览已结束。可从顶部栏重新开始。
+228 || Keterangan || 说明
+229 || Adakah pembekal menghantar e-invois? || 供应商发电子发票了吗？
+230 || Berbeza daripada arahan asal: || 与最初的要求不同：
+231 || Makan di sini || 堂食
+232 || Hidangan || 菜品
+233 || Nama hidangan || 菜品名称
+234 || Dokumen || 文件
+235 || Selesai || 完成
+236 || Selesai, kembali ke Tetapan || 完成，回到设置
+237 || Muat turun fail || 下载文件
+238 || Draf || 草稿
+239 || Draf dipadam || 草稿已删除
+240 || Draf || 草稿
+241 || Minuman || 饮料
+242 || Barang kering || 干货
+244 || DuitNow QR (olok-olok) || DuitNow QR（模拟）
+245 || E-invois || 电子发票
+246 || E-invois Sah || 电子发票 有效
+247 || Dokumen e-invois mengekalkan nama medan rasmi dalam bahasa Inggeris di mana LHDN menggunakannya. || 电子发票文件在 LHDN 使用英文的地方保留官方英文栏位名称。
+248 || E-invois daripada pembekal || 供应商的电子发票
+249 || E-invois ditanda sebagai diterima || 电子发票已标记为收到
+250 || Nota e-invois || 电子发票说明

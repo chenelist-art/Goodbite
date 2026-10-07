@@ -1,0 +1,102 @@
+Whipping cream || Krim putar || 淡奶油
+Butter || Mentega || 牛油
+Cheddar slices || Kepingan cheddar || 切达芝士片
+Mozzarella || Mozzarella || 马苏里拉芝士
+Yogurt || Yogurt || 酸奶
+Eggs || Telur || 鸡蛋
+Cream cheese || Keju krim || 奶油芝士
+Lettuce || Salad || 生菜
+Tomato || Tomato || 番茄
+Cucumber || Timun || 黄瓜
+Onion || Bawang besar || 洋葱
+Garlic || Bawang putih || 蒜头
+Chilli || Cili || 辣椒
+Lemon || Lemon || 柠檬
+Limau kasturi || Limau kasturi || 桔仔
+Banana || Pisang || 香蕉
+Avocado || Avokado || 牛油果
+Mushrooms || Cendawan || 蘑菇
+Spinach || Bayam || 菠菜
+Potato || Kentang || 马铃薯
+Mixed berries (frozen) || Beri campur (sejuk beku) || 综合莓果（冷冻）
+Mango || Mangga || 芒果
+Sourdough loaf || Roti sourdough || 酸种面包
+Croissant (frozen dough) || Croissant (doh sejuk beku) || 可颂（冷冻面团）
+Burger bun || Roti burger || 汉堡面包
+Bagel || Bagel || 贝果
+Tortilla wrap || Tortilla || 墨西哥薄饼
+Flour || Tepung || 面粉
+Sugar || Gula || 糖
+Cocoa powder || Serbuk koko || 可可粉
+Dark chocolate || Coklat gelap || 黑巧克力
+Almond flakes || Kepingan badam || 杏仁片
+Coffee beans || Biji kopi || 咖啡豆
+Matcha powder || Serbuk matcha || 抹茶粉
+Tea leaves || Daun teh || 茶叶
+Caramel sauce || Sos karamel || 焦糖酱
+Honey || Madu || 蜂蜜
+Gula melaka || Gula melaka || 椰糖
+Soda water || Air soda || 苏打水
+Orange juice || Jus oren || 橙汁
+Rice || Beras || 米
+Pasta || Pasta || 意大利面
+Coconut milk || Santan || 椰浆
+Cooking oil || Minyak masak || 食用油
+Olive oil || Minyak zaitun || 橄榄油
+Sambal paste || Pes sambal || 叁巴酱
+Ikan bilis || Ikan bilis || 江鱼仔
+Peanuts || Kacang tanah || 花生
+Tomato pasta sauce || Sos pasta tomato || 番茄意面酱
+Mayonnaise || Mayones || 美乃滋
+Chicken breast || Dada ayam || 鸡胸肉
+Beef patty || Daging burger lembu || 牛肉饼
+Smoked salmon || Salmon salai || 烟熏三文鱼
+Tuna (canned) || Tuna (tin) || 鲔鱼（罐头）
+Prawns || Udang || 虾
+Turkey ham || Ham ayam belanda || 火鸡火腿
+Chicken sausage || Sosej ayam || 鸡肉香肠
+Espresso || Espresso || 浓缩咖啡
+Americano || Americano || 美式咖啡
+Latte || Latte || 拿铁
+Cappuccino || Cappuccino || 卡布奇诺
+Flat White || Flat White || 馥芮白
+Mocha || Mocha || 摩卡
+Caramel Latte || Latte Karamel || 焦糖拿铁
+Gula Melaka Latte || Latte Gula Melaka || 椰糖拿铁
+Iced Long Black || Long Black Ais || 冰黑咖啡
+Matcha Latte || Latte Matcha || 抹茶拿铁
+Hot Chocolate || Coklat Panas || 热巧克力
+Teh Tarik Special || Teh Tarik Special || 特制拉茶
+Lemon Honey Soda || Soda Lemon Madu || 蜂蜜柠檬苏打
+Limau Kasturi Cooler || Minuman Limau Kasturi || 桔仔冰饮
+Mango Smoothie || Smoothie Mangga || 芒果冰沙
+Berry Smoothie || Smoothie Beri || 莓果冰沙
+Orange Juice || Jus Oren || 橙汁
+Big Breakfast || Sarapan Besar || 丰盛早餐
+Avocado Toast || Roti Bakar Avokado || 牛油果吐司
+Smoked Salmon Bagel || Bagel Salmon Salai || 烟熏三文鱼贝果
+Scrambled Eggs on Toast || Telur Hancur atas Roti Bakar || 炒蛋吐司
+Banana Pancakes || Pankek Pisang || 香蕉松饼
+Berry Yogurt Bowl || Mangkuk Yogurt Beri || 莓果酸奶碗
+Nasi Lemak Ayam || Nasi Lemak Ayam || 椰浆饭配鸡肉
+Chicken Burger || Burger Ayam || 鸡肉汉堡
+Beef Burger || Burger Daging || 牛肉汉堡
+Chicken Caesar Wrap || Wrap Caesar Ayam || 凯撒鸡肉卷
+Tuna Melt Sandwich || Sandwic Tuna Keju || 鲔鱼芝士三明治
+Mushroom Aglio Olio || Aglio Olio Cendawan || 蘑菇蒜香意面
+Prawn Aglio Olio || Aglio Olio Udang || 鲜虾蒜香意面
+Tomato Chicken Pasta || Pasta Ayam Tomato || 番茄鸡肉意面
+Nasi Goreng Kampung || Nasi Goreng Kampung || 甘榜炒饭
+Garden Salad || Salad Taman || 田园沙拉
+Turkey Ham Cheese Croissant || Croissant Ham Keju || 火鸡火腿芝士可颂
+Fries || Kentang Goreng || 薯条
+Butter Croissant || Croissant Mentega || 牛油可颂
+Almond Croissant || Croissant Badam || 杏仁可颂
+Chocolate Brownie || Brownie Coklat || 巧克力布朗尼
+Banana Bread Slice || Sepotong Roti Pisang || 香蕉蛋糕片
+Burnt Cheesecake Slice || Sepotong Kek Keju Bakar || 巴斯克芝士蛋糕片
+Berry Muffin || Mufin Beri || 莓果玛芬
+Gula Melaka Cake Slice || Sepotong Kek Gula Melaka || 椰糖蛋糕片
+Bagel with Cream Cheese || Bagel dengan Keju Krim || 奶油芝士贝果
+Garlic Toast || Roti Bakar Bawang Putih || 蒜香吐司
+Restaurants (example code, check your own) || Restoran (kod contoh, semak kod anda sendiri) || 餐馆（示例代码，请查自己的代码）

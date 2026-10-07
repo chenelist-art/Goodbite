@@ -1,0 +1,189 @@
+781 || Tarik balik tawaran || 收回提供
+782 || Terima bayaran || 收款
+783 || Bungkus || 外带
+784 || Ketik item menu untuk menambahnya pada bil di sebelah kanan. Taip nama atau kod item dalam kotak carian untuk mencarinya lebih cepat. || 点菜单上的品项，把它加到右边的账单。在搜索框输入名称或品项代码可更快找到。
+785 || Ketik angka atau baris untuk melihat butirannya. || 点数字或一行可看明细。
+786 || Ketik satu sebab. || 请点一个原因。
+787 || Ketik baris untuk membuka resit. Dari situ anda boleh mengeluarkan e-invois atau membatalkan jualan. || 点一行可打开收据。在那里可以开电子发票或作废销售。
+788 || Ketik baris untuk melihat kelompoknya, memesan lagi atau mencatat pembaziran. || 点一行可看批次、再订货或记录浪费。
+789 || Ketik baris untuk melihat sejarah pembaziran penuh item itu. || 点一行可看该品项完整的浪费记录。
+790 || Ketik item untuk melihat stoknya. || 点品项可看它的库存。
+791 || Ketik item untuk melihat stoknya. Ketik pesanan untuk membukanya. || 点品项可看它的库存。点订单可打开它。
+792 || Ketik mana-mana baris untuk membukanya. Butang hijau pada setiap pesanan menunjukkan langkah seterusnya. || 点任何一行可打开。每张订单上的绿色按钮显示下一步。
+793 || Ketik di sini untuk bertukar antara Pemilik, Juruwang dan staf Dapur. Menu berubah untuk menunjukkan hanya apa yang orang itu perlukan. || 点这里可在店主、收银员和厨房员工之间切换。菜单会改变，只显示那个人需要的东西。
+794 || Cukai || 税
+795 || Nombor Pengenalan Cukai. Nombor yang diberi LHDN (pejabat cukai) kepada setiap pembayar cukai. Syarikat dan individu masing-masing ada satu. || 税务识别号。LHDN（税务局）给每个纳税人的号码。公司和个人各有一个。
+796 || Cukai dan pembundaran || 税和进位
+797 || Jenis cukai || 税种
+798 || Cukai, caj perkhidmatan dan pembundaran || 税、服务费和进位
+801 || Jualan ujian || 测试销售
+802 || Bahawa e-invois pembekal ialah bukti perbelanjaan anda adalah cara LHDN menerangkannya secara umum, tetapi perkataan tepatnya tidak disemak semula hari ini. || LHDN 在一般资料中说，供应商的电子发票是您的费用凭证，但确切的字句今天没有重新核对。
+803 || Itulah lawatannya. Ulang bila-bila masa dari Bantuan. || 导览到此结束。随时可从“帮助”重看。
+804 || Perkataan Bahasa Melayu dan Cina ditulis oleh Claude dan belum disemak oleh penutur asli. || 马来文和中文的字句由 Claude 撰写，尚未经母语者检查。
+805 || ID yang diberi LHDN kepada setiap e-invois yang telah disemak. Dalam demo ini ID adalah rekaan. || LHDN 给每张检查过的电子发票的编号。这个演示里的编号是虚构的。
+806 || Peraturan LHDN yang diikuti demo ini, dengan sumber. || 这个演示遵循的 LHDN 规则，附来源。
+807 || Aplikasi menjumlahkan setiap resipi setiap kali item dijual. Semua harga di sini adalah harga demo. || 每卖出一个品项，应用就把它的配方加总。这里的价格都是演示价格。
+808 || Aplikasi menganggap ada || 应用认为现有
+809 || Cap DEMO besar dikekalkan kerana ini bukan dokumen cukai sebenar. || 大大的 DEMO 印章会保留，因为这不是真正的税务文件。
+810 || Butang bulat besar memulakan kerja yang paling kerap anda buat. || 大圆按钮用来开始您最常做的工作。
+811 || Kad di bawah "Perlu dibuat" ialah perkara yang perlu diberi perhatian. Ketik kad untuk terus ke penyelesaiannya. || “待办”下面的卡片是需要处理的事。点卡片直接去处理。
+812 || Perubahan berkuat kuasa serta-merta, untuk setiap peranan pada peranti ini. || 更改立即生效，适用于这台设备上的每个角色。
+813 || Perubahan terus kelihatan di Utama dan di Stok. || 更改会马上显示在首页和库存。
+814 || Label berwarna di atas ialah status. Baris di sebelahnya memberitahu apa yang perlu dibuat seterusnya. || 顶部的彩色标签是状态。旁边那行说明下一步该做什么。
+815 || Label berwarna menunjukkan status. Ketik baris untuk melihat apa yang perlu dibuat seterusnya. || 彩色标签显示状态。点一行可看下一步该做什么。
+816 || Pelanggan meminta e-invois. || 顾客要求了电子发票。
+817 || Nama hidangan tiada. || 缺少菜品名称。
+818 || Baris e-invois menunjukkan sama ada pembekal telah menghantar e-invois mereka untuk bil ini. || 电子发票那一行显示供应商有没有发来这张账单的电子发票。
+819 || E-invois akan ditanda sebagai || 电子发票将被标记为
+820 || Tarikh akhir tempoh kelonggaran penalti LHDN hanya dilihat di laman bukan rasmi, jadi ia ditinggalkan. || LHDN 罚款宽限期的结束日期只在非官方网站上看到，所以没有写进来。
+821 || Butang hijau sentiasa perkara utama untuk dibuat pada sesuatu halaman. || 绿色按钮永远是一页上最主要的操作。
+822 || Butang hijau memulakan pesanan baharu kepada pembekal ini. || 绿色按钮会向这家供应商开始一张新订单。
+823 || Item yang belum sampai tidak lagi dijangka. Stok yang sudah diterima kekal seperti sedia ada. || 还没到的品项将不再等待。已收到的库存保持不变。
+824 || Kilogram bagi setiap biji atau buku yang digunakan untuk menukar pembaziran kepada kg. || 用来把浪费换算成公斤的每个或每条的重量。
+825 || Jumlah paling rendah yang anda mahu ada di rak. Di bawah paras ini aplikasi memberitahu anda untuk memesan lagi. || 您希望货架上至少有的数量。低于这个数量，应用会提醒您再订货。
+826 || Menu utama || 主菜单
+827 || Menu berubah untuk menunjukkan hanya apa yang setiap orang perlukan. Demo ini tiada kata laluan. || 菜单会改变，只显示每个人需要的东西。这个演示没有密码。
+828 || Laporan bulanan || 月报
+829 || Nombor yang diberi SSM kepada perniagaan apabila ia didaftarkan. || 公司注册时 SSM 给的号码。
+830 || Peratusan yang ditambah kaunter pada setiap bil. || 收银台加在每张账单上的百分比。
+831 || Resipi ialah apa yang kaunter tolak daripada stok setiap kali hidangan dijual. || 配方就是每卖出一份菜品，收银台从库存扣掉的东西。
+832 || Resipi menyenaraikan apa yang digunakan untuk satu hidangan. Setiap jualan menolak jumlah ini daripada stok, kelompok paling lama dahulu. || 配方列出一份所用的东西。每笔销售从库存扣掉这些数量，先扣最旧的批次。
+833 || Jualan disimpan dan stok berkurang mengikut resipi. Tekan "Lihat apa yang digunakan" untuk menunjukkan bahannya. || 销售已保存，库存按配方减少。按“查看用了什么”来显示食材。
+834 || Jualan disimpan dan stok telah dikurangkan mengikut resipi. || 销售已保存，库存已按配方减少。
+835 || Senarai yang sama ada dalam fail README. || README 文件里有同样的清单。
+836 || Senarai kedua ialah apa yang tidak dapat disahkan. Anggap ia sebagai soalan terbuka. || 第二份清单是未能确认的事项。请把它们当作未解决的问题。
+837 || Stok yang paling cepat luput sentiasa digunakan dahulu, jadi kurang makanan dibuang. || 最快过期的库存总是先用，这样丢掉的食物更少。
+838 || Pembekal telah menghantar e-invois yang telah disemak untuk bil ini. Simpan bersama rekod anda. || 供应商已发来这张账单的已检查电子发票。请和您的记录一起保存。
+839 || Kadar cukai dalam Tetapan ialah contoh biasa, bukan nasihat. || 设置里的税率是常见的例子，不是建议。
+840 || Kelompok teratas dalam senarai ialah yang paling lama, dan ia sentiasa digunakan dahulu. || 清单最上面的批次最旧，总是最先用。
+841 || Ini nilai permulaan, bukan kadar rasmi untuk kedai anda. Semak sebelum bergantung padanya. || 这些是初始数值，不是您店铺的官方税率。使用前请先核实。
+842 || Ini datang terus daripada jualan harian. Anda hanya perlu menyemaknya. || 这些直接来自每日销售。您只需要看一遍。
+843 || Ini datang terus daripada resit. Anda hanya perlu menyemaknya. || 这些直接来自收据。您只需要看一遍。
+844 || Butiran ini dicetak pada resit dan ada pada setiap e-invois. || 这些资料会印在收据上，也会出现在每张电子发票上。
+845 || Ini memulakan perkara yang paling kerap anda buat: buat jualan, terima penghantaran, catat pembaziran, kira stok. || 这些用来开始您最常做的事：做销售、收货、记录浪费、盘点库存。
+846 || Ini membatalkan jualan sebanyak || 这会取消这笔销售，金额
+847 || Nota kredit ini membalikkan e-invois || 这张贷项通知单冲销电子发票
+848 || E-invois ini telah dibatalkan dan tidak lagi dikira. || 这张电子发票已取消，不再计算。
+849 || Ini bil daripada pembekal. || 这是供应商的账单。
+850 || Ini demo. Menekan butang menyimpan pesanan di sini tetapi tidak menghantar e-mel atau mesej kepada pembekal. || 这是演示。按按钮会把订单保存在这里，但不会给供应商发电邮或消息。
+851 || Ini semua yang akan dihantar ke LHDN, disusun mengikut cara LHDN menyenaraikan medan. || 这是会发给 LHDN 的全部内容，按 LHDN 列栏位的方式排列。
+852 || Beginilah rupa e-invois di atas kertas atau sebagai PDF. || 这是电子发票印在纸上或存成 PDF 的样子。
+853 || Ini resit yang pelanggan terima. || 这是顾客拿到的收据。
+854 || Inilah yang ditolak daripada stok bagi setiap jualan. || 这是每笔销售从库存扣掉的东西。
+855 || Di sinilah anda memesan daripada pembekal dan menerima penghantaran. || 在这里向供应商订货和收货。
+856 || Yang ini || 这一张
+857 || Halaman ini ialah senarai jujur tentang apa yang demo ini tidak benar-benar lakukan. || 这一页如实列出这个演示没有真正做到的事。
+858 || Halaman ini menyenaraikan peraturan LHDN yang menjadi asas demo ini. || 这一页列出这个演示所依据的 LHDN 规则。
+859 || Halaman ini menunjukkan butiran hubungan pembekal, apa yang anda beli daripada mereka dan pada harga berapa. || 这一页显示供应商的联系资料、您向他们买什么以及价格。
+860 || Jualan ini ada e-invois. Jualan tidak boleh dibatalkan selagi e-invoisnya masih sah. || 这笔销售有电子发票。电子发票还有效时，销售不能作废。
+861 || Ini menunjukkan apa yang dipesan dan apa yang telah sampai setakat ini. || 这里显示订了什么，以及到目前为止到了什么。
+862 || Dibuang || 丢弃量
+863 || Masa || 时间
+864 || Perlu dibuat || 待办
+865 || Hari ini || 今天
+866 || Jualan hari ini || 今天的销售
+867 || Esok || 明天
+868 || Jumlah || 合计
+869 || Jumlah tidak termasuk cukai || 不含税合计
+870 || Jumlah termasuk cukai || 含税合计
+871 || Jumlah perlu dibayar (MYR) || 应付总额（MYR）
+872 || Jumlah cukai || 税额合计
+873 || Jumlah sepadan || 合计正确
+874 || Lawatan || 导览
+875 || Jenis || 类型
+876 || Taip berapa tunai yang diberi pelanggan. || 请输入顾客给了多少现金。
+877 || Taip nombor resit || 输入收据号码
+878 || Taip nombor resit daripada resit mereka untuk mencarinya dengan cepat. || 输入他们收据上的号码可快速找到。
+879 || Taip nombor meja dahulu. || 请先输入桌号。
+880 || Taip apa yang benar-benar ada di rak. Lalui setiap kumpulan, kemudian simpan sekali. || 输入货架上真正的数量。每一组都看一遍，然后保存一次。
+881 || Buat asal || 撤销
+882 || Buat asal catatan ini || 撤销这条记录
+883 || ID unik || 唯一编号
+884 || Harga seunit || 单价
+885 || Guna "Lihat sebagai" di atas untuk melihat aplikasi seperti yang dilihat staf lain. || 用顶部的“查看身份”看看其他员工看到的应用。
+886 || Gunakannya apabila seseorang bertanya "adakah ini benar?" semasa pembentangan. || 报告时有人问“这是真的吗？”就用这一页。
+887 || Guna yang lama dahulu || 先用旧的
+888 || Guna yang lama dahulu: baris teratas digunakan sebelum yang lain. || 先用旧的：最上面一行先用。
+889 || Guna menu untuk bergerak. || 用菜单来切换页面。
+890 || Guna kotak carian untuk mencari nombor resit. || 用搜索框找收据号码。
+891 || Guna tab untuk melihat hanya yang rendah atau hampir luput. || 用标签只看偏低或快过期的。
+892 || Digunakan || 已用
+893 || Digunakan dalam item menu ini || 用在这些菜品里
+894 || Digunakan pada resit dan e-invois. || 用在收据和电子发票上。
+895 || Digunakan sehari || 每天用量
+896 || Harga biasa seliter (RM) || 平常每升价格（RM）
+897 || Harga biasa seunit (RM) || 平常单价（RM）
+898 || Sah || 有效
+899 || Nilai || 价值
+900 || Lihat resit || 查看收据
+901 || Lihat sebagai: || 查看身份：
+902 || Batal || 作废
+903 || Batalkan jualan ini || 作废这笔销售
+907 || Menunggu || 等待中
+908 || Menunggu e-invois || 等待电子发票
+909 || Menunggu semakan. Ini mengambil sedikit masa. || 等待检查中。需要一点时间。
+910 || Jalan di sepanjang rak dan taip apa yang benar-benar ada di sebelah setiap item. || 沿着货架走一遍，在每个品项旁输入实际数量。
+911 || Beri amaran apabila makanan tinggal sebanyak ini hari, atau kurang: || 食物剩下这么多天或更少时提醒我：
+912 || Pembaziran || 浪费
+913 || Pembaziran berbanding jualan sebelum cukai || 浪费占税前销售额
+914 || Log pembaziran || 浪费记录
+915 || Pembaziran dicatat || 浪费已记录
+916 || Pembaziran sebagai tambahan || 另外的浪费
+917 || Pembaziran seminggu dalam kilogram || 每周浪费（公斤）
+918 || Pembaziran seminggu dalam ringgit || 每周浪费（令吉）
+919 || Pembaziran seminggu, dalam RM || 每周浪费（RM）
+920 || Pembaziran seminggu, dalam kg || 每周浪费（公斤）
+921 || Pembaziran bulan ini || 本月浪费
+922 || Berat || 重量
+923 || Lawatan pengenalan || 欢迎导览
+924 || Apa yang masih diperlukan oleh produk sebenar || 真正的产品还需要什么
+941 || Apa yang ada di rak sekarang. || 现在货架上有什么。
+942 || Apa yang olok-olok dalam demo ini dan apa yang masih diperlukan oleh produk sebenar. || 这个演示里哪些是模拟的，以及真正的产品还需要什么。
+943 || Apa yang olok-olok, apa yang dianggarkan, dan apa yang masih diperlukan oleh produk sebenar. || 哪些是模拟的、哪些是估算的，以及真正的产品还需要什么。
+944 || Maksud status ini: || 这个状态的意思：
+945 || Apa perlu dibuat || 可以做什么
+946 || Bila || 时间
+947 || Apabila pelanggan memintanya || 顾客要求时
+948 || Apabila pelanggan perlukan lebih masa, tekan "Tahan bil" dan bil menunggu di sini. || 顾客需要多一点时间时，按“暂存账单”，账单就在这里等着。
+949 || Apabila aplikasi dibuka dari pautan web anda sendiri, butang Cetak muncul di sini. Dalam tetingkap cetak pilih "Simpan sebagai PDF". || 从您自己的网页链接打开应用时，这里会出现“打印”按钮。在打印窗口里选“另存为 PDF”。
+950 || Apabila penghantaran tiba, tekan butang hijau "Terima barang". || 货到了就按绿色的“收货”按钮。
+951 || Bila perlu memberi amaran tentang makanan yang hampir luput. || 什么时候提醒食物快过期。
+952 || Sama ada cukai perkhidmatan dikenakan atas caj perkhidmatan tidak dapat disahkan daripada halaman rasmi Kastam hari ini. Ia suis dalam Tetapan, hidup secara lalai. || 服务税是否加在服务费之上，今天未能从关税局官方页面确认。它是设置里的一个开关，默认开启。
+953 || Penghantaran mana yang tiba? || 哪一批货到了？
+954 || Bulan mana? || 哪个月？
+955 || E-invois ini untuk jualan mana? || 这张电子发票是哪笔销售的？
+956 || Anda memesan daripada siapa? || 您向谁订货？
+957 || Siapa perlu melakukannya, dan bila || 谁必须做，什么时候开始
+958 || Siapa pembelinya? || 买方是谁？
+959 || Siapa yang menggunakan aplikasi || 谁在用这个应用
+960 || Siapa yang menggunakan aplikasi? || 谁在用这个应用？
+961 || Mengapa makanan dibazirkan || 食物为什么被浪费
+962 || Mengapa nota kredit diperlukan? || 为什么需要贷项通知单？
+963 || Mengapa? (LHDN meminta sebab) || 为什么？（LHDN 要求填原因）
+964 || Mengapa? (pilih satu) || 为什么？（选一个）
+965 || Akan tahan kira-kira || 大约还能用
+966 || Butiran pembeli salah || 买方资料错了
+967 || Item atau jumlah salah || 品项或金额错了
+968 || Ya, batalkan pesanan || 是，取消订单
+969 || Ya, batalkan e-invois ini || 是，取消这张电子发票
+970 || Ya, kosongkan bil || 是，清空账单
+971 || Ya, tutup pesanan || 是，结束订单
+972 || Ya, padam draf || 是，删除草稿
+973 || Ya, padam hidangan ini || 是，删除这道菜品
+974 || Ya, catat sebagai pembaziran || 是，记为浪费
+975 || Ya, diterima || 是，已收到
+976 || Ya, buang catatan || 是，移除记录
+977 || Ya, set semula semuanya || 是，全部重置
+978 || Ya, batalkan jualan ini || 是，作废这笔销售
+979 || Semalam || 昨天
+980 || Anda di sini || 您在这里
+981 || Anda boleh membatalkan sehingga || 可以取消，直到
+982 || Anda kira || 您数到
+983 || Tawaran penyelamatan anda || 您的救援提供记录
+984 || Senarai tugasan anda || 您的待办清单
+987 || dan tidak lagi dikira.  Anda tidak boleh membuat asal. || ，不再计算。此操作无法撤销。
+988 || dan tidak lagi dikira. Jualan itu sendiri kekal, dan anda boleh mengeluarkan e-invois baharu untuknya. Anda tidak boleh membuat asal. || ，不再计算。销售本身保留，您可以为它重新开电子发票。此操作无法撤销。
+990 || untuk perniagaan || 商家版
+993 || kg || 公斤
+994 || buku || 条
+998 || biji || 个

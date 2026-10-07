@@ -1,0 +1,52 @@
+This receipt is no longer in the demo || Resit ini tiada lagi dalam demo || 这张收据已不在演示里
+Only the last few days of receipts are kept. || Hanya resit beberapa hari lepas disimpan. || 只保留最近几天的收据。
+This item is no longer in the list || Item ini tiada lagi dalam senarai || 这个品项已不在清单里
+No order matches "{q}" || Tiada pesanan sepadan dengan "{q}" || 没有订单符合“{q}”
+No orders yet || Belum ada pesanan || 还没有订单
+Orders you send to suppliers show up here. || Pesanan yang anda hantar kepada pembekal muncul di sini. || 您发给供应商的订单会显示在这里。
+Create your first order || Buat pesanan pertama anda || 新建第一张订单
+Create the first order || Buat pesanan pertama || 新建第一张订单
+When a supplier sends a bill, enter it here to keep track of what you owe. || Apabila pembekal menghantar bil, masukkan di sini untuk menjejak hutang anda. || 供应商寄来账单时，在这里输入，方便追踪欠款。
+Enter the first bill || Masukkan bil pertama || 输入第一张账单
+This order was removed || Pesanan ini telah dibuang || 这张订单已被移除
+This bill was removed || Bil ini telah dibuang || 这张账单已被移除
+Back to bills || Kembali ke bil || 回到账单
+Nothing is marked as received. Type the amount that arrived for at least 1 item. || Tiada apa ditanda sebagai diterima. Taip jumlah yang tiba untuk sekurang-kurangnya 1 item. || 没有标记任何到货。请至少为 1 个品项输入到货数量。
+{x}: the amount must be a number. Type 0 if none arrived. || {x}: jumlah mesti nombor. Taip 0 jika tiada yang tiba. || {x}：数量必须是数字。没到货就输入 0。
+{x}: pick the expiry date printed on the pack. || {x}: pilih tarikh luput yang tercetak pada bungkusan. || {x}：请选包装上印的到期日。
+{x}: the expiry date is in the past. Check the date, or do not accept this item. || {x}: tarikh luput sudah berlalu. Semak tarikh, atau jangan terima item ini. || {x}：到期日已经过了。请检查日期，或不要收这个品项。
+{x}: the price must be a number, for example 7.50. || {x}: harga mesti nombor, contohnya 7.50. || {x}：价格必须是数字，例如 7.50。
+No items yet || Belum ada item || 还没有品项
+Add an item and choose this supplier. || Tambah item dan pilih pembekal ini. || 添加品项并选择这家供应商。
+No waste logged for this item || Tiada pembaziran dicatat untuk item ini || 这个品项没有浪费记录
+No waste logged in {mth} || Tiada pembaziran dicatat pada {mth} || {mth}没有浪费记录
+Week of {d}: {q} || Minggu {d}: {q} || {d} 那一周：{q}
+{d}: {m} from {q} || {d}: {m} daripada {q} || {d}：{m}，共 {q}
+Sent and waiting for LHDN to check it. This normally takes a few seconds. || Dihantar dan menunggu semakan LHDN. Biasanya mengambil beberapa saat. || 已发送，等待 LHDN 检查。通常只需几秒。
+New e-invoice || E-invois baharu || 新电子发票
+This sale was voided || Jualan ini telah dibatalkan || 这笔销售已作废
+A voided sale cannot get an e-invoice. || Jualan yang dibatalkan tidak boleh mendapat e-invois. || 已作废的销售不能开电子发票。
+Nothing to invoice || Tiada apa untuk diinvois || 没有可开发票的内容
+This draft was deleted || Draf ini telah dipadam || 这份草稿已删除
+This e-invoice was removed || E-invois ini telah dibuang || 这张电子发票已被移除
+Your own TIN is missing. Add it in Settings. || TIN anda sendiri tiada. Tambah dalam Tetapan. || 缺少您自己的 TIN。请在设置里添加。
+Your business activity code is missing. Add it in Settings. || Kod aktiviti perniagaan anda tiada. Tambah dalam Tetapan. || 缺少您的业务活动代码。请在设置里添加。
+There are no items on this e-invoice. || Tiada item pada e-invois ini. || 这张电子发票上没有品项。
+The totals do not add up. Go back to "Check items" and the app will work them out again. || Jumlah tidak sepadan. Kembali ke "Semak item" dan aplikasi akan mengiranya semula. || 合计对不上。回到“检查品项”，应用会重新计算。
+A tax amount does not match its tax rate. || Satu jumlah cukai tidak sepadan dengan kadar cukainya. || 有一项税额和税率不符。
+Counted amount ({u}) || Jumlah dikira ({u}) || 实际数量（{u}）
+Amount received ({u}) || Jumlah diterima ({u}) || 收到数量（{u}）
+Usual price per {u} (RM) || Harga biasa setiap {u} (RM) || 平常每{u}价格（RM）
+Price per {u} (RM) || Harga setiap {u} (RM) || 每{u}价格（RM）
+Minimum stock ({u}) || Stok minimum ({u}) || 最低库存（{u}）
+Cost per {u} || Kos setiap {u} || 每{u}成本
+piece || biji || 个
+loaf || buku || 条
+*** VOID: {r} *** || *** BATAL: {r} *** || *** 作废：{r} ***
+(not recorded) || (tidak direkodkan) || （没有记录）
+(no supplier) || (tiada pembekal) || （没有供应商）
+(removed item) || (item dibuang) || （已移除的品项）
+Sale saved || Jualan disimpan || 销售已保存
+Draft deleted || Draf dipadam || 草稿已删除
+Draft saved. Find it under Invoices, Drafts. || Draf disimpan. Cari di bawah Invois, Draf. || 草稿已保存。可在“发票”的“草稿”里找到。
+{n} Restaurants (example code, check your own) || {n} Restoran (kod contoh, semak kod anda sendiri) || {n} 餐馆（示例代码，请查自己的代码）
