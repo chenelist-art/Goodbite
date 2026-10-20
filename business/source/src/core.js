@@ -30,7 +30,9 @@ const plural=(n,w,ws)=>n+' '+(n===1?w:(ws||w+'s'));
 const SIM_ERR='LHDN could not match the buyer TIN with the ID number (this rejection is simulated).';
 
 /* ---------- saving ---------- */
-function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.v===1&&Array.isArray(s.batches))return s}catch(e){}return null}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.v===1&&Array.isArray(s.batches))return migrate(s)}catch(e){}return null}
+/* data saved by an older version of the demo gets the newer fields */
+function migrate(s){s.sort=s.sort||{};ING_EXTRA.forEach(id=>{if(!s.ingredients.some(i=>i.id===id))s.ingredients.push(parseIng().find(i=>i.id===id))});return s}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function resetDemo(){S=seed();IX=null;sweep();save()}
 

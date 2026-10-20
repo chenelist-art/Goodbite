@@ -1,4 +1,4 @@
-# GoodBite B2B app handoff note (7 Oct 2026)
+# GoodBite B2B app handoff note (7 Oct 2026, updated 20 Oct 2026)
 
 Read with `claude/goodbite-handoff.md` (consumer prototype and videos) and `claude/goodbite-b2b-pivot.md` (why B2B).
 
@@ -13,11 +13,11 @@ A new, separate demo: **GoodBite for Business**. A supply-chain portal plus till
 ## What is in the app
 - 3 roles with a visible switcher (no login): Owner (8 menu items), Cashier (Home, Sell), Kitchen (Home, Stock, Orders, Waste).
 - Sell: 44 menu items with options, dine-in/takeaway, hold/resume, void with reason, 4 pretend payment types, service charge + SST + 5 sen rounding (all switchable in Settings), receipt, recipe-based stock deduction.
-- Stock: 60 ingredients kept by batch with expiry, oldest used first, low and expiring lists, stock count, auto-waste when a batch expires.
+- Stock: 60 ingredients (61 from 19 Oct, with kangkung) kept by batch with expiry, oldest used first, low and expiring lists, stock count, auto-waste when a batch expires.
 - Orders: 6 suppliers, 3-step order, suggested reorder, receive goods (part deliveries), supplier bills with payment and e-invoice status.
 - Waste: 3-tap log, monthly report (kg, RM, top items, reasons, food cost %), CSV as a copy box, Food Rescue with made-up partners.
 - Invoices: 4-step e-invoice from a sale, combined (consolidated) e-invoice for walk-in sales, credit note, cancel within 72 hours, statuses Draft/Submitted/Valid/Invalid/Cancelled, fake ID and QR, JSON in a simplified UBL 2.1 layout, printable view, DEMO banner on every e-invoice screen.
-- Guidance: 5-step welcome tour, 12-step Demo tour for the 5-minute presentation, Help on every page, "?" tips for technical words.
+- Guidance: 5-step welcome tour, 12-step Demo tour (14 steps from 19 Oct) for the 5-minute presentation, Help on every page, "?" tips for technical words.
 
 ## Second round, same day (menu editing + languages)
 - Settings > Menu and recipes is now a full editor: add dish, change dish (name, group or new group, price, picture, options, recipe rows), delete dish with confirm and Undo. New dishes get codes from 601. Till tabs come from the dishes, so a new group appears as a new tab.
@@ -26,6 +26,58 @@ A new, separate demo: **GoodBite for Business**. A supply-chain portal plus till
 - Not translated: user-typed names, demo company names, dates, CSV text, e-invoice JSON.
 - The Malay and Chinese were written by Claude and not checked by a native speaker.
 - Bug fixed along the way: typing in a box and then clicking a button straight away could swallow the click (the page redrew between press and release). Affected Tax settings too.
+
+## Third round, 19 Oct 2026 (supervisor's three features)
+Built on the supervisor's suggestion, in the version Chen agreed. Everything new is simulated and says so on screen.
+
+**1. Scan (one button, three ways).** Home (Owner and Kitchen), Stock, Orders, and Receive goods have a Scan button.
+- *Delivery order or supplier invoice:* pick which paper is in front of the camera (any open order, or a sample delivery with no order in the app). The app "reads" every line still to come, with amounts and prices. Saving receives the order, so it becomes "Received" or "Part received", the same as typing it in.
+- *Supermarket receipt or barcode:* a sample receipt from "Pasaraya Jimat (demo shop)" with 7 lines. Five lines are matched to items. "KICAP MANIS 1L" is not in the item list, so it is left out unless staff match it to an item. The plastic bag is flagged as not food. In barcode mode you pick one of 4 sample packs; you can scan several in a row.
+- *Wet-market photo:* pick a pretend photo (chicken, kangkung, prawns, or a blurry one). The app guesses the item. "Not right?" opens big picture buttons for 19 fresh items, and a blurry photo shows them straight away. You can add several photos before saving.
+- *Confirm screen (all three ways):* item, amount, price, and a **suggested** expiry date labelled with where it came from: "Date read from the pack (simulated)" for barcodes, "Typical for fresh food: n days" for fresh items, or "Usual shelf life for this item… check the date printed on the pack" for everything else. Typical fresh lives: chicken 2 days, prawns 1, beef 2, kangkung and spinach 3, lettuce 4, tomato 5. "Add to stock" stays locked until staff tap "Date checked" on every line (changing the date also counts). Past dates are refused. You can undo the save from the message that pops up.
+- New ingredient: **Kangkung** (Produce, RM6/kg, from Pasar Pagi). It is not in any dish, so it appears as a "Food rescue" suggestion. The demo now has 61 ingredients. The other demo numbers did not change, because kangkung gets fixed starting stock.
+
+**2. Date sort.** "Newest first / Oldest first" chips (for stock: "Expiring soonest first / Expiring latest first") appear on Stock (all, low, expiring soon), Orders, Supplier bills, the Waste log, Waste history for one item, Waste entries in Reports, Invoices (all tabs; supplier bills on their own tab), Recent sales, and Sales by day. Each list remembers its own choice (saved in `S.sort`). There is no sort on the till, Settings, the menu editor or Home. The Stock list now opens soonest-expiry first (before, it opened in category order). The Invoices list gained a Date column.
+
+**3. Expiring-soon report** (Stock > "Expiring-soon report"; also opened from Reports, the Stock "Expiring soon" tab, and the Home "expiring" card, which now shows the RM at risk).
+- Period chips: 1, 2, 3, 5 or 7 days (default = the Alerts setting, 2 days).
+- Top boxes: **value at risk**, batches expiring with kg likely left over, and the total worth if none were used.
+- One row per batch: amount, expiry, likely left over, RM value at risk, and a suggested action with a one-line reason.
+- How it works: the average use per day over the last 14 days, using older batches first, gives what will probably be used by the expiry date. Whatever is left is "at risk", valued at the batch cost.
+- Actions:
+  - *Use first:* little or nothing left over, or lots of time.
+  - *Use in today's special:* names the 1 or 2 dishes that use the most of it.
+  - *Discount:* expires tomorrow and over 60% will be left, or expires today and up to half will be left.
+  - *Food rescue:* not used in any dish, or expires today and most of it will be left. These rows have an "Offer for rescue" button.
+- "Print" (on the GitHub Pages copy) prints a clean page. "Copy to share" gives plain text for WhatsApp or email, in the app's language.
+- Demo figures on 19 Oct, 2-day view: 7 batches, RM 190.85 at risk out of RM 269.80. Actions: 5 today's special, 1 discount, 1 food rescue.
+
+**Demo tour:** now 14 steps. "Scan instead of typing" (step 8, kitchen, market photo of chicken) and "What is about to expire, in RM" (step 10, the report) were added.
+
+**Limitations page:** the barcode line was replaced with honest lines about simulated scanning, suggested dates, and value at risk. "Real text and photo recognition" was added to "What a real product would still need".
+
+**Languages:** about 150 new Malay and Chinese lines are at the end of `test/tr8.txt` (the dictionary now has 1,595 entries). The sample papers inside the camera view (delivery order, receipt lines, "Read:" text) stay as printed, like CSV and e-invoice JSON. Claude wrote the translations, and nobody has checked them yet.
+
+## Test results (third round, 19–20 Oct, final build)
+- New feature test `test/scan.js`: 44 of 44 checks passed. It covers:
+  - the delivery order received in full;
+  - the receipt with its non-food and unknown lines;
+  - prices per unit, and a past date being refused;
+  - changing a date counting as checked;
+  - two barcodes in a row;
+  - the chicken photo with a 2-day suggestion, and a blurry photo, then picking kangkung with a 3-day suggestion;
+  - undo;
+  - each date sort;
+  - the report's totals, actions, share text and rescue button;
+  - no sort on Home or the till.
+- Old tests still pass: flow 34 of 34, menu editor 9 of 9, no sideways overflow at 1366, 1024 or 390 px.
+- Button audit, English, desktop width: 15,879 clicks (Owner 5,762, Cashier 5,014, Kitchen 5,103), 0 failed.
+- Same audit in Chinese (Owner, 5,742 clicks) and Bahasa Melayu (Kitchen, 5,079 clicks): 0 failed.
+- First phone-width run (Malay, Kitchen) found a **bug from the first build**: on a phone, "View bill" on the till opened the bill but did not hide the 44-item menu, so the bill sat at the bottom of a long page. Cause: an inline style on the menu column beat the CSS rule. Fixed in `style.css` (`display:none!important`).
+- After the fix, at phone width: Malay Kitchen 4,825 clicks and English Cashier 4,667 clicks, 0 failed.
+- The desktop audits ran before that fix. The fix only applies on phone widths, so desktop is not affected.
+- Translation: every new phrase seen on screen has Malay and Chinese. On purpose, the pretend paper inside the camera view (delivery order, receipt lines, "Read:" text) stays as printed.
+- Not tried on a real phone or by a real café owner.
 
 ## E-invoice facts checked on 7 Oct 2026 (sources are inside the app under Invoices > E-invoice notes)
 - Exemption: LHDN e-Invoice Guideline v4.8 (30 Aug 2026) says turnover under RM3,000,000 is exempt. LHDN's timeline web page still says RM1,000,000 (updated 7 Dec 2025). The app follows the PDF and flags the mismatch. **Either way most target customers are exempt**, so e-invoicing is a "nice to have / future-proof" selling point, not a legal driver. Worth raising with the supervisor.

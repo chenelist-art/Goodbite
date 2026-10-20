@@ -241,6 +241,29 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
 .hl{outline:3px solid #FFC400!important;outline-offset:3px;border-radius:10px}
 
 /* ---------- tablet ---------- */
+/* scan, sort and expiring report */
+.sortc{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.chip.sm{min-height:38px;padding:0 12px;font-size:13.5px}
+.chip svg.ic{width:18px;height:18px;margin-right:4px;vertical-align:-3px}
+.biga.way{padding:20px 14px;gap:8px}.biga.way small{font-weight:600;color:var(--muted);font-size:13.5px;line-height:1.35}
+.wpic{font-size:44px;line-height:1}
+.cam{position:relative;background:#1E2A1C;border-radius:16px;min-height:300px;display:grid;place-items:center;padding:30px 24px;overflow:hidden}
+.cam .cr{position:absolute;width:28px;height:28px;border:3px solid #fff;opacity:.85}
+.cr.tl{top:12px;left:12px;border-right:0;border-bottom:0;border-radius:6px 0 0 0}.cr.tr{top:12px;right:12px;border-left:0;border-bottom:0;border-radius:0 6px 0 0}
+.cr.bl{bottom:12px;left:12px;border-right:0;border-top:0;border-radius:0 0 0 6px}.cr.br{bottom:12px;right:12px;border-left:0;border-top:0;border-radius:0 0 6px 0}
+.doc{background:#FFFDF6;color:#222;font-family:var(--mono);font-size:12.5px;padding:14px 16px;border-radius:4px;width:min(100%,300px);display:flex;flex-direction:column;gap:3px;transform:rotate(-1.5deg);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.doc hr{border:0;border-top:1px dashed #999;margin:4px 0;width:100%}.doc .l{display:flex;justify-content:space-between;gap:10px}
+.doc.bc{align-items:center;transform:none;gap:6px}.doc.bc svg{width:190px;height:72px}.doc.bc rect{fill:#111}
+.photo{font-size:118px;line-height:1;background:radial-gradient(circle,#7d8f62 0,#3b4a30 72%);width:230px;height:230px;max-width:100%;border-radius:12px;display:grid;place-items:center}
+.photo.blur{filter:blur(7px)}
+.mono{font-family:var(--mono);font-size:13px}
+.scanrow{display:flex;flex-direction:column;gap:12px}.scanrow.off{background:var(--panel-2)}
+.scanrow h3{margin:0}.rpic{font-size:34px;line-height:1;width:46px;text-align:center;flex:none}
+.picg{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:8px}
+.pic{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;border:1.5px solid var(--line);border-radius:12px;background:var(--panel);font-size:13px;min-height:88px}
+.pic span{font-size:38px;line-height:1}.pic.on{border-color:var(--green);background:var(--green-s)}.pic:hover{border-color:var(--green)}
+.printonly{display:none}
+table.exp td{vertical-align:top}
 @media (max-width:1100px){
   :root{--side:92px}
   #side{padding:10px 6px;align-items:stretch}
@@ -254,6 +277,7 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
 }
 /* ---------- phone ---------- */
 @media (max-width:700px){
+  .cam{min-height:230px;padding:24px 14px}.photo{width:180px;height:180px;font-size:92px}.rpic{display:none}
   body{font-size:15px}
   #side{display:none}
   #bot{display:flex;flex:none;background:var(--panel);border-top:1px solid var(--line);padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px))}
@@ -269,7 +293,7 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
   h1{font-size:22px}
   .pg{padding:16px 16px 30px}
   .pos{grid-template-columns:minmax(0,1fr)}
-  .pos.showbill .menucol{display:none}
+  .pos.showbill .menucol{display:none!important}
   .pos:not(.showbill) .bill{display:none}
   .billbar{display:flex;position:sticky;bottom:0;z-index:2}
   .bill{position:static}
@@ -290,4 +314,5 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
 @media print{
   body{overflow:visible;background:#fff} #side,#top,#bot,.noprint,#demo,#toast,.foot,.acts{display:none!important}
   #app,#main,#scr{display:block;height:auto;overflow:visible} .pg{padding:0} .paper{border:0;box-shadow:none}
+  .printonly{display:block!important} .card,.kpi{box-shadow:none;break-inside:avoid} .pill{border:1px solid currentColor}
 }

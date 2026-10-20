@@ -5,7 +5,7 @@ function alertsFor(role){const a=[],T=today(),k=role==='kitchen',c=role==='cashi
     const auto=S.waste.filter(w=>w.auto&&w.dt.slice(0,10)===T);
     if(auto.length)add('bad','trash',plural(auto.length,'item')+' passed the expiry date',''+'Moved to the waste log automatically ('+rm(auto.reduce((x,w)=>x+w.cost,0))+').','root',{s:'waste'},'See waste log');
     const soon=soonList(),ids=[...new Set(soon.map(b=>b.ing))];
-    if(soon.length)add('warn','clock',plural(ids.length,'item')+' expiring in '+plural(S.settings.expDays,'day'),ids.slice(0,4).map(i=>ING(i).name).join(', ')+(ids.length>4?' and more':''),'root',{s:'stock',p:{tab:'soon'}},'See the list');
+    if(soon.length){const rk=riskList(S.settings.expDays).reduce((x,y)=>x+y.risk,0);add('warn','clock',plural(ids.length,'item')+' expiring in '+plural(S.settings.expDays,'day'),ids.slice(0,4).map(i=>ING(i).name).join(', ')+(ids.length>4?' and more':'')+(rk?' · '+rm(rk)+' at risk':''),'go',{s:'expReport'},'See the report')}
     S.orders.filter(x=>(x.status==='sent'||x.status==='part')&&x.expected<=T).forEach(x=>add('info','truck','Delivery from '+SUP(x.sup).name+' is due'+(x.expected===T?' today':''),'Order #'+x.no+(x.status==='part'?' (part received)':''),'go',{s:'receive',p:{order:x.id,step:1}},'Receive goods'));
     const low=lowList();let shown=0;
     low.forEach(i=>{if(shown>=3)return;const oo=onOrder(i.id);if(oo>0)return;shown++;add('bad','box',i.name+' is low',qU(i.id,onHand(i.id))+' left. Minimum is '+qU(i.id,i.min)+'.','go',{s:'newOrder',p:{ing:i.id}},'Order now')});
@@ -19,9 +19,9 @@ function alertsFor(role){const a=[],T=today(),k=role==='kitchen',c=role==='cashi
   return a}
 SCREENS.home={sec:'home',title:()=>'Home',help:['The big round buttons start the jobs you do most often.','The cards under "To do" are things that need attention. Tap a card to go straight to the fix.','Use "Viewing as" at the top to see the app the way another staff member sees it.'],
  html(){const r=S.role,T=today(),hr=now().getHours(),al=alertsFor(r);
-  const big={owner:[['New sale','bag','root',{s:'pos'}],['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}]],
+  const big={owner:[['New sale','bag','root',{s:'pos'}],['Scan','scan','go',{s:'scan'}],['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}]],
     cashier:[['New sale','bag','root',{s:'pos'}],["See today's sales",'list','go',{s:'salesList'}]],
-    kitchen:[['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}],['Expiring soon','clock','root',{s:'stock',p:{tab:'soon'}}]]}[r];
+    kitchen:[['Scan','scan','go',{s:'scan'}],['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}],['Expiring soon','clock','root',{s:'stock',p:{tab:'soon'}}]]}[r];
   let kp='';
   if(r==='owner'){const d=S.days[T]||{total:0,bills:0},ms=monthStats(T.slice(0,7));
     kp=`<div><div class="row" style="margin-bottom:10px"><h2>Numbers at a glance</h2>${demoTag}</div><div class="grid g4">
@@ -139,8 +139,8 @@ ACT.voidAsk=p=>{const s=saleBy(p.id);if(s.inv){confirmBox({title:'Cancel the e-i
 ACT.voidDo=p=>{const s=saleBy(p.id),[r,rs]=VOIDR[M.r];voidSale(s,r,rs);closeModal();render();toast('Receipt '+s.no+' is now void.'+(rs?' Ingredients are back in stock.':''))};
 SCREENS.salesList={sec:'sell',title:()=>'Recent sales',help:['Every receipt from the last few days is listed here.','Tap a row to open the receipt. From there you can issue an e-invoice or void the sale.','Use the search box to find a receipt number.'],
  html(p){const T=today(),d=p.d||T,q=(p.q||'').trim();const days=[T,addDays(T,-1),addDays(T,-2)];
-  const rows=S.sales.filter(s=>(q?String(s.no).includes(q):s.dt.slice(0,10)===d)).sort((a,b)=>b.no-a.no);
+  const rows=S.sales.filter(s=>(q?String(s.no).includes(q):s.dt.slice(0,10)===d)).sort((a,b)=>b.no-a.no).sort(byDate('sales',s=>s.dt));
   return `${pageHead('Recent sales','Receipts from the last 3 days. '+demoTag,`<button class="btn" ${A('root',{s:'pos'})}>New sale</button>`)}
-  <div class="row">${searchBox('q','Search by receipt number',p.q)}<div class="tabs">${days.map((x,i)=>`<button class="tab ${d===x&&!q?'on':''}" ${A('set',{k:'d',v:x})}>${i===0?'Today':i===1?'Yesterday':fDs(x)}</button>`).join('')}</div></div>
+  <div class="row">${searchBox('q','Search by receipt number',p.q)}<div class="tabs">${days.map((x,i)=>`<button class="tab ${d===x&&!q?'on':''}" ${A('set',{k:'d',v:x})}>${i===0?'Today':i===1?'Yesterday':fDs(x)}</button>`).join('')}</div></div>${sortBar('sales')}
   <div class="card pad0"><div class="tw">${rows.length?`<table><tr><th>Receipt</th><th>Time</th><th class="hide-s">Type</th><th class="hide-s">Paid by</th><th class="r">Total</th><th>Status</th><th></th></tr>${rows.slice(0,120).map(s=>`<tr class="click" tabindex="0" ${A('go',{s:'receipt',p:{id:s.id}})}><td class="b">${s.no}</td><td>${q?fDs(s.dt)+', ':''}${fT(s.dt)}</td><td class="hide-s">${s.type==='dine'?'Table '+h(s.table):'Takeaway'}</td><td class="hide-s">${h(s.pay)}</td><td class="r">${rm(s.total)}</td><td>${s.status==='void'?pill('Void','bad'):s.inv?pill('E-invoice sent','ok'):s.want?pill('Waiting for e-invoice','warn'):pill('Paid')}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`
    :empty(q?'No receipt matches "'+h(q)+'"':'No sales on this day yet',q?'Check the number, or clear the search.':'Sales you make on the till show up here.',q?`<button class="btn sec" ${A('set',{k:'q',v:''})}>Clear search</button>`:`<button class="btn" ${A('root',{s:'pos'})}>Make the first sale</button>`)}</div></div>`}};

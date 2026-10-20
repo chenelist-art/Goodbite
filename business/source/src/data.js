@@ -67,7 +67,10 @@ salmon|Smoked salmon|kg|Meat and seafood|M|95|1|10|1
 tuna|Tuna (canned)|kg|Meat and seafood|M|28|1.5|365|1
 prawn|Prawns|kg|Meat and seafood|M|42|1.5|2|1
 turkeyham|Turkey ham|kg|Meat and seafood|M|32|1|10|1
-sausage|Chicken sausage|piece|Meat and seafood|M|1.6|20|14|0.06`;
+sausage|Chicken sausage|piece|Meat and seafood|M|1.6|20|14|0.06
+kangkung|Kangkung|kg|Produce|P|6|1|3|1`;
+/* items added after the first version. The seed gives them fixed stock so the rest of the demo numbers stay the same. */
+const ING_EXTRA=['kangkung'];
 const ING_CATS=['Dairy','Produce','Bakery','Coffee and drinks','Dry goods','Meat and seafood'];
 /* modifier groups: one = pick one, many = pick any. add / remove change the recipe. */
 const MODS={
@@ -148,7 +151,7 @@ function seed(){
       addr:'G-01, Jalan Demo 15/4',city:'Subang Jaya',post:'47500',state:'Selangor',phone:'0355500100',email:'hello@teduhdaun.example'},
       tax:{scOn:true,scRate:10,scTakeaway:false,sstOn:true,sstRate:6,sstOnSc:true,round5:true},expDays:2,cancelHours:72},
     ingredients:parseIng(),menu:parseMenu(),suppliers:SUPPLIERS.map(x=>({...x})),
-    batches:[],sales:[],held:[],orders:[],bills:[],waste:[],invoices:[],rescue:[],days:{},use:{},cons:{},
+    batches:[],sales:[],held:[],orders:[],bills:[],waste:[],invoices:[],rescue:[],days:{},use:{},cons:{},sort:{},
     seq:{receipt:10001,order:101,inv:1,batch:1,id:1}};
   S=s;IX=null;
   const I=id=>s.ingredients.find(i=>i.id===id);
@@ -156,7 +159,9 @@ function seed(){
   const LOW={milk:5,croissant:14,avocado:6,beans:2.5};
   const SOON={sourdough:[1,5],chicken:[1,3.5],prawn:[2,1.2],spinach:[2,0.8],lettuce:[1,1.6]};
   const GONE={banana:[1.5],mushroom:[0.6]};
-  s.ingredients.forEach(i=>{
+  const base=s.ingredients.filter(i=>!ING_EXTRA.includes(i.id));
+  s.batches.push({id:'b'+s.seq.batch++,ing:'kangkung',qty:1.5,recv:addDays(T,-1),exp:addDays(T,2),cost:600});
+  base.forEach(i=>{
     const mk=(qty,expIn,recvAgo)=>s.batches.push({id:'b'+s.seq.batch++,ing:i.id,qty:r3(qty),recv:addDays(T,-recvAgo),exp:addDays(T,expIn),cost:i.cost});
     if(LOW[i.id]!=null){mk(LOW[i.id],Math.max(3,Math.round(i.shelf*.5)),2);return}
     if(SOON[i.id]){mk(SOON[i.id][1],SOON[i.id][0],Math.max(1,i.shelf-SOON[i.id][0]));mk(i.min*1.3,i.shelf,0);return}
@@ -186,9 +191,9 @@ function seed(){
     }
   }
   /* waste history */
-  const perish=s.ingredients.filter(i=>i.shelf<=14);
+  const perish=base.filter(i=>i.shelf<=14);
   for(let d=62;d>=1;d--){const date=addDays(T,-d),n=Math.floor(R()*4.2);
-    for(let k=0;k<n;k++){const i=R()<0.8?pick(perish):pick(s.ingredients);const qty=r3(i.unit==='piece'||i.unit==='loaf'?1+Math.floor(R()*4):0.2+R()*1.1);
+    for(let k=0;k<n;k++){const i=R()<0.8?pick(perish):pick(base);const qty=r3(i.unit==='piece'||i.unit==='loaf'?1+Math.floor(R()*4):0.2+R()*1.1);
       const reason=R()<0.45?'Expired':pick(REASONS);
       s.waste.push({id:'w'+s.seq.id++,dt:date+'T'+pad(9+Math.floor(R()*10))+':'+pad(Math.floor(R()*60)),ing:i.id,qty,reason,cost:Math.round(qty*i.cost),kg:r3(qty*i.kg),auto:reason==='Expired'&&R()<0.5,used:[]})}}
   /* orders and supplier bills */

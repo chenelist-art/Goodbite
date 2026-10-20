@@ -50,3 +50,164 @@ Sale saved || Jualan disimpan || 销售已保存
 Draft deleted || Draf dipadam || 草稿已删除
 Draft saved. Find it under Invoices, Drafts. || Draf disimpan. Cari di bawah Invois, Draf. || 草稿已保存。可在“发票”的“草稿”里找到。
 {n} Restaurants (example code, check your own) || {n} Restoran (kod contoh, semak kod anda sendiri) || {n} 餐馆（示例代码，请查自己的代码）
+// ---- 19 Oct 2026: Scan, date sort, expiring-soon report ----
+Kangkung || Kangkung || 空心菜
+Scan || Imbas || 扫描
+See the report || Lihat laporan || 查看报告
+{x} · {y} at risk || {x} · {y} berisiko || {x} · {y} 有风险
+What are you adding to stock? Every way ends on a screen where you check the details. || Apa yang anda tambah ke stok? Setiap cara berakhir di skrin untuk anda semak butirannya. || 你要把什么加进库存？每种方式最后都会让你检查一遍。
+Simulated in this demo || Disimulasikan dalam demo ini || 本演示中为模拟
+Pick a way || Pilih cara || 选择方式
+Take the photo || Ambil gambar || 拍照
+Check and confirm || Semak dan sahkan || 检查并确认
+Delivery order or supplier invoice || Pesanan penghantaran atau invois pembekal || 送货单或供应商发票
+Reads the whole order: items, amounts and prices. || Membaca seluruh pesanan: item, jumlah dan harga. || 读取整张单：品项、数量和价格。
+Supermarket receipt or barcode || Resit pasar raya atau kod bar || 超市收据或条形码
+Reads the items and amounts, and knows packaged products. || Membaca item dan jumlah, dan mengenali produk berbungkus. || 读取品项和数量，并能认出包装产品。
+Wet-market photo || Gambar pasar basah || 菜市场照片
+Guesses the food in the photo, such as chicken or kangkung. || Meneka makanan dalam gambar, seperti ayam atau kangkung. || 猜出照片里的食材，例如鸡肉或空心菜。
+Why three ways? || Kenapa tiga cara? || 为什么有三种方式？
+Many outlets buy some ingredients themselves at a wet market or supermarket. There is no delivery order and often no printed expiry date, so the app suggests one and staff confirm it. || Banyak kedai membeli sendiri sebahagian bahan di pasar basah atau pasar raya. Tiada pesanan penghantaran dan selalunya tiada tarikh luput bercetak, jadi aplikasi mencadangkan satu tarikh dan staf mengesahkannya. || 很多店会自己去菜市场或超市买一些食材。这样没有送货单，通常也没有印好的到期日，所以应用会建议一个日期，由员工确认。
+Type a delivery in by hand instead || Taip penghantaran secara manual || 改为手动输入送货
+Hold the phone over it and take the photo. In this demo the camera shows a sample picture. || Pegang telefon di atasnya dan ambil gambar. Dalam demo ini kamera menunjukkan gambar contoh. || 把手机对准它拍照。本演示中相机显示的是示例图片。
+Camera view (sample picture) || Paparan kamera (gambar contoh) || 相机画面（示例图片）
+Which paper is in front of the camera? || Kertas mana di depan kamera? || 相机前面是哪张单据？
+Delivery with no order in the app (sample) || Penghantaran tanpa pesanan dalam aplikasi (contoh) || 应用里没有订单的送货（示例）
+Take photo (simulated) || Ambil gambar (simulasi) || 拍照（模拟）
+Scan barcode (simulated) || Imbas kod bar (simulasi) || 扫描条形码（模拟）
+Simulated: nothing is read from a real camera. A real app would read the text and dates for you. || Simulasi: tiada apa dibaca daripada kamera sebenar. Aplikasi sebenar akan membaca teks dan tarikh untuk anda. || 模拟：没有从真实相机读取任何内容。真正的应用会帮你读出文字和日期。
+Pick another way || Pilih cara lain || 选择其他方式
+Simulated reading || Bacaan simulasi || 模拟读取
+For each item, look at the pack or the food. If the suggested expiry date is right, tap "Date checked". If not, change the date. || Untuk setiap item, lihat bungkusan atau makanan itu. Jika tarikh luput yang dicadangkan betul, ketik "Tarikh disemak". Jika tidak, tukar tarikh. || 每个品项都看一下包装或食材。建议的到期日正确就点“日期已检查”，不对就改日期。
+Item || Item || 品项
+Read: || Dibaca: || 读到：
+Remove this line || Buang baris ini || 删除这一行
+Expiry date || Tarikh luput || 到期日
+Suggested || Dicadangkan || 建议
+Date checked || Tarikh disemak || 日期已检查
+Usual shelf life for this item: {n} days. Check the date printed on the pack. || Jangka hayat biasa item ini: {n} hari. Semak tarikh yang dicetak pada bungkusan. || 这个品项通常可放 {n} 天。请核对包装上印的日期。
+Usual shelf life for this item: {n} day. Check the date printed on the pack. || Jangka hayat biasa item ini: {n} hari. Semak tarikh yang dicetak pada bungkusan. || 这个品项通常可放 {n} 天。请核对包装上印的日期。
+Typical for fresh food: {n} days || Biasa untuk makanan segar: {n} hari || 生鲜食材一般：{n} 天
+Typical for fresh food: {n} day || Biasa untuk makanan segar: {n} hari || 生鲜食材一般：{n} 天
+Date read from the pack (simulated) || Tarikh dibaca daripada bungkusan (simulasi) || 从包装上读到的日期（模拟）
+Start again || Mula semula || 重新开始
+Add to stock || Tambah ke stok || 加入库存
+Check the expiry date on {n} items first. || Semak tarikh luput {n} item dahulu. || 请先检查 {n} 个品项的到期日。
+Check the expiry date on {n} item first. || Semak tarikh luput {n} item dahulu. || 请先检查 {n} 个品项的到期日。
+Nothing to add yet. Pick an item or scan again. || Belum ada apa untuk ditambah. Pilih item atau imbas semula. || 还没有可加入的内容。请选一个品项或重新扫描。
+{n} lines read from the picture (simulated). Check them below. || {n} baris dibaca daripada gambar (simulasi). Semak di bawah. || 从图片读到 {n} 行（模拟）。请在下面检查。
+{n} line read from the picture (simulated). Check them below. || {n} baris dibaca daripada gambar (simulasi). Semak di bawah. || 从图片读到 {n} 行（模拟）。请在下面检查。
+Pasaraya Jimat (demo shop) || Pasaraya Jimat (kedai demo) || Pasaraya Jimat（演示商店）
+Pasaraya Jimat (demo shop). || Pasaraya Jimat (kedai demo). || Pasaraya Jimat（演示商店）。
+Order #{n} from {x}. || Pesanan #{n} daripada {x}. || 来自 {x} 的订单 #{n}。
+Change anything the app read wrong. || Tukar apa-apa yang salah dibaca oleh aplikasi. || 应用读错的地方请改正。
+Receipt || Resit || 收据
+Barcode on a pack || Kod bar pada bungkusan || 包装上的条形码
+Total paid (RM) || Jumlah dibayar (RM) || 实付金额（RM）
+Price per {x} (RM) || Harga setiap {x} (RM) || 每{x}价格（RM）
+Not in your item list. Match it to an item: || Tiada dalam senarai item anda. Padankan dengan satu item: || 不在你的品项清单里。请对应到一个品项：
+Leave it out || Tinggalkan || 不加入
+Pick an item || Pilih item || 选择品项
+Left out. {x} on the receipt is not added to stock. || Ditinggalkan. {x} pada resit tidak ditambah ke stok. || 已略过。收据上的 {x} 不会加进库存。
+Not a food item, left out || Bukan makanan, ditinggalkan || 不是食品，已略过
+Which pack is in front of the camera? || Bungkusan mana di depan kamera? || 相机前面是哪个包装？
+Oat milk 1 L carton || Susu oat kotak 1 L || 燕麦奶 1 升盒装
+Cream cheese 250 g || Keju krim 250 g || 奶油奶酪 250 克
+Orange juice 1 L || Jus oren 1 L || 橙汁 1 升
+Mayonnaise 500 g || Mayones 500 g || 蛋黄酱 500 克
+Scan another barcode || Imbas kod bar lain || 再扫描一个条形码
+Go to the {n} items already scanned || Pergi ke {n} item yang sudah diimbas || 查看已扫描的 {n} 个品项
+Go to the {n} item already scanned || Pergi ke {n} item yang sudah diimbas || 查看已扫描的 {n} 个品项
+Pretend photo of: || Gambar olok-olok: || 模拟照片：
+Chicken || Ayam || 鸡肉
+Prawns || Udang || 虾
+Blurry photo || Gambar kabur || 模糊照片
+The app thinks this is || Aplikasi rasa ini ialah || 应用认为这是
+You picked || Anda pilih || 你选了
+Not right? || Tidak betul? || 不对？
+Hide pictures || Sembunyikan gambar || 收起图片
+Tap the right picture || Ketik gambar yang betul || 点选正确的图片
+Add another photo || Tambah gambar lain || 再加一张照片
+Not sure what this is || Tidak pasti apa ini || 不确定这是什么
+The app is not sure. Tap the picture of what you bought. || Aplikasi tidak pasti. Ketik gambar barang yang anda beli. || 应用不确定。请点选你买的东西的图片。
+Type an amount above 0. || Taip jumlah lebih daripada 0. || 请输入大于 0 的数量。
+Pick the expiry date. || Pilih tarikh luput. || 请选择到期日。
+This date is in the past. || Tarikh ini sudah lepas. || 这个日期已经过了。
+Type a price, for example 7.50. || Taip harga, contohnya 7.50. || 请输入价格，例如 7.50。
+Check the expiry date, then tap "Date checked". || Semak tarikh luput, kemudian ketik "Tarikh disemak". || 请检查到期日，然后点“日期已检查”。
+Line removed || Baris dibuang || 已删除这一行
+Scan something else || Imbas barang lain || 扫描其他东西
+Added to stock || Ditambah ke stok || 已加入库存
+{n} new batches added, each with the expiry date you checked. || {n} kelompok baharu ditambah, setiap satu dengan tarikh luput yang anda semak. || 已新增 {n} 个批次，每个都用你检查过的到期日。
+{n} new batch added, each with the expiry date you checked. || {n} kelompok baharu ditambah, dengan tarikh luput yang anda semak. || 已新增 {n} 个批次，使用你检查过的到期日。
+{n} new batches added to stock || {n} kelompok baharu ditambah ke stok || 已新增 {n} 个批次到库存
+{n} new batch added to stock || {n} kelompok baharu ditambah ke stok || 已新增 {n} 个批次到库存
+Order #{n} stays open for the items that did not arrive. || Pesanan #{n} kekal dibuka untuk item yang belum sampai. || 订单 #{n} 会保持未完成，等待还没到的品项。
+Order #{n} is now complete. || Pesanan #{n} kini lengkap. || 订单 #{n} 已完成。
+Pick what you are scanning: a delivery order, a supermarket receipt or barcode, or a photo of wet-market food. || Pilih apa yang anda imbas: pesanan penghantaran, resit pasar raya atau kod bar, atau gambar makanan pasar basah. || 选择你要扫描的东西：送货单、超市收据或条形码，或菜市场食材的照片。
+The app fills in the items, amounts and a suggested expiry date. Check each date, then tap "Date checked" or change it. || Aplikasi mengisi item, jumlah dan tarikh luput yang dicadangkan. Semak setiap tarikh, kemudian ketik "Tarikh disemak" atau tukar tarikh itu. || 应用会填好品项、数量和建议的到期日。逐个检查日期，然后点“日期已检查”或改掉它。
+Press "Add to stock" at the bottom. Reading is simulated in this demo. || Tekan "Tambah ke stok" di bawah. Bacaan disimulasikan dalam demo ini. || 按下面的“加入库存”。本演示中的读取是模拟的。
+Scan delivery order || Imbas pesanan penghantaran || 扫描送货单
+Scan the delivery order instead || Imbas pesanan penghantaran sahaja || 改为扫描送货单
+Sort by date || Susun ikut tarikh || 按日期排序
+Sort by expiry date || Susun ikut tarikh luput || 按到期日排序
+Newest first || Terbaru dahulu || 最新的在前
+Oldest first || Terlama dahulu || 最早的在前
+Expiring soonest first || Paling cepat luput dahulu || 最快到期的在前
+Expiring latest first || Paling lambat luput dahulu || 最晚到期的在前
+Oldest entries || Catatan terlama || 最早的记录
+Showing {n} of {n2} entries. Search for an item, or see the monthly report for everything. || Menunjukkan {n} daripada {n2} catatan. Cari item, atau lihat laporan bulanan untuk semuanya. || 显示 {n2} 条中的 {n} 条。可以搜索品项，或看月度报告了解全部。
+Expiring-soon report || Laporan hampir luput || 即将到期报告
+Copy to share || Salin untuk dikongsi || 复制以分享
+Food that expires in the next {n} days, what it is worth, and what to do with it. || Makanan yang luput dalam {n} hari akan datang, nilainya, dan apa yang perlu dibuat. || 未来 {n} 天内到期的食材、价值多少，以及该怎么处理。
+Food that expires in the next {n} day, what it is worth, and what to do with it. || Makanan yang luput dalam {n} hari akan datang, nilainya, dan apa yang perlu dibuat. || 未来 {n} 天内到期的食材、价值多少，以及该怎么处理。
+Show food that expires in: || Tunjuk makanan yang luput dalam: || 显示多少天内到期的食材：
+Value at risk || Nilai berisiko || 风险价值
+Likely left over by the expiry date || Mungkin berbaki pada tarikh luput || 到期时可能剩下的部分
+Batches expiring || Kelompok hampir luput || 即将到期的批次
+{n} kg likely left over || {n} kg mungkin berbaki || 可能剩下 {n} 公斤
+Worth in total || Jumlah nilai || 总价值
+If none of it were used || Jika langsung tidak digunakan || 如果完全没用掉
+Suggested actions || Tindakan dicadangkan || 建议的做法
+Use first: {n} || Guna dahulu: {n} || 优先使用：{n}
+Use in today's special: {n} || Guna dalam menu istimewa hari ini: {n} || 用于今日特餐：{n}
+Discount: {n} || Diskaun: {n} || 打折：{n}
+Food rescue: {n} || Penyelamatan makanan: {n} || 食物救援：{n}
+Use first || Guna dahulu || 优先使用
+Use in today's special || Guna dalam menu istimewa hari ini || 用于今日特餐
+Discount || Diskaun || 打折
+Food rescue || Penyelamatan makanan || 食物救援
+Likely left over || Mungkin berbaki || 可能剩下
+Suggested action || Tindakan dicadangkan || 建议做法
+Open item || Buka item || 打开品项
+Total value at risk || Jumlah nilai berisiko || 风险总价值
+Normal sales should use it up in time. Keep it at the front of the shelf. || Jualan biasa sepatutnya menghabiskannya tepat pada masa. Letak di depan rak. || 正常销售应该能及时用完。把它放在货架前面。
+Only about {x} may be left. Use this batch first and keep it at the front of the shelf. || Hanya kira-kira {x} mungkin berbaki. Guna kelompok ini dahulu dan letak di depan rak. || 可能只剩大约 {x}。先用这一批，并放在货架前面。
+Not used in any dish. Offer it to a food rescue partner before it expires. || Tidak digunakan dalam mana-mana hidangan. Tawarkan kepada rakan penyelamat makanan sebelum luput. || 没有菜品用到它。在到期前提供给食物救援伙伴。
+Expires today and most of it will be left. Offer it to a food rescue partner after service. || Luput hari ini dan kebanyakannya akan berbaki. Tawarkan kepada rakan penyelamat makanan selepas waktu servis. || 今天到期，而且大部分会剩下。营业后提供给食物救援伙伴。
+About {x} will be left and there is little time. Sell dishes with it at a discount, for example 20% off {y}. || Kira-kira {x} akan berbaki dan masa tidak banyak. Jual hidangan yang menggunakannya dengan diskaun, contohnya 20% untuk {y}. || 大约会剩下 {x}，而且时间不多。把用到它的菜打折卖，例如 {y} 打八折。
+Put {x} on the specials board to use up the extra {y}. || Letak {x} di papan menu istimewa untuk menghabiskan lebihan {y}. || 把 {x} 放上特餐板，用掉多出来的 {y}。
+How this is worked out: the app takes how much of each item was used per day over the last 14 days, and assumes older batches are used first. Whatever is not likely to be used by the expiry date is "at risk". It is a rough guide, so check the shelf before acting. Demo data. || Cara ia dikira: aplikasi mengambil berapa banyak setiap item digunakan sehari dalam 14 hari lepas, dan menganggap kelompok lama digunakan dahulu. Apa yang mungkin tidak digunakan sebelum tarikh luput dikira "berisiko". Ini panduan kasar, jadi semak rak sebelum bertindak. Data demo. || 计算方法：应用用过去 14 天每个品项每天的用量，并假设先用旧批次。到期前可能用不完的部分就算“有风险”。这只是粗略参考，行动前请先看看货架。演示数据。
+Every batch that expires in the next few days, what it is worth, and what to do with it. || Setiap kelompok yang luput dalam beberapa hari akan datang, nilainya, dan apa yang perlu dibuat. || 未来几天内到期的每个批次、价值多少，以及该怎么处理。
+"Value at risk" is what will probably be left by the expiry date, worked out from the last 14 days of use. || "Nilai berisiko" ialah apa yang mungkin berbaki pada tarikh luput, dikira daripada penggunaan 14 hari lepas. || “风险价值”是到期时很可能剩下的部分，按过去 14 天的用量算出。
+Print it for the kitchen wall, or copy it into a chat for the team. || Cetak untuk dinding dapur, atau salin ke dalam sembang untuk pasukan. || 打印贴在厨房墙上，或复制到群聊发给团队。
+Nothing expires in the next {n} days || Tiada yang luput dalam {n} hari akan datang || 未来 {n} 天内没有东西到期
+Nothing expires in the next {n} day || Tiada yang luput dalam {n} hari akan datang || 未来 {n} 天内没有东西到期
+Good news. Try a longer period, or check again tomorrow. || Berita baik. Cuba tempoh lebih panjang, atau semak semula esok. || 好消息。试试更长的时间段，或明天再看。
+See the report with value at risk and what to do || Lihat laporan dengan nilai berisiko dan apa yang perlu dibuat || 查看含风险价值和处理建议的报告
+Next {n} days || {n} hari akan datang || 未来 {n} 天
+Next {n} day || {n} hari akan datang || 未来 {n} 天
+{n} batches || {n} kelompok || {n} 个批次
+{n} batch || {n} kelompok || {n} 个批次
+Demo data. Suggestions use the last 14 days of use. Check before acting. || Data demo. Cadangan menggunakan penggunaan 14 hari lepas. Semak sebelum bertindak. || 演示数据。建议基于过去 14 天的用量。行动前请先核实。
+Puts back the made-up cafe: 44 dishes, 61 ingredients, 6 suppliers and 2 months of sales and waste. Everything you added or changed in this browser is erased. || Memulihkan kafe rekaan: 44 hidangan, 61 bahan, 6 pembekal dan 2 bulan jualan serta sisa. Semua yang anda tambah atau ubah dalam pelayar ini akan dipadam. || 恢复虚构的咖啡馆：44 道菜、61 种食材、6 家供应商，以及 2 个月的销售和浪费记录。你在这个浏览器里新增或修改的内容都会被清除。
+Scanning. The Scan button shows how reading a delivery order, a receipt, a barcode or a market photo would work, using sample pictures. Nothing is read from a real camera. || Pengimbasan. Butang Imbas menunjukkan cara membaca pesanan penghantaran, resit, kod bar atau gambar pasar, menggunakan gambar contoh. Tiada apa dibaca daripada kamera sebenar. || 扫描。“扫描”按钮用示例图片展示读取送货单、收据、条形码或市场照片的效果。没有从真实相机读取任何内容。
+Suggested expiry dates. They come from typical shelf lives, not from reading the pack. Staff must check each one. || Tarikh luput yang dicadangkan. Ia datang daripada jangka hayat biasa, bukan daripada membaca bungkusan. Staf mesti menyemak setiap satu. || 建议的到期日。它们来自一般的保存期限，而不是读取包装。员工必须逐个检查。
+Value at risk and the suggested actions in the expiring-soon report. They also use the last 14 days of use. || Nilai berisiko dan tindakan yang dicadangkan dalam laporan hampir luput. Ia juga menggunakan penggunaan 14 hari lepas. || 即将到期报告里的风险价值和建议做法。它们同样基于过去 14 天的用量。
+Real text and photo recognition for delivery orders, receipts and market photos, and reading the dates printed on packs. || Pengecaman teks dan gambar sebenar untuk pesanan penghantaran, resit dan gambar pasar, serta membaca tarikh yang dicetak pada bungkusan. || 真正的文字和图片识别，用于送货单、收据和市场照片，以及读取包装上印的日期。
+Scan instead of typing || Imbas, bukan menaip || 用扫描代替打字
+The Scan button reads a delivery order, a supermarket receipt or barcode, or a photo of wet-market food. Here a market photo of chicken was "read". The expiry date is only a suggestion: staff tap "Date checked" or change it. All simulated. || Butang Imbas membaca pesanan penghantaran, resit pasar raya atau kod bar, atau gambar makanan pasar basah. Di sini gambar ayam dari pasar telah "dibaca". Tarikh luput hanya cadangan: staf ketik "Tarikh disemak" atau menukarnya. Semuanya simulasi. || “扫描”按钮可读取送货单、超市收据或条形码，或菜市场食材的照片。这里“读取”了一张市场鸡肉照片。到期日只是建议：员工点“日期已检查”或修改它。全部为模拟。
+What is about to expire, in RM || Apa yang hampir luput, dalam RM || 即将到期的东西值多少 RM
+The expiring-soon report shows the value at risk and a suggested action for each batch: use first, today's special, discount or food rescue. Print it for the kitchen, or copy it into a chat. || Laporan hampir luput menunjukkan nilai berisiko dan tindakan dicadangkan untuk setiap kelompok: guna dahulu, menu istimewa hari ini, diskaun atau penyelamatan makanan. Cetak untuk dapur, atau salin ke dalam sembang. || 即将到期报告显示每个批次的风险价值和建议做法：优先使用、今日特餐、打折或食物救援。可以打印给厨房，或复制到群聊。
+Mixed berries (frozen) ({x} in stock) || Beri campuran (sejuk beku) ({x} dalam stok) || 综合莓果（冷冻）（库存 {x}）
+Croissant (frozen dough) ({x} in stock) || Croissant (doh sejuk beku) ({x} dalam stok) || 可颂（冷冻面团）（库存 {x}）

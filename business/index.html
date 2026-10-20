@@ -247,6 +247,29 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
 .hl{outline:3px solid #FFC400!important;outline-offset:3px;border-radius:10px}
 
 /* ---------- tablet ---------- */
+/* scan, sort and expiring report */
+.sortc{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.chip.sm{min-height:38px;padding:0 12px;font-size:13.5px}
+.chip svg.ic{width:18px;height:18px;margin-right:4px;vertical-align:-3px}
+.biga.way{padding:20px 14px;gap:8px}.biga.way small{font-weight:600;color:var(--muted);font-size:13.5px;line-height:1.35}
+.wpic{font-size:44px;line-height:1}
+.cam{position:relative;background:#1E2A1C;border-radius:16px;min-height:300px;display:grid;place-items:center;padding:30px 24px;overflow:hidden}
+.cam .cr{position:absolute;width:28px;height:28px;border:3px solid #fff;opacity:.85}
+.cr.tl{top:12px;left:12px;border-right:0;border-bottom:0;border-radius:6px 0 0 0}.cr.tr{top:12px;right:12px;border-left:0;border-bottom:0;border-radius:0 6px 0 0}
+.cr.bl{bottom:12px;left:12px;border-right:0;border-top:0;border-radius:0 0 0 6px}.cr.br{bottom:12px;right:12px;border-left:0;border-top:0;border-radius:0 0 6px 0}
+.doc{background:#FFFDF6;color:#222;font-family:var(--mono);font-size:12.5px;padding:14px 16px;border-radius:4px;width:min(100%,300px);display:flex;flex-direction:column;gap:3px;transform:rotate(-1.5deg);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.doc hr{border:0;border-top:1px dashed #999;margin:4px 0;width:100%}.doc .l{display:flex;justify-content:space-between;gap:10px}
+.doc.bc{align-items:center;transform:none;gap:6px}.doc.bc svg{width:190px;height:72px}.doc.bc rect{fill:#111}
+.photo{font-size:118px;line-height:1;background:radial-gradient(circle,#7d8f62 0,#3b4a30 72%);width:230px;height:230px;max-width:100%;border-radius:12px;display:grid;place-items:center}
+.photo.blur{filter:blur(7px)}
+.mono{font-family:var(--mono);font-size:13px}
+.scanrow{display:flex;flex-direction:column;gap:12px}.scanrow.off{background:var(--panel-2)}
+.scanrow h3{margin:0}.rpic{font-size:34px;line-height:1;width:46px;text-align:center;flex:none}
+.picg{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:8px}
+.pic{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;border:1.5px solid var(--line);border-radius:12px;background:var(--panel);font-size:13px;min-height:88px}
+.pic span{font-size:38px;line-height:1}.pic.on{border-color:var(--green);background:var(--green-s)}.pic:hover{border-color:var(--green)}
+.printonly{display:none}
+table.exp td{vertical-align:top}
 @media (max-width:1100px){
   :root{--side:92px}
   #side{padding:10px 6px;align-items:stretch}
@@ -260,6 +283,7 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
 }
 /* ---------- phone ---------- */
 @media (max-width:700px){
+  .cam{min-height:230px;padding:24px 14px}.photo{width:180px;height:180px;font-size:92px}.rpic{display:none}
   body{font-size:15px}
   #side{display:none}
   #bot{display:flex;flex:none;background:var(--panel);border-top:1px solid var(--line);padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px))}
@@ -275,7 +299,7 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
   h1{font-size:22px}
   .pg{padding:16px 16px 30px}
   .pos{grid-template-columns:minmax(0,1fr)}
-  .pos.showbill .menucol{display:none}
+  .pos.showbill .menucol{display:none!important}
   .pos:not(.showbill) .bill{display:none}
   .billbar{display:flex;position:sticky;bottom:0;z-index:2}
   .bill{position:static}
@@ -296,6 +320,7 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
 @media print{
   body{overflow:visible;background:#fff} #side,#top,#bot,.noprint,#demo,#toast,.foot,.acts{display:none!important}
   #app,#main,#scr{display:block;height:auto;overflow:visible} .pg{padding:0} .paper{border:0;box-shadow:none}
+  .printonly{display:block!important} .card,.kpi{box-shadow:none;break-inside:avoid} .pill{border:1px solid currentColor}
 }
 </style>
 <div id="app"><aside id="side" aria-label="Main menu"></aside><div id="main"><header id="top"></header><div id="demo" hidden></div><main id="scr" tabindex="-1"></main></div><nav id="bot" aria-label="Main menu"></nav></div>
@@ -334,7 +359,9 @@ const plural=(n,w,ws)=>n+' '+(n===1?w:(ws||w+'s'));
 const SIM_ERR='LHDN could not match the buyer TIN with the ID number (this rejection is simulated).';
 
 /* ---------- saving ---------- */
-function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.v===1&&Array.isArray(s.batches))return s}catch(e){}return null}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.v===1&&Array.isArray(s.batches))return migrate(s)}catch(e){}return null}
+/* data saved by an older version of the demo gets the newer fields */
+function migrate(s){s.sort=s.sort||{};ING_EXTRA.forEach(id=>{if(!s.ingredients.some(i=>i.id===id))s.ingredients.push(parseIng().find(i=>i.id===id))});return s}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function resetDemo(){S=seed();IX=null;sweep();save()}
 
@@ -542,7 +569,10 @@ salmon|Smoked salmon|kg|Meat and seafood|M|95|1|10|1
 tuna|Tuna (canned)|kg|Meat and seafood|M|28|1.5|365|1
 prawn|Prawns|kg|Meat and seafood|M|42|1.5|2|1
 turkeyham|Turkey ham|kg|Meat and seafood|M|32|1|10|1
-sausage|Chicken sausage|piece|Meat and seafood|M|1.6|20|14|0.06`;
+sausage|Chicken sausage|piece|Meat and seafood|M|1.6|20|14|0.06
+kangkung|Kangkung|kg|Produce|P|6|1|3|1`;
+/* items added after the first version. The seed gives them fixed stock so the rest of the demo numbers stay the same. */
+const ING_EXTRA=['kangkung'];
 const ING_CATS=['Dairy','Produce','Bakery','Coffee and drinks','Dry goods','Meat and seafood'];
 /* modifier groups: one = pick one, many = pick any. add / remove change the recipe. */
 const MODS={
@@ -623,7 +653,7 @@ function seed(){
       addr:'G-01, Jalan Demo 15/4',city:'Subang Jaya',post:'47500',state:'Selangor',phone:'0355500100',email:'hello@teduhdaun.example'},
       tax:{scOn:true,scRate:10,scTakeaway:false,sstOn:true,sstRate:6,sstOnSc:true,round5:true},expDays:2,cancelHours:72},
     ingredients:parseIng(),menu:parseMenu(),suppliers:SUPPLIERS.map(x=>({...x})),
-    batches:[],sales:[],held:[],orders:[],bills:[],waste:[],invoices:[],rescue:[],days:{},use:{},cons:{},
+    batches:[],sales:[],held:[],orders:[],bills:[],waste:[],invoices:[],rescue:[],days:{},use:{},cons:{},sort:{},
     seq:{receipt:10001,order:101,inv:1,batch:1,id:1}};
   S=s;IX=null;
   const I=id=>s.ingredients.find(i=>i.id===id);
@@ -631,7 +661,9 @@ function seed(){
   const LOW={milk:5,croissant:14,avocado:6,beans:2.5};
   const SOON={sourdough:[1,5],chicken:[1,3.5],prawn:[2,1.2],spinach:[2,0.8],lettuce:[1,1.6]};
   const GONE={banana:[1.5],mushroom:[0.6]};
-  s.ingredients.forEach(i=>{
+  const base=s.ingredients.filter(i=>!ING_EXTRA.includes(i.id));
+  s.batches.push({id:'b'+s.seq.batch++,ing:'kangkung',qty:1.5,recv:addDays(T,-1),exp:addDays(T,2),cost:600});
+  base.forEach(i=>{
     const mk=(qty,expIn,recvAgo)=>s.batches.push({id:'b'+s.seq.batch++,ing:i.id,qty:r3(qty),recv:addDays(T,-recvAgo),exp:addDays(T,expIn),cost:i.cost});
     if(LOW[i.id]!=null){mk(LOW[i.id],Math.max(3,Math.round(i.shelf*.5)),2);return}
     if(SOON[i.id]){mk(SOON[i.id][1],SOON[i.id][0],Math.max(1,i.shelf-SOON[i.id][0]));mk(i.min*1.3,i.shelf,0);return}
@@ -661,9 +693,9 @@ function seed(){
     }
   }
   /* waste history */
-  const perish=s.ingredients.filter(i=>i.shelf<=14);
+  const perish=base.filter(i=>i.shelf<=14);
   for(let d=62;d>=1;d--){const date=addDays(T,-d),n=Math.floor(R()*4.2);
-    for(let k=0;k<n;k++){const i=R()<0.8?pick(perish):pick(s.ingredients);const qty=r3(i.unit==='piece'||i.unit==='loaf'?1+Math.floor(R()*4):0.2+R()*1.1);
+    for(let k=0;k<n;k++){const i=R()<0.8?pick(perish):pick(base);const qty=r3(i.unit==='piece'||i.unit==='loaf'?1+Math.floor(R()*4):0.2+R()*1.1);
       const reason=R()<0.45?'Expired':pick(REASONS);
       s.waste.push({id:'w'+s.seq.id++,dt:date+'T'+pad(9+Math.floor(R()*10))+':'+pad(Math.floor(R()*60)),ing:i.id,qty,reason,cost:Math.round(qty*i.cost),kg:r3(qty*i.kg),auto:reason==='Expired'&&R()<0.5,used:[]})}}
   /* orders and supplier bills */
@@ -706,7 +738,7 @@ const ICON={
  search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',alert:'<path d="M12 4l9 16H3l9-16z"/><path d="M12 10v4M12 17v.5"/>',clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
  help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8M12 17v.5"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
  more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',play:'<path d="M7 5l12 7-12 7V5z"/>',leaf:'<path d="M5 19c0-9 5-14 14-14 0 9-5 14-14 14z"/><path d="M5 19l8-8"/>',
- list:'<path d="M8 6h12M8 12h12M8 18h12M4 6h.5M4 12h.5M4 18h.5"/>',copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>'
+ list:'<path d="M8 6h12M8 12h12M8 18h12M4 6h.5M4 12h.5M4 18h.5"/>',copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',scan:'<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>'
 };
 const ic=n=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]||''}</svg>`;
 const A=(a,p)=>`data-a="${a}"${p!==undefined?` data-p="${h(JSON.stringify(p))}"`:''}`;
@@ -843,7 +875,7 @@ function alertsFor(role){const a=[],T=today(),k=role==='kitchen',c=role==='cashi
     const auto=S.waste.filter(w=>w.auto&&w.dt.slice(0,10)===T);
     if(auto.length)add('bad','trash',plural(auto.length,'item')+' passed the expiry date',''+'Moved to the waste log automatically ('+rm(auto.reduce((x,w)=>x+w.cost,0))+').','root',{s:'waste'},'See waste log');
     const soon=soonList(),ids=[...new Set(soon.map(b=>b.ing))];
-    if(soon.length)add('warn','clock',plural(ids.length,'item')+' expiring in '+plural(S.settings.expDays,'day'),ids.slice(0,4).map(i=>ING(i).name).join(', ')+(ids.length>4?' and more':''),'root',{s:'stock',p:{tab:'soon'}},'See the list');
+    if(soon.length){const rk=riskList(S.settings.expDays).reduce((x,y)=>x+y.risk,0);add('warn','clock',plural(ids.length,'item')+' expiring in '+plural(S.settings.expDays,'day'),ids.slice(0,4).map(i=>ING(i).name).join(', ')+(ids.length>4?' and more':'')+(rk?' · '+rm(rk)+' at risk':''),'go',{s:'expReport'},'See the report')}
     S.orders.filter(x=>(x.status==='sent'||x.status==='part')&&x.expected<=T).forEach(x=>add('info','truck','Delivery from '+SUP(x.sup).name+' is due'+(x.expected===T?' today':''),'Order #'+x.no+(x.status==='part'?' (part received)':''),'go',{s:'receive',p:{order:x.id,step:1}},'Receive goods'));
     const low=lowList();let shown=0;
     low.forEach(i=>{if(shown>=3)return;const oo=onOrder(i.id);if(oo>0)return;shown++;add('bad','box',i.name+' is low',qU(i.id,onHand(i.id))+' left. Minimum is '+qU(i.id,i.min)+'.','go',{s:'newOrder',p:{ing:i.id}},'Order now')});
@@ -857,9 +889,9 @@ function alertsFor(role){const a=[],T=today(),k=role==='kitchen',c=role==='cashi
   return a}
 SCREENS.home={sec:'home',title:()=>'Home',help:['The big round buttons start the jobs you do most often.','The cards under "To do" are things that need attention. Tap a card to go straight to the fix.','Use "Viewing as" at the top to see the app the way another staff member sees it.'],
  html(){const r=S.role,T=today(),hr=now().getHours(),al=alertsFor(r);
-  const big={owner:[['New sale','bag','root',{s:'pos'}],['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}]],
+  const big={owner:[['New sale','bag','root',{s:'pos'}],['Scan','scan','go',{s:'scan'}],['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}]],
     cashier:[['New sale','bag','root',{s:'pos'}],["See today's sales",'list','go',{s:'salesList'}]],
-    kitchen:[['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}],['Expiring soon','clock','root',{s:'stock',p:{tab:'soon'}}]]}[r];
+    kitchen:[['Scan','scan','go',{s:'scan'}],['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}],['Expiring soon','clock','root',{s:'stock',p:{tab:'soon'}}]]}[r];
   let kp='';
   if(r==='owner'){const d=S.days[T]||{total:0,bills:0},ms=monthStats(T.slice(0,7));
     kp=`<div><div class="row" style="margin-bottom:10px"><h2>Numbers at a glance</h2>${demoTag}</div><div class="grid g4">
@@ -977,9 +1009,9 @@ ACT.voidAsk=p=>{const s=saleBy(p.id);if(s.inv){confirmBox({title:'Cancel the e-i
 ACT.voidDo=p=>{const s=saleBy(p.id),[r,rs]=VOIDR[M.r];voidSale(s,r,rs);closeModal();render();toast('Receipt '+s.no+' is now void.'+(rs?' Ingredients are back in stock.':''))};
 SCREENS.salesList={sec:'sell',title:()=>'Recent sales',help:['Every receipt from the last few days is listed here.','Tap a row to open the receipt. From there you can issue an e-invoice or void the sale.','Use the search box to find a receipt number.'],
  html(p){const T=today(),d=p.d||T,q=(p.q||'').trim();const days=[T,addDays(T,-1),addDays(T,-2)];
-  const rows=S.sales.filter(s=>(q?String(s.no).includes(q):s.dt.slice(0,10)===d)).sort((a,b)=>b.no-a.no);
+  const rows=S.sales.filter(s=>(q?String(s.no).includes(q):s.dt.slice(0,10)===d)).sort((a,b)=>b.no-a.no).sort(byDate('sales',s=>s.dt));
   return `${pageHead('Recent sales','Receipts from the last 3 days. '+demoTag,`<button class="btn" ${A('root',{s:'pos'})}>New sale</button>`)}
-  <div class="row">${searchBox('q','Search by receipt number',p.q)}<div class="tabs">${days.map((x,i)=>`<button class="tab ${d===x&&!q?'on':''}" ${A('set',{k:'d',v:x})}>${i===0?'Today':i===1?'Yesterday':fDs(x)}</button>`).join('')}</div></div>
+  <div class="row">${searchBox('q','Search by receipt number',p.q)}<div class="tabs">${days.map((x,i)=>`<button class="tab ${d===x&&!q?'on':''}" ${A('set',{k:'d',v:x})}>${i===0?'Today':i===1?'Yesterday':fDs(x)}</button>`).join('')}</div></div>${sortBar('sales')}
   <div class="card pad0"><div class="tw">${rows.length?`<table><tr><th>Receipt</th><th>Time</th><th class="hide-s">Type</th><th class="hide-s">Paid by</th><th class="r">Total</th><th>Status</th><th></th></tr>${rows.slice(0,120).map(s=>`<tr class="click" tabindex="0" ${A('go',{s:'receipt',p:{id:s.id}})}><td class="b">${s.no}</td><td>${q?fDs(s.dt)+', ':''}${fT(s.dt)}</td><td class="hide-s">${s.type==='dine'?'Table '+h(s.table):'Takeaway'}</td><td class="hide-s">${h(s.pay)}</td><td class="r">${rm(s.total)}</td><td>${s.status==='void'?pill('Void','bad'):s.inv?pill('E-invoice sent','ok'):s.want?pill('Waiting for e-invoice','warn'):pill('Paid')}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`
    :empty(q?'No receipt matches "'+h(q)+'"':'No sales on this day yet',q?'Check the number, or clear the search.':'Sales you make on the till show up here.',q?`<button class="btn sec" ${A('set',{k:'q',v:''})}>Clear search</button>`:`<button class="btn" ${A('root',{s:'pos'})}>Make the first sale</button>`)}</div></div>`}};
 
@@ -992,15 +1024,17 @@ SCREENS.stock={sec:'stock',title:()=>'Stock',help:['Every ingredient is listed w
  html(p){const tab=p.tab||'all',q=(p.q||'').trim().toLowerCase(),low=lowList(),soon=soonList();
   const tabs=`<div class="tabs">${[['all','All items',S.ingredients.length],['low','Low',low.length],['soon','Expiring soon',soon.length]].map(([k,l,n])=>`<button class="tab ${tab===k?'on':''}" ${A('set',{k:'tab',v:k})}>${l} <span class="n">(${n})</span></button>`).join('')}</div>`;
   let body;
-  if(tab==='soon'){const bs=soon.filter(b=>!q||ING(b.ing).name.toLowerCase().includes(q));
+  if(tab==='soon'){const bs=soon.filter(b=>!q||ING(b.ing).name.toLowerCase().includes(q)).sort(byDate('stock',b=>b.exp));
    body=bs.length?`<table><tr><th>Item</th><th class="r">Amount</th><th>Expires</th><th class="hide-s r">Value</th><th>What to do</th></tr>${bs.map(b=>`<tr><td><button class="btn sec sm" ${A('go',{s:'item',p:{id:b.ing}})}>${h(ING(b.ing).name)}</button></td><td class="r">${qU(b.ing,b.qty)}</td><td>${pill(expTxt(b),daysLeft(b)<=0?'bad':'warn')} <span class="muted sm hide-s">${fDs(b.exp)}</span></td><td class="hide-s r">${rm(Math.round(b.qty*b.cost))}</td>
      <td><div class="row"><button class="btn sec sm" ${A('rescueOffer',{b:b.id})} ${S.rescue.some(r=>r.batch===b.id&&r.status==='Offered')?'disabled':''}>${S.rescue.some(r=>r.batch===b.id&&r.status==='Offered')?'Offered for rescue':'Offer for rescue'}</button><button class="btn red sm" ${A('wasteBatch',{b:b.id})}>Log as waste</button></div></td></tr>`).join('')}</table>`
     :empty(q?'Nothing matches "'+h(q)+'"':'Nothing is expiring in the next '+plural(S.settings.expDays,'day'),q?'':'Good news. Check again tomorrow.',`<button class="btn sec" ${A('set',{k:q?'q':'tab',v:q?'':'all'})}>${q?'Clear search':'See all items'}</button>`)}
   else{let list=(tab==='low'?low:S.ingredients).filter(i=>(!q||i.name.toLowerCase().includes(q))&&(!p.cat||p.cat==='All'||i.cat===p.cat));
+   const fx=i=>{const b=batchesOf(i.id)[0];return b?b.exp:''};list=list.filter(fx).sort(byDate('stock',fx)).concat(list.filter(i=>!fx(i)));
    body=list.length?`<table><tr><th>Item</th><th class="r">In stock</th><th class="r hide-s">Minimum${tip('min')}</th><th>Oldest batch expires</th><th class="hide-s">Supplier</th><th>Status</th><th></th></tr>${list.map(i=>{const b=batchesOf(i.id)[0],oo=onOrder(i.id);return`<tr class="click" tabindex="0" ${A('go',{s:'item',p:{id:i.id}})}><td class="b">${h(i.name)}</td><td class="r">${qU(i.id,onHand(i.id))}</td><td class="r hide-s">${qU(i.id,i.min)}</td><td>${b?expTxt(b)+' <span class="muted sm hide-s">'+fDs(b.exp)+'</span>':'-'}</td><td class="hide-s">${h(SUP(i.sup).name.replace(' (demo)',''))}</td><td>${stockStatus(i)}${oo?' '+pill(qf(oo)+' on order','info'):''}</td><td class="chev">Open ›</td></tr>`}).join('')}</table>`
     :empty(q?'No item matches "'+h(q)+'"':'Nothing is below minimum stock',q?'Check the spelling or clear the search.':'Every item has enough on the shelf.',`<button class="btn sec" ${A('set',{k:q?'q':'tab',v:q?'':'all'})}>${q?'Clear search':'See all items'}</button>`)}
-  return `${pageHead('Stock','What is on the shelf right now. '+demoTag,`<button class="btn" id="countbtn" ${A('go',{s:'count'})}>Count stock</button><button class="btn sec" ${A('go',{s:'addItem'})}>${ic('plus')}Add item</button>`)}
-  ${tabs}<div class="row">${searchBox('q','Search items',p.q)}${tab!=='soon'?`<select class="inp" style="width:auto" data-m="cat" data-r aria-label="Filter by category"><option>All</option>${ING_CATS.map(c=>`<option ${p.cat===c?'selected':''}>${c}</option>`).join('')}</select>`:''}</div>
+  return `${pageHead('Stock','What is on the shelf right now. '+demoTag,`<button class="btn" id="scanbtn" ${A('go',{s:'scan'})}>${ic('scan')}Scan</button><button class="btn sec" id="countbtn" ${A('go',{s:'count'})}>Count stock</button><button class="btn sec" ${A('go',{s:'addItem'})}>${ic('plus')}Add item</button><button class="btn sec" ${A('go',{s:'expReport'})}>${ic('clock')}Expiring-soon report</button>`)}
+  ${tabs}<div class="row">${searchBox('q','Search items',p.q)}${tab!=='soon'?`<select class="inp" style="width:auto" data-m="cat" data-r aria-label="Filter by category"><option>All</option>${ING_CATS.map(c=>`<option ${p.cat===c?'selected':''}>${c}</option>`).join('')}</select>`:''}${sortBar('stock',true)}</div>
+  ${tab==='soon'&&soon.length?`<div class="row"><button class="btn" ${A('go',{s:'expReport'})}>${ic('clock')}See the report with value at risk and what to do</button></div>`:''}
   <div class="card pad0"><div class="tw">${body}</div></div>`}};
 SCREENS.item={sec:'stock',title:p=>ING(p.id).name,help:['The top batch in the list is the oldest, and it is always used first.','"Order more" starts an order to this item\'s supplier with a suggested amount.','"Fix the count" is for when the shelf does not match the app.'],
  html(p){const i=ING(p.id);if(!ix().ing[p.id])return empty('This item is no longer in the list','',`<button class="btn" ${A('root',{s:'stock'})}>Back to Stock</button>`);
@@ -1054,9 +1088,9 @@ const einvPill=s=>s==='Valid'?pill('E-invoice received','ok'):pill('No e-invoice
 SCREENS.orders={sec:'orders',title:()=>'Orders',help:['This is where you order from suppliers and take in deliveries.','"Suggested" lists what is running low. One button turns it into an order.','Tap any row to open it. The green button on each order shows the next step.'],
  html(p){const tab=p.tab||'orders',sg=suggestions(),open=S.orders.filter(o=>o.status==='sent'||o.status==='part');
   const tabs=`<div class="tabs">${[['orders','Orders',S.orders.length],['suggest','Suggested',sg.length],['suppliers','Suppliers',S.suppliers.length],['bills','Supplier bills',S.bills.length]].map(([k,l,n])=>`<button class="tab ${tab===k?'on':''}" ${A('set',{k:'tab',v:k})}>${l} <span class="n">(${n})</span></button>`).join('')}</div>`;
-  let body='',acts=`<button class="btn" id="neworder" ${A('go',{s:'newOrder'})}>${ic('plus')}Create order</button><button class="btn sec" ${A('go',{s:'receive',p:{step:0}})}>Receive delivery</button>`;
-  if(tab==='orders'){const q=(p.q||'').trim().toLowerCase(),rows=S.orders.slice().sort((a,b)=>b.no-a.no).filter(o=>!q||String(o.no).includes(q)||SUP(o.sup).name.toLowerCase().includes(q));
-   body=`<div class="row">${searchBox('q','Search by supplier or order number',p.q)}</div><div class="card pad0"><div class="tw">${rows.length?`<table><tr><th>Order</th><th>Supplier</th><th class="hide-s">Sent</th><th>Expected</th><th class="r hide-s">Value</th><th>Status</th><th></th></tr>${rows.map(o=>`<tr class="click" tabindex="0" ${A('go',{s:'order',p:{id:o.id}})}><td class="b">#${o.no}</td><td>${h(SUP(o.sup).name)}</td><td class="hide-s">${fDs(o.date)}</td><td>${fDs(o.expected)}</td><td class="r hide-s">${rm(ordVal(o))}</td><td>${pill(...OST[o.status])}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`
+  let body='',acts=`<button class="btn" id="neworder" ${A('go',{s:'newOrder'})}>${ic('plus')}Create order</button><button class="btn sec" ${A('go',{s:'receive',p:{step:0}})}>Receive delivery</button><button class="btn sec" ${A('go',{s:'scan',p:{way:'do',step:'cam'}})}>${ic('scan')}Scan delivery order</button>`;
+  if(tab==='orders'){const q=(p.q||'').trim().toLowerCase(),rows=S.orders.slice().sort((a,b)=>b.no-a.no).sort(byDate('orders',o=>o.date)).filter(o=>!q||String(o.no).includes(q)||SUP(o.sup).name.toLowerCase().includes(q));
+   body=`<div class="row">${searchBox('q','Search by supplier or order number',p.q)}${sortBar('orders')}</div><div class="card pad0"><div class="tw">${rows.length?`<table><tr><th>Order</th><th>Supplier</th><th class="hide-s">Sent</th><th>Expected</th><th class="r hide-s">Value</th><th>Status</th><th></th></tr>${rows.map(o=>`<tr class="click" tabindex="0" ${A('go',{s:'order',p:{id:o.id}})}><td class="b">#${o.no}</td><td>${h(SUP(o.sup).name)}</td><td class="hide-s">${fDs(o.date)}</td><td>${fDs(o.expected)}</td><td class="r hide-s">${rm(ordVal(o))}</td><td>${pill(...OST[o.status])}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`
      :empty(q?'No order matches "'+h(q)+'"':'No orders yet',q?'':'Orders you send to suppliers show up here.',q?`<button class="btn sec" ${A('set',{k:'q',v:''})}>Clear search</button>`:`<button class="btn" ${A('go',{s:'newOrder'})}>Create your first order</button>`)}</div></div>`}
   else if(tab==='suggest'){const by={};sg.forEach(x=>{(by[ING(x.ing).sup]=by[ING(x.ing).sup]||[]).push(x)});
    body=sg.length?`<p class="muted">Worked out from minimum stock and how much was used in the last 14 days. You can change the amounts before sending.</p><div class="grid g2">${Object.keys(by).map(s=>`<div class="card" style="display:flex;flex-direction:column;gap:10px"><h2>${h(SUP(s).name)}</h2>${by[s].map(x=>`<div class="tot sm"><span>${h(ING(x.ing).name)} <span class="muted">(${qU(x.ing,x.oh)} left)</span></span><b>${qU(x.ing,x.qty)}</b></div>`).join('')}
@@ -1064,8 +1098,8 @@ SCREENS.orders={sec:'orders',title:()=>'Orders',help:['This is where you order f
     :`<div class="card">${empty('Nothing needs ordering right now','Every item is above its minimum stock or already on order.',`<button class="btn sec" ${A('go',{s:'newOrder'})}>Create an order anyway</button>`)}</div>`}
   else if(tab==='suppliers'){acts=`<button class="btn" ${A('supForm',{})}>${ic('plus')}Add supplier</button>`;
    body=`<div class="card pad0"><div class="tw"><table><tr><th>Supplier</th><th class="hide-s">Phone</th><th>Delivers in</th><th class="r">Items</th><th></th></tr>${S.suppliers.map(s=>`<tr class="click" tabindex="0" ${A('go',{s:'supplier',p:{id:s.id}})}><td class="b">${h(s.name)}</td><td class="hide-s">${h(s.phone)}</td><td>${plural(s.lead,'day')}</td><td class="r">${S.ingredients.filter(i=>i.sup===s.id).length}</td><td class="chev">Open ›</td></tr>`).join('')}</table></div></div>`}
-  else{acts=`<button class="btn" ${A('go',{s:'billForm'})}>${ic('plus')}Enter supplier bill</button>`;const rows=S.bills.slice().sort((a,b)=>a.date<b.date?1:-1);
-   body=`<div class="card pad0"><div class="tw">${rows.length?`<table><tr><th>Bill</th><th>Supplier</th><th class="hide-s">Date</th><th>Pay by</th><th class="r">Amount</th><th>Payment</th><th class="hide-s">E-invoice${tip('einv')}</th><th></th></tr>${rows.map(b=>`<tr class="click" tabindex="0" ${A('go',{s:'bill',p:{id:b.id}})}><td class="b">${h(b.no)}</td><td>${h(SUP(b.sup).name)}</td><td class="hide-s">${fDs(b.date)}</td><td>${fDs(b.due)}</td><td class="r">${rm(b.amount)}</td><td>${billPay(b)}</td><td class="hide-s">${einvPill(b.einv)}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`:empty('No supplier bills yet','When a supplier sends a bill, enter it here to keep track of what you owe.',`<button class="btn" ${A('go',{s:'billForm'})}>Enter the first bill</button>`)}</div></div>`}
+  else{acts=`<button class="btn" ${A('go',{s:'billForm'})}>${ic('plus')}Enter supplier bill</button>`;const rows=S.bills.slice().sort(byDate('bills',b=>b.date));
+   body=`<div class="row">${sortBar('bills')}</div><div class="card pad0"><div class="tw">${rows.length?`<table><tr><th>Bill</th><th>Supplier</th><th class="hide-s">Date</th><th>Pay by</th><th class="r">Amount</th><th>Payment</th><th class="hide-s">E-invoice${tip('einv')}</th><th></th></tr>${rows.map(b=>`<tr class="click" tabindex="0" ${A('go',{s:'bill',p:{id:b.id}})}><td class="b">${h(b.no)}</td><td>${h(SUP(b.sup).name)}</td><td class="hide-s">${fDs(b.date)}</td><td>${fDs(b.due)}</td><td class="r">${rm(b.amount)}</td><td>${billPay(b)}</td><td class="hide-s">${einvPill(b.einv)}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`:empty('No supplier bills yet','When a supplier sends a bill, enter it here to keep track of what you owe.',`<button class="btn" ${A('go',{s:'billForm'})}>Enter the first bill</button>`)}</div></div>`}
   return `${pageHead('Orders',open.length?plural(open.length,'order')+' waiting for delivery. '+demoTag:'Order from suppliers and take in deliveries. '+demoTag,acts)}${tabs}${body}`}};
 SCREENS.newOrder={sec:'orders',title:()=>'New order',help:['Step 1: pick the supplier. Step 2: set how much of each item you want. Step 3: check and send.','Items that are running low are already filled in with a suggested amount.','Nothing is really sent in this demo.'],
  html(p){if(!p.init){p.init=1;p.qty=p.qty||{};p.step=1;const sg=suggestions();
@@ -1105,7 +1139,7 @@ ACT.ordClose=p=>{const o=ordBy(p.id);confirmBox({title:'Close order #'+o.no+'?',
 const RSTEPS=['Pick order','Check items','Confirm'];
 SCREENS.receive={sec:'orders',title:()=>'Receive goods',help:['Step 1: pick the order that arrived. Step 2: check the amount, expiry date and price of each item. Step 3: confirm.','If only part of the order came, type the amount that really arrived. The rest stays "on order".','Each item becomes a new batch in stock with its own expiry date.'],
  html(p){const open=S.orders.filter(o=>o.status==='sent'||o.status==='part').sort((a,b)=>a.expected<b.expected?-1:1);
-  if(!p.order||!p.step){return `${pageHead('Receive goods','Which delivery arrived?')}${stepsBar(RSTEPS,0)}${open.length?`<div class="grid">${open.map(o=>`<button class="alert" ${A('recvPick',{id:o.id})}><span class="ai" style="background:var(--blue-s);color:var(--blue)">${ic('truck')}</span><span class="grow" style="text-align:left">Order #${o.no} · ${h(SUP(o.sup).name)}<small>${plural(o.lines.filter(l=>l.recv<l.qty).length,'item')} still to come · expected ${fDs(o.expected)}${o.status==='part'?' · part received':''}</small></span><span class="go">This one${ic('chev')}</span></button>`).join('')}</div>`
+  if(!p.order||!p.step){return `${pageHead('Receive goods','Which delivery arrived?',`<button class="btn sec" ${A('go',{s:'scan',p:{way:'do',step:'cam'}})}>${ic('scan')}Scan the delivery order instead</button>`)}${stepsBar(RSTEPS,0)}${open.length?`<div class="grid">${open.map(o=>`<button class="alert" ${A('recvPick',{id:o.id})}><span class="ai" style="background:var(--blue-s);color:var(--blue)">${ic('truck')}</span><span class="grow" style="text-align:left">Order #${o.no} · ${h(SUP(o.sup).name)}<small>${plural(o.lines.filter(l=>l.recv<l.qty).length,'item')} still to come · expected ${fDs(o.expected)}${o.status==='part'?' · part received':''}</small></span><span class="go">This one${ic('chev')}</span></button>`).join('')}</div>`
     :`<div class="card">${empty('No deliveries are expected','Goods are received against an order. Create an order first.',`<button class="btn" ${A('go',{s:'newOrder'})}>Create an order</button>`)}</div>`}<div class="foot"><button class="btn sec" ${A('back')}>Cancel</button></div>`}
   const o=ordBy(p.order);if(!o)return empty('This order was removed','',`<button class="btn" ${A('root',{s:'orders'})}>Back to Orders</button>`);
   if(!p.rows){p.rows={};o.lines.forEach((l,i)=>{const rem=r3(l.qty-l.recv);if(rem>0)p.rows[i]={qty:qf(rem),exp:addDays(today(),ING(l.ing).shelf),price:amt(l.price)}})}
@@ -1171,16 +1205,16 @@ SCREENS.waste={sec:'waste',title:()=>'Waste',help:['Pick the item, set the amoun
    <div class="card pad0"><h2 style="padding:14px 16px 8px">Your rescue offers</h2><div class="tw">${ls.length?`<table><tr><th>Item</th><th class="r">Amount</th><th class="hide-s">Partner</th><th>Status</th><th>What to do</th></tr>${ls.map(r=>`<tr><td class="b">${h(ING(r.ing).name)}</td><td class="r">${qU(r.ing,r.qty)}</td><td class="hide-s">${h(r.partner)}</td><td>${pill(r.status,r.status==='Collected'?'ok':r.status==='Offered'?'info':'bad')}</td><td>${r.status==='Offered'?`<div class="row"><button class="btn sm" ${A('rescueDone',{id:r.id})}>Mark as collected</button><button class="btn red sm" ${A('rescueCancel',{id:r.id})}>Take back offer</button></div>`:'<span class="muted sm">Nothing more to do</span>'}</td></tr>`).join('')}</table>`:empty('No offers yet','Offer an item from the list above and it will show here.')}</div></div>`}
   const i=p.ing&&ix().ing[p.ing]?ING(p.ing):null,q=num(p.qty),oh=i?onHand(i.id):0;
   const why=!i?'Pick an item first.':!(q>0)?'Type an amount above 0.':q>oh+0.0005?'Only '+qU(i.id,oh)+' in stock. Lower the amount, or fix the count in Stock first.':!p.reason?'Tap a reason.':'';
-  const fq=(p.q||'').trim().toLowerCase(),rows=S.waste.slice().reverse().filter(w=>!fq||ING(w.ing).name.toLowerCase().includes(fq)).slice(0,40);
+  const fq=(p.q||'').trim().toLowerCase(),all=S.waste.slice().reverse().filter(w=>!fq||ING(w.ing).name.toLowerCase().includes(fq)).sort(byDate('waste',w=>w.dt)),rows=all.slice(0,40);
   return `${pageHead('Waste','Log food that was thrown away. '+demoTag,S.role==='owner'?`<button class="btn sec" ${A('root',{s:'reports',p:{focus:'waste'}})}>${ic('chart')}See the monthly report</button>`:`<button class="btn sec" ${A('root',{s:'stock',p:{tab:'soon'}})}>${ic('clock')}See what is expiring soon</button>`)}${tabs}
   ${p.done&&S.waste.some(w=>w.id===p.done.id)?`<div class="card donebox" id="wastedone" style="padding:20px 16px"><span class="tick">${ic('check')}</span><h2>Waste logged</h2><p>${h(p.done.txt)}</p><div class="acts"><button class="btn big" id="wasteagain" ${A('set',{k:'done',v:null})}>Log another item</button><button class="btn sec big" ${A('root',{s:'home'})}>Back to Home</button></div><div class="acts"><button class="btn sec sm" ${A('wasteUndo',{id:p.done.id})}>Undo this entry</button></div></div>`:`<div class="card" id="wasteform" style="display:flex;flex-direction:column;gap:14px"><h2>Log waste</h2><div class="fgrid">
    ${field('w-ing','1. What was thrown away?',`<select class="inp" id="w-ing" data-m="ing" data-r><option value="">Pick an item</option>${ING_CATS.map(c=>`<optgroup label="${c}">${S.ingredients.filter(x=>x.cat===c).map(x=>`<option value="${x.id}" ${p.ing===x.id?'selected':''}>${h(x.name)} (${qf(onHand(x.id))} ${h(x.unit)} in stock)</option>`).join('')}</optgroup>`).join('')}</select>`)}
    <div class="field"><label for="w-qty">2. How much?${i?' ('+h(i.unit)+')':''}</label><div class="stepper"><button ${A('wasteStep',{d:-1})} aria-label="Less" ${num(p.qty)>((i&&(i.unit==='kg'||i.unit==='L'))?0.5:1)?'':'disabled'}>−</button><input class="inp" id="w-qty" inputmode="decimal" data-m="qty" data-live value="${h(p.qty)}"><button ${A('wasteStep',{d:1})} aria-label="More">+</button></div></div></div>
    <div><div class="flabel" style="margin-bottom:6px">3. Why?</div><div class="chips">${REASONS.map(r=>`<button class="chip ${p.reason===r?'on':''}" aria-pressed="${p.reason===r}" ${A('set',{k:'reason',v:r})}>${r}</button>`).join('')}</div></div>
    <div class="row"><button class="btn big" id="wastesave" ${A('wasteSave')} ${why?'disabled':''}>Save waste log</button>${why?`<span class="why">${why}</span>`:`<span class="muted sm">About ${rm(Math.round(q*i.cost))} of ${h(i.name)}</span>`}</div></div>`}
-  <div class="row"><h2 class="grow">Latest entries</h2>${searchBox('q','Search the log by item',p.q)}</div>
+  <div class="row"><h2 class="grow">${sortDir('waste')==='asc'?'Oldest entries':'Latest entries'}</h2>${searchBox('q','Search the log by item',p.q)}${sortBar('waste')}</div>
   <div class="card pad0"><div class="tw">${rows.length?`<table><tr><th>When</th><th>Item</th><th class="r">Amount</th><th>Reason</th><th class="r hide-s">Cost</th><th></th></tr>${rows.map(w=>`<tr class="click" tabindex="0" ${A('go',{s:'wasteItem',p:{ing:w.ing}})}><td>${w.dt.slice(0,10)===T?'Today':fDs(w.dt)}, ${fT(w.dt)}</td><td class="b">${h(ING(w.ing).name)}</td><td class="r">${qU(w.ing,w.qty)}</td><td>${h(w.reason)}${w.auto?' '+pill('Added automatically','info'):''}</td><td class="r hide-s">${rm(w.cost)}</td><td class="chev">History ›</td></tr>`).join('')}</table>`
-   :empty(fq?'No entry matches "'+h(fq)+'"':'No waste logged yet',fq?'':'Use the form above to log the first one.',fq?`<button class="btn sec" ${A('set',{k:'q',v:''})}>Clear search</button>`:'')}</div></div>`}};
+   :empty(fq?'No entry matches "'+h(fq)+'"':'No waste logged yet',fq?'':'Use the form above to log the first one.',fq?`<button class="btn sec" ${A('set',{k:'q',v:''})}>Clear search</button>`:'')}</div></div>${all.length>rows.length?`<p class="muted sm">Showing ${rows.length} of ${all.length} entries. Search for an item, or see the monthly report for everything.</p>`:''}`}};
 Object.assign(ACT,{
  wasteStep:p=>{const c=cur().p,i=c.ing?ING(c.ing):null,st=i&&(i.unit==='kg'||i.unit==='L')?0.5:1;c.qty=qf(Math.max(st,(num(c.qty)||0)+p.d*st));render(true)},
  wasteSave:()=>{const c=cur().p,q=num(c.qty);if(!c.ing||!(q>0)||!c.reason)return;const w=logWaste(c.ing,q,c.reason);if(!w){toast('Nothing was logged because there is no stock of this item.');return}
@@ -1192,9 +1226,9 @@ Object.assign(ACT,{
  rescueCancel:p=>{const r=S.rescue.find(x=>x.id===p.id);confirmBox({title:'Take back this offer?',body:h(ING(r.ing).name)+' will stay in your stock and the partner will no longer be expected to collect it.',ok:'Yes, take it back',no:'No, keep the offer',danger:true,yes:()=>{r.status='Taken back';save();render(true);toast('Offer taken back',()=>{r.status='Offered'})}})}
 });
 SCREENS.wasteItem={sec:'waste',title:p=>'Waste history: '+ING(p.ing).name,help:['Every time this item was thrown away is listed here, newest first.','Look at the reasons. If most are "Expired", try ordering less or more often.','"Open this item in Stock" shows what is on the shelf now.'],
- html(p){const i=ING(p.ing),ws=S.waste.filter(w=>w.ing===p.ing).reverse(),c=ws.reduce((a,w)=>a+w.cost,0),k=r3(ws.reduce((a,w)=>a+w.kg,0));
+ html(p){const i=ING(p.ing),ws=S.waste.filter(w=>w.ing===p.ing).reverse().sort(byDate('waste',w=>w.dt)),c=ws.reduce((a,w)=>a+w.cost,0),k=r3(ws.reduce((a,w)=>a+w.kg,0));
   return `${pageHead('Waste history: '+h(i.name),plural(ws.length,'entry','entries')+' in the last 2 months · '+qf(k)+' kg · '+rm(c)+' '+demoTag,`<button class="btn" ${A('go',{s:'item',p:{id:i.id}})}>Open this item in Stock</button>`)}
-  <div class="card pad0"><div class="tw">${ws.length?`<table><tr><th>When</th><th class="r">Amount</th><th>Reason</th><th class="r">Cost</th><th>What to do</th></tr>${ws.map(w=>`<tr><td>${fDT(w.dt)}</td><td class="r">${qU(w.ing,w.qty)}</td><td>${h(w.reason)}${w.auto?' '+pill('Added automatically','info'):''}</td><td class="r">${rm(w.cost)}</td><td>${w.dt.slice(0,10)===today()?`<button class="btn red sm" ${A('wasteRemove',{id:w.id})}>Remove entry</button>`:'<span class="muted sm">Older entries are locked</span>'}</td></tr>`).join('')}</table>`:empty('No waste logged for this item','That is a good thing.',`<button class="btn sec" ${A('root',{s:'waste'})}>Back to the waste log</button>`)}</div></div>`}};
+  ${sortBar('waste')}<div class="card pad0"><div class="tw">${ws.length?`<table><tr><th>When</th><th class="r">Amount</th><th>Reason</th><th class="r">Cost</th><th>What to do</th></tr>${ws.map(w=>`<tr><td>${fDT(w.dt)}</td><td class="r">${qU(w.ing,w.qty)}</td><td>${h(w.reason)}${w.auto?' '+pill('Added automatically','info'):''}</td><td class="r">${rm(w.cost)}</td><td>${w.dt.slice(0,10)===today()?`<button class="btn red sm" ${A('wasteRemove',{id:w.id})}>Remove entry</button>`:'<span class="muted sm">Older entries are locked</span>'}</td></tr>`).join('')}</table>`:empty('No waste logged for this item','That is a good thing.',`<button class="btn sec" ${A('root',{s:'waste'})}>Back to the waste log</button>`)}</div></div>`}};
 ACT.wasteRemove=p=>{const w=S.waste.find(x=>x.id===p.id);confirmBox({title:'Remove this waste entry?',body:qU(w.ing,w.qty)+' of '+h(ING(w.ing).name)+' will go back into stock, as if it was never thrown away.',ok:'Yes, remove the entry',no:'No, keep it',danger:true,yes:()=>{undoWaste(w.id);save();render(true);toast('Entry removed. The stock is back.')}})};
 
 /* ---------- Reports ---------- */
@@ -1204,7 +1238,7 @@ SCREENS.reports={sec:'reports',title:()=>'Reports',help:['Pick a month at the to
   TEXTS.salesCsv=()=>toCSV([['Date','Bills','Sales incl. tax (RM)','Sales before tax and service charge (RM)','Service charge (RM)','SST (RM)','Ingredient cost (RM)'],...st.daily.map(d=>{const x=S.days[d.d]||{bills:0,total:0,sub:0,sc:0,sst:0,cogs:0};return[d.d,x.bills,amt(x.total),amt(x.sub),amt(x.sc),amt(x.sst),amt(x.cogs)]})]);TEXTS.salesCsv.file='goodbite-sales-'+m+'.csv';
   const maxTop=Math.max(1,...st.top.slice(0,8).map(x=>x.cost)),maxR=Math.max(1,...st.reasons.map(x=>x.cost));
   if(p.focus){const f=p.focus;p.focus='';setTimeout(()=>{const e=document.getElementById('rep-'+f);if(e)e.scrollIntoView({block:'start'})},0)}
-  return `${pageHead('Reports','How the outlet is doing. '+pill('Demo data: every figure here is made up','warn'),`<button class="btn sec" ${A('showText',{t:'Waste log for '+fM(m),k:'wasteCsv'})}>${ic('copy')}Copy waste log as spreadsheet</button><button class="btn sec" ${A('showText',{t:'Daily sales for '+fM(m),k:'salesCsv'})}>${ic('copy')}Copy daily sales as spreadsheet</button>`)}
+  return `${pageHead('Reports','How the outlet is doing. '+pill('Demo data: every figure here is made up','warn'),`<button class="btn sec" ${A('go',{s:'expReport'})}>${ic('clock')}Expiring-soon report</button><button class="btn sec" ${A('showText',{t:'Waste log for '+fM(m),k:'wasteCsv'})}>${ic('copy')}Copy waste log as spreadsheet</button><button class="btn sec" ${A('showText',{t:'Daily sales for '+fM(m),k:'salesCsv'})}>${ic('copy')}Copy daily sales as spreadsheet</button>`)}
   <div class="tabs">${ms.map(x=>`<button class="tab ${m===x?'on':''}" ${A('set',{k:'m',v:x})}>${fM(x)}</button>`).join('')}</div>
   <div class="grid g4">
    <button class="kpi" ${A('go',{s:'repDays',p:{m}})}><span class="l">Sales (with tax)</span><span class="v">${rm(st.sales)}</span><span class="s lnk">${plural(st.bills,'bill')} · see each day ›</span></button>
@@ -1220,10 +1254,171 @@ SCREENS.reports={sec:'reports',title:()=>'Reports',help:['Pick a month at the to
 ACT.foodCost=p=>{const st=monthStats(p.m);modal(()=>`${mHead('How food cost is worked out')}<p>Food cost % = cost of the ingredients used in what you sold, divided by sales before tax and service charge.</p><dl class="kv"><dt>Ingredients used</dt><dd>${rm(st.cogs)}</dd><dt>Sales before tax</dt><dd>${rm(st.net)}</dd><dt>Food cost</dt><dd>${st.fc.toFixed(1)}%</dd><dt>Waste on top of that</dt><dd>${rm(st.wRM)} (${st.wp.toFixed(1)}% of sales)</dd></dl><p class="muted sm">The app adds up each recipe every time an item is sold. All prices here are demo prices.</p><div class="mf"><button class="btn" ${A('closeModal')}>Got it</button></div>`)};
 SCREENS.repDays={sec:'reports',title:p=>'Sales by day, '+fM(p.m),help:['One row for each day of the month.','"Ingredient cost" is what the food sold that day cost you to make.','Go back to Reports to change the month.'],
  html(p){const st=monthStats(p.m);return `${pageHead('Sales by day, '+fM(p.m),demoTag,`<button class="btn sec" ${A('showText',{t:'Daily sales for '+fM(p.m),k:'salesCsv'})}>${ic('copy')}Copy as spreadsheet</button>`)}
-  <div class="card pad0"><div class="tw"><table><tr><th>Day</th><th class="r">Bills</th><th class="r">Sales (with tax)</th><th class="r hide-s">Before tax</th><th class="r hide-s">Ingredient cost</th></tr>${st.daily.slice().reverse().map(d=>{const x=S.days[d.d]||{bills:0,total:0,sub:0,cogs:0};return`<tr><td>${fD(d.d)}${d.d===today()?' '+pill('Today','info'):''}</td><td class="r">${x.bills}</td><td class="r b">${rm(x.total)}</td><td class="r hide-s">${rm(x.sub)}</td><td class="r hide-s">${rm(x.cogs)}</td></tr>`}).join('')}<tr><td class="b">Month so far</td><td class="r b">${st.bills}</td><td class="r b">${rm(st.sales)}</td><td class="r b hide-s">${rm(st.net)}</td><td class="r b hide-s">${rm(st.cogs)}</td></tr></table></div></div>`}};
+  ${sortBar('sales')}<div class="card pad0"><div class="tw"><table><tr><th>Day</th><th class="r">Bills</th><th class="r">Sales (with tax)</th><th class="r hide-s">Before tax</th><th class="r hide-s">Ingredient cost</th></tr>${st.daily.slice().sort(byDate('sales',d=>d.d)).map(d=>{const x=S.days[d.d]||{bills:0,total:0,sub:0,cogs:0};return`<tr><td>${fD(d.d)}${d.d===today()?' '+pill('Today','info'):''}</td><td class="r">${x.bills}</td><td class="r b">${rm(x.total)}</td><td class="r hide-s">${rm(x.sub)}</td><td class="r hide-s">${rm(x.cogs)}</td></tr>`}).join('')}<tr><td class="b">Month so far</td><td class="r b">${st.bills}</td><td class="r b">${rm(st.sales)}</td><td class="r b hide-s">${rm(st.net)}</td><td class="r b hide-s">${rm(st.cogs)}</td></tr></table></div></div>`}};
 SCREENS.repWaste={sec:'reports',title:p=>'Waste entries, '+fM(p.m),help:['Every waste entry of the month, newest first.','Tap a row to see the full waste history of that item.','"Copy as spreadsheet" gives you the list for Excel.'],
- html(p){const st=monthStats(p.m),ws=st.waste.slice().reverse();return `${pageHead('Waste entries, '+fM(p.m),qf(st.wKg)+' kg · '+rm(st.wRM)+' '+demoTag,`<button class="btn sec" ${A('showText',{t:'Waste log for '+fM(p.m),k:'wasteCsv'})}>${ic('copy')}Copy as spreadsheet</button>`)}
-  <div class="card pad0"><div class="tw">${ws.length?`<table><tr><th>When</th><th>Item</th><th class="r">Amount</th><th>Reason</th><th class="r hide-s">Weight</th><th class="r">Cost</th><th></th></tr>${ws.map(w=>`<tr class="click" tabindex="0" ${A('go',{s:'wasteItem',p:{ing:w.ing}})}><td>${fDs(w.dt)}</td><td class="b">${h(ING(w.ing).name)}</td><td class="r">${qU(w.ing,w.qty)}</td><td>${h(w.reason)}</td><td class="r hide-s">${qf(w.kg)} kg</td><td class="r">${rm(w.cost)}</td><td class="chev">History ›</td></tr>`).join('')}</table>`:empty('No waste logged in '+fM(p.m),'',`<button class="btn sec" ${A('root',{s:'waste'})}>Open the waste log</button>`)}</div></div>`}};
+ html(p){const st=monthStats(p.m),ws=st.waste.slice().reverse().sort(byDate('waste',w=>w.dt));return `${pageHead('Waste entries, '+fM(p.m),qf(st.wKg)+' kg · '+rm(st.wRM)+' '+demoTag,`<button class="btn sec" ${A('showText',{t:'Waste log for '+fM(p.m),k:'wasteCsv'})}>${ic('copy')}Copy as spreadsheet</button>`)}
+  ${sortBar('waste')}<div class="card pad0"><div class="tw">${ws.length?`<table><tr><th>When</th><th>Item</th><th class="r">Amount</th><th>Reason</th><th class="r hide-s">Weight</th><th class="r">Cost</th><th></th></tr>${ws.map(w=>`<tr class="click" tabindex="0" ${A('go',{s:'wasteItem',p:{ing:w.ing}})}><td>${fDs(w.dt)}</td><td class="b">${h(ING(w.ing).name)}</td><td class="r">${qU(w.ing,w.qty)}</td><td>${h(w.reason)}</td><td class="r hide-s">${qf(w.kg)} kg</td><td class="r">${rm(w.cost)}</td><td class="chev">History ›</td></tr>`).join('')}</table>`:empty('No waste logged in '+fM(p.m),'',`<button class="btn sec" ${A('root',{s:'waste'})}>Open the waste log</button>`)}</div></div>`}};
+
+/* ---------- Date sort for list screens ---------- */
+const SORTD={stock:'asc',orders:'desc',bills:'desc',waste:'desc',inv:'desc',sales:'desc'};
+const sortDir=k=>(S.sort&&S.sort[k])||SORTD[k];
+/* compare two rows by a date string (YYYY-MM-DD or YYYY-MM-DDTHH:MM), in the direction the person picked */
+const byDate=(k,f)=>(a,b)=>{const x=f(a),y=f(b),r=x<y?-1:x>y?1:0;return sortDir(k)==='asc'?r:-r};
+function sortBar(k,exp){const d=sortDir(k),o=exp?[['asc','Expiring soonest first'],['desc','Expiring latest first']]:[['desc','Newest first'],['asc','Oldest first']];
+  return `<div class="sortc noprint" role="group" aria-label="${exp?'Sort by expiry date':'Sort by date'}"><span class="flabel">${exp?'Sort by expiry date':'Sort by date'}</span>${o.map(([v,l])=>`<button class="chip sm ${d===v?'on':''}" aria-pressed="${d===v}" ${A('sortSet',{k,v})}><span aria-hidden="true">${v==='asc'?'↑':'↓'}</span> ${l}</button>`).join('')}</div>`}
+ACT.sortSet=p=>{S.sort=S.sort||{};S.sort[p.k]=p.v;save();render(true)};
+
+/* ---------- Scan: one button, three ways. Reading is simulated with sample pictures. ---------- */
+/* typical shelf life of fresh food bought without a printed date, in days */
+const FRESH_DAYS={chicken:2,prawn:1,beef:2,kangkung:3,spinach:3,lettuce:4,tomato:5,cucumber:5,banana:4,avocado:4,mango:4,mushroom:3,chilli:7,lime:7,lemon:10,onion:21,garlic:30,potato:21};
+const PICS={chicken:'🍗',beef:'🥩',prawn:'🦐',kangkung:'🌿',spinach:'🥬',lettuce:'🥗',tomato:'🍅',cucumber:'🥒',onion:'🧅',garlic:'🧄',chilli:'🌶️',lime:'🟢',lemon:'🍋',banana:'🍌',mango:'🥭',avocado:'🥑',mushroom:'🍄',potato:'🥔',egg:'🥚'};
+const SCAN_WAYS=[['do','📦','Delivery order or supplier invoice','Reads the whole order: items, amounts and prices.'],
+ ['shop','🛒','Supermarket receipt or barcode','Reads the items and amounts, and knows packaged products.'],
+ ['market','📷','Wet-market photo','Guesses the food in the photo, such as chicken or kangkung.']];
+const SCAN_RECEIPT={shop:'Pasaraya Jimat (demo shop)',no:'R-48213',lines:[
+ {raw:'SUSU SEGAR 1L x6',ing:'milk',qty:6,paid:4470},{raw:'TELUR GRED A 30 BIJI',ing:'egg',qty:30,paid:1590},{raw:'MENTEGA 250G x4',ing:'butter',qty:1,paid:3960},
+ {raw:'TOMATO 1.2KG',ing:'tomato',qty:1.2,paid:708},{raw:'SANTAN 1L x2',ing:'santan',qty:2,paid:1580},{raw:'KICAP MANIS 1L',ing:'',qty:1,paid:690,unknown:true},{raw:'BEG PLASTIK',nonfood:true,paid:20}]};
+const SCAN_CODES=[{code:'9550000000017',raw:'Oat milk 1 L carton',ing:'oat',qty:1,paid:1100},{code:'9550000000024',raw:'Cream cheese 250 g',ing:'ccheese',qty:0.25,paid:850},
+ {code:'9550000000031',raw:'Orange juice 1 L',ing:'oj',qty:1,paid:900},{code:'9550000000048',raw:'Mayonnaise 500 g',ing:'mayo',qty:0.5,paid:650}];
+const SCAN_MARKET=[{k:'chicken',pic:'🍗',label:'Chicken',ing:'chicken',qty:3,paid:5100,sure:true},{k:'kangkung',pic:'🌿',label:'Kangkung',ing:'kangkung',qty:1,paid:600,sure:true},
+ {k:'prawn',pic:'🦐',label:'Prawns',ing:'prawn',qty:1.5,paid:6300,sure:true},{k:'blur',pic:'🌫️',label:'Blurry photo',ing:'',qty:1,paid:0,sure:false}];
+const DO_SAMPLE={sup:'P',lines:[['lettuce',3],['tomato',4],['cucumber',2]]};
+const openOrders=()=>S.orders.filter(o=>o.status==='sent'||o.status==='part').sort((a,b)=>a.expected<b.expected?-1:a.expected>b.expected?1:a.no-b.no);
+/* the suggested expiry date for an item: printed on the pack (barcode), typical for fresh food, or the item's usual shelf life */
+function suggestExp(id,way){const i=ING(id),fresh=FRESH_DAYS[id]!=null;
+  if(way==='barcode'){const n=Math.max(2,i.shelf-2);return{exp:addDays(today(),n),src:'pack',n}}
+  if(fresh&&(way==='market'||id!=='egg')){const n=FRESH_DAYS[id];return{exp:addDays(today(),n),src:'fresh',n}}
+  return{exp:addDays(today(),i.shelf),src:'shelf',n:i.shelf}}
+let scanSeq=1;
+function scanRow(o,way){const r={k:scanSeq++,ing:o.ing||'',raw:o.raw||'',qty:o.qty!=null?qf(o.qty):'',ok:false,skip:!!o.nonfood,unknown:!!o.unknown,nonfood:!!o.nonfood,sure:o.sure!==false,pic:o.pic||'',line:o.line,unit:way==='do'};
+  if(r.unit)r.price=o.price!=null?amt(o.price):'';else r.paid=o.paid!=null?amt(o.paid):'';
+  if(r.ing){const s=suggestExp(r.ing,way);Object.assign(r,{exp:s.exp,src:s.src,n:s.n,sugExp:s.exp,lastIng:r.ing,lastExp:s.exp})}else r.exp='';
+  return r}
+function scanShoot(p){const way=p.way;p.rows=p.rows||[];
+  if(way==='do'){const o=p.order&&ordBy(p.order);p.rows=[];
+    if(o)o.lines.forEach((l,i)=>{const rem=r3(l.qty-l.recv);if(rem>0)p.rows.push(scanRow({ing:l.ing,raw:ING(l.ing).name+' '+qU(l.ing,rem),qty:rem,price:l.price,line:i},'do'))});
+    else DO_SAMPLE.lines.forEach(([g,q])=>p.rows.push(scanRow({ing:g,raw:ING(g).name+' '+qU(g,q),qty:q,price:ING(g).cost},'do')));
+    return p.rows.length}
+  if(way==='shop'&&(p.mode||'receipt')==='receipt'){p.rows=SCAN_RECEIPT.lines.map(l=>scanRow(l,'receipt'));return p.rows.length}
+  if(way==='shop'){const c=SCAN_CODES[p.code||0];p.rows.push(scanRow(c,'barcode'));return 1}
+  const m=SCAN_MARKET.find(x=>x.k===(p.photo||'chicken'))||SCAN_MARKET[0];p.rows.push(scanRow(m,'market'));return 1}
+const scanIn=r=>!r.nonfood&&!r.skip&&!!r.ing;
+function scanErrs(r){const e={},q=num(r.qty),pr=num(r.unit?r.price:r.paid);if(!scanIn(r))return e;
+  if(!(q>0))e.qty='Type an amount above 0.';
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(r.exp||''))e.exp='Pick the expiry date.';else if(r.exp<today())e.exp='This date is in the past.';
+  if(!(pr>=0))e.price='Type a price, for example 7.50.';
+  if(!e.exp&&!r.ok)e.ok='Check the expiry date, then tap "Date checked".';return e}
+const scanWay=p=>p.way==='shop'?((p.mode||'receipt')==='barcode'?'barcode':'receipt'):p.way;
+const srcTxt=r=>r.src==='pack'?'Date read from the pack (simulated)':r.src==='fresh'?'Typical for fresh food: '+plural(r.n,'day'):'Usual shelf life for this item: '+plural(r.n,'day')+'. Check the date printed on the pack.';
+const SSTEPS=['Pick a way','Take the photo','Check and confirm'];
+function camHtml(p){const way=p.way,inner=[];let pick='',shoot='Take photo (simulated)';
+  if(way==='do'){const os=openOrders();if(!p.order&&p.order!=='')p.order=os.length?os[0].id:'';const o=p.order&&ordBy(p.order);
+    pick=`<div class="flabel">Which paper is in front of the camera?</div><div class="chips">${os.map(x=>`<button class="chip ${p.order===x.id?'on':''}" aria-pressed="${p.order===x.id}" ${A('set',{k:'order',v:x.id})}>Order #${x.no} · ${h(SUP(x.sup).name.replace(' (demo)',''))}</button>`).join('')}<button class="chip ${p.order===''?'on':''}" aria-pressed="${p.order===''}" ${A('set',{k:'order',v:''})}>Delivery with no order in the app (sample)</button></div>`;
+    const sup=o?SUP(o.sup):SUP(DO_SAMPLE.sup),ls=o?o.lines.filter(l=>l.qty-l.recv>0).map(l=>[l.ing,r3(l.qty-l.recv)]):DO_SAMPLE.lines;
+    inner.push(`<div class="doc"><b>DELIVERY ORDER</b><span>${h(sup.name)}</span><span>DO-${o?2000+o.no:'3051'}${o?' · PO #'+o.no:''} · ${fD(today())}</span><hr>${ls.map(([g,q])=>`<div class="l"><span>${h(ING(g).name)}</span><span>${qU(g,q)}</span></div>`).join('')}<hr><span>Received by: ____________</span></div>`)}
+  else if(way==='shop'){const mode=p.mode||'receipt';
+    pick=`<div class="chips">${[['receipt','Receipt'],['barcode','Barcode on a pack']].map(([k,l])=>`<button class="chip ${mode===k?'on':''}" aria-pressed="${mode===k}" ${A('set',{k:'mode',v:k})}>${l}</button>`).join('')}</div>`;
+    if(mode==='receipt'){const t=SCAN_RECEIPT.lines.reduce((a,l)=>a+l.paid,0);inner.push(`<div class="doc"><b>${h(SCAN_RECEIPT.shop)}</b><span>${SCAN_RECEIPT.no} · ${fD(today())}</span><hr>${SCAN_RECEIPT.lines.map(l=>`<div class="l"><span>${h(l.raw)}</span><span>${amt(l.paid)}</span></div>`).join('')}<hr><div class="l b"><span>TOTAL RM</span><span>${amt(t)}</span></div></div>`)}
+    else{const ci=p.code||0,c=SCAN_CODES[ci];shoot='Scan barcode (simulated)';
+      pick+=`<div class="flabel">Which pack is in front of the camera?</div><div class="chips">${SCAN_CODES.map((x,i)=>`<button class="chip ${ci===i?'on':''}" aria-pressed="${ci===i}" ${A('set',{k:'code',v:i})}>${h(x.raw)}</button>`).join('')}</div>`;
+      inner.push(`<div class="doc bc"><svg viewBox="0 0 95 40" aria-hidden="true">${c.code.split('').map((d,i)=>`<rect x="${4+i*6.6}" y="0" width="${1+(+d%3)}" height="34"/><rect x="${7+i*6.6}" y="0" width="${1+((+d+1)%2)}" height="34"/>`).join('')}</svg><span class="mono">${c.code}</span><b>${h(c.raw)}</b></div>`)}}
+  else{const ph=p.photo||'chicken',m=SCAN_MARKET.find(x=>x.k===ph);
+    pick=`<div class="flabel">Pretend photo of:</div><div class="chips">${SCAN_MARKET.map(x=>`<button class="chip ${ph===x.k?'on':''}" aria-pressed="${ph===x.k}" ${A('set',{k:'photo',v:x.k})}><span aria-hidden="true">${x.pic}</span> ${x.label}</button>`).join('')}</div>`;
+    inner.push(`<div class="photo ${ph==='blur'?'blur':''}" aria-hidden="true">${m.pic}</div>`)}
+  const n=(p.rows||[]).length;
+  return `${pageHead(h(SCAN_WAYS.find(w=>w[0]===way)[2]),'Hold the phone over it and take the photo. In this demo the camera shows a sample picture.')}${stepsBar(SSTEPS,1)}
+   <div class="grid g2"><div class="cam" role="img" aria-label="Camera view (sample picture)"><span class="cr tl"></span><span class="cr tr"></span><span class="cr bl"></span><span class="cr br"></span>${inner.join('')}</div>
+   <div class="card" style="display:flex;flex-direction:column;gap:12px">${pick}<button class="btn big full" id="scanshoot" ${A('scanShoot')}>${ic('scan')}${shoot}</button>
+    ${n&&(way==='market'||scanWay(p)==='barcode')?`<button class="btn sec" ${A('set',{k:'step',v:'confirm'})}>Go to the ${plural(n,'item')} already scanned</button>`:''}<p class="muted sm">Simulated: nothing is read from a real camera. A real app would read the text and dates for you.</p></div></div>
+   <div class="foot"><button class="btn sec" ${A('scanWayBack')}>${ic('back')}Pick another way</button></div>`}
+function rowHtml(r,i,p){const g=r.ing?ING(r.ing):null,way=scanWay(p);
+  /* if staff changed the item, suggest a new date for it; if they changed the date, that counts as checked */
+  if(r.ing&&r.ing!==r.lastIng){const s=suggestExp(r.ing,way==='market'?'market':way);Object.assign(r,{exp:s.exp,src:s.src,n:s.n,sugExp:s.exp,lastIng:r.ing,lastExp:s.exp,ok:false});if(!r.unit&&!(num(r.paid)>0))r.paid=amt(Math.round((num(r.qty)||0)*ING(r.ing).cost))}
+  if(r.exp!==r.lastExp){r.lastExp=r.exp;if(r.exp)r.ok=true}
+  const e=scanErrs(r);if(!p.tried)delete e.ok;
+  if(r.nonfood)return`<div class="card scanrow off"><div class="row"><span class="mono grow">${h(r.raw)}</span><span class="num">${rm(Math.round(num(r.paid)*100))}</span>${pill('Not a food item, left out')}</div></div>`;
+  const opts=`<option value="">${r.unknown?'Leave it out':'Pick an item'}</option>${ING_CATS.map(c=>`<optgroup label="${c}">${S.ingredients.filter(x=>x.cat===c).map(x=>`<option value="${x.id}" ${r.ing===x.id?'selected':''}>${h(x.name)}</option>`).join('')}</optgroup>`).join('')}`;
+  const grid=way==='market'&&(!r.ing||r.pick)?`<div><div class="flabel" style="margin-bottom:6px">${r.ing?'Tap the right picture':'The app is not sure. Tap the picture of what you bought.'}</div><div class="picg">${Object.keys(PICS).filter(k=>ix().ing[k]).map(k=>`<button class="pic ${r.ing===k?'on':''}" aria-pressed="${r.ing===k}" ${A('scanPic',{i,k})}><span aria-hidden="true">${PICS[k]}</span><b>${h(ING(k).name)}</b></button>`).join('')}</div></div>`:'';
+  const head=`<div class="row" style="align-items:flex-start"><span class="rpic" aria-hidden="true">${r.ing&&PICS[r.ing]?PICS[r.ing]:r.pic||'📦'}</span><div class="grow" style="display:flex;flex-direction:column;gap:2px">
+    ${way==='market'?(r.ing?`<span class="muted sm">${r.sure?'The app thinks this is':'You picked'}</span><h3>${h(g.name)}</h3>`:'<h3>Not sure what this is</h3>'):`<label class="muted sm" for="sc-i-${i}">${r.unknown?'Not in your item list. Match it to an item:':'Item'}</label><select class="inp" id="sc-i-${i}" data-m="rows.${i}.ing" data-r>${opts}</select>`}
+    ${r.raw?`<span class="muted sm"><span>Read:</span> <span class="mono">${h(r.raw)}</span></span>`:''}</div>
+    ${way==='market'&&r.ing?`<button class="btn sec sm" ${A('scanPickT',{i})}>${r.pick?'Hide pictures':'Not right?'}</button>`:''}<button class="btn red sm" ${A('scanDrop',{i})} aria-label="Remove this line">${ic('x')}<span class="hide-s">Remove</span></button></div>`;
+  if(!scanIn(r))return`<div class="card scanrow ${r.unknown?'off':''}">${head}${grid}${r.unknown&&!r.ing?`<p class="muted sm">Left out. ${rm(Math.round(num(r.paid)*100))} on the receipt is not added to stock.</p>`:''}</div>`;
+  const pf=r.unit?['price','Price per '+h(g.unit)+' (RM)',r.price]:['paid','Total paid (RM)',r.paid];
+  return`<div class="card scanrow">${head}${grid}<div class="fgrid">
+    ${field('sc-q-'+i,'Amount ('+h(g.unit)+')',inp('sc-q-'+i,'rows.'+i+'.qty',r.qty,{attr:'inputmode="decimal"',cls:e.qty?'err':''}))}
+    <div class="field"><label for="sc-e-${i}">Expiry date</label><input class="inp ${e.exp||e.ok?'err':''}" id="sc-e-${i}" type="date" data-m="rows.${i}.exp" data-r value="${h(r.exp)}"><span class="muted sm"><span class="pill info">Suggested</span> ${srcTxt(r)}</span></div>
+    ${field('sc-p-'+i,pf[1],inp('sc-p-'+i,'rows.'+i+'.'+pf[0],pf[2],{attr:'inputmode="decimal"',cls:e.price?'err':''}))}</div>
+   <div class="row"><button class="chip ${r.ok?'on':''}" id="sc-ok-${i}" aria-pressed="${r.ok}" ${A('scanOk',{i})}>${r.ok?ic('check'):''}Date checked</button>${Object.values(e).length?`<span class="why">${Object.values(e)[0]}</span>`:''}</div></div>`}
+SCREENS.scan={sec:'stock',title:()=>'Scan',help:['Pick what you are scanning: a delivery order, a supermarket receipt or barcode, or a photo of wet-market food.','The app fills in the items, amounts and a suggested expiry date. Check each date, then tap "Date checked" or change it.','Press "Add to stock" at the bottom. Reading is simulated in this demo.'],
+ html(p){const step=p.step||'way';
+  if(step==='way')return `${pageHead('Scan','What are you adding to stock? Every way ends on a screen where you check the details. '+pill('Simulated in this demo','warn'))}${stepsBar(SSTEPS,0)}
+   <div class="grid g3" id="scanways">${SCAN_WAYS.map(([k,e,t,d])=>`<button class="biga way" ${A('scanWay',{w:k})}><span class="wpic" aria-hidden="true">${e}</span>${t}<small>${d}</small></button>`).join('')}</div>
+   <div class="card"><h2>Why three ways?</h2><p>Many outlets buy some ingredients themselves at a wet market or supermarket. There is no delivery order and often no printed expiry date, so the app suggests one and staff confirm it.</p></div>
+   <div class="foot"><button class="btn sec" ${A('back')}>Cancel</button><div class="rt"><button class="btn sec" ${A('go',{s:'receive',p:{step:0}})}>Type a delivery in by hand instead</button></div></div>`;
+  if(step==='cam')return camHtml(p);
+  const rows=p.rows||[],inc=rows.filter(scanIn),bad=rows.filter(r=>Object.keys(scanErrs(r)).length),todo=rows.filter(r=>scanIn(r)&&!scanErrs(r).exp&&!r.ok).length,way=scanWay(p),o=p.way==='do'&&p.order&&ordBy(p.order);
+  const tot=inc.reduce((a,r)=>a+Math.round((r.unit?num(r.price)*num(r.qty):num(r.paid))*100||0),0);
+  const why=!inc.length?'Nothing to add yet. Pick an item or scan again.':todo?'Check the expiry date on '+plural(todo,'item')+' first.':bad.length?'Fix the boxes marked in red first.':'';
+  return `${pageHead('Check and confirm',(o?'<span>Order #'+o.no+' from '+h(SUP(o.sup).name)+'.</span> ':way==='receipt'?'<span>'+h(SCAN_RECEIPT.shop)+'.</span> ':'')+'<span>Change anything the app read wrong.</span> '+pill('Simulated reading','warn'))}${stepsBar(SSTEPS,2)}
+   ${inc.length?`<p class="muted">For each item, look at the pack or the food. If the suggested expiry date is right, tap "Date checked". If not, change the date.</p>`:''}
+   <div class="grid">${rows.length?rows.map((r,i)=>rowHtml(r,i,p)).join(''):`<div class="card">${empty('No lines left','Scan again to add something.',`<button class="btn" ${A('set',{k:'step',v:'cam'})}>Scan again</button>`)}</div>`}</div>
+   ${way==='market'||way==='barcode'?`<div><button class="btn sec" id="scanmore" ${A('set',{k:'step',v:'cam'})}>${ic('plus')}${way==='market'?'Add another photo':'Scan another barcode'}</button></div>`:''}
+   <div class="foot"><button class="btn sec" ${A('scanRestart')}>${ic('back')}Start again</button><div class="rt">${why?`<span class="why">${why}</span>`:`<span class="b num">${plural(inc.length,'item')} · ${rm(tot)}</span>`}<button class="btn big" id="scansave" ${A('scanSave')} ${why?'disabled':''}>Add to stock</button></div></div>`}};
+Object.assign(ACT,{
+ scanWay:p=>{const c=cur().p;c.way=p.w;c.step='cam';c.rows=[];c.tried=0;render()},
+ scanWayBack:()=>{const c=cur().p;c.step='way';c.rows=[];render()},
+ scanRestart:()=>{const c=cur().p;c.step='cam';c.rows=[];c.tried=0;render()},
+ scanShoot:()=>{const c=cur().p,n=scanShoot(c);c.step='confirm';render();toast(plural(n,'line')+' read from the picture (simulated). Check them below.')},
+ scanOk:p=>{const r=cur().p.rows[p.i];if(!r)return;r.ok=!r.ok;render(true)},
+ scanPic:p=>{const r=cur().p.rows[p.i];if(!r)return;r.ing=p.k;r.sure=false;r.pick=false;render(true)},
+ scanPickT:p=>{const r=cur().p.rows[p.i];if(r){r.pick=!r.pick;render(true)}},
+ scanDrop:p=>{const c=cur().p,r=c.rows.splice(p.i,1)[0];render(true);toast('Line removed',()=>{c.rows.splice(p.i,0,r)})},
+ scanSave:()=>{const c=cur().p,rows=(c.rows||[]).filter(scanIn);c.tried=1;if(!rows.length||rows.some(r=>Object.keys(scanErrs(r)).length)){render(true);return}
+   const snap=JSON.stringify({b:S.batches,o:S.orders}),o=c.way==='do'&&c.order&&ordBy(c.order),made=[];
+   rows.forEach(r=>{const q=num(r.qty),cost=r.unit?Math.round(num(r.price)*100):Math.round(num(r.paid)*100/q);made.push(addBatch(r.ing,q,r.exp,cost).id);
+     if(o&&r.line!=null&&o.lines[r.line]&&o.lines[r.line].ing===r.ing)o.lines[r.line].recv=r3(o.lines[r.line].recv+q)});
+   if(o)o.status=o.lines.every(l=>l.recv>=l.qty)?'received':'part';
+   save();go('scanDone',{made,order:o?o.id:'',way:c.way},true);toast(plural(made.length,'new batch','new batches')+' added to stock',()=>{const x=JSON.parse(snap);S.batches=x.b;S.orders=x.o;root('stock')})}
+});
+SCREENS.scanDone={sec:'stock',title:()=>'Added to stock',html(p){const bs=S.batches.filter(b=>p.made.includes(b.id)),o=p.order&&ordBy(p.order);
+  return`${stepsBar(SSTEPS,3)}<div class="card donebox"><span class="tick">${ic('check')}</span><h1>Stock updated</h1><p><span>${plural(bs.length,'new batch','new batches')} added, each with the expiry date you checked.</span>${o?' <span>'+(o.status==='part'?'Order #'+o.no+' stays open for the items that did not arrive.':'Order #'+o.no+' is now complete.')+'</span>':''}</p>
+  <div class="tw" style="width:100%;max-width:520px"><table>${bs.map(b=>`<tr><td style="text-align:left">${h(ING(b.ing).name)}</td><td class="r b grn-t">+${qU(b.ing,b.qty)}</td><td class="r muted">${fDs(b.exp)}</td></tr>`).join('')}</table></div>
+  <div class="acts"><button class="btn big" id="scanagain" ${A('go',{s:'scan',p:{}})}>Scan something else</button><button class="btn sec big" ${A('root',{s:'home'})}>Back to Home</button></div>
+  <div class="acts"><button class="btn sec sm" ${A('root',{s:'stock'})}>See stock</button>${o&&o.status==='received'&&!S.bills.some(x=>x.order===o.id)?`<button class="btn sec sm" ${A('go',{s:'billForm',p:{order:o.id}})}>Enter the supplier bill</button>`:''}</div></div>`}};
+
+/* ---------- Expiring-soon report: value at risk and a suggested action for each batch ---------- */
+const ACTS={use:['Use first','ok'],special:["Use in today's special",'info'],discount:['Discount','warn'],rescue:['Food rescue','bad']};
+function riskList(days){const list=S.batches.filter(b=>b.qty>0.0005&&daysLeft(b)>=0&&daysLeft(b)<=days).sort((a,b)=>a.exp<b.exp?-1:a.exp>b.exp?1:0);
+  return list.map(b=>{const i=ING(b.ing),d=daysLeft(b),avg=avgUse(i.id),order=batchesOf(i.id),k=order.findIndex(x=>x.id===b.id);
+    /* oldest first: batches that expire earlier are used before this one */
+    const earlier=order.slice(0,Math.max(0,k)).reduce((a,x)=>a+x.qty,0),use=Math.min(b.qty,Math.max(0,avg*(d+1)-earlier)),left=r3(b.qty-use);
+    const dishes=S.menu.filter(m=>m.recipe.some(r=>r[0]===i.id)).sort((x,y)=>(y.recipe.find(r=>r[0]===i.id)[1])-(x.recipe.find(r=>r[0]===i.id)[1])).slice(0,2).map(m=>m.name);
+    let act;const share=left/b.qty;
+    if(left<=0.0005||share<0.25||Math.round(left*b.cost)<300)act='use';else if(!dishes.length)act='rescue';else if(d===0)act=share>0.5?'rescue':'discount';else if(d===1&&share>0.6)act='discount';else if(d>=4&&share<0.6)act='use';else act='special';
+    return{b,i,d,avg,left,risk:Math.round(left*b.cost),value:Math.round(b.qty*b.cost),kg:r3(left*i.kg),dishes,act}})}
+function riskWhy(x){const dn=x.dishes.join(', ');
+  if(x.act==='use')return x.left>0.0005?'Only about '+qU(x.i.id,x.left)+' may be left. Use this batch first and keep it at the front of the shelf.':'Normal sales should use it up in time. Keep it at the front of the shelf.';
+  if(x.act==='rescue')return x.dishes.length?'Expires today and most of it will be left. Offer it to a food rescue partner after service.':'Not used in any dish. Offer it to a food rescue partner before it expires.';
+  if(x.act==='discount')return'About '+qU(x.i.id,x.left)+' will be left and there is little time. Sell dishes with it at a discount, for example 20% off '+dn+'.';
+  return'Put '+dn+' on the specials board to use up the extra '+qU(x.i.id,x.left)+'.'}
+const L=s=>curLang()==='en'?s:tr1(s,curLang());
+SCREENS.expReport={sec:'stock',title:()=>'Expiring-soon report',help:['Every batch that expires in the next few days, what it is worth, and what to do with it.','"Value at risk" is what will probably be left by the expiry date, worked out from the last 14 days of use.','Print it for the kitchen wall, or copy it into a chat for the team.'],
+ html(p){const days=p.days||S.settings.expDays,xs=riskList(days),T=today(),risk=xs.reduce((a,x)=>a+x.risk,0),val=xs.reduce((a,x)=>a+x.value,0),kg=r3(xs.reduce((a,x)=>a+x.kg,0)),n={};xs.forEach(x=>n[x.act]=(n[x.act]||0)+1);
+  TEXTS.expText=()=>[L('Expiring-soon report'),S.settings.cafe.name+' · '+fD(T)+' · '+L('Next '+plural(days,'day')),L('Value at risk')+': '+rm(risk)+' ('+L(plural(xs.length,'batch','batches'))+')','',
+    ...xs.map((x,k)=>[(k+1)+'. '+L(x.i.name)+' · '+qU(x.i.id,x.b.qty)+' · '+L(expTxt(x.b))+' ('+fDs(x.b.exp)+')','   '+L('Value at risk')+': '+rm(x.risk)+' · '+L('Suggested')+': '+L(ACTS[x.act][0]),'   '+L(riskWhy(x))].join('\n')),'',L('Demo data. Suggestions use the last 14 days of use. Check before acting.')].join('\n');
+  TEXTS.expText.file='goodbite-expiring-'+T+'.txt';
+  return `${pageHead('Expiring-soon report','Food that expires in the next '+plural(days,'day')+', what it is worth, and what to do with it. '+demoTag,`${STANDALONE?`<button class="btn" ${A('print')}>Print</button>`:''}<button class="btn ${STANDALONE?'sec':''}" id="expshare" ${A('showText',{t:'Expiring-soon report',k:'expText'})}>${ic('copy')}Copy to share</button>`)}
+  <div class="printonly"><b>${h(S.settings.cafe.name)}</b> · ${fD(T)}</div>
+  <div class="row noprint"><span class="flabel">Show food that expires in:</span><div class="chips">${[1,2,3,5,7].map(k=>`<button class="chip sm ${days===k?'on':''}" aria-pressed="${days===k}" ${A('set',{k:'days',v:k})}>${plural(k,'day')}</button>`).join('')}</div></div>
+  <div class="grid g3" id="exprisk"><div class="kpi"><span class="l">Value at risk</span><span class="v red-t">${rm(risk)}</span><span class="s">Likely left over by the expiry date</span></div>
+   <div class="kpi"><span class="l">Batches expiring</span><span class="v">${xs.length}</span><span class="s">${qf(kg)} kg likely left over</span></div>
+   <div class="kpi"><span class="l">Worth in total</span><span class="v">${rm(val)}</span><span class="s">If none of it were used</span></div></div>
+  ${xs.length?`<div class="chips" aria-label="Suggested actions">${Object.keys(ACTS).filter(k=>n[k]).map(k=>`<span class="pill ${ACTS[k][1]}">${ACTS[k][0]}: ${n[k]}</span>`).join('')}</div>`:''}
+  <div class="card pad0"><div class="tw">${xs.length?`<table class="exp"><tr><th>Item</th><th class="r">Amount</th><th>Expires</th><th class="r hide-s">Likely left over</th><th class="r">Value at risk</th><th>Suggested action</th><th class="noprint"></th></tr>${xs.map(x=>{const off=S.rescue.some(r=>r.batch===x.b.id&&r.status==='Offered');return`<tr><td class="b">${h(x.i.name)}</td><td class="r">${qU(x.i.id,x.b.qty)}</td><td>${pill(expTxt(x.b),x.d<=0?'bad':'warn')} <span class="muted sm">${fDs(x.b.exp)}</span></td><td class="r hide-s">${qU(x.i.id,x.left)}</td><td class="r b">${rm(x.risk)}</td>
+    <td>${pill(...ACTS[x.act])}<div class="sm muted" style="margin-top:4px;max-width:340px">${riskWhy(x)}</div></td><td class="noprint">${x.act==='rescue'?`<button class="btn sec sm" ${A('rescueOffer',{b:x.b.id})} ${off?'disabled':''}>${off?'Offered for rescue':'Offer for rescue'}</button>`:`<button class="btn sec sm" ${A('go',{s:'item',p:{id:x.i.id}})}>Open item</button>`}</td></tr>`}).join('')}<tr><td colspan="4" class="r b hide-s">Total value at risk</td><td class="r b">${rm(risk)}</td><td colspan="2"></td></tr></table>`
+   :empty('Nothing expires in the next '+plural(days,'day'),'Good news. Try a longer period, or check again tomorrow.',`<button class="btn sec" ${A('root',{s:'stock'})}>See all stock</button>`)}</div></div>
+  <p class="muted sm">How this is worked out: the app takes how much of each item was used per day over the last 14 days, and assumes older batches are used first. Whatever is not likely to be used by the expiry date is "at risk". It is a rough guide, so check the shelf before acting. Demo data.</p>`}};
 
 /* ---------- E-invoices (simulation of LHDN MyInvois) ---------- */
 const IST={Draft:['Draft',''],Submitted:['Submitted','info'],Valid:['Valid','ok'],Invalid:['Invalid','bad'],Cancelled:['Cancelled','bad']};
@@ -1232,19 +1427,19 @@ const invBy=id=>S.invoices.find(i=>i.id===id);
 const invKind=i=>i.type==='02'?'Credit note':i.kind==='consolidated'?'Combined (walk-in sales)':'E-invoice';
 const hoursLeft=inv=>Math.max(0,Math.floor((cancelDeadline(inv)-now())/36e5));
 SCREENS.invoices={sec:'invoices',einv:true,title:()=>'Invoices',help:['An e-invoice is a digital invoice that LHDN checks. This page lists every one you made.','The coloured label shows the status. Tap a row to see what to do next.','"Waiting" lists sales where the customer asked for an e-invoice that has not been made yet.'],
- html(p){const f=p.f||'all',q=(p.q||'').trim().toLowerCase(),T=today(),wait=S.sales.filter(x=>x.want&&x.status==='paid'&&!x.inv).sort((a,b)=>b.no-a.no);
+ html(p){const f=p.f||'all',q=(p.q||'').trim().toLowerCase(),T=today(),wait=S.sales.filter(x=>x.want&&x.status==='paid'&&!x.inv).sort((a,b)=>b.no-a.no).sort(byDate('inv',s=>s.dt));
   const pm=addMonth(T.slice(0,7),-1),due=T.slice(0,7)+'-07',needCons=!S.cons[pm]&&consDays(pm).length>0;
   const fl=[['all','All',S.invoices.length],['wait','Waiting',wait.length],['Draft','Drafts',0],['Valid','Valid',0],['Invalid','Invalid',0],['Cancelled','Cancelled',0],['sup','From suppliers',S.bills.length]];fl.forEach(x=>{if(IST[x[0]])x[2]=S.invoices.filter(i=>i.status===x[0]).length});
   let body;
   if(f==='wait')body=wait.length?`<table><tr><th>Receipt</th><th>When</th><th class="r">Total</th><th></th></tr>${wait.map(s=>`<tr class="click" tabindex="0" ${A('go',{s:'invWiz',p:{sale:s.id}})}><td class="b">${s.no}</td><td>${fDT(s.dt)}</td><td class="r">${rm(s.total)}</td><td class="chev">Issue e-invoice ›</td></tr>`).join('')}</table>`:empty('No sales are waiting','When a customer asks for an e-invoice, it shows up here until you issue it.',`<button class="btn sec" ${A('set',{k:'f',v:'all'})}>See all e-invoices</button>`);
-  else if(f==='sup')body=S.bills.length?`<table><tr><th>Bill</th><th>Supplier</th><th class="r">Amount</th><th>E-invoice from supplier</th><th></th></tr>${S.bills.map(b=>`<tr class="click" tabindex="0" ${A('go',{s:'bill',p:{id:b.id}})}><td class="b">${h(b.no)}</td><td>${h(SUP(b.sup).name)}</td><td class="r">${rm(b.amount)}</td><td>${einvPill(b.einv)}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`:empty('No supplier bills yet','');
-  else{const rows=S.invoices.slice().reverse().filter(i=>(f==='all'||i.status===f)&&(!q||i.no.toLowerCase().includes(q)||(i.buyer.name||'').toLowerCase().includes(q)||String(i.receipt||'').includes(q)));
-   body=rows.length?`<table><tr><th>Number</th><th class="hide-s">Type</th><th>Buyer</th><th class="hide-s">Receipt</th><th class="r">Total</th><th>Status</th><th></th></tr>${rows.map(i=>`<tr class="click" tabindex="0" ${A('go',{s:'inv',p:{id:i.id}})}><td class="b">${h(i.no)}</td><td class="hide-s">${invKind(i)}</td><td>${h(i.buyer.name||'(not filled in yet)')}</td><td class="hide-s">${i.receipt||'-'}</td><td class="r">${rm(i.tot.payable)}</td><td>${pill(...IST[i.status])}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`
+  else if(f==='sup')body=S.bills.length?`<table><tr><th>Bill</th><th class="hide-s">Date</th><th>Supplier</th><th class="r">Amount</th><th>E-invoice from supplier</th><th></th></tr>${S.bills.slice().sort(byDate('bills',b=>b.date)).map(b=>`<tr class="click" tabindex="0" ${A('go',{s:'bill',p:{id:b.id}})}><td class="b">${h(b.no)}</td><td class="hide-s">${fDs(b.date)}</td><td>${h(SUP(b.sup).name)}</td><td class="r">${rm(b.amount)}</td><td>${einvPill(b.einv)}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`:empty('No supplier bills yet','');
+  else{const rows=S.invoices.slice().reverse().sort(byDate('inv',i=>i.issued||i.created)).filter(i=>(f==='all'||i.status===f)&&(!q||i.no.toLowerCase().includes(q)||(i.buyer.name||'').toLowerCase().includes(q)||String(i.receipt||'').includes(q)));
+   body=rows.length?`<table><tr><th>Number</th><th class="hide-s">Date</th><th class="hide-s">Type</th><th>Buyer</th><th class="hide-s">Receipt</th><th class="r">Total</th><th>Status</th><th></th></tr>${rows.map(i=>`<tr class="click" tabindex="0" ${A('go',{s:'inv',p:{id:i.id}})}><td class="b">${h(i.no)}</td><td class="hide-s">${fDs(i.issued||i.created)}</td><td class="hide-s">${invKind(i)}</td><td>${h(i.buyer.name||'(not filled in yet)')}</td><td class="hide-s">${i.receipt||'-'}</td><td class="r">${rm(i.tot.payable)}</td><td>${pill(...IST[i.status])}</td><td class="chev">Open ›</td></tr>`).join('')}</table>`
     :empty(q?'Nothing matches "'+h(q)+'"':f==='all'?'No e-invoices yet':'No e-invoices with this status',q?'':'Issue one from a sale.',q?`<button class="btn sec" ${A('set',{k:'q',v:''})}>Clear search</button>`:f==='all'?`<button class="btn" ${A('go',{s:'pickSale'})}>Issue your first e-invoice</button>`:`<button class="btn sec" ${A('set',{k:'f',v:'all'})}>See all e-invoices</button>`)}
   return `${pageHead('Invoices','E-invoices you issued, and the ones your suppliers sent you.'+tip('einv'),`<button class="btn" id="issuebtn" ${A('go',{s:'pickSale'})}>${ic('plus')}Issue e-invoice</button><button class="btn sec" ${A('go',{s:'notes'})}>E-invoice notes</button>`)}
   ${needCons?`<button class="alert ${T>due?'bad':'warn'}" id="consalert" ${A('go',{s:'invWiz',p:{cons:pm}})}><span class="ai">${ic('file')}</span><span class="grow" style="text-align:left">Combined e-invoice for ${fM(pm)} walk-in sales is ${T>due?'overdue':'due by '+fD(due)}<small>One e-invoice covers every sale where nobody asked for their own. LHDN wants it within 7 days after the month ends.</small></span><span class="go">Create it${ic('chev')}</span></button>`:''}
   <div class="tabs">${fl.map(([k,l,n])=>`<button class="tab ${f===k?'on':''}" ${A('set',{k:'f',v:k})}>${l} <span class="n">(${n})</span></button>`).join('')}</div>
-  ${f!=='wait'&&f!=='sup'?`<div class="row">${searchBox('q','Search by number, buyer or receipt',p.q)}</div>`:''}<div class="card pad0"><div class="tw">${body}</div></div>`}};
+  <div class="row">${f!=='wait'&&f!=='sup'?searchBox('q','Search by number, buyer or receipt',p.q):''}${sortBar(f==='sup'?'bills':'inv')}</div><div class="card pad0"><div class="tw">${body}</div></div>`}};
 SCREENS.pickSale={sec:'invoices',einv:true,title:()=>'Pick the sale',help:['Choose the sale the customer wants an e-invoice for.','Type the receipt number from their receipt to find it fast.','Only sales from the last few days without an e-invoice are listed.'],
  html(p){const q=(p.q||'').trim(),rows=S.sales.filter(s=>s.status==='paid'&&!s.inv&&(!q||String(s.no).includes(q))).sort((a,b)=>b.no-a.no).slice(0,60);
   return `${pageHead('Which sale is this e-invoice for?','Ask the customer for their receipt number.')}<div class="row">${searchBox('q','Type the receipt number',p.q)}</div>
@@ -1388,7 +1583,7 @@ SCREENS.settings={sec:'settings',title:()=>'Settings',help:['Each card opens one
    ${card('file','E-invoice notes','The LHDN rules this demo follows, with sources.','go',{s:'notes'})}${card('alert','Limitations','What is pretend in this demo and what a real product still needs.','go',{s:'limits'})}
    ${card('user','Language · Bahasa · 语言','English, Bahasa Melayu or Chinese for the whole app.','go',{s:'setLang'})}
    ${card('help','Tours','Replay the welcome tour, or start the step-by-step demo tour.','help')}</div>
-  <div class="card" style="display:flex;flex-direction:column;gap:10px;border-color:var(--red)"><h2>Reset demo data</h2><p>Puts back the made-up cafe: 44 dishes, 60 ingredients, 6 suppliers and 2 months of sales and waste. Everything you added or changed in this browser is erased.</p><div><button class="btn red" id="resetbtn" ${A('resetAsk')}>Reset demo data</button></div></div>`}};
+  <div class="card" style="display:flex;flex-direction:column;gap:10px;border-color:var(--red)"><h2>Reset demo data</h2><p>Puts back the made-up cafe: 44 dishes, 61 ingredients, 6 suppliers and 2 months of sales and waste. Everything you added or changed in this browser is erased.</p><div><button class="btn red" id="resetbtn" ${A('resetAsk')}>Reset demo data</button></div></div>`}};
 ACT.resetAsk=()=>confirmBox({title:'Reset all demo data?',body:'Every sale, order, waste entry, e-invoice and setting you changed in this browser will be erased and replaced with the starting demo data. You cannot undo this.',ok:'Yes, reset everything',no:'No, keep my data',danger:true,yes:()=>{resetDemo();S.toured=true;save();root('home');toast('Demo data reset. Everything is back to the start.')}});
 SCREENS.setBiz={sec:'settings',title:()=>'Business details',help:['These details print on receipts and go on every e-invoice.','All numbers here are made up. Replace them only for your own testing.','Changes save as you type.'],
  html(){const c=S.settings.cafe;BIND=c;const f=(k,l,t)=>field('sb-'+k,l,`<input class="inp" id="sb-${k}" data-m="@${k}" data-save value="${h(c[k])}">`,t);
@@ -1451,9 +1646,9 @@ Object.assign(ACT,{
  dishDelete:p=>{const m=MENU(p.id);confirmBox({title:'Delete '+m.name+'?',body:'It will disappear from the till and the menu list. Old receipts and reports keep it. Any bill on the till that already has it stays as it is.',ok:'Yes, delete this dish',no:'No, keep it',danger:true,
    yes:()=>{const i=S.menu.indexOf(m);S.menu.splice(i,1);IX=null;save();stack.pop();render();toast(m.name+' deleted from the menu',()=>{S.menu.splice(i,0,m);IX=null})}})}
 });
-const LIMITS=[['Pretend (simulated)',['E-invoices are not sent to LHDN MyInvois. The statuses, unique IDs and QR pictures are made up, and nothing is digitally signed.','Payments. Cash, card, DuitNow QR and e-wallet buttons do not move money or talk to any bank or terminal.','Sending orders to suppliers. Nothing is emailed or messaged.','Food Rescue. The partners are invented and nobody is told about an offer.','Staff roles. There are no passwords, anyone can switch role.','Barcode scanning. You search by name or type the item code instead.']],
- ['Estimated or made up',['Every price, cost, weight and sales figure. The 2 months of history are generated by the app.','The kilograms per piece or loaf used to turn waste into kg.','Suggested order amounts. They use minimum stock and the last 14 days of use, which is a rough guide.','The tax rates in Settings are common examples, not advice.']],
- ['What a real product would still need',['A server and database, so data is shared between devices and not stuck in one browser.','Real logins and permissions for each staff member.','MyInvois API registration, a digital certificate for signing, and handling of LHDN\'s real replies and errors.','A licensed payment partner for card, DuitNow QR and e-wallets.','Receipt printer, cash drawer and barcode scanner support.','A way to work when the internet is down and sync later.','Checks by an accountant on tax, rounding and e-invoice rules.','Real interviews and testing with cafe owners. This demo has not been tried by one.']]];
+const LIMITS=[['Pretend (simulated)',['E-invoices are not sent to LHDN MyInvois. The statuses, unique IDs and QR pictures are made up, and nothing is digitally signed.','Payments. Cash, card, DuitNow QR and e-wallet buttons do not move money or talk to any bank or terminal.','Sending orders to suppliers. Nothing is emailed or messaged.','Food Rescue. The partners are invented and nobody is told about an offer.','Staff roles. There are no passwords, anyone can switch role.','Scanning. The Scan button shows how reading a delivery order, a receipt, a barcode or a market photo would work, using sample pictures. Nothing is read from a real camera.','Suggested expiry dates. They come from typical shelf lives, not from reading the pack. Staff must check each one.']],
+ ['Estimated or made up',['Every price, cost, weight and sales figure. The 2 months of history are generated by the app.','The kilograms per piece or loaf used to turn waste into kg.','Suggested order amounts. They use minimum stock and the last 14 days of use, which is a rough guide.','Value at risk and the suggested actions in the expiring-soon report. They also use the last 14 days of use.','The tax rates in Settings are common examples, not advice.']],
+ ['What a real product would still need',['A server and database, so data is shared between devices and not stuck in one browser.','Real logins and permissions for each staff member.','MyInvois API registration, a digital certificate for signing, and handling of LHDN\'s real replies and errors.','A licensed payment partner for card, DuitNow QR and e-wallets.','Receipt printer, cash drawer and barcode scanner support.','Real text and photo recognition for delivery orders, receipts and market photos, and reading the dates printed on packs.','A way to work when the internet is down and sync later.','Checks by an accountant on tax, rounding and e-invoice rules.','Real interviews and testing with cafe owners. This demo has not been tried by one.']]];
 SCREENS.limits={sec:'settings',title:()=>'Limitations',help:['This page is the honest list of what the demo does not really do.','Use it when someone asks "is this real?" during a presentation.','The same list is in the README file.'],
  html(){return `${pageHead('Limitations','What is pretend, what is estimated, and what a real product would still need.')}${LIMITS.map(([t,ls])=>`<div class="card"><h2>${t}</h2><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">${ls.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}`}};
 
@@ -1930,6 +2125,165 @@ Sale saved || Jualan disimpan || 销售已保存
 Draft deleted || Draf dipadam || 草稿已删除
 Draft saved. Find it under Invoices, Drafts. || Draf disimpan. Cari di bawah Invois, Draf. || 草稿已保存。可在“发票”的“草稿”里找到。
 {n} Restaurants (example code, check your own) || {n} Restoran (kod contoh, semak kod anda sendiri) || {n} 餐馆（示例代码，请查自己的代码）
+Kangkung || Kangkung || 空心菜
+Scan || Imbas || 扫描
+See the report || Lihat laporan || 查看报告
+{x} · {y} at risk || {x} · {y} berisiko || {x} · {y} 有风险
+What are you adding to stock? Every way ends on a screen where you check the details. || Apa yang anda tambah ke stok? Setiap cara berakhir di skrin untuk anda semak butirannya. || 你要把什么加进库存？每种方式最后都会让你检查一遍。
+Simulated in this demo || Disimulasikan dalam demo ini || 本演示中为模拟
+Pick a way || Pilih cara || 选择方式
+Take the photo || Ambil gambar || 拍照
+Check and confirm || Semak dan sahkan || 检查并确认
+Delivery order or supplier invoice || Pesanan penghantaran atau invois pembekal || 送货单或供应商发票
+Reads the whole order: items, amounts and prices. || Membaca seluruh pesanan: item, jumlah dan harga. || 读取整张单：品项、数量和价格。
+Supermarket receipt or barcode || Resit pasar raya atau kod bar || 超市收据或条形码
+Reads the items and amounts, and knows packaged products. || Membaca item dan jumlah, dan mengenali produk berbungkus. || 读取品项和数量，并能认出包装产品。
+Wet-market photo || Gambar pasar basah || 菜市场照片
+Guesses the food in the photo, such as chicken or kangkung. || Meneka makanan dalam gambar, seperti ayam atau kangkung. || 猜出照片里的食材，例如鸡肉或空心菜。
+Why three ways? || Kenapa tiga cara? || 为什么有三种方式？
+Many outlets buy some ingredients themselves at a wet market or supermarket. There is no delivery order and often no printed expiry date, so the app suggests one and staff confirm it. || Banyak kedai membeli sendiri sebahagian bahan di pasar basah atau pasar raya. Tiada pesanan penghantaran dan selalunya tiada tarikh luput bercetak, jadi aplikasi mencadangkan satu tarikh dan staf mengesahkannya. || 很多店会自己去菜市场或超市买一些食材。这样没有送货单，通常也没有印好的到期日，所以应用会建议一个日期，由员工确认。
+Type a delivery in by hand instead || Taip penghantaran secara manual || 改为手动输入送货
+Hold the phone over it and take the photo. In this demo the camera shows a sample picture. || Pegang telefon di atasnya dan ambil gambar. Dalam demo ini kamera menunjukkan gambar contoh. || 把手机对准它拍照。本演示中相机显示的是示例图片。
+Camera view (sample picture) || Paparan kamera (gambar contoh) || 相机画面（示例图片）
+Which paper is in front of the camera? || Kertas mana di depan kamera? || 相机前面是哪张单据？
+Delivery with no order in the app (sample) || Penghantaran tanpa pesanan dalam aplikasi (contoh) || 应用里没有订单的送货（示例）
+Take photo (simulated) || Ambil gambar (simulasi) || 拍照（模拟）
+Scan barcode (simulated) || Imbas kod bar (simulasi) || 扫描条形码（模拟）
+Simulated: nothing is read from a real camera. A real app would read the text and dates for you. || Simulasi: tiada apa dibaca daripada kamera sebenar. Aplikasi sebenar akan membaca teks dan tarikh untuk anda. || 模拟：没有从真实相机读取任何内容。真正的应用会帮你读出文字和日期。
+Pick another way || Pilih cara lain || 选择其他方式
+Simulated reading || Bacaan simulasi || 模拟读取
+For each item, look at the pack or the food. If the suggested expiry date is right, tap "Date checked". If not, change the date. || Untuk setiap item, lihat bungkusan atau makanan itu. Jika tarikh luput yang dicadangkan betul, ketik "Tarikh disemak". Jika tidak, tukar tarikh. || 每个品项都看一下包装或食材。建议的到期日正确就点“日期已检查”，不对就改日期。
+Item || Item || 品项
+Read: || Dibaca: || 读到：
+Remove this line || Buang baris ini || 删除这一行
+Expiry date || Tarikh luput || 到期日
+Suggested || Dicadangkan || 建议
+Date checked || Tarikh disemak || 日期已检查
+Usual shelf life for this item: {n} days. Check the date printed on the pack. || Jangka hayat biasa item ini: {n} hari. Semak tarikh yang dicetak pada bungkusan. || 这个品项通常可放 {n} 天。请核对包装上印的日期。
+Usual shelf life for this item: {n} day. Check the date printed on the pack. || Jangka hayat biasa item ini: {n} hari. Semak tarikh yang dicetak pada bungkusan. || 这个品项通常可放 {n} 天。请核对包装上印的日期。
+Typical for fresh food: {n} days || Biasa untuk makanan segar: {n} hari || 生鲜食材一般：{n} 天
+Typical for fresh food: {n} day || Biasa untuk makanan segar: {n} hari || 生鲜食材一般：{n} 天
+Date read from the pack (simulated) || Tarikh dibaca daripada bungkusan (simulasi) || 从包装上读到的日期（模拟）
+Start again || Mula semula || 重新开始
+Add to stock || Tambah ke stok || 加入库存
+Check the expiry date on {n} items first. || Semak tarikh luput {n} item dahulu. || 请先检查 {n} 个品项的到期日。
+Check the expiry date on {n} item first. || Semak tarikh luput {n} item dahulu. || 请先检查 {n} 个品项的到期日。
+Nothing to add yet. Pick an item or scan again. || Belum ada apa untuk ditambah. Pilih item atau imbas semula. || 还没有可加入的内容。请选一个品项或重新扫描。
+{n} lines read from the picture (simulated). Check them below. || {n} baris dibaca daripada gambar (simulasi). Semak di bawah. || 从图片读到 {n} 行（模拟）。请在下面检查。
+{n} line read from the picture (simulated). Check them below. || {n} baris dibaca daripada gambar (simulasi). Semak di bawah. || 从图片读到 {n} 行（模拟）。请在下面检查。
+Pasaraya Jimat (demo shop) || Pasaraya Jimat (kedai demo) || Pasaraya Jimat（演示商店）
+Pasaraya Jimat (demo shop). || Pasaraya Jimat (kedai demo). || Pasaraya Jimat（演示商店）。
+Order #{n} from {x}. || Pesanan #{n} daripada {x}. || 来自 {x} 的订单 #{n}。
+Change anything the app read wrong. || Tukar apa-apa yang salah dibaca oleh aplikasi. || 应用读错的地方请改正。
+Receipt || Resit || 收据
+Barcode on a pack || Kod bar pada bungkusan || 包装上的条形码
+Total paid (RM) || Jumlah dibayar (RM) || 实付金额（RM）
+Price per {x} (RM) || Harga setiap {x} (RM) || 每{x}价格（RM）
+Not in your item list. Match it to an item: || Tiada dalam senarai item anda. Padankan dengan satu item: || 不在你的品项清单里。请对应到一个品项：
+Leave it out || Tinggalkan || 不加入
+Pick an item || Pilih item || 选择品项
+Left out. {x} on the receipt is not added to stock. || Ditinggalkan. {x} pada resit tidak ditambah ke stok. || 已略过。收据上的 {x} 不会加进库存。
+Not a food item, left out || Bukan makanan, ditinggalkan || 不是食品，已略过
+Which pack is in front of the camera? || Bungkusan mana di depan kamera? || 相机前面是哪个包装？
+Oat milk 1 L carton || Susu oat kotak 1 L || 燕麦奶 1 升盒装
+Cream cheese 250 g || Keju krim 250 g || 奶油奶酪 250 克
+Orange juice 1 L || Jus oren 1 L || 橙汁 1 升
+Mayonnaise 500 g || Mayones 500 g || 蛋黄酱 500 克
+Scan another barcode || Imbas kod bar lain || 再扫描一个条形码
+Go to the {n} items already scanned || Pergi ke {n} item yang sudah diimbas || 查看已扫描的 {n} 个品项
+Go to the {n} item already scanned || Pergi ke {n} item yang sudah diimbas || 查看已扫描的 {n} 个品项
+Pretend photo of: || Gambar olok-olok: || 模拟照片：
+Chicken || Ayam || 鸡肉
+Prawns || Udang || 虾
+Blurry photo || Gambar kabur || 模糊照片
+The app thinks this is || Aplikasi rasa ini ialah || 应用认为这是
+You picked || Anda pilih || 你选了
+Not right? || Tidak betul? || 不对？
+Hide pictures || Sembunyikan gambar || 收起图片
+Tap the right picture || Ketik gambar yang betul || 点选正确的图片
+Add another photo || Tambah gambar lain || 再加一张照片
+Not sure what this is || Tidak pasti apa ini || 不确定这是什么
+The app is not sure. Tap the picture of what you bought. || Aplikasi tidak pasti. Ketik gambar barang yang anda beli. || 应用不确定。请点选你买的东西的图片。
+Pick the expiry date. || Pilih tarikh luput. || 请选择到期日。
+This date is in the past. || Tarikh ini sudah lepas. || 这个日期已经过了。
+Type a price, for example 7.50. || Taip harga, contohnya 7.50. || 请输入价格，例如 7.50。
+Check the expiry date, then tap "Date checked". || Semak tarikh luput, kemudian ketik "Tarikh disemak". || 请检查到期日，然后点“日期已检查”。
+Line removed || Baris dibuang || 已删除这一行
+Scan something else || Imbas barang lain || 扫描其他东西
+Added to stock || Ditambah ke stok || 已加入库存
+{n} new batches added, each with the expiry date you checked. || {n} kelompok baharu ditambah, setiap satu dengan tarikh luput yang anda semak. || 已新增 {n} 个批次，每个都用你检查过的到期日。
+{n} new batch added, each with the expiry date you checked. || {n} kelompok baharu ditambah, dengan tarikh luput yang anda semak. || 已新增 {n} 个批次，使用你检查过的到期日。
+{n} new batches added to stock || {n} kelompok baharu ditambah ke stok || 已新增 {n} 个批次到库存
+{n} new batch added to stock || {n} kelompok baharu ditambah ke stok || 已新增 {n} 个批次到库存
+Order #{n} stays open for the items that did not arrive. || Pesanan #{n} kekal dibuka untuk item yang belum sampai. || 订单 #{n} 会保持未完成，等待还没到的品项。
+Order #{n} is now complete. || Pesanan #{n} kini lengkap. || 订单 #{n} 已完成。
+Pick what you are scanning: a delivery order, a supermarket receipt or barcode, or a photo of wet-market food. || Pilih apa yang anda imbas: pesanan penghantaran, resit pasar raya atau kod bar, atau gambar makanan pasar basah. || 选择你要扫描的东西：送货单、超市收据或条形码，或菜市场食材的照片。
+The app fills in the items, amounts and a suggested expiry date. Check each date, then tap "Date checked" or change it. || Aplikasi mengisi item, jumlah dan tarikh luput yang dicadangkan. Semak setiap tarikh, kemudian ketik "Tarikh disemak" atau tukar tarikh itu. || 应用会填好品项、数量和建议的到期日。逐个检查日期，然后点“日期已检查”或改掉它。
+Press "Add to stock" at the bottom. Reading is simulated in this demo. || Tekan "Tambah ke stok" di bawah. Bacaan disimulasikan dalam demo ini. || 按下面的“加入库存”。本演示中的读取是模拟的。
+Scan delivery order || Imbas pesanan penghantaran || 扫描送货单
+Scan the delivery order instead || Imbas pesanan penghantaran sahaja || 改为扫描送货单
+Sort by date || Susun ikut tarikh || 按日期排序
+Sort by expiry date || Susun ikut tarikh luput || 按到期日排序
+Newest first || Terbaru dahulu || 最新的在前
+Oldest first || Terlama dahulu || 最早的在前
+Expiring soonest first || Paling cepat luput dahulu || 最快到期的在前
+Expiring latest first || Paling lambat luput dahulu || 最晚到期的在前
+Oldest entries || Catatan terlama || 最早的记录
+Showing {n} of {n2} entries. Search for an item, or see the monthly report for everything. || Menunjukkan {n} daripada {n2} catatan. Cari item, atau lihat laporan bulanan untuk semuanya. || 显示 {n2} 条中的 {n} 条。可以搜索品项，或看月度报告了解全部。
+Expiring-soon report || Laporan hampir luput || 即将到期报告
+Copy to share || Salin untuk dikongsi || 复制以分享
+Food that expires in the next {n} days, what it is worth, and what to do with it. || Makanan yang luput dalam {n} hari akan datang, nilainya, dan apa yang perlu dibuat. || 未来 {n} 天内到期的食材、价值多少，以及该怎么处理。
+Food that expires in the next {n} day, what it is worth, and what to do with it. || Makanan yang luput dalam {n} hari akan datang, nilainya, dan apa yang perlu dibuat. || 未来 {n} 天内到期的食材、价值多少，以及该怎么处理。
+Show food that expires in: || Tunjuk makanan yang luput dalam: || 显示多少天内到期的食材：
+Value at risk || Nilai berisiko || 风险价值
+Likely left over by the expiry date || Mungkin berbaki pada tarikh luput || 到期时可能剩下的部分
+Batches expiring || Kelompok hampir luput || 即将到期的批次
+{n} kg likely left over || {n} kg mungkin berbaki || 可能剩下 {n} 公斤
+Worth in total || Jumlah nilai || 总价值
+If none of it were used || Jika langsung tidak digunakan || 如果完全没用掉
+Suggested actions || Tindakan dicadangkan || 建议的做法
+Use first: {n} || Guna dahulu: {n} || 优先使用：{n}
+Use in today's special: {n} || Guna dalam menu istimewa hari ini: {n} || 用于今日特餐：{n}
+Discount: {n} || Diskaun: {n} || 打折：{n}
+Food rescue: {n} || Penyelamatan makanan: {n} || 食物救援：{n}
+Use first || Guna dahulu || 优先使用
+Use in today's special || Guna dalam menu istimewa hari ini || 用于今日特餐
+Discount || Diskaun || 打折
+Food rescue || Penyelamatan makanan || 食物救援
+Likely left over || Mungkin berbaki || 可能剩下
+Suggested action || Tindakan dicadangkan || 建议做法
+Open item || Buka item || 打开品项
+Total value at risk || Jumlah nilai berisiko || 风险总价值
+Normal sales should use it up in time. Keep it at the front of the shelf. || Jualan biasa sepatutnya menghabiskannya tepat pada masa. Letak di depan rak. || 正常销售应该能及时用完。把它放在货架前面。
+Only about {x} may be left. Use this batch first and keep it at the front of the shelf. || Hanya kira-kira {x} mungkin berbaki. Guna kelompok ini dahulu dan letak di depan rak. || 可能只剩大约 {x}。先用这一批，并放在货架前面。
+Not used in any dish. Offer it to a food rescue partner before it expires. || Tidak digunakan dalam mana-mana hidangan. Tawarkan kepada rakan penyelamat makanan sebelum luput. || 没有菜品用到它。在到期前提供给食物救援伙伴。
+Expires today and most of it will be left. Offer it to a food rescue partner after service. || Luput hari ini dan kebanyakannya akan berbaki. Tawarkan kepada rakan penyelamat makanan selepas waktu servis. || 今天到期，而且大部分会剩下。营业后提供给食物救援伙伴。
+About {x} will be left and there is little time. Sell dishes with it at a discount, for example 20% off {y}. || Kira-kira {x} akan berbaki dan masa tidak banyak. Jual hidangan yang menggunakannya dengan diskaun, contohnya 20% untuk {y}. || 大约会剩下 {x}，而且时间不多。把用到它的菜打折卖，例如 {y} 打八折。
+Put {x} on the specials board to use up the extra {y}. || Letak {x} di papan menu istimewa untuk menghabiskan lebihan {y}. || 把 {x} 放上特餐板，用掉多出来的 {y}。
+How this is worked out: the app takes how much of each item was used per day over the last 14 days, and assumes older batches are used first. Whatever is not likely to be used by the expiry date is "at risk". It is a rough guide, so check the shelf before acting. Demo data. || Cara ia dikira: aplikasi mengambil berapa banyak setiap item digunakan sehari dalam 14 hari lepas, dan menganggap kelompok lama digunakan dahulu. Apa yang mungkin tidak digunakan sebelum tarikh luput dikira "berisiko". Ini panduan kasar, jadi semak rak sebelum bertindak. Data demo. || 计算方法：应用用过去 14 天每个品项每天的用量，并假设先用旧批次。到期前可能用不完的部分就算“有风险”。这只是粗略参考，行动前请先看看货架。演示数据。
+Every batch that expires in the next few days, what it is worth, and what to do with it. || Setiap kelompok yang luput dalam beberapa hari akan datang, nilainya, dan apa yang perlu dibuat. || 未来几天内到期的每个批次、价值多少，以及该怎么处理。
+"Value at risk" is what will probably be left by the expiry date, worked out from the last 14 days of use. || "Nilai berisiko" ialah apa yang mungkin berbaki pada tarikh luput, dikira daripada penggunaan 14 hari lepas. || “风险价值”是到期时很可能剩下的部分，按过去 14 天的用量算出。
+Print it for the kitchen wall, or copy it into a chat for the team. || Cetak untuk dinding dapur, atau salin ke dalam sembang untuk pasukan. || 打印贴在厨房墙上，或复制到群聊发给团队。
+Nothing expires in the next {n} days || Tiada yang luput dalam {n} hari akan datang || 未来 {n} 天内没有东西到期
+Nothing expires in the next {n} day || Tiada yang luput dalam {n} hari akan datang || 未来 {n} 天内没有东西到期
+Good news. Try a longer period, or check again tomorrow. || Berita baik. Cuba tempoh lebih panjang, atau semak semula esok. || 好消息。试试更长的时间段，或明天再看。
+See the report with value at risk and what to do || Lihat laporan dengan nilai berisiko dan apa yang perlu dibuat || 查看含风险价值和处理建议的报告
+Next {n} days || {n} hari akan datang || 未来 {n} 天
+Next {n} day || {n} hari akan datang || 未来 {n} 天
+{n} batches || {n} kelompok || {n} 个批次
+{n} batch || {n} kelompok || {n} 个批次
+Demo data. Suggestions use the last 14 days of use. Check before acting. || Data demo. Cadangan menggunakan penggunaan 14 hari lepas. Semak sebelum bertindak. || 演示数据。建议基于过去 14 天的用量。行动前请先核实。
+Puts back the made-up cafe: 44 dishes, 61 ingredients, 6 suppliers and 2 months of sales and waste. Everything you added or changed in this browser is erased. || Memulihkan kafe rekaan: 44 hidangan, 61 bahan, 6 pembekal dan 2 bulan jualan serta sisa. Semua yang anda tambah atau ubah dalam pelayar ini akan dipadam. || 恢复虚构的咖啡馆：44 道菜、61 种食材、6 家供应商，以及 2 个月的销售和浪费记录。你在这个浏览器里新增或修改的内容都会被清除。
+Scanning. The Scan button shows how reading a delivery order, a receipt, a barcode or a market photo would work, using sample pictures. Nothing is read from a real camera. || Pengimbasan. Butang Imbas menunjukkan cara membaca pesanan penghantaran, resit, kod bar atau gambar pasar, menggunakan gambar contoh. Tiada apa dibaca daripada kamera sebenar. || 扫描。“扫描”按钮用示例图片展示读取送货单、收据、条形码或市场照片的效果。没有从真实相机读取任何内容。
+Suggested expiry dates. They come from typical shelf lives, not from reading the pack. Staff must check each one. || Tarikh luput yang dicadangkan. Ia datang daripada jangka hayat biasa, bukan daripada membaca bungkusan. Staf mesti menyemak setiap satu. || 建议的到期日。它们来自一般的保存期限，而不是读取包装。员工必须逐个检查。
+Value at risk and the suggested actions in the expiring-soon report. They also use the last 14 days of use. || Nilai berisiko dan tindakan yang dicadangkan dalam laporan hampir luput. Ia juga menggunakan penggunaan 14 hari lepas. || 即将到期报告里的风险价值和建议做法。它们同样基于过去 14 天的用量。
+Real text and photo recognition for delivery orders, receipts and market photos, and reading the dates printed on packs. || Pengecaman teks dan gambar sebenar untuk pesanan penghantaran, resit dan gambar pasar, serta membaca tarikh yang dicetak pada bungkusan. || 真正的文字和图片识别，用于送货单、收据和市场照片，以及读取包装上印的日期。
+Scan instead of typing || Imbas, bukan menaip || 用扫描代替打字
+The Scan button reads a delivery order, a supermarket receipt or barcode, or a photo of wet-market food. Here a market photo of chicken was "read". The expiry date is only a suggestion: staff tap "Date checked" or change it. All simulated. || Butang Imbas membaca pesanan penghantaran, resit pasar raya atau kod bar, atau gambar makanan pasar basah. Di sini gambar ayam dari pasar telah "dibaca". Tarikh luput hanya cadangan: staf ketik "Tarikh disemak" atau menukarnya. Semuanya simulasi. || “扫描”按钮可读取送货单、超市收据或条形码，或菜市场食材的照片。这里“读取”了一张市场鸡肉照片。到期日只是建议：员工点“日期已检查”或修改它。全部为模拟。
+What is about to expire, in RM || Apa yang hampir luput, dalam RM || 即将到期的东西值多少 RM
+The expiring-soon report shows the value at risk and a suggested action for each batch: use first, today's special, discount or food rescue. Print it for the kitchen, or copy it into a chat. || Laporan hampir luput menunjukkan nilai berisiko dan tindakan dicadangkan untuk setiap kelompok: guna dahulu, menu istimewa hari ini, diskaun atau penyelamatan makanan. Cetak untuk dapur, atau salin ke dalam sembang. || 即将到期报告显示每个批次的风险价值和建议做法：优先使用、今日特餐、打折或食物救援。可以打印给厨房，或复制到群聊。
+Mixed berries (frozen) ({x} in stock) || Beri campuran (sejuk beku) ({x} dalam stok) || 综合莓果（冷冻）（库存 {x}）
+Croissant (frozen dough) ({x} in stock) || Croissant (doh sejuk beku) ({x} dalam stok) || 可颂（冷冻面团）（库存 {x}）
 Whipping cream || Krim putar || 淡奶油
 Butter || Mentega || 牛油
 Cheddar slices || Kepingan cheddar || 切达芝士片
@@ -1983,7 +2337,6 @@ Chicken breast || Dada ayam || 鸡胸肉
 Beef patty || Daging burger lembu || 牛肉饼
 Smoked salmon || Salmon salai || 烟熏三文鱼
 Tuna (canned) || Tuna (tin) || 鲔鱼（罐头）
-Prawns || Udang || 虾
 Turkey ham || Ham ayam belanda || 火鸡火腿
 Chicken sausage || Sosej ayam || 鸡肉香肠
 Espresso || Espresso || 浓缩咖啡
@@ -2383,7 +2736,6 @@ Issued by mistake || Dikeluarkan secara tersilap || 开错了
 It is always on screen. Tap a word to move to that part of the app. The page you are on is green. || Ia sentiasa di skrin. Ketik perkataan untuk pergi ke bahagian itu. Halaman semasa berwarna hijau. || 它一直在屏幕上。点文字就能去那个部分。您所在的页面是绿色的。
 It shows on the till as soon as you save it. || Ia muncul di kaunter sebaik sahaja anda menyimpannya. || 一保存就会出现在收银台上。
 It will disappear from the till and the menu list. Old receipts and reports keep it. Any bill on the till that already has it stays as it is. || Ia akan hilang dari kaunter dan senarai menu. Resit dan laporan lama mengekalkannya. Bil di kaunter yang sudah mengandunginya kekal seperti sedia ada. || 它会从收银台和菜单列表消失。旧收据和报表仍保留它。收银台上已含有它的账单保持不变。
-Item || Item || 品项
 Item name || Nama item || 品项名称
 Item name is missing. || Nama item tiada. || 缺少品项名称。
 Item, amount, reason are filled in as an example. Press "Save waste log". Expired food is added to this log by itself. || Item, jumlah dan sebab telah diisi sebagai contoh. Tekan "Simpan log pembaziran". Makanan luput ditambah ke log ini dengan sendiri. || 品项、数量和原因已填好作为例子。按“保存浪费记录”。过期的食物会自动加进这份记录。
@@ -2542,7 +2894,6 @@ Pick a month at the top. Every number below is for that month. || Pilih bulan di
 Pick a reason first. || Pilih sebab dahulu. || 请先选原因。
 Pick an ingredient || Pilih bahan || 选择食材
 Pick an ingredient first. || Pilih bahan dahulu. || 请先选食材。
-Pick an item || Pilih item || 选择品项
 Pick an item first. || Pilih item dahulu. || 请先选品项。
 Pick another order || Pilih pesanan lain || 选另一张订单
 Pick how the customer is paying. || Pilih cara pelanggan membayar. || 选择顾客的付款方式。
@@ -2582,7 +2933,6 @@ Real interviews and testing with cafe owners. This demo has not been tried by on
 Real logins and permissions for each staff member. || Log masuk dan kebenaran sebenar untuk setiap staf. || 每位员工真正的登录和权限。
 Reason || Sebab || 原因
 Reason (you can type your own) || Sebab (anda boleh taip sendiri) || 原因（可以自己输入）
-Receipt || Resit || 收据
 Receipt printer, cash drawer and barcode scanner support. || Sokongan pencetak resit, laci tunai dan pengimbas kod bar. || 支持收据打印机、钱箱和条码扫描器。
 Receive delivery || Terima penghantaran || 收货
 Receive goods || Terima barang || 收货
@@ -2691,7 +3041,6 @@ Submit || Hantar || 提交
 Submit e-invoice (demo) || Hantar e-invois (demo) || 提交电子发票（演示）
 Submitted || Dihantar || 已提交
 Subtotal || Jumlah kecil || 小计
-Suggested || Cadangan || 建议
 Supplier || Pembekal || 供应商
 Supplier (your business) || Pembekal (perniagaan anda) || 供应方（您的店）
 Supplier bills || Bil pembekal || 供应商账单
@@ -2973,7 +3322,9 @@ const DEMO=[
  {t:'Kitchen sees the stock',b:'Now viewing as Kitchen staff. Fresh milk went down by the latte. Batches are listed oldest first, and the oldest is used first.',sel:'.kpi',go(){demoMakeSale();S.role='kitchen';stack=[{s:'stock',p:{}},{s:'item',p:{id:'milk'}}]}},
  {t:'Low stock becomes an order',b:'Back as Owner. The "Fresh milk is low" card on Home opens this order, already filled in. Press "Save and check the order", then "Send order".',sel:'#ordreview',go(){S.role='owner';stack=[{s:'home',p:{}},{s:'newOrder',p:{ing:'milk'}}]}},
  {t:'A delivery arrives',b:'Kitchen staff check the amounts and expiry dates against the order, then confirm. Each item becomes a new batch.',sel:'#recvnext',go(){S.role='kitchen';const o=S.orders.find(x=>x.status==='sent')||S.orders.find(x=>x.status==='part');stack=[{s:'home',p:{}},{s:'receive',p:o?{order:o.id,step:1}:{step:0}}]}},
+ {t:'Scan instead of typing',b:'The Scan button reads a delivery order, a supermarket receipt or barcode, or a photo of wet-market food. Here a market photo of chicken was "read". The expiry date is only a suggestion: staff tap "Date checked" or change it. All simulated.',sel:'.scanrow',go(){S.role='kitchen';const p={way:'market',step:'cam',photo:'chicken',rows:[]};scanShoot(p);p.step='confirm';stack=[{s:'home',p:{}},{s:'scan',p}]}},
  {t:'Log waste in three taps',b:'Item, amount, reason are filled in as an example. Press "Save waste log". Expired food is added to this log by itself.',sel:'#wastesave',go(){S.role='kitchen';const g=onHand('lettuce')>=0.5?'lettuce':(S.ingredients.find(i=>onHand(i.id)>=1)||{}).id;stack=[{s:'waste',p:{ing:g,qty:g==='lettuce'?'0.5':'1',reason:'Spoiled'}}]}},
+ {t:'What is about to expire, in RM',b:'The expiring-soon report shows the value at risk and a suggested action for each batch: use first, today\'s special, discount or food rescue. Print it for the kitchen, or copy it into a chat.',sel:'#exprisk',go(){S.role='owner';stack=[{s:'stock',p:{tab:'soon'}},{s:'expReport',p:{}}]}},
  {t:'The monthly report',b:'Back as Owner. Waste in kg and RM, the most wasted items, and food cost against sales. Tap any number to see what is behind it. All figures are made up.',sel:'#rep-waste',go(){S.role='owner';stack=[{s:'reports',p:{}}]}},
  {t:'A customer asks for an e-invoice',b:'Tap the first "quick fill" buyer, then follow the green button through the 4 steps to Submit. Nothing is sent to LHDN.',sel:'#wiznext',go(){S.role='owner';const s=demoMakeSale();if(s.inv){stack=[{s:'invoices',p:{}},{s:'inv',p:{id:s.inv}}];return}stack=[{s:'invoices',p:{}},{s:'invWiz',p:{sale:s.id}}]}},
  {t:'Statuses and the 72-hour rule',b:'A valid e-invoice can be cancelled for 72 hours. After that the button is locked and you issue a credit note instead. Open an older one from the list to show it.',sel:'#cancelbtn',go(){S.role='owner';const v=S.invoices.filter(i=>i.status==='Valid'&&i.type==='01'&&canCancel(i)).pop();stack=[{s:'invoices',p:{f:'Valid'}}].concat(v?[{s:'inv',p:{id:v.id}}]:[])}},
@@ -3003,9 +3354,10 @@ window.GB={reset(role){const _l=curLang();S=seed();S.settings.lang=window.__LANG
   if(c.s==='menuItem'){k.push(p.id?'E':'N',p.d&&p.d.recipe.length?'R':'',p.d&&p.d.add?'A':'',p.d&&p.d.cat==='__new'?'C':'')}
   if(c.s==='bill'){const b=S.bills.find(x=>x.id===p.id);if(b)k.push(b.paid?'p':'',b.einv)}
   if(c.s==='order'){const o=ordBy(p.id);if(o)k.push(o.status)}
+  if(c.s==='scan'){const rs=p.rows||[];k.push(p.way||'',p.way==='shop'?p.mode||'receipt':'',rs.length?'R'+Math.min(rs.length,2):'',rs.some(r=>!r.ing&&!r.nonfood)?'U':'',rs.filter(scanIn).length&&rs.filter(scanIn).every(r=>r.ok)?'K':'',rs.some(r=>r.pick)?'P':'')}
   k.push(tourI>=0?'tour'+tourI:'',demoI>=0?'demo'+demoI:'');return k.join('|')},
  info:()=>({screen:cur().s,title:SCREENS[cur().s].title(cur().p),depth:stack.length,modal:!document.getElementById('modal').hidden,role:S.role,p:cur().p}),state:()=>S,go,root,
- fn:{billTotals,onHand,monthStats,validateInv,suggestions,canCancel,invBy:id=>S.invoices.find(i=>i.id===id)}};
+ fn:{billTotals,onHand,monthStats,validateInv,suggestions,canCancel,riskList,suggestExp,invBy:id=>S.invoices.find(i=>i.id===id)}};
 boot();
 
 </script>
