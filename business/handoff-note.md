@@ -1,4 +1,4 @@
-# GoodBite B2B app handoff note (7 Oct 2026, updated 20 Oct 2026)
+# GoodBite B2B app handoff note (7 Oct 2026, updated 25 Oct 2026)
 
 Read with `claude/goodbite-handoff.md` (consumer prototype and videos) and `claude/goodbite-b2b-pivot.md` (why B2B).
 
@@ -101,3 +101,25 @@ Built on the supervisor's suggestion, in the version Chen agreed. Everything new
 - No dark mode (kept the light GoodBite look on purpose).
 - Business Idea Plan, videos and Task 1 script still need updating to match this app (see pivot note).
 - If Chen wants the app on GitHub Pages: upload the `business` folder into the `goodbite` repo; the consumer `index.html` stays at the root.
+
+
+## Fourth round, 25 Oct 2026 (version 2: BMC v2 and the supervisor's comments)
+Built after the 5 physical interviews and the supervisor's BMC comments (stock, expiry and cost control first; food waste second; smaller scope; no set-up visit; narrow segment to small Chinese and seafood restaurants). Chen chose to switch the demo outlet to a restaurant.
+
+**Demo outlet.** "Ombak Biru Seafood Restaurant (demo)", Puchong. 37 dishes in 5 groups (Seafood, Meat, Vegetables and tofu, Rice and noodles, Drinks), 58 ingredients in 6 groups (Seafood, Meat and poultry, Vegetables, Eggs tofu and noodles, Dry goods and sauces, Drinks and dairy), 6 suppliers (Ah Seng Fresh Seafood, Pasar Pagi Produce, Kedai Daging Segar, Lembah Tofu Egg and Noodle, Kedai Kering Dry Goods, Minuman Segar). Sales 11 am to 10 pm, about 54 bills on weekdays and 74 on Fri to Sun. Save key is now `goodbite_b2b_v2` (`S.v=2`), so old cafe data is not loaded. Mods: temp, sweet, spice, addon (egg, extra prawns), rice (Extra rice). Food Rescue partners removed from data.
+
+**New file `src/s_insight.js`** (added to `build.py` after `s_scan.js`):
+- Dishes to push today (`push` screen): `pushList()` scores each dish by the value at risk (riskList over 3 days) of its main ingredients (an ingredient counts if one portion uses at least 50 sen of it); score must be RM5 or more. `specialTog` saves `S.specials[date]`; the till shows a star.
+- May run out today (same screen): `shortList()` = ingredients with less than one day of stock at the 14-day average use. Dish chips toggle `S.soldOut[id]=today` (greyed out on the till, `addItem` refuses with a message).
+- Usage check (`usage` screen): every count (`adjustStock(id,counted,src)`) is kept in `S.counts` with app amount, counted amount, difference, RM and source (hand or photo). `usageCheck(days)` adds them up and compares with recipe use from `S.use`. Flag if more than 10% of use and at least RM5. Seeded history (`COUNT_SEED` in data.js) makes prawns and lala "less", rice "more".
+- Weekly summary (`weekly` screen): `weekStats(k)`/`periodStats(a,b)` in core.js (sales days plus POS syncs), 8-week food cost chart, usage flags, push and short lists, "Copy to share".
+- Food cost target: `S.settings.fcTarget` (default `FC_TARGET=40`), chips in Settings > Alerts and targets. Home KPI and Reports KPI show this week against it (`fcState`: on target, up to +3 amber, above red).
+- Set-up card on owner Home (`setupCard()`): photo count (`S.setup.photo`), POS or till (`S.setup.pos`), top 5 recipes (`setupRecipes` screen, `S.setup.recipes`). WhatsApp and video call buttons open a "simulated" pop-up. Hide/show via `S.setup.hide` (Settings card).
+- POS link (`posLink` screen, Settings > Plan and POS link): 3 steps (pick Feed Me, Coox, Loyverse, StoreHub or a sales file; allow access with no password; match 16 POS item names, 5 marked unsure must be confirmed or changed). Finishing sets `S.pos.connected`, `S.settings.plan='stock'`: Sell and Invoices leave the menu (`navFor()` in ui.js), Cashier leaves the role menu, e-invoice alerts stop, Home's first big button becomes "Sync POS sales". `posSync()` brings in sample sales (seeded by sync count) and consumes each matched dish's recipe; undo via the toast (`posUnsync`). Disconnect switches back to `allinone`.
+- Count by photo (`shelfScan` screen): 6 shelves map to ingredient groups; "Take photo" fills the count screen (`count` with `p.photo`) using `photoRead()` = app amount plus `SHELF_GAP` (prawn -0.4, lala -0.6, etc.), rounded. Rows show "From photo". Also Scan way 4.
+
+**Changed:** Home alerts (may run out, dishes to push, POS sync, cashier specials), Stock buttons (Usage check, Dishes to push), expiring-soon tab and report (food rescue replaced by "Staff meal" and a link to Dishes to push), Waste (Food Rescue tab removed, its code left unreachable), Reports (weekly summary and usage buttons, food cost this week KPI), Settings (Plan and POS link, Alerts and targets, Set-up steps), Limitations, welcome text, demo tour (now 16 steps, e-invoice steps dropped), `i18n.js` (a list of known names is translated before patterns, so names with brackets are not split).
+
+**Translations:** 460 new lines in `test/tr9.txt` (read first by `mkdict.py`, so they win over old lines). Dictionary now 2,023 entries. Names with brackets have their own lines for "(x in stock)" and "(unit)". Written by Claude, not checked by a native speaker. Camera papers and POS item names stay as printed.
+
+**Tests (25 Oct, final build):** flow 34 of 34, scan 44 of 44 (updated for the new receipt, barcodes and 4 scan ways), menu editor 9 of 9 (Iced Lime Tea), new `test/v2.js` 50 of 50. Button audit on the final build, English, desktop width: 26,180 clicks (Owner 9,154, Kitchen 8,287, Cashier 8,739), 0 failed. No sideways overflow at 390 px on the new screens. Chinese and Malay audits and a phone-width audit were not re-run this round. `test/harvest-v2.js` lists any untranslated text in `test/miss-v2.txt`.

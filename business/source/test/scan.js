@@ -12,7 +12,7 @@ const {chromium}=require('playwright');const path=require('path');
  await ev(()=>GB.reset('kitchen'));await pg.waitForTimeout(40);
  ok(await pg.locator('#bigacts .biga',{hasText:'Scan'}).count()===1,'Kitchen Home has one Scan button');
  await pg.locator('#bigacts .biga',{hasText:'Scan'}).click();
- ok(await pg.locator('#scanways .biga').count()===3,'Scan offers three ways: delivery order, supermarket receipt or barcode, wet-market photo');
+ ok(await pg.locator('#scanways .biga').count()===4,'Scan offers four ways: delivery order, supermarket receipt or barcode, wet-market photo, shelf photo');
 
  // --- 1. delivery order
  const o=await ev(()=>{const os=GB.state().orders.filter(x=>x.status==='sent'||x.status==='part').sort((a,b)=>a.expected<b.expected?-1:1);return JSON.parse(JSON.stringify(os[0]))});
@@ -32,11 +32,11 @@ const {chromium}=require('playwright');const path=require('path');
  await pg.locator('#scanagain').click();await pg.locator('#scanways .biga').nth(1).click();await pg.locator('#scanshoot').click();
  ok(await pg.locator('.scanrow').count()===7,'Receipt: 7 lines read');
  ok(/Not a food item, left out/.test(await pg.locator('#scr').innerText()),'The plastic bag is left out as a non-food line');
- const r0=await ev(()=>({milk:GB.fn.onHand('milk'),n:GB.state().batches.length}));
+ const r0=await ev(()=>({milk:GB.fn.onHand('egg'),n:GB.state().batches.length}));
  await checkAll();
  ok(await pg.locator('[id^=sc-ok-]').count()===5,'5 food lines need a date check; the unknown "KICAP MANIS" line is left out until matched');
- const milkRow=await ev(()=>GB.info().p.rows.find(r=>r.ing==='milk'));
- ok(milkRow.src==='shelf'&&milkRow.exp===plus(7),'Fresh milk gets its usual shelf life (7 days) as the suggestion');
+ const milkRow=await ev(()=>GB.info().p.rows.find(r=>r.ing==='egg'));
+ ok(milkRow.src==='shelf'&&milkRow.exp===plus(21),'Eggs get their usual shelf life (21 days) as the suggestion');
  const tomRow=await ev(()=>GB.info().p.rows.find(r=>r.ing==='tomato'));
  ok(tomRow.src==='fresh'&&tomRow.exp===plus(5),'Loose tomatoes get the typical fresh-food life (5 days)');
  // change one date: that counts as checked
@@ -46,19 +46,19 @@ const {chromium}=require('playwright');const path=require('path');
  await pg.fill('#sc-e-1',plus(-1));await pg.locator('#sc-e-1').dispatchEvent('change');await pg.waitForTimeout(300);
  ok(await pg.locator('#scansave').isDisabled()&&/in the past/.test(await pg.locator('#scr').innerText()),'A date in the past is refused');
  await pg.fill('#sc-e-1',plus(20));await pg.locator('#sc-e-1').dispatchEvent('change');await pg.waitForTimeout(300);
- await pg.selectOption('#sc-i-5','sambal');await pg.waitForTimeout(80);
+ await pg.selectOption('#sc-i-5','soy');await pg.waitForTimeout(80);
  ok(await pg.locator('[id^=sc-ok-]').count()===6&&await pg.locator('#scansave').isDisabled(),'Matching "KICAP MANIS" to an item brings it in, with its own date to check');
  await pg.locator('#sc-ok-5').click();
  await pg.locator('#scansave').click();await pg.waitForTimeout(40);
- const r1=await ev(()=>{const s=GB.state(),nb=s.batches.slice(-6);return {milk:GB.fn.onHand('milk'),n:s.batches.length,milkB:nb.find(b=>b.ing==='milk'),butter:nb.find(b=>b.ing==='butter')}});
- ok(r1.n===r0.n+6&&near(r1.milk-r0.milk,6),'6 batches added; fresh milk +6 L');
- ok(r1.milkB.exp===plus(6)&&r1.milkB.cost===745&&r1.butter.cost===3960,'Batches keep the checked date and the price paid (milk RM44.70 / 6 L = RM7.45 per L)');
+ const r1=await ev(()=>{const s=GB.state(),nb=s.batches.slice(-6);return {milk:GB.fn.onHand('egg'),n:s.batches.length,ev:nb.find(b=>b.ing==='evap'),egg:nb.find(b=>b.ing==='egg')}});
+ ok(r1.n===r0.n+6&&near(r1.milk-r0.milk,30),'6 batches added; eggs +30');
+ ok(r1.ev.exp===plus(6)&&r1.ev.cost===290&&r1.egg.cost===53,'Batches keep the checked date and the price paid (evaporated milk RM17.40 / 6 cans = RM2.90 a can; eggs RM15.90 / 30 = 53 sen each)');
 
  // --- barcode
  await pg.locator('#scanagain').click();await pg.locator('#scanways .biga').nth(1).click();await pg.locator('.chip',{hasText:'Barcode on a pack'}).click();
- await pg.locator('#scanshoot').click();await pg.locator('#scanmore').click();await pg.locator('.chip',{hasText:'Orange juice'}).click();await pg.locator('#scanshoot').click();
+ await pg.locator('#scanshoot').click();await pg.locator('#scanmore').click();await pg.locator('.chip',{hasText:'Soya bean milk'}).click();await pg.locator('#scanshoot').click();
  const bc=await ev(()=>GB.info().p.rows.map(r=>r.ing+':'+r.src));
- ok(bc.join()==='oat:pack,oj:pack','Two barcodes scanned in a row, both with a date "read from the pack"');
+ ok(bc.join()==='oyster:pack,soya:pack','Two barcodes scanned in a row, both with a date "read from the pack"');
 
  // --- 3. wet market
  await ev(()=>{GB.root('home');GB.go('scan',{})});await pg.waitForTimeout(40);
@@ -110,13 +110,13 @@ const {chromium}=require('playwright');const path=require('path');
  const shown=await pg.locator('#exprisk .kpi').first().innerText();
  ok(rep.n===await pg.locator('table.exp tr').count()-2&&shown.includes((rep.risk/100).toFixed(2)),'Report lists '+rep.n+' batches and the total value at risk RM'+(rep.risk/100).toFixed(2));
  ok(rep.ok,'Value at risk = likely leftover x cost, and never more than the batch');
- ok(rep.acts.includes('kangkung:rescue'),'Kangkung (not in any dish) is suggested for food rescue');
+ ok(!rep.acts.some(a=>/rescue/.test(a))&&await pg.locator('table.exp button',{hasText:'Offer for rescue'}).count()===0,'Food rescue is gone from the report (taken out of scope in version 2)');
  ok(new Set(rep.acts.map(a=>a.split(':')[1])).size>=3,'Actions vary: '+[...new Set(rep.acts.map(a=>a.split(':')[1]))].join(', '));
  await pg.locator('#expshare').click();const txt=await pg.locator('#exp-text').inputValue();
  ok(/Expiring-soon report/.test(txt)&&/Value at risk/.test(txt)&&/Suggested/.test(txt),'"Copy to share" gives a plain text version for a chat');
  await pg.locator('#modal .xb').click();
- await pg.locator('table.exp button',{hasText:'Offer for rescue'}).first().click();await pg.locator('#modal .opt').first().click();await pg.waitForTimeout(40);
- ok(await pg.locator('table.exp button',{hasText:'Offered for rescue'}).count()===1,'Offer for rescue works from the report');
+ await pg.locator('table.exp button',{hasText:'Dishes to push'}).first().click();await pg.waitForTimeout(40);
+ ok((await ev(()=>GB.info().screen))==='push','"Dishes to push" opens from a special or discount row in the report');await pg.locator('.backb').click();await pg.waitForTimeout(40);
  await pg.locator('.chip',{hasText:'7 days'}).click();
  ok((await pg.locator('table.exp tr').count()-2)>rep.n,'Choosing 7 days shows more batches');
  // language

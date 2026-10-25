@@ -8,6 +8,8 @@ function i18nAdd(raw){raw.split('\n').forEach(line=>{if(!line.trim()||line.start
 const EMO=/^((?:\p{Extended_Pictographic}|️|‍)+)\s+(.+)$/u;
 function tr1(s,l,depth){const d=TR[l];depth=depth||0;if(!d||!s)return s;if(d.x.has(s))return d.x.get(s);if(d.c.has(s))return d.c.get(s);let out=s,hit=false;
   if(depth<5&&/[A-Za-z]/.test(s)){
+    /* a list of known names ("Tilapia (whole), Lala (clams)") is translated part by part before any pattern can split it at a bracket */
+    if(s.includes(', ')){const ps=s.split(', ');if(ps.every(x=>d.x.has(x.trim()))){out=ps.map(x=>d.x.get(x.trim())).join(l==='zh'?'、':', ');d.c.set(s,out);return out}}
     for(const p of d.p){const m=s.match(p.re);if(m){out=p.t.replace(/\{(\w+)\}/g,(x,n)=>{const i=p.names.indexOf(n);return i<0?x:tr1(m[i+1].trim(),l,depth+1)});hit=true;break}}
     if(!hit){const e=s.match(EMO);if(e){out=e[1]+' '+tr1(e[2],l,depth+1);hit=true}}
     if(!hit&&s.includes(' · ')){out=s.split(' · ').map(x=>tr1(x.trim(),l,depth+1)).join(' · ');hit=true}

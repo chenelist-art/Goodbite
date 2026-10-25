@@ -12,7 +12,8 @@ const ICON={
  search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',alert:'<path d="M12 4l9 16H3l9-16z"/><path d="M12 10v4M12 17v.5"/>',clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
  help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8M12 17v.5"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
  more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',play:'<path d="M7 5l12 7-12 7V5z"/>',leaf:'<path d="M5 19c0-9 5-14 14-14 0 9-5 14-14 14z"/><path d="M5 19l8-8"/>',
- list:'<path d="M8 6h12M8 12h12M8 18h12M4 6h.5M4 12h.5M4 18h.5"/>',copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',scan:'<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>'
+ list:'<path d="M8 6h12M8 12h12M8 18h12M4 6h.5M4 12h.5M4 18h.5"/>',copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',scan:'<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',
+ link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',star:'<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>'
 };
 const ic=n=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]||''}</svg>`;
 const A=(a,p)=>`data-a="${a}"${p!==undefined?` data-p="${h(JSON.stringify(p))}"`:''}`;
@@ -35,8 +36,8 @@ const TIPS={
  fefo:['Use oldest first','The stock that expires soonest is always used first, so less food is thrown away.'],
  min:['Minimum stock','The lowest amount you want to have on the shelf. Below this the app tells you to order more.'],
  fc:['Food cost %','Cost of the ingredients used in the food you sold, divided by sales before tax and service charge. Lower is better.'],
- cn:['Credit note','A document that corrects or reverses an e-invoice once it can no longer be cancelled.'],
- rescue:['Food Rescue','Offer food that is close to expiry to a food charity instead of throwing it away. The partners here are made up for the demo.']
+ use:['Usage check','Compares what the recipes say was used with what your stock counts found. Big differences can mean bigger portions, waste that was not logged, or missing stock.'],
+ cn:['Credit note','A document that corrects or reverses an e-invoice once it can no longer be cancelled.']
 };
 const tip=k=>`<button type="button" class="q" ${A('tip',{k})} aria-label="What does ${h(TIPS[k][0])} mean?">?</button>`;
 const SCREENS={};
@@ -63,7 +64,9 @@ const inp=(id,path,val,o)=>{o=o||{};return`<input class="inp ${o.cls||''}" id="$
 const tog=(on,label,a,p,tipK)=>`<div class="row" style="flex-wrap:nowrap;gap:4px"><button type="button" class="tog ${on?'on':''}" role="switch" aria-checked="${on}" ${A(a,p)}><i></i><span>${label}</span></button>${tipK?tip(tipK):''}</div>`;
 const demoTag='<span class="pill warn">Demo data</span>';
 
-function navHtml(compact){const r=ROLES[S.role],sec=SCREENS[stack[0].s].sec;let items=NAV.filter(n=>r.nav.includes(n[0]));const all=items;
+/* with GoodBite Stock the outlet keeps its own POS, so the GoodBite till and e-invoices are hidden */
+const navFor=role=>ROLES[role].nav.filter(n=>!(S.settings.plan==='stock'&&(n==='sell'||n==='invoices')));
+function navHtml(compact){const r=ROLES[S.role],sec=SCREENS[stack[0].s].sec;let items=NAV.filter(n=>navFor(S.role).includes(n[0]));const all=items;
   if(compact&&items.length>5)items=items.slice(0,4);
   const cnt={invoices:S.role==='owner'?S.sales.filter(x=>x.want&&x.status==='paid'&&!x.inv).length+S.invoices.filter(i=>i.status==='Invalid').length:0};
   let o=items.map(([id,l,i,s])=>`<button class="nav ${sec===id?'on':''}" ${sec===id?'aria-current="page"':''} ${A('root',{s})} data-nav="${id}">${ic(i)}<span>${l}</span>${cnt[id]?`<span class="cnt" aria-label="${cnt[id]} to do">${cnt[id]}</span>`:''}</button>`).join('');
@@ -92,9 +95,9 @@ const ACT={
  tip:p=>{const t=TIPS[p.k];modal(()=>`${mHead(h(t[0]))}<p>${h(t[1])}</p><div class="mf"><button class="btn" ${A('closeModal')}>Got it</button></div>`)},
  set:p=>{setPath(cur().p,p.k,p.v);render(true)},
  mset:p=>{setPath(M,p.k,p.v);drawModal()},
- roleMenu:()=>modal(()=>`${mHead('Who is using the app?')}<p class="muted">The menu changes to show only what each person needs. This demo has no passwords.</p>${Object.entries(ROLES).map(([k,r])=>`<button class="opt ${S.role===k?'on':''}" ${A('role',{r:k})}>${ic('user')}<span><b>${r.name}</b><small>${r.d}</small></span></button>`).join('')}`),
+ roleMenu:()=>modal(()=>`${mHead('Who is using the app?')}<p class="muted">The menu changes to show only what each person needs. This demo has no passwords.</p>${S.settings.plan==='stock'?'<p class="muted sm">The Cashier view is hidden because sales come from your own POS.</p>':''}${Object.entries(ROLES).filter(([k])=>!(S.settings.plan==='stock'&&k==='cashier')).map(([k,r])=>`<button class="opt ${S.role===k?'on':''}" ${A('role',{r:k})}>${ic('user')}<span><b>${r.name}</b><small>${r.d}</small></span></button>`).join('')}`),
  role:p=>{S.role=p.r;save();closeModal();root('home');toast('Now viewing as '+ROLES[p.r].name)},
- moreMenu:()=>modal(()=>`${mHead('More')}${NAV.filter(n=>ROLES[S.role].nav.includes(n[0])).slice(4).map(([id,l,i,s])=>`<button class="opt" ${A('rootM',{s})}>${ic(i)}<b>${l}</b></button>`).join('')}<button class="opt" ${A('help')}>${ic('help')}<b>Help</b></button>`),
+ moreMenu:()=>modal(()=>`${mHead('More')}${NAV.filter(n=>navFor(S.role).includes(n[0])).slice(4).map(([id,l,i,s])=>`<button class="opt" ${A('rootM',{s})}>${ic(i)}<b>${l}</b></button>`).join('')}<button class="opt" ${A('help')}>${ic('help')}<b>Help</b></button>`),
  rootM:p=>{closeModal();root(p.s)},
  help:()=>{const c=cur(),sc=SCREENS[c.s];modal(()=>`${mHead('Help: '+h(sc.title(c.p)))}<ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px">${(sc.help||['Use the menu to move around.','The green button is always the main thing to do on a page.','Press Back to return to where you were.']).map(x=>`<li>${x}</li>`).join('')}</ol>
    <div class="mf" style="justify-content:flex-start"><button class="btn sec sm" ${A('tourStart')}>Replay the welcome tour</button><button class="btn sec sm" ${A('demoStart')}>Start the demo tour</button>${S.role==='owner'?`<button class="btn sec sm" ${A('goM',{s:'notes'})}>E-invoice notes</button>`:''}</div><div><div class="flabel" style="margin-bottom:6px">Language · Bahasa · 语言</div>${langPicker()}</div><div class="mf"><button class="btn" ${A('closeModal')}>Close help</button></div>`)},

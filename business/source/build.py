@@ -1,7 +1,7 @@
 import sys,os
 base=os.path.dirname(os.path.abspath(__file__))
 rd=lambda n:open(os.path.join(base,'src',n),encoding='utf8').read()
-js='\n'.join(rd(n) for n in ['core.js','data.js','ui.js','s_home_sell.js','s_stock_orders.js','s_waste_reports.js','s_scan.js','s_inv_settings.js','i18n.js','dict.js','tour.js'])
+js='\n'.join(rd(n) for n in ['core.js','data.js','ui.js','s_home_sell.js','s_stock_orders.js','s_waste_reports.js','s_scan.js','s_insight.js','s_inv_settings.js','i18n.js','dict.js','tour.js'])
 def page(standalone):
     global js
     code=js if standalone else '\n'.join(l for l in js.split('\n') if not l.startswith('ACT.download='))
