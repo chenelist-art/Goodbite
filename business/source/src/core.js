@@ -1,6 +1,6 @@
 'use strict';
 /* ---------- helpers ---------- */
-const KEY='goodbite_b2b_v1';
+const KEY='goodbite_b2b_v2';
 let S=null,IX=null;
 const pad=n=>String(n).padStart(2,'0');
 const isoD=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
@@ -30,9 +30,9 @@ const plural=(n,w,ws)=>n+' '+(n===1?w:(ws||w+'s'));
 const SIM_ERR='LHDN could not match the buyer TIN with the ID number (this rejection is simulated).';
 
 /* ---------- saving ---------- */
-function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.v===1&&Array.isArray(s.batches))return migrate(s)}catch(e){}return null}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.v===2&&Array.isArray(s.batches))return migrate(s)}catch(e){}return null}
 /* data saved by an older version of the demo gets the newer fields */
-function migrate(s){s.sort=s.sort||{};ING_EXTRA.forEach(id=>{if(!s.ingredients.some(i=>i.id===id))s.ingredients.push(parseIng().find(i=>i.id===id))});return s}
+function migrate(s){s.sort=s.sort||{};s.counts=s.counts||[];s.specials=s.specials||{};s.soldOut=s.soldOut||{};s.setup=s.setup||{photo:false,pos:false,recipes:{},hide:false};s.pos=s.pos||{sys:'',connected:false,map:{},syncs:[]};if(s.settings.fcTarget==null)s.settings.fcTarget=FC_TARGET;s.settings.plan=s.settings.plan||'allinone';ING_EXTRA.forEach(id=>{if(!s.ingredients.some(i=>i.id===id))s.ingredients.push(parseIng().find(i=>i.id===id))});return s}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function resetDemo(){S=seed();IX=null;sweep();save()}
 
@@ -81,7 +81,10 @@ function sweep(){let n=0;S.batches.forEach(b=>{if(b.qty>0.0005&&daysLeft(b)<0){S
 function suggestions(){const out=[];S.ingredients.forEach(i=>{const oh=onHand(i.id),oo=onOrder(i.id),avg=avgUse(i.id),lead=SUP(i.sup).lead;
   const target=Math.max(i.min*2,i.min+avg*(lead+3));
   if(oh+oo<i.min||oh+oo<avg*(lead+1)){let q=target-oh-oo;q=(i.unit==='piece'||i.unit==='loaf'||q>=5)?Math.ceil(q):Math.ceil(q*2)/2;if(q>0)out.push({ing:i.id,qty:q,oh,oo,avg})}});return out}
-function adjustStock(id,counted){const oh=onHand(id),diff=r3(counted-oh);if(Math.abs(diff)<0.0005)return 0;
+/* a stock count: the app's amount is what it expected; the difference is kept for the usage check */
+function adjustStock(id,counted,src){const oh=onHand(id),diff=r3(counted-oh);
+  if(src){const b=batchesOf(id),c=b.length?b.reduce((a,x)=>a+x.cost*x.qty,0)/Math.max(0.001,b.reduce((a,x)=>a+x.qty,0)):ING(id).cost;S.counts.push({id:uid('k'),dt:isoDT(now()),ing:id,app:oh,counted:r3(counted),diff,cost:Math.round(diff*c),src});if(S.counts.length>400)S.counts.splice(0,S.counts.length-400)}
+  if(Math.abs(diff)<0.0005)return 0;
   if(diff<0)consume(id,-diff);else{const i=ING(id),bs=batchesOf(id);if(bs.length)bs[bs.length-1].qty=r3(bs[bs.length-1].qty+diff);else addBatch(id,diff,addDays(today(),i.shelf),i.cost)}
   return diff}
 
@@ -170,3 +173,19 @@ function monthStats(m){let sales=0,net=0,bills=0,cogs=0;const daily=[];
 function weeklyWaste(n){const out=[],T=today(),dow=(pD(T).getDay()+6)%7,mon=addDays(T,-dow);
   for(let k=n-1;k>=0;k--){const a=addDays(mon,-7*k),b=addDays(a,6);let kg=0,c=0;S.waste.forEach(w=>{const d=w.dt.slice(0,10);if(d>=a&&d<=b){kg+=w.kg;c+=w.cost}});out.push({a,b,kg:r3(kg),cost:c})}return out}
 function toCSV(rows){return rows.map(r=>r.map(v=>{v=String(v==null?'':v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(',')).join('\n')}
+
+/* ---------- week numbers: food cost against the target ---------- */
+const weekStart=(k)=>{const T=today(),dow=(pD(T).getDay()+6)%7;return addDays(addDays(T,-dow),-7*(k||0))};
+function periodStats(a,b){let net=0,cogs=0,sales=0,bills=0;for(let d=a;d<=b;d=addDays(d,1)){const x=S.days[d];if(x){net+=x.sub;cogs+=x.cogs;sales+=x.total;bills+=x.bills}}
+  const ps=(S.pos.syncs||[]).filter(y=>y.dt.slice(0,10)>=a&&y.dt.slice(0,10)<=b);ps.forEach(y=>{net+=y.net;cogs+=y.cogs});
+  const w=S.waste.filter(x=>{const d=x.dt.slice(0,10);return d>=a&&d<=b}),wRM=w.reduce((t,x)=>t+x.cost,0);
+  return{a,b,net,cogs,sales,bills,pos:ps.length,fc:net?cogs/net*100:0,wRM,wKg:r3(w.reduce((t,x)=>t+x.kg,0))}}
+function weekStats(k){const a=weekStart(k),e=addDays(a,6),b=k?e:today();return periodStats(a,b<e?b:e)}
+const fcState=fc=>fc<=0?'':fc<=S.settings.fcTarget?'ok':fc<=S.settings.fcTarget+3?'warn':'bad';
+
+/* ---------- usage check: what the recipes say was used against what the shelf count shows ---------- */
+function useOver(id,days){let t=0;for(let d=0;d<days;d++){const u=S.use[addDays(today(),-d)];if(u&&u[id])t+=u[id]}return r3(t)}
+function usageCheck(days){const from=addDays(today(),-days+1),by={};
+  S.counts.filter(c=>c.dt.slice(0,10)>=from).forEach(c=>{const o=by[c.ing]||(by[c.ing]={ing:c.ing,n:0,diff:0,cost:0,photo:0,last:''});o.n++;o.diff=r3(o.diff+c.diff);o.cost+=c.cost;if(c.src==='photo')o.photo++;if(c.dt>o.last)o.last=c.dt});
+  return Object.values(by).map(o=>{const use=useOver(o.ing,Math.min(days,21)),share=use>0?o.diff/use:0,big=Math.abs(o.cost)>=500;
+    o.use=use;o.share=share;o.st=(use>0?share<-0.1:o.diff<0)&&big?'less':(use>0?share>0.1:o.diff>0)&&big?'more':'ok';return o}).sort((a,b)=>(a.st==='ok')-(b.st==='ok')||Math.abs(b.cost)-Math.abs(a.cost))}

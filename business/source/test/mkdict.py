@@ -7,7 +7,7 @@ def add(en,ms,zh):
     en=ws(en)
     if en in seen: return
     seen[en]=1;out.append(f"{en} || {ws(ms)} || {ws(zh)}")
-for f in ['test/tr6.txt','test/tr8.txt','test/tr7.txt']:
+for f in ['test/tr9.txt','test/tr6.txt','test/tr8.txt','test/tr7.txt']:
     for l in open(f,encoding='utf8'):
         l=l.rstrip('\n')
         if not l.strip() or l.startswith('//'): continue

@@ -1,0 +1,464 @@
+// Version 2 (25 Oct 2026): restaurant demo names, new screens. Written by Claude, not checked by a native speaker.
+Tilapia (whole) || Tilapia (seekor) || 罗非鱼（整条）
+Siakap (sea bass) || Siakap || 金目鲈（Siakap）
+Grouper (live) || Kerapu (hidup) || 石斑鱼（活）
+Tiger prawns || Udang harimau || 老虎虾
+Lala (clams) || Lala (kepah) || 啦啦（蛤蜊）
+Sotong (squid) || Sotong || 苏东（鱿鱼）
+Mud crab (live) || Ketam nipah (hidup) || 青蟹（活）
+Fish fillet (frozen) || Isi ikan (sejuk beku) || 鱼片（冷冻）
+Fish balls || Bebola ikan || 鱼丸
+Chicken (cut) || Ayam (dipotong) || 鸡肉（切块）
+Chicken wings || Kepak ayam || 鸡翅
+Pork belly || Daging babi bahagian perut || 五花肉
+Pork ribs || Rusuk babi || 排骨
+Beef slices || Hirisan daging lembu || 牛肉片
+Kangkung || Kangkung || 蕹菜
+Kailan || Kailan || 芥兰
+Choy sum || Sawi (choy sum) || 菜心
+Bean sprouts || Taugeh || 豆芽
+Long beans || Kacang panjang || 长豆
+Brinjal || Terung || 茄子
+Bitter gourd || Peria || 苦瓜
+Tomato || Tomato || 番茄
+Cucumber || Timun || 黄瓜
+Big onion || Bawang besar || 洋葱
+Shallots || Bawang merah || 红葱头
+Garlic || Bawang putih || 蒜头
+Ginger || Halia || 姜
+Spring onion || Daun bawang || 青葱
+Red chilli || Cili merah || 红辣椒
+Cili padi || Cili padi || 指天椒
+Limau kasturi || Limau kasturi || 桔子
+Shiitake mushrooms || Cendawan shiitake || 香菇
+Pineapple || Nanas || 黄梨
+Capsicum || Lada benggala || 灯笼椒
+Curry leaves || Daun kari || 咖喱叶
+Eggs || Telur || 鸡蛋
+Egg tofu || Tauhu telur || 蛋豆腐
+Kuey teow (fresh) || Kuey teow (segar) || 粿条（新鲜）
+Yellow noodles || Mi kuning || 黄面
+Mee hoon (dried) || Mihun (kering) || 米粉（干）
+Rice || Beras || 米
+Cooking oil || Minyak masak || 食用油
+Oyster sauce || Sos tiram || 蚝油
+Light soy sauce || Kicap cair || 生抽
+Dark soy sauce || Kicap pekat || 老抽
+Belacan (shrimp paste) || Belacan || 马拉盏（虾膏）
+Dried shrimp || Udang kering || 虾米
+Corn flour || Tepung jagung || 玉米粉
+Sugar || Gula || 糖
+Tomato sauce || Sos tomato || 番茄酱
+Peanuts || Kacang tanah || 花生
+Butter || Mentega || 牛油
+Evaporated milk (can) || Susu sejat (tin) || 淡奶（罐）
+Chinese tea leaves || Daun teh Cina || 中国茶叶
+Barley || Barli || 薏米
+Soya bean milk || Susu soya || 豆浆
+Young coconut || Kelapa muda || 椰青
+Soft drink (can) || Minuman ringan (tin) || 汽水（罐）
+Seafood || Makanan laut || 海鲜
+Meat and poultry || Daging dan ayam itik || 肉类和家禽
+Vegetables || Sayur-sayuran || 蔬菜
+Eggs, tofu and noodles || Telur, tauhu dan mi || 鸡蛋、豆腐和面
+Dry goods and sauces || Barang kering dan sos || 干货和酱料
+Drinks and dairy || Minuman dan tenusu || 饮料和乳制品
+Meat || Daging || 肉类
+Vegetables and tofu || Sayur dan tauhu || 蔬菜和豆腐
+Rice and noodles || Nasi dan mi || 饭和面
+Drinks || Minuman || 饮料
+Steamed Tilapia, Hong Kong Style || Tilapia Kukus Gaya Hong Kong || 港式蒸罗非鱼
+Steamed Siakap with Lime and Chilli || Siakap Kukus Limau dan Cili || 酸辣蒸金目鲈
+Sweet and Sour Fish Fillet || Isi Ikan Masam Manis || 咕噜鱼片
+Butter Prawns || Udang Mentega || 奶油虾
+Kam Heong Lala || Lala Kam Heong || 甘香啦啦
+Lala Soup with Ginger || Sup Lala Halia || 姜丝啦啦汤
+Salted Egg Sotong || Sotong Telur Masin || 咸蛋苏东
+Chilli Crab || Ketam Cili || 辣椒螃蟹
+Steamed Live Grouper || Kerapu Hidup Kukus || 清蒸活石斑
+Sweet and Sour Pork || Babi Masam Manis || 咕噜肉
+Salt and Pepper Pork Ribs || Rusuk Babi Garam Lada || 椒盐排骨
+Kung Pao Chicken || Ayam Kung Pao || 宫保鸡丁
+Ginger and Spring Onion Beef || Daging Lembu Halia dan Daun Bawang || 姜葱牛肉
+Prawn Paste Chicken Wings || Kepak Ayam Pes Udang || 虾酱鸡翅
+Braised Pork Belly with Egg || Babi Masak Kicap dengan Telur || 卤五花肉配蛋
+Belacan Kangkung || Kangkung Belacan || 马拉盏蕹菜
+Garlic Kailan || Kailan Bawang Putih || 蒜蓉芥兰
+Stir-fried Choy Sum || Sawi Goreng || 清炒菜心
+Claypot Egg Tofu || Tauhu Telur Claypot || 瓦煲蛋豆腐
+Long Beans with Dried Shrimp || Kacang Panjang Udang Kering || 虾米炒长豆
+Sambal Brinjal || Terung Sambal || 参巴茄子
+Bitter Gourd Omelette || Telur Dadar Peria || 苦瓜煎蛋
+Bean Sprouts with Dried Shrimp || Taugeh Udang Kering || 虾米炒豆芽
+Steamed Rice || Nasi Putih || 白饭
+Egg Fried Rice || Nasi Goreng Telur || 蛋炒饭
+Seafood Fried Rice || Nasi Goreng Makanan Laut || 海鲜炒饭
+Char Kuey Teow || Char Kuey Teow || 炒粿条
+Cantonese Fried Kuey Teow || Kuey Teow Goreng Kantonis || 滑蛋河粉
+Hokkien Mee || Mi Hokkien || 福建面
+Fried Mee Hoon || Mihun Goreng || 炒米粉
+Fish Ball Noodle Soup || Mi Sup Bebola Ikan || 鱼丸汤粉
+Chinese Tea (pot) || Teh Cina (seteko) || 中国茶（一壶）
+Iced Lime Juice || Jus Limau Ais || 冰桔子水
+Barley Drink || Air Barli || 薏米水
+Soya Bean Milk || Susu Soya || 豆浆
+Young Coconut || Kelapa Muda || 椰青
+Soft Drink (can) || Minuman Ringan (tin) || 汽水（罐）
+Extra rice || Nasi tambahan || 加饭
+Add 1 rice || Tambah 1 nasi || 加一碗饭
+Extra prawns || Udang tambahan || 加虾
+Spice level || Tahap pedas || 辣度
+Seafood chiller || Peti sejuk makanan laut || 海鲜冷藏柜
+Meat chiller || Peti sejuk daging || 肉类冷藏柜
+Vegetable rack || Rak sayur || 蔬菜架
+Egg, tofu and noodle shelf || Rak telur, tauhu dan mi || 鸡蛋、豆腐和面架
+Dry store || Stor barang kering || 干货仓
+Drinks fridge || Peti sejuk minuman || 饮料冰箱
+Another POS (upload a sales file) || POS lain (muat naik fail jualan) || 其他 POS（上传销售文件）
+// names with brackets need their own lines in these two places
+Tilapia (whole) ({x} in stock) || Tilapia (seekor) ({x} dalam stok) || 罗非鱼（整条）（库存 {x}）
+Siakap (sea bass) ({x} in stock) || Siakap ({x} dalam stok) || 金目鲈（库存 {x}）
+Grouper (live) ({x} in stock) || Kerapu (hidup) ({x} dalam stok) || 石斑鱼（活）（库存 {x}）
+Lala (clams) ({x} in stock) || Lala (kepah) ({x} dalam stok) || 啦啦（蛤蜊）（库存 {x}）
+Sotong (squid) ({x} in stock) || Sotong ({x} dalam stok) || 苏东（鱿鱼）（库存 {x}）
+Mud crab (live) ({x} in stock) || Ketam nipah (hidup) ({x} dalam stok) || 青蟹（活）（库存 {x}）
+Fish fillet (frozen) ({x} in stock) || Isi ikan (sejuk beku) ({x} dalam stok) || 鱼片（冷冻）（库存 {x}）
+Chicken (cut) ({x} in stock) || Ayam (dipotong) ({x} dalam stok) || 鸡肉（切块）（库存 {x}）
+Kuey teow (fresh) ({x} in stock) || Kuey teow (segar) ({x} dalam stok) || 粿条（新鲜）（库存 {x}）
+Mee hoon (dried) ({x} in stock) || Mihun (kering) ({x} dalam stok) || 米粉（干）（库存 {x}）
+Belacan (shrimp paste) ({x} in stock) || Belacan ({x} dalam stok) || 马拉盏（虾膏）（库存 {x}）
+Evaporated milk (can) ({x} in stock) || Susu sejat (tin) ({x} dalam stok) || 淡奶（罐）（库存 {x}）
+Soft drink (can) ({x} in stock) || Minuman ringan (tin) ({x} dalam stok) || 汽水（罐）（库存 {x}）
+Tilapia (whole) ({x}) || Tilapia (seekor) ({x}) || 罗非鱼（整条）（{x}）
+Siakap (sea bass) ({x}) || Siakap ({x}) || 金目鲈（{x}）
+Grouper (live) ({x}) || Kerapu (hidup) ({x}) || 石斑鱼（活）（{x}）
+Lala (clams) ({x}) || Lala (kepah) ({x}) || 啦啦（蛤蜊）（{x}）
+Sotong (squid) ({x}) || Sotong ({x}) || 苏东（鱿鱼）（{x}）
+Mud crab (live) ({x}) || Ketam nipah (hidup) ({x}) || 青蟹（活）（{x}）
+Fish fillet (frozen) ({x}) || Isi ikan (sejuk beku) ({x}) || 鱼片（冷冻）（{x}）
+Chicken (cut) ({x}) || Ayam (dipotong) ({x}) || 鸡肉（切块）（{x}）
+Kuey teow (fresh) ({x}) || Kuey teow (segar) ({x}) || 粿条（新鲜）（{x}）
+Mee hoon (dried) ({x}) || Mihun (kering) ({x}) || 米粉（干）（{x}）
+Belacan (shrimp paste) ({x}) || Belacan ({x}) || 马拉盏（虾膏）（{x}）
+Evaporated milk (can) ({x}) || Susu sejat (tin) ({x}) || 淡奶（罐）（{x}）
+Soft drink (can) ({x}) || Minuman ringan (tin) ({x}) || 汽水（罐）（{x}）
+Chinese Tea (pot) ({x}) || Teh Cina (seteko) ({x}) || 中国茶（一壶）（{x}）
+Soft Drink (can) ({x}) || Minuman Ringan (tin) ({x}) || 汽水（罐）（{x}）
+// Home and set-up
+Get set up in 3 steps || Mula guna dalam 3 langkah || 3 步完成设置
+{n} of 3 done || {n} daripada 3 selesai || 已完成 {n}/3
+Count your stock with a photo || Kira stok anda dengan gambar || 用照片盘点库存
+Take a photo of each shelf. The app fills in the amounts for you to check. || Ambil gambar setiap rak. Aplikasi mengisi jumlahnya untuk anda semak. || 给每个货架拍照。应用会填好数量，由您核对。
+Start || Mula || 开始
+Done || Selesai || 完成
+Connect your POS, or use the GoodBite till || Sambungkan POS anda, atau guna kaunter GoodBite || 连接您的 POS，或使用 GoodBite 收银机
+Then every sale takes its ingredients off the stock by itself. || Selepas itu setiap jualan menolak bahannya daripada stok dengan sendiri. || 之后每笔销售都会自动从库存扣除所用食材。
+Check the recipes of your top 5 dishes || Semak resipi 5 hidangan paling laris || 核对 5 道最畅销菜的食谱
+Start with what sells most. Add the rest later. || Mula dengan yang paling laris. Tambah yang lain kemudian. || 从卖得最多的开始，其余的以后再加。
+Stuck? We can help in English, BM or 中文. || Tersekat? Kami boleh bantu dalam English, BM atau 中文. || 遇到困难？我们可用英语、马来语或中文协助您。
+Chat on WhatsApp || Sembang di WhatsApp || 在 WhatsApp 聊天
+Book a free video call || Tempah panggilan video percuma || 预约免费视频通话
+Hide for now || Sembunyikan buat masa ini || 暂时隐藏
+Hide this || Sembunyikan ini || 隐藏
+{n} ingredients may run out today || {n} bahan mungkin habis hari ini || {n} 种食材今天可能用完
+1 ingredient may run out today || 1 bahan mungkin habis hari ini || 1 种食材今天可能用完
+See what to do || Lihat apa perlu dibuat || 查看怎么做
+Dishes to push today || Hidangan untuk dipromosikan hari ini || 今日主推菜
+Food cost this week || Kos makanan minggu ini || 本周食材成本
+Target {n}% || Sasaran {n}% || 目标 {n}%
+weekly summary || ringkasan mingguan || 每周总结
+Sync POS sales || Selaraskan jualan POS || 同步 POS 销售
+{x} sales last synced at {y} || Jualan {x} kali terakhir diselaraskan pada {y} || {x} 销售上次同步于 {y}
+{x} sales last synced on {y} || Jualan {x} kali terakhir diselaraskan pada {y} || {x} 销售上次同步于 {y}
+{x} sales not synced yet || Jualan {x} belum diselaraskan || {x} 销售尚未同步
+Sync to keep the stock up to date. || Selaraskan supaya stok sentiasa terkini. || 同步以保持库存最新。
+Sync now || Selaraskan sekarang || 立即同步
+Today's specials: {x} || Menu istimewa hari ini: {x} || 今日特餐：{x}
+Suggest these to customers. They have a star on the till. || Cadangkan hidangan ini kepada pelanggan. Ia ada bintang di kaunter. || 向顾客推荐这些菜，它们在收银机上有星号。
+Open the till || Buka kaunter || 打开收银机
+A real product would open WhatsApp with the GoodBite support number here, so you can ask a question in English, BM or 中文. || Produk sebenar akan membuka WhatsApp dengan nombor sokongan GoodBite di sini, supaya anda boleh bertanya dalam English, BM atau 中文. || 真正的产品会在这里打开 WhatsApp 并显示 GoodBite 客服号码，您可用英语、马来语或中文提问。
+Pick a 15-minute slot and someone from GoodBite walks you through connecting your POS on a video call. No visit is needed. || Pilih slot 15 minit dan pasukan GoodBite akan membimbing anda menyambungkan POS melalui panggilan video. Tiada lawatan diperlukan. || 选一个 15 分钟的时段，GoodBite 人员会通过视频通话教您连接 POS，无需上门。
+Simulated in this demo. Nothing is sent and no call is booked. || Simulasi dalam demo ini. Tiada apa-apa dihantar dan tiada panggilan ditempah. || 本演示为模拟，不会发送任何信息，也不会预约通话。
+Set-up steps hidden. Open them again from Settings. || Langkah persediaan disembunyikan. Buka semula dari Tetapan. || 设置步骤已隐藏，可在设置中重新打开。
+Set-up steps || Langkah persediaan || 设置步骤
+Show the 3 set-up steps on Home again. || Tunjukkan semula 3 langkah persediaan di Laman Utama. || 在主页重新显示 3 个设置步骤。
+// Dishes to push
+Based on what expires soon and what is running low. || Berdasarkan apa yang hampir luput dan apa yang hampir habis. || 根据即将过期和快用完的食材。
+Push these today || Promosikan ini hari ini || 今天主推这些
+These dishes use food that will probably be left over in the next 3 days. Selling them first turns it into sales instead of waste. || Hidangan ini menggunakan makanan yang mungkin berbaki dalam 3 hari akan datang. Menjualnya dahulu menukarkannya kepada jualan, bukan pembaziran. || 这些菜会用到未来 3 天可能剩下的食材。先卖这些，就能把它们变成销售而不是浪费。
+Why || Sebab || 原因
+Dish and why || Hidangan dan sebab || 菜品和原因
+Can still make || Masih boleh dibuat || 还能做
+{n} portions || {n} hidangan || {n} 份
+1 portion || 1 hidangan || 1 份
+Add to today's specials || Tambah ke menu istimewa hari ini || 加入今日特餐
+Take off specials || Keluarkan daripada menu istimewa || 从特餐中移除
+Today's special || Menu istimewa hari ini || 今日特餐
+⭐ Today's special || ⭐ Menu istimewa hari ini || ⭐ 今日特餐
+Uses {x}: {y} likely left over by {z} ({w} at risk) || Menggunakan {x}: kira-kira {y} mungkin berbaki menjelang {z} ({w} berisiko) || 用到{x}：到{z}可能剩下 {y}（{w} 有风险）
+tonight || malam ini || 今晚
+tomorrow || esok || 明天
+Nothing needs pushing today || Tiada yang perlu dipromosikan hari ini || 今天没有需要主推的菜
+No food is likely to be left over in the next 3 days. || Tiada makanan yang mungkin berbaki dalam 3 hari akan datang. || 未来 3 天应该没有剩余的食材。
+May run out today || Mungkin habis hari ini || 今天可能用完
+At the pace of the last 14 days, these will run out before the end of today. || Mengikut kadar 14 hari lepas, bahan ini akan habis sebelum hari ini berakhir. || 按过去 14 天的用量，这些会在今天结束前用完。
+Ingredient || Bahan || 食材
+Left || Baki || 剩余
+Used per day || Digunakan sehari || 每天用量
+Dishes that need it || Hidangan yang memerlukannya || 需要它的菜
+About {n}% of a day left || Tinggal kira-kira {n}% daripada sehari || 约剩一天用量的 {n}%
+Sold out: {x} || Habis dijual: {x} || 已售完：{x}
+Tap a dish to mark it sold out on the till. || Ketik hidangan untuk tandakan habis dijual di kaunter. || 点一道菜，就会在收银机上标为售完。
+{x} on order || {x} dalam pesanan || 已订 {x}
+Nothing should run out today || Tiada yang sepatutnya habis hari ini || 今天应该不会有食材用完
+Every ingredient has at least a day of stock at the usual pace. || Setiap bahan ada stok sekurang-kurangnya sehari mengikut kadar biasa. || 按平时的用量，每种食材至少还够一天。
+On today's specials board || Di papan menu istimewa hari ini || 今日特餐板上
+The till shows these with a star, so cashiers can suggest them. || Kaunter menunjukkan hidangan ini dengan bintang, supaya juruwang boleh mencadangkannya. || 收银机会用星号标出，方便收银员推荐。
+How this is worked out: "at risk" food comes from the expiring-soon report. "May run out" compares what is left with the average use per day over the last 14 days. It is a guide, so check with the kitchen. || Cara ia dikira: makanan "berisiko" datang daripada laporan hampir luput. "Mungkin habis" membandingkan baki dengan purata penggunaan sehari dalam 14 hari lepas. Ia hanya panduan, jadi semak dengan dapur. || 计算方式：“有风险”的食材来自即将过期报告。“可能用完”是把剩余量与过去 14 天的日均用量相比。这只是参考，请与厨房确认。
+"Push these today" lists dishes that use food likely to be left over soon. Put them on the specials board. || "Promosikan ini hari ini" menyenaraikan hidangan yang menggunakan makanan yang mungkin berbaki tidak lama lagi. Letakkannya di papan menu istimewa. || “今天主推这些”列出会用到快要剩下的食材的菜，把它们放上特餐板。
+"May run out today" lists ingredients that will probably run out at today's pace, and the dishes that need them. || "Mungkin habis hari ini" menyenaraikan bahan yang mungkin habis mengikut kadar hari ini, dan hidangan yang memerlukannya. || “今天可能用完”列出按今天的用量可能用完的食材，以及需要它们的菜。
+"Mark sold out" greys the dish out on the till for the rest of today. || "Tanda habis dijual" menjadikan hidangan kelabu di kaunter sepanjang hari ini. || “标为售完”会让这道菜在今天余下的时间里在收银机上变灰。
+{x} added to today's specials. The till shows it with a star. || {x} ditambah ke menu istimewa hari ini. Kaunter menunjukkannya dengan bintang. || 已把{x}加入今日特餐，收银机会用星号标出。
+{x} taken off today's specials || {x} dikeluarkan daripada menu istimewa hari ini || 已把{x}从今日特餐中移除
+{x} marked sold out on the till for today || {x} ditanda habis dijual di kaunter untuk hari ini || {x} 今天在收银机上已标为售完
+{x} is back on sale || {x} dijual semula || {x} 已重新开卖
+Sold out today || Habis dijual hari ini || 今天已售完
+{x} is sold out today. The owner can put it back on sale under "Dishes to push today". || {x} habis dijual hari ini. Pemilik boleh menjualnya semula di bawah "Hidangan untuk dipromosikan hari ini". || {x} 今天已售完。老板可在“今日主推菜”中重新开卖。
+Dishes to push || Hidangan untuk dipromosikan || 主推菜
+Open dishes to push || Buka hidangan untuk dipromosikan || 打开主推菜
+// Usage check
+Usage check || Semakan penggunaan || 用量核对
+What the recipes say was used, compared with your stock counts. || Apa yang resipi kata telah digunakan, dibandingkan dengan kiraan stok anda. || 食谱显示的用量，与您的盘点结果相比。
+Count by photo || Kira dengan gambar || 拍照盘点
+Counts from the last: || Kiraan dalam tempoh: || 盘点期间：
+Less than the recipes say || Kurang daripada kata resipi || 比食谱少
+More than the recipes say || Lebih daripada kata resipi || 比食谱多
+Within the normal range || Dalam julat biasa || 在正常范围内
+Normal range || Julat biasa || 正常范围
+{n} items to check || {n} item untuk disemak || {n} 项需要核对
+1 item to check || 1 item untuk disemak || 1 项需要核对
+Differences under 10% are normal || Perbezaan bawah 10% adalah biasa || 差异低于 10% 属正常
+Used by recipes || Digunakan mengikut resipi || 按食谱用量
+Count difference || Beza kiraan || 盘点差异
+Value || Nilai || 价值
+What it may mean || Apa maksudnya || 可能的原因
+Item and what it may mean || Item dan apa maksudnya || 品项和可能的原因
+Photo count || Kiraan gambar || 拍照盘点
+Counted {x} less than the recipes say ({n}% of what was used). Portions may be bigger than the recipe, waste may not be logged, or stock went missing. Check the portion size with the cook. || Dikira {x} kurang daripada kata resipi ({n}% daripada yang digunakan). Hidangan mungkin lebih besar daripada resipi, pembaziran mungkin tidak direkod, atau stok hilang. Semak saiz hidangan dengan tukang masak. || 盘点结果比食谱少 {x}（占用量的 {n}%）。可能是份量比食谱大、浪费没有记录，或库存不见了。请与厨师核对份量。
+Counted {x} more than the recipes say ({n}% of what was used). The recipe may list more than cooks really use. Check the recipe amount. || Dikira {x} lebih daripada kata resipi ({n}% daripada yang digunakan). Resipi mungkin menyenaraikan lebih daripada yang benar-benar digunakan. Semak jumlah dalam resipi. || 盘点结果比食谱多 {x}（占用量的 {n}%）。食谱写的可能比厨师实际用的多，请核对食谱用量。
+The count matched the app. || Kiraan sepadan dengan aplikasi. || 盘点结果与应用一致。
+Within the normal range. Portions are never exactly the same. || Dalam julat biasa. Saiz hidangan tidak pernah sama tepat. || 在正常范围内，每份的量本来就不会完全一样。
+Check recipes || Semak resipi || 核对食谱
+No stock counts in the last {x} || Tiada kiraan stok dalam {x} lepas || 过去 {x} 内没有盘点
+Count your stock, by hand or with a photo, and the check appears here. || Kira stok anda, secara manual atau dengan gambar, dan semakan akan dipaparkan di sini. || 手动或拍照盘点库存后，核对结果会显示在这里。
+How this is worked out: every sale takes the recipe amounts off the stock. When staff count the shelf, the difference between the count and the app is kept. Here those differences are added up and compared with what the recipes used in the same days. Demo data. || Cara ia dikira: setiap jualan menolak jumlah resipi daripada stok. Apabila pekerja mengira rak, beza antara kiraan dan aplikasi disimpan. Di sini beza itu dijumlahkan dan dibandingkan dengan apa yang digunakan oleh resipi dalam hari yang sama. Data demo. || 计算方式：每笔销售都会按食谱扣除库存。员工盘点货架时，会记下盘点与应用之间的差异。这里把这些差异加起来，再与同期食谱的用量相比。演示数据。
+This compares what the recipes say was used with what your stock counts found on the shelf. || Ini membandingkan apa yang resipi kata telah digunakan dengan apa yang kiraan stok anda jumpa di rak. || 这里把食谱显示的用量，与盘点时货架上实际的量相比。
+A red row means much less was on the shelf than expected. Check portion sizes, unlogged waste, or missing stock. || Baris merah bermaksud jauh kurang di rak daripada yang dijangka. Semak saiz hidangan, pembaziran yang tidak direkod, atau stok yang hilang. || 红色的行表示货架上的量比预期少很多。请检查份量、没记录的浪费或丢失的库存。
+Differences under 10% of what was used are normal, because portions are never exactly the same. || Perbezaan bawah 10% daripada yang digunakan adalah biasa, kerana saiz hidangan tidak pernah sama tepat. || 差异低于用量的 10% 属正常，因为每份的量不会完全一样。
+Open the usage check || Buka semakan penggunaan || 打开用量核对
+See the usage check || Lihat semakan penggunaan || 查看用量核对
+Every count this week was in the normal range. || Setiap kiraan minggu ini dalam julat biasa. || 本周每次盘点都在正常范围内。
+// Weekly summary
+Weekly summary || Ringkasan mingguan || 每周总结
+Change target || Tukar sasaran || 修改目标
+On target || Capai sasaran || 达到目标
+Above target || Melebihi sasaran || 高于目标
+Compared with last week || Berbanding minggu lepas || 与上周相比
+Last week {x} (percentage points) || Minggu lepas {x} (mata peratusan) || 上周 {x}（百分点）
+Last week {x} || Minggu lepas {x} || 上周 {x}
+Waste this week || Pembaziran minggu ini || 本周浪费
+Value at risk, next 7 days || Nilai berisiko, 7 hari akan datang || 未来 7 天有风险的价值
+Food likely left over || Makanan yang mungkin berbaki || 可能剩下的食材
+Food cost per week, target {n}% || Kos makanan setiap minggu, sasaran {n}% || 每周食材成本，目标 {n}%
+Food cost per week in percent || Kos makanan setiap minggu dalam peratus || 每周食材成本（百分比）
+Each bar is one week, Monday to Sunday. The last bar is this week so far. || Setiap bar ialah satu minggu, Isnin hingga Ahad. Bar terakhir ialah minggu ini setakat ini. || 每条柱代表一周（周一到周日），最后一条是本周到目前为止。
+Nothing needs pushing right now. || Tiada yang perlu dipromosikan sekarang. || 目前没有需要主推的菜。
+Nothing should run out today. || Tiada yang sepatutnya habis hari ini. || 今天应该不会有食材用完。
+See suggested orders || Lihat pesanan dicadangkan || 查看建议订单
+Food cost % = cost of the ingredients used in what was sold, divided by sales before tax and service charge. Demo data. || % kos makanan = kos bahan yang digunakan dalam apa yang dijual, dibahagi dengan jualan sebelum cukai dan caj perkhidmatan. Data demo. || 食材成本 % = 所售菜品用掉的食材成本，除以税前及服务费前的销售额。演示数据。
+Food cost % = cost of the ingredients used in what was sold, divided by sales before tax and service charge. Sales synced from your POS are included. Demo data. || % kos makanan = kos bahan yang digunakan dalam apa yang dijual, dibahagi dengan jualan sebelum cukai dan caj perkhidmatan. Jualan yang diselaraskan dari POS anda termasuk. Data demo. || 食材成本 % = 所售菜品用掉的食材成本，除以税前及服务费前的销售额。已包括从 POS 同步的销售。演示数据。
+One page to check once a week: food cost against your target, waste, and what to look at. || Satu halaman untuk disemak seminggu sekali: kos makanan berbanding sasaran, pembaziran, dan apa yang perlu dilihat. || 每周看一次的一页：食材成本与目标对比、浪费，以及需要留意的事。
+"Copy to share" gives a short text for the team chat. || "Salin untuk kongsi" memberi teks ringkas untuk sembang pasukan. || “复制分享”会生成一段简短文字，方便发到团队群组。
+Change the food cost target in Settings, under Alerts and targets. || Tukar sasaran kos makanan dalam Tetapan, di bawah Amaran dan sasaran. || 可在设置的“提醒和目标”中修改食材成本目标。
+target || sasaran || 目标
+last week || minggu lepas || 上周
+Value at risk in the next 7 days || Nilai berisiko dalam 7 hari akan datang || 未来 7 天有风险的价值
+Check these || Semak ini || 需要核对
+Push || Promosikan || 主推
+Demo data. || Data demo. || 演示数据。
+// Top 5 recipes
+Check your top 5 recipes || Semak 5 resipi teratas anda || 核对 5 道最畅销菜的食谱
+Each sale takes the recipe off the stock, so start with what sells most. || Setiap jualan menolak resipi daripada stok, jadi mula dengan yang paling laris. || 每笔销售都会按食谱扣库存，所以先从卖得最多的开始。
+{n} of {n2} checked || {n} daripada {n2} disemak || 已核对 {n}/{n2}
+{n} portions sold in the last 3 days || {n} hidangan dijual dalam 3 hari lepas || 过去 3 天卖了 {n} 份
+1 portion sold in the last 3 days || 1 hidangan dijual dalam 3 hari lepas || 过去 3 天卖了 1 份
+Looks right || Nampak betul || 看起来没问题
+Not sure any more || Tidak pasti lagi || 不确定了
+Change recipe || Tukar resipi || 修改食谱
+Ingredients cost {x} || Kos bahan {x} || 食材成本 {x}
+price {x} || harga {x} || 售价 {x}
+food cost {n}% || kos makanan {n}% || 食材成本 {n}%
+{x} {n} kg || {x} {n} kg || {x} {n} 公斤
+{x} {n} L || {x} {n} L || {x} {n} 升
+{x} {n} pieces || {x} {n} biji || {x} {n} 个
+{x} {n} piece || {x} {n} biji || {x} {n} 个
+All done. The other dishes can be checked later in Settings, Menu and recipes. || Semua selesai. Hidangan lain boleh disemak kemudian dalam Tetapan, Menu dan resipi. || 全部完成。其他菜可以稍后在设置的“菜单和食谱”中核对。
+Check each one with the cook. || Semak setiap satu dengan tukang masak. || 请逐一与厨师核对。
+These are the 5 dishes that sold the most in the last few days. || Ini 5 hidangan yang paling laris dalam beberapa hari lepas. || 这是过去几天卖得最多的 5 道菜。
+Check each recipe with the cook. If it looks right, press "Looks right". If not, press "Change recipe". || Semak setiap resipi dengan tukang masak. Jika betul, tekan "Nampak betul". Jika tidak, tekan "Tukar resipi". || 请与厨师逐一核对食谱。没问题就按“看起来没问题”，否则按“修改食谱”。
+The recipe is what each sale takes off the stock, so the top sellers matter most. || Resipi ialah apa yang setiap jualan tolak daripada stok, jadi hidangan paling laris paling penting. || 每笔销售按食谱扣库存，所以最畅销的菜最重要。
+Top 5 recipes checked. Step 3 is done. || 5 resipi teratas telah disemak. Langkah 3 selesai. || 5 道畅销菜的食谱已核对，第 3 步完成。
+// Shelf photo count
+Which shelf are you counting? || Rak mana yang anda kira? || 您在盘点哪个货架？
+Pick a shelf || Pilih rak || 选择货架
+Take the photo || Ambil gambar || 拍照
+Check and save || Semak dan simpan || 核对并保存
+Count by hand instead || Kira secara manual || 改为手动盘点
+Pick the shelf, then take a photo of it. || Pilih rak, kemudian ambil gambarnya. || 选好货架，然后拍照。
+The app reads how much of each item it can see and fills in the count for you. || Aplikasi membaca berapa banyak setiap item yang kelihatan dan mengisi kiraan untuk anda. || 应用会读出能看到的每种品项的数量，帮您填好盘点。
+Check each amount on the next screen, change any that are wrong, then press "Save count". || Semak setiap jumlah di skrin seterusnya, ubah yang salah, kemudian tekan "Simpan kiraan". || 在下一页核对每个数量，改掉不对的，然后按“保存盘点”。
+Stand back so the whole shelf fits in the photo. In this demo the camera shows a sample picture. || Berdiri jauh sedikit supaya seluruh rak masuk dalam gambar. Dalam demo ini kamera menunjukkan gambar contoh. || 站远一点，让整个货架都拍进去。本演示中相机显示的是示例图片。
+Camera view of the {x} (sample picture) || Paparan kamera {x} (gambar contoh) || {x}的相机画面（示例图片）
+The app looks for each of the {n} items kept here and estimates how much is left. || Aplikasi mencari setiap satu daripada {n} item yang disimpan di sini dan menganggarkan bakinya. || 应用会找出这里存放的 {n} 种品项，并估计还剩多少。
+Simulated: nothing is read from a real camera. Amounts are rounded, so staff check them before saving. || Simulasi: tiada apa-apa dibaca daripada kamera sebenar. Jumlah dibundarkan, jadi pekerja menyemaknya sebelum menyimpan. || 模拟：不会从真实相机读取。数量经过四舍五入，员工保存前要核对。
+Pick another shelf || Pilih rak lain || 选择其他货架
+Read from the photo of the {x} (simulated). || Dibaca daripada gambar {x} (simulasi). || 从{x}的照片读取（模拟）。
+Check each amount marked "From photo", change any that are wrong, then press "Save count". || Semak setiap jumlah bertanda "Dari gambar", ubah yang salah, kemudian tekan "Simpan kiraan". || 核对标有“来自照片”的每个数量，改掉不对的，然后按“保存盘点”。
+From photo || Dari gambar || 来自照片
+{n} amounts read from the photo (simulated). Check them, then save. || {n} jumlah dibaca daripada gambar (simulasi). Semak, kemudian simpan. || 已从照片读取 {n} 个数量（模拟），核对后保存。
+Step 1 of the set-up is done. || Langkah 1 persediaan selesai. || 设置第 1 步已完成。
+App expected || Jangkaan aplikasi || 应用预计
+Counted || Dikira || 盘点结果
+Difference || Beza || 差异
+Every difference is kept. The usage check adds them up and shows which ones are bigger than normal. || Setiap beza disimpan. Semakan penggunaan menjumlahkannya dan menunjukkan yang lebih besar daripada biasa. || 每个差异都会保存。用量核对会把它们加起来，显示哪些比正常大。
+Shelf photo (stock count) || Gambar rak (kiraan stok) || 货架照片（盘点）
+Counts what is left on a shelf, such as the seafood chiller. || Mengira baki di rak, seperti peti sejuk makanan laut. || 盘点货架上剩下的东西，例如海鲜冷藏柜。
+Why four ways? || Kenapa empat cara? || 为什么有四种方式？
+Many restaurants buy fish and vegetables themselves at a wet market or supermarket. There is no delivery order and often no printed expiry date, so the app suggests one and staff confirm it. A shelf photo is for counting what is already there. || Banyak restoran membeli ikan dan sayur sendiri di pasar basah atau pasar raya. Tiada pesanan penghantaran dan selalunya tiada tarikh luput bercetak, jadi aplikasi mencadangkan satu dan pekerja mengesahkannya. Gambar rak digunakan untuk mengira apa yang sudah ada. || 很多餐馆自己去巴刹或超市买鱼和菜，没有送货单，通常也没有印上的有效期，所以应用会建议一个日期，由员工确认。货架照片用来盘点已有的库存。
+// POS link
+Plan and POS link || Pelan dan pautan POS || 方案与 POS 连接
+How do you take orders today? || Bagaimana anda mengambil pesanan sekarang? || 您现在怎么点单？
+Pick your POS || Pilih POS anda || 选择您的 POS
+Allow access || Benarkan akses || 允许访问
+Match menu items || Padankan item menu || 匹配菜单品项
+I already have a POS || Saya sudah ada POS || 我已经有 POS
+GoodBite Stock, RM39 to RM59 a month. Keep your POS. GoodBite reads its sales and takes the ingredients off the stock. || GoodBite Stock, RM39 hingga RM59 sebulan. Kekalkan POS anda. GoodBite membaca jualannya dan menolak bahan daripada stok. || GoodBite Stock，每月 RM39 至 RM59。保留您的 POS，GoodBite 读取它的销售并扣除食材库存。
+Next: allow access || Seterusnya: benarkan akses || 下一步：允许访问
+Pick your POS first. || Pilih POS anda dahulu. || 请先选择您的 POS。
+I want a new till || Saya mahu kaunter baharu || 我想要新的收银机
+GoodBite All-in-One, RM79 to RM99 a month. Use the GoodBite till on a tablet. Sales take the stock off straight away. || GoodBite All-in-One, RM79 hingga RM99 sebulan. Guna kaunter GoodBite pada tablet. Jualan terus menolak stok. || GoodBite All-in-One，每月 RM79 至 RM99。在平板上使用 GoodBite 收银机，销售会马上扣库存。
+Use the GoodBite till || Guna kaunter GoodBite || 使用 GoodBite 收银机
+This is your plan now || Ini pelan anda sekarang || 这是您目前的方案
+Already have a POS? Connect it, and every sale it records takes the recipe off GoodBite's stock. || Sudah ada POS? Sambungkannya, dan setiap jualan yang direkodnya menolak resipi daripada stok GoodBite. || 已经有 POS？连接后，它记录的每笔销售都会按食谱扣除 GoodBite 的库存。
+Step 3 matches the names your POS uses to the dishes in GoodBite. You only do this once. || Langkah 3 memadankan nama yang digunakan POS anda dengan hidangan dalam GoodBite. Anda hanya perlu buat sekali. || 第 3 步把 POS 用的名称与 GoodBite 的菜对应起来，只需做一次。
+No password is typed into GoodBite. In a real product you would log in on your POS's own page. || Tiada kata laluan ditaip ke dalam GoodBite. Dalam produk sebenar anda log masuk di halaman POS anda sendiri. || 不需要在 GoodBite 输入密码。真正的产品会让您在 POS 自己的页面登录。
+Allow GoodBite to read your sales || Benarkan GoodBite membaca jualan anda || 允许 GoodBite 读取您的销售
+In a real product, this button opens {x}'s own log-in page. You log in there and press "Allow". || Dalam produk sebenar, butang ini membuka halaman log masuk {x} sendiri. Anda log masuk di sana dan tekan "Benarkan". || 在真正的产品中，这个按钮会打开 {x} 自己的登录页面，您在那里登录并按“允许”。
+GoodBite can read your menu items and the sales of each item. || GoodBite boleh membaca item menu anda dan jualan setiap item. || GoodBite 可以读取您的菜单品项和每个品项的销售。
+GoodBite cannot change prices, see card numbers or move money. || GoodBite tidak boleh menukar harga, melihat nombor kad atau memindahkan wang. || GoodBite 不能修改价格、查看卡号或转账。
+You can disconnect at any time. || Anda boleh putuskan sambungan pada bila-bila masa. || 您可以随时断开连接。
+Allow access (simulated) || Benarkan akses (simulasi) || 允许访问（模拟）
+Nothing is connected in this demo, and no password is asked for. || Tiada apa-apa disambungkan dalam demo ini, dan tiada kata laluan diminta. || 本演示不会连接任何系统，也不会要求密码。
+Pick another POS || Pilih POS lain || 选择其他 POS
+Export last week's sales from your POS as a spreadsheet (CSV) file, then upload it here. Do this once a day, or once a week. || Eksport jualan minggu lepas dari POS anda sebagai fail hamparan (CSV), kemudian muat naik di sini. Buat sekali sehari, atau seminggu sekali. || 从 POS 把上周的销售导出成表格（CSV）文件，然后在这里上传。每天或每周做一次。
+Use the sample sales file (simulated) || Guna fail jualan contoh (simulasi) || 使用示例销售文件（模拟）
+Access allowed (simulated). Now match your menu items. || Akses dibenarkan (simulasi). Sekarang padankan item menu anda. || 已允许访问（模拟），现在匹配您的菜单品项。
+Match your menu items || Padankan item menu anda || 匹配您的菜单品项
+Your POS calls some dishes by other names. Match each one to a GoodBite dish once, and the app remembers. || POS anda memanggil sesetengah hidangan dengan nama lain. Padankan setiap satu dengan hidangan GoodBite sekali, dan aplikasi akan ingat. || 您的 POS 对有些菜用了别的名称。把每一个与 GoodBite 的菜对应一次，应用就会记住。
+Name in {x} || Nama dalam {x} || 在 {x} 中的名称
+Sold last week || Dijual minggu lepas || 上周售出
+{n} sold last week || {n} dijual minggu lepas || 上周售出 {n}
+GoodBite dish || Hidangan GoodBite || GoodBite 菜品
+GoodBite dish for {x} || Hidangan GoodBite untuk {x} || {x} 对应的 GoodBite 菜品
+Do not track (no recipe) || Jangan jejak (tiada resipi) || 不追踪（无食谱）
+Not food, left out || Bukan makanan, dikecualikan || 非食物，已排除
+Match is right || Padanan betul || 匹配正确
+Matched || Dipadankan || 已匹配
+Not tracked || Tidak dijejak || 不追踪
+Check {n} matches the app was not sure about. || Semak {n} padanan yang aplikasi tidak pasti. || 请核对应用不确定的 {n} 个匹配。
+Check 1 match the app was not sure about. || Semak 1 padanan yang aplikasi tidak pasti. || 请核对应用不确定的 1 个匹配。
+Save and connect || Simpan dan sambung || 保存并连接
+Connected to {x} (simulated) || Disambungkan ke {x} (simulasi) || 已连接 {x}（模拟）
+Connected to {x} (simulated). Sync sales or change matches. || Disambungkan ke {x} (simulasi). Selaraskan jualan atau tukar padanan. || 已连接 {x}（模拟）。可同步销售或修改匹配。
+Connected to {x} (simulated). Press "Sync sales now" to bring in sales. || Disambungkan ke {x} (simulasi). Tekan "Selaraskan jualan sekarang" untuk membawa masuk jualan. || 已连接 {x}（模拟）。按“立即同步销售”导入销售。
+Sync sales now || Selaraskan jualan sekarang || 立即同步销售
+Change matches || Tukar padanan || 修改匹配
+Your plan || Pelan anda || 您的方案
+RM39 to RM59 a month. The GoodBite till is hidden. || RM39 hingga RM59 sebulan. Kaunter GoodBite disembunyikan. || 每月 RM39 至 RM59。GoodBite 收银机已隐藏。
+Last sync || Penyelarasan terakhir || 上次同步
+Not yet || Belum lagi || 还没有
+Press "Sync sales now" || Tekan "Selaraskan jualan sekarang" || 按“立即同步销售”
+Menu items matched || Item menu dipadankan || 已匹配的菜单品项
+The rest are not tracked || Yang lain tidak dijejak || 其余不追踪
+Sales synced from {x} || Jualan diselaraskan dari {x} || 从 {x} 同步的销售
+Dishes sold || Hidangan dijual || 售出菜品
+Sales before tax || Jualan sebelum cukai || 税前销售
+Ingredients cost || Kos bahan || 食材成本
+No sales synced yet || Belum ada jualan diselaraskan || 还没有同步销售
+Press "Sync sales now" to bring in the sales from your POS. || Tekan "Selaraskan jualan sekarang" untuk membawa masuk jualan dari POS anda. || 按“立即同步销售”导入 POS 的销售。
+Disconnect and use the GoodBite till || Putuskan sambungan dan guna kaunter GoodBite || 断开连接并使用 GoodBite 收银机
+Disconnect {x}? || Putuskan sambungan {x}? || 断开 {x}？
+GoodBite stops reading sales from your POS. The GoodBite till comes back on the menu. Sales already synced stay in the reports. || GoodBite berhenti membaca jualan dari POS anda. Kaunter GoodBite kembali dalam menu. Jualan yang sudah diselaraskan kekal dalam laporan. || GoodBite 会停止读取 POS 的销售，GoodBite 收银机会回到菜单上，已同步的销售仍保留在报告中。
+Yes, disconnect || Ya, putuskan sambungan || 是的，断开
+No, stay connected || Tidak, kekal bersambung || 不，保持连接
+Disconnected. The GoodBite till is back on the menu. || Sambungan diputuskan. Kaunter GoodBite kembali dalam menu. || 已断开，GoodBite 收银机已回到菜单上。
+Using the GoodBite till (All-in-One). Step 2 is done. || Menggunakan kaunter GoodBite (All-in-One). Langkah 2 selesai. || 使用 GoodBite 收银机（All-in-One），第 2 步完成。
+{n} dishes synced from {x} || {n} hidangan diselaraskan dari {x} || 已从 {x} 同步 {n} 道菜
+1 dish synced from {x} || 1 hidangan diselaraskan dari {x} || 已从 {x} 同步 1 道菜
+Sales synced || Jualan diselaraskan || 销售已同步
+This sync was undone || Penyelarasan ini dibatalkan || 这次同步已撤销
+{n} dishes sold on {x} since the last sync. Stock was reduced for {n2} ingredients, oldest batches first. || {n} hidangan dijual di {x} sejak penyelarasan terakhir. Stok dikurangkan untuk {n2} bahan, kelompok paling lama dahulu. || 自上次同步以来，{x} 售出 {n} 道菜。已扣减 {n2} 种食材的库存，先用最早的批次。
+Ingredients cost {x} for {y} of sales before tax (food cost {n}%). Sample sales, simulated. || Kos bahan {x} untuk {y} jualan sebelum cukai (kos makanan {n}%). Jualan contoh, simulasi. || 税前销售 {y}，食材成本 {x}（食材成本 {n}%）。示例销售，模拟。
+The Cashier view is hidden because sales come from your own POS. || Paparan Juruwang disembunyikan kerana jualan datang dari POS anda sendiri. || 收银员视图已隐藏，因为销售来自您自己的 POS。
+// Settings
+Alerts and targets || Amaran dan sasaran || 提醒和目标
+Food cost target || Sasaran kos makanan || 食材成本目标
+The most you want ingredients to cost, as a share of sales before tax: || Kos bahan paling tinggi yang anda mahu, sebagai bahagian jualan sebelum cukai: || 您希望食材成本最多占税前销售的比例：
+This week so far: {n}%. That is above the target. || Minggu ini setakat ini: {n}%. Itu melebihi sasaran. || 本周到目前为止：{n}%，高于目标。
+This week so far: {n}%. That is on target. || Minggu ini setakat ini: {n}%. Itu mencapai sasaran. || 本周到目前为止：{n}%，达到目标。
+Many small restaurants aim for about 30% to 40%. The owners we interviewed work with 30% to 40%. || Banyak restoran kecil menyasarkan kira-kira 30% hingga 40%. Pemilik yang kami temu bual menggunakan 30% hingga 40%. || 很多小餐馆的目标约为 30% 至 40%，我们访谈的老板也用 30% 至 40%。
+A bigger number gives you more time to use the food in a special. || Nombor lebih besar memberi anda lebih masa untuk menggunakan makanan dalam menu istimewa. || 数字越大，您就有越多时间把食材用在特餐里。
+Set the food cost you aim for. Home and the weekly summary compare each week with it. || Tetapkan kos makanan yang anda sasarkan. Laman Utama dan ringkasan mingguan membandingkan setiap minggu dengannya. || 设定您的食材成本目标，主页和每周总结会拿每周的数字与它对比。
+Saved. Food cost target is now {n}%. || Disimpan. Sasaran kos makanan kini {n}%. || 已保存，食材成本目标现在是 {n}%。
+Keep your own POS (GoodBite Stock) or use the GoodBite till (All-in-One). || Kekalkan POS anda sendiri (GoodBite Stock) atau guna kaunter GoodBite (All-in-One). || 保留自己的 POS（GoodBite Stock）或使用 GoodBite 收银机（All-in-One）。
+When to warn about food close to expiry, and your food cost target. || Bila perlu beri amaran tentang makanan yang hampir luput, dan sasaran kos makanan anda. || 何时提醒快过期的食材，以及您的食材成本目标。
+Puts back the made-up restaurant: {n} dishes, {n2} ingredients, {n3} suppliers and 2 months of sales and waste. Everything you added or changed in this browser is erased. || Memulihkan restoran rekaan: {n} hidangan, {n2} bahan, {n3} pembekal dan 2 bulan jualan dan pembaziran. Semua yang anda tambah atau ubah dalam pelayar ini dipadam. || 恢复虚构的餐馆：{n} 道菜、{n2} 种食材、{n3} 家供应商，以及 2 个月的销售和浪费记录。您在这个浏览器中添加或修改的内容都会被清除。
+// Limitations
+The POS link. Feed Me, Coox, Loyverse and StoreHub are not really connected. "Sync sales now" brings in sample sales, and no password is ever asked for. || Pautan POS. Feed Me, Coox, Loyverse dan StoreHub tidak benar-benar disambungkan. "Selaraskan jualan sekarang" membawa masuk jualan contoh, dan tiada kata laluan pernah diminta. || POS 连接。Feed Me、Coox、Loyverse 和 StoreHub 并没有真正连接。“立即同步销售”导入的是示例销售，也从不要求密码。
+Scanning and shelf photos. The Scan button shows how reading a delivery order, a receipt, a barcode, a market photo or a shelf photo would work, using sample pictures. Nothing is read from a real camera. || Imbasan dan gambar rak. Butang Imbas menunjukkan bagaimana membaca pesanan penghantaran, resit, kod bar, gambar pasar atau gambar rak akan berfungsi, menggunakan gambar contoh. Tiada apa-apa dibaca daripada kamera sebenar. || 扫描和货架照片。扫描按钮用示例图片展示读取送货单、收据、条形码、市场照片或货架照片的方式，不会从真实相机读取。
+WhatsApp chat and video call help. Nothing is sent and no call is booked. || Bantuan sembang WhatsApp dan panggilan video. Tiada apa-apa dihantar dan tiada panggilan ditempah. || WhatsApp 聊天和视频通话协助。不会发送任何信息，也不会预约通话。
+The kilograms per piece used to turn waste into kg. || Kilogram setiap biji yang digunakan untuk menukar pembaziran kepada kg. || 用来把浪费换算成公斤的每个重量。
+Suggested order amounts, "may run out today" and "dishes to push today". They use the last 14 days of use, which is a rough guide. || Jumlah pesanan dicadangkan, "mungkin habis hari ini" dan "hidangan untuk dipromosikan hari ini". Ia menggunakan penggunaan 14 hari lepas, yang hanya panduan kasar. || 建议订购量、“今天可能用完”和“今日主推菜”，都是按过去 14 天的用量估算，只是粗略参考。
+The usage check. It adds up past count differences, and the 10% normal range is our own rule of thumb. || Semakan penggunaan. Ia menjumlahkan beza kiraan lepas, dan julat biasa 10% ialah panduan kami sendiri. || 用量核对。它把过去的盘点差异加起来，10% 的正常范围是我们自己的经验标准。
+Value at risk and the suggested actions in the expiring-soon report. || Nilai berisiko dan tindakan dicadangkan dalam laporan hampir luput. || 即将过期报告中的风险价值和建议做法。
+The food cost target choices and the tax rates in Settings are common examples, not advice. || Pilihan sasaran kos makanan dan kadar cukai dalam Tetapan ialah contoh biasa, bukan nasihat. || 设置中的食材成本目标选项和税率只是常见例子，不是建议。
+Real links to each POS, using the access each POS company offers to partners. We have not checked yet which ones allow this. || Pautan sebenar ke setiap POS, menggunakan akses yang ditawarkan setiap syarikat POS kepada rakan kongsi. Kami belum menyemak yang mana membenarkannya. || 与每个 POS 的真正连接，需使用各 POS 公司提供给合作伙伴的接口。我们还没查清哪些允许这样做。
+Real text and photo recognition for delivery orders, receipts, market photos and shelf photos, and reading the dates printed on packs. || Pengecaman teks dan gambar sebenar untuk pesanan penghantaran, resit, gambar pasar dan gambar rak, serta membaca tarikh yang dicetak pada bungkusan. || 对送货单、收据、市场照片和货架照片进行真正的文字和图像识别，并读取包装上印的日期。
+MyInvois API registration and a licensed payment partner, if the GoodBite till is kept. || Pendaftaran API MyInvois dan rakan pembayaran berlesen, jika kaunter GoodBite dikekalkan. || 如果保留 GoodBite 收银机，就需要注册 MyInvois API 并找持牌支付伙伴。
+A real pilot. Interviews with 5 restaurant owners shaped this version, but none has used it day to day yet. || Perintis sebenar. Temu bual dengan 5 pemilik restoran membentuk versi ini, tetapi belum ada yang menggunakannya setiap hari. || 真正的试用。这个版本参考了 5 位餐馆老板的访谈，但还没有人每天实际使用过。
+// Tours
+One place for a small restaurant to track stock and expiry dates, keep food cost on target, order from suppliers and log waste. Use your own POS, or the GoodBite till. || Satu tempat untuk restoran kecil menjejak stok dan tarikh luput, mengekalkan kos makanan pada sasaran, membuat pesanan daripada pembekal dan merekod pembaziran. Guna POS anda sendiri, atau kaunter GoodBite. || 小餐馆的一站式工具：追踪库存和有效期、把食材成本控制在目标内、向供应商订货、记录浪费。可用自己的 POS，也可用 GoodBite 收银机。
+These start the things you do most: make a sale, scan a delivery, log waste, count stock. || Ini memulakan tugas yang paling kerap anda buat: membuat jualan, mengimbas penghantaran, merekod pembaziran, mengira stok. || 这些按钮用来开始最常做的事：开单、扫描送货、记录浪费、盘点库存。
+Say: "This is what the owner sees first." The 3 set-up steps are at the top. The To do cards below each open the fix. Then press Next. || Katakan: "Inilah yang pemilik lihat dahulu." 3 langkah persediaan di bahagian atas. Setiap kad Tugasan di bawah membuka cara membetulkannya. Kemudian tekan Seterusnya. || 说：“这是老板最先看到的。”3 个设置步骤在最上面，下面每张待办卡片都能直接打开处理页面。然后按下一步。
+These dishes use food that will probably be left over soon, such as lala (clams) and chicken. "Add to today's specials" puts a star on the till. Below, "May run out today" shows what to order or mark sold out. || Hidangan ini menggunakan makanan yang mungkin berbaki tidak lama lagi, seperti lala dan ayam. "Tambah ke menu istimewa hari ini" meletakkan bintang di kaunter. Di bawah, "Mungkin habis hari ini" menunjukkan apa perlu dipesan atau ditanda habis dijual. || 这些菜会用到快要剩下的食材，例如啦啦和鸡肉。“加入今日特餐”会在收银机上加星号。下面的“今天可能用完”显示要订什么、或把什么标为售完。
+Now viewing as Cashier, so the menu is shorter. Tap Butter Prawns, Garlic Kailan and Steamed Rice twice. Type table 5. || Kini melihat sebagai Juruwang, jadi menu lebih pendek. Ketik Udang Mentega, Kailan Bawang Putih dan Nasi Putih dua kali. Taip meja 5. || 现在以收银员身份查看，所以菜单比较短。点奶油虾、蒜蓉芥兰，再点两次白饭，输入 5 号桌。
+Service charge, SST and 5 sen rounding are worked out for you. Tap a cash chip and press "Confirm payment". (Next does it for you.) || Caj perkhidmatan, SST dan pembundaran 5 sen dikira untuk anda. Ketik cip tunai dan tekan "Sahkan bayaran". (Seterusnya akan buat untuk anda.) || 服务费、SST 和 5 仙进位会自动计算。点一个现金金额，再按“确认付款”。（按下一步也会自动完成。）
+The sale is saved and the stock dropped by each recipe. Press "See what was used" to show the ingredients. || Jualan disimpan dan stok berkurang mengikut setiap resipi. Tekan "Lihat apa yang digunakan" untuk menunjukkan bahan. || 销售已保存，库存按每道菜的食谱扣减。按“查看用了什么”显示所用食材。
+Now viewing as Kitchen staff. Tiger prawns went down by the Butter Prawns recipe. Batches are listed oldest first, and the oldest is used first. || Kini melihat sebagai pekerja Dapur. Udang harimau berkurang mengikut resipi Udang Mentega. Kelompok disenaraikan dari yang paling lama, dan yang paling lama digunakan dahulu. || 现在以厨房员工身份查看。老虎虾按奶油虾的食谱减少了。批次按最早的排在前面，最早的先用。
+Back as Owner. The "Ginger is low" card on Home opens this order, already filled in. Press "Save and check the order", then "Send order". || Kembali sebagai Pemilik. Kad "Halia rendah" di Laman Utama membuka pesanan ini, sudah diisi. Tekan "Simpan dan semak pesanan", kemudian "Hantar pesanan". || 回到老板身份。主页上“姜库存偏低”的卡片会打开这张已填好的订单。按“保存并检查订单”，再按“发送订单”。
+Count stock with a photo || Kira stok dengan gambar || 拍照盘点库存
+Staff take a photo of the seafood chiller and the app fills in the count. Prawns and lala are less than the app expected. Staff check each amount and press "Save count". Simulated. || Pekerja mengambil gambar peti sejuk makanan laut dan aplikasi mengisi kiraan. Udang dan lala kurang daripada jangkaan aplikasi. Pekerja menyemak setiap jumlah dan tekan "Simpan kiraan". Simulasi. || 员工给海鲜冷藏柜拍照，应用填好盘点。虾和啦啦比应用预计的少。员工核对每个数量后按“保存盘点”。模拟。
+The usage check || Semakan penggunaan || 用量核对
+Back as Owner. This compares what the recipes used with the stock counts. Lala and prawns keep coming up short, so the owner checks portion sizes with the cook. Differences under 10% are normal, because portions vary. || Kembali sebagai Pemilik. Ini membandingkan apa yang resipi gunakan dengan kiraan stok. Lala dan udang asyik kurang, jadi pemilik menyemak saiz hidangan dengan tukang masak. Perbezaan bawah 10% adalah biasa, kerana saiz hidangan berbeza. || 回到老板身份。这里把食谱用量与盘点结果相比。啦啦和虾一直短缺，所以老板与厨师核对份量。差异低于 10% 属正常，因为份量本来就有差别。
+The expiring-soon report shows the value at risk and a suggested action for each batch: use first, today's special, discount or staff meal. Print it for the kitchen, or copy it into a chat. || Laporan hampir luput menunjukkan nilai berisiko dan tindakan dicadangkan untuk setiap kelompok: guna dahulu, menu istimewa hari ini, diskaun atau makanan pekerja. Cetak untuk dapur, atau salin ke dalam sembang. || 即将过期报告显示每个批次的风险价值和建议做法：先用、今日特餐、打折或员工餐。可以打印给厨房，或复制到聊天群。
+Already have a POS? || Sudah ada POS? || 已经有 POS？
+Restaurants that keep their own POS, such as Feed Me, connect it here instead of using the GoodBite till. Each POS dish name is matched to a GoodBite dish once. After that, every sale on the POS takes the recipe off the stock. Simulated. || Restoran yang mengekalkan POS sendiri, seperti Feed Me, menyambungkannya di sini dan tidak menggunakan kaunter GoodBite. Setiap nama hidangan POS dipadankan dengan hidangan GoodBite sekali. Selepas itu, setiap jualan di POS menolak resipi daripada stok. Simulasi. || 保留自己 POS（例如 Feed Me）的餐馆在这里连接，不用 GoodBite 收银机。每个 POS 菜名只需与 GoodBite 的菜对应一次，之后 POS 上的每笔销售都会按食谱扣库存。模拟。
+The weekly summary || Ringkasan mingguan || 每周总结
+Once a week the owner checks food cost against the target, waste, and what to look at. "Copy to share" gives a short text for the team chat. All figures are made up. || Seminggu sekali pemilik menyemak kos makanan berbanding sasaran, pembaziran, dan apa yang perlu dilihat. "Salin untuk kongsi" memberi teks ringkas untuk sembang pasukan. Semua angka adalah rekaan. || 老板每周看一次食材成本与目标的对比、浪费，以及需要留意的事。“复制分享”会生成一段简短文字发到团队群组。所有数字都是虚构的。
+Finish here: what is simulated, what is estimated, and what a real product still needs. End of the demo. || Tamatkan di sini: apa yang disimulasikan, apa yang dianggarkan, dan apa yang produk sebenar masih perlukan. Tamat demo. || 在这里结束：哪些是模拟的、哪些是估算的，以及真正的产品还需要什么。演示结束。
+Staff meal || Makanan pekerja || 员工餐
+Expires today and most of it will be left. Use it for the staff meal after service. || Luput hari ini dan kebanyakannya akan berbaki. Gunakan untuk makanan pekerja selepas servis. || 今天过期，而且大部分会剩下。营业结束后拿来做员工餐。
+Not used in any dish. Use it for a staff meal, or add it to a dish on the menu. || Tidak digunakan dalam mana-mana hidangan. Gunakan untuk makanan pekerja, atau tambah ke hidangan dalam menu. || 没有用在任何菜里。可以做员工餐，或加进菜单上的某道菜。
+To waste less, use "Dishes to push today" to sell food that expires soon first. || Untuk kurangkan pembaziran, guna "Hidangan untuk dipromosikan hari ini" untuk menjual makanan yang hampir luput dahulu. || 想减少浪费，可用“今日主推菜”先卖掉快过期的食材。
+Usage check || Semakan penggunaan || 用量核对
+Compares what the recipes say was used with what your stock counts found. Big differences can mean bigger portions, waste that was not logged, or missing stock. || Membandingkan apa yang resipi kata telah digunakan dengan apa yang kiraan stok anda jumpa. Perbezaan besar boleh bermaksud hidangan lebih besar, pembaziran tidak direkod, atau stok hilang. || 比较食谱显示的用量与盘点结果。差异大可能是份量较大、浪费没记录或库存丢失。

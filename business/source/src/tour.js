@@ -3,7 +3,7 @@ const vis=s=>{const e=document.querySelector(s);return e&&e.offsetParent!==null?
 const TOUR=[
  {sel:()=>vis('#side')||vis('#bot'),t:'The main menu',b:'It is always on screen. Tap a word to move to that part of the app. The page you are on is green.'},
  {sel:()=>vis('#rolebtn'),t:'Who is using the app',b:'Tap here to switch between Owner, Cashier and Kitchen staff. The menu changes to show only what that person needs.'},
- {sel:()=>vis('#bigacts'),t:'Big buttons for everyday jobs',b:'These start the things you do most: make a sale, receive a delivery, log waste, count stock.'},
+ {sel:()=>vis('#bigacts'),t:'Big buttons for everyday jobs',b:'These start the things you do most: make a sale, scan a delivery, log waste, count stock.'},
  {sel:()=>vis('#todo'),t:'Your to-do list',b:'Each card is something that needs attention. Tap a card and it takes you straight to the fix.'},
  {sel:()=>vis('#helpbtn'),t:'Help on every page',b:'Stuck? Help explains the page you are on in 3 lines. You can replay this tour or start the demo tour from there.'}];
 let tourI=-1;
@@ -21,28 +21,31 @@ Object.assign(ACT,{
  tourEnd:()=>{tourI=-1;tourDraw();S.toured=true;save()},
  welcomeSkip:()=>{closeModal();S.toured=true;save()}
 });
-function welcome(){modal(()=>`${mHead('🥬 Welcome to GoodBite for business')}<p>One place for a small cafe to sell, track stock and expiry dates, order from suppliers, log waste and prepare e-invoices.</p><p class="muted">Everything here is a demo with made-up data. Nothing is sent anywhere.</p><div class="mf"><button class="btn sec" ${A('welcomeSkip')}>Skip for now</button><button class="btn" ${A('tourStart')}>Show me around (5 short steps)</button></div>`)}
+function welcome(){modal(()=>`${mHead('🥬 Welcome to GoodBite for business')}<p>One place for a small restaurant to track stock and expiry dates, keep food cost on target, order from suppliers and log waste. Use your own POS, or the GoodBite till.</p><p class="muted">Everything here is a demo with made-up data. Nothing is sent anywhere.</p><div class="mf"><button class="btn sec" ${A('welcomeSkip')}>Skip for now</button><button class="btn" ${A('tourStart')}>Show me around (5 short steps)</button></div>`)}
 addEventListener('resize',()=>{if(tourI>=0)tourDraw()});
 
 /* ---------- demo tour: walks through the 5-minute presentation ---------- */
 let demoI=-1,demoSale=null;
-function demoFillBill(){const b=bill();if(!b.lines.length){S.bill={type:'dine',table:'5',lines:[]};addLine(MENU('103'),[{n:'Iced',p:100}]);addLine(MENU('501'),[])}else if(b.type==='dine'&&!b.table)b.table='5'}
+function demoFillBill(){const b=bill();if(!b.lines.length){S.bill={type:'dine',table:'5',lines:[]};addLine(MENU('104'),[]);addLine(MENU('302'),[]);addLine(MENU('401'),[]);addLine(MENU('401'),[])}else if(b.type==='dine'&&!b.table)b.table='5'}
 function demoMakeSale(){if(demoSale&&saleBy(demoSale))return saleBy(demoSale);demoFillBill();const b=bill(),t=billTotals(b.lines,b.type),s=completeSale(b,'Cash',Math.ceil(t.total/1000)*1000);S.bill=newBill();save();demoSale=s.id;return s}
+const demoTill=()=>{if(S.settings.plan==='stock'){S.settings.plan='allinone';S.pos.connected=false}};
 const DEMO=[
- {t:'Home: the morning check',b:'Say: "This is what the owner sees first." Point at the To do cards. Each one opens the fix. Then press Next.',sel:'#todo',go(){S.role='owner';stack=[{s:'home',p:{}}]}},
- {t:'Cashier makes a sale',b:'Now viewing as Cashier, so the menu is shorter. Tap Latte, pick Iced, press "Add to bill". Tap Butter Croissant. Type table 5.',sel:'#menug',go(){S.role='cashier';stack=[{s:'pos',p:{}}]}},
- {t:'Take payment',b:'Service charge, SST and 5 sen rounding are worked out for you. Tap the RM 50 chip and press "Confirm payment". (Next does it for you.)',sel:'#paidbtn',go(){demoFillBill();const b=bill(),t=billTotals(b.lines,b.type);stack=[{s:'pos',p:{}},{s:'pay',p:{m:'Cash',cash:amt(Math.ceil(t.total/1000)*1000)}}]}},
- {t:'Sale done, stock updated',b:'The sale is saved and the stock dropped by the recipe. Press "See what was used" to show the ingredients.',sel:'.donebox',go(){if(cur().s==='saleDone'){demoSale=cur().p.id;return}const s=demoMakeSale();stack=[{s:'pos',p:{}},{s:'saleDone',p:{id:s.id}}]}},
- {t:'Kitchen sees the stock',b:'Now viewing as Kitchen staff. Fresh milk went down by the latte. Batches are listed oldest first, and the oldest is used first.',sel:'.kpi',go(){demoMakeSale();S.role='kitchen';stack=[{s:'stock',p:{}},{s:'item',p:{id:'milk'}}]}},
- {t:'Low stock becomes an order',b:'Back as Owner. The "Fresh milk is low" card on Home opens this order, already filled in. Press "Save and check the order", then "Send order".',sel:'#ordreview',go(){S.role='owner';stack=[{s:'home',p:{}},{s:'newOrder',p:{ing:'milk'}}]}},
+ {t:'Home: the morning check',b:'Say: "This is what the owner sees first." The 3 set-up steps are at the top. The To do cards below each open the fix. Then press Next.',sel:'#todo',go(){demoTill();S.role='owner';stack=[{s:'home',p:{}}]}},
+ {t:'Dishes to push today',b:'These dishes use food that will probably be left over soon, such as lala (clams) and chicken. "Add to today\'s specials" puts a star on the till. Below, "May run out today" shows what to order or mark sold out.',sel:'#pushlist',go(){S.role='owner';stack=[{s:'home',p:{}},{s:'push',p:{}}]}},
+ {t:'Cashier makes a sale',b:'Now viewing as Cashier, so the menu is shorter. Tap Butter Prawns, Garlic Kailan and Steamed Rice twice. Type table 5.',sel:'#menug',go(){demoTill();S.role='cashier';stack=[{s:'pos',p:{}}]}},
+ {t:'Take payment',b:'Service charge, SST and 5 sen rounding are worked out for you. Tap a cash chip and press "Confirm payment". (Next does it for you.)',sel:'#paidbtn',go(){demoTill();demoFillBill();const b=bill(),t=billTotals(b.lines,b.type);stack=[{s:'pos',p:{}},{s:'pay',p:{m:'Cash',cash:amt(Math.ceil(t.total/1000)*1000)}}]}},
+ {t:'Sale done, stock updated',b:'The sale is saved and the stock dropped by each recipe. Press "See what was used" to show the ingredients.',sel:'.donebox',go(){if(cur().s==='saleDone'){demoSale=cur().p.id;return}const s=demoMakeSale();stack=[{s:'pos',p:{}},{s:'saleDone',p:{id:s.id}}]}},
+ {t:'Kitchen sees the stock',b:'Now viewing as Kitchen staff. Tiger prawns went down by the Butter Prawns recipe. Batches are listed oldest first, and the oldest is used first.',sel:'.kpi',go(){demoMakeSale();S.role='kitchen';stack=[{s:'stock',p:{}},{s:'item',p:{id:'prawn'}}]}},
+ {t:'Low stock becomes an order',b:'Back as Owner. The "Ginger is low" card on Home opens this order, already filled in. Press "Save and check the order", then "Send order".',sel:'#ordreview',go(){S.role='owner';stack=[{s:'home',p:{}},{s:'newOrder',p:{ing:'ginger'}}]}},
  {t:'A delivery arrives',b:'Kitchen staff check the amounts and expiry dates against the order, then confirm. Each item becomes a new batch.',sel:'#recvnext',go(){S.role='kitchen';const o=S.orders.find(x=>x.status==='sent')||S.orders.find(x=>x.status==='part');stack=[{s:'home',p:{}},{s:'receive',p:o?{order:o.id,step:1}:{step:0}}]}},
  {t:'Scan instead of typing',b:'The Scan button reads a delivery order, a supermarket receipt or barcode, or a photo of wet-market food. Here a market photo of chicken was "read". The expiry date is only a suggestion: staff tap "Date checked" or change it. All simulated.',sel:'.scanrow',go(){S.role='kitchen';const p={way:'market',step:'cam',photo:'chicken',rows:[]};scanShoot(p);p.step='confirm';stack=[{s:'home',p:{}},{s:'scan',p}]}},
- {t:'Log waste in three taps',b:'Item, amount, reason are filled in as an example. Press "Save waste log". Expired food is added to this log by itself.',sel:'#wastesave',go(){S.role='kitchen';const g=onHand('lettuce')>=0.5?'lettuce':(S.ingredients.find(i=>onHand(i.id)>=1)||{}).id;stack=[{s:'waste',p:{ing:g,qty:g==='lettuce'?'0.5':'1',reason:'Spoiled'}}]}},
- {t:'What is about to expire, in RM',b:'The expiring-soon report shows the value at risk and a suggested action for each batch: use first, today\'s special, discount or food rescue. Print it for the kitchen, or copy it into a chat.',sel:'#exprisk',go(){S.role='owner';stack=[{s:'stock',p:{tab:'soon'}},{s:'expReport',p:{}}]}},
- {t:'The monthly report',b:'Back as Owner. Waste in kg and RM, the most wasted items, and food cost against sales. Tap any number to see what is behind it. All figures are made up.',sel:'#rep-waste',go(){S.role='owner';stack=[{s:'reports',p:{}}]}},
- {t:'A customer asks for an e-invoice',b:'Tap the first "quick fill" buyer, then follow the green button through the 4 steps to Submit. Nothing is sent to LHDN.',sel:'#wiznext',go(){S.role='owner';const s=demoMakeSale();if(s.inv){stack=[{s:'invoices',p:{}},{s:'inv',p:{id:s.inv}}];return}stack=[{s:'invoices',p:{}},{s:'invWiz',p:{sale:s.id}}]}},
- {t:'Statuses and the 72-hour rule',b:'A valid e-invoice can be cancelled for 72 hours. After that the button is locked and you issue a credit note instead. Open an older one from the list to show it.',sel:'#cancelbtn',go(){S.role='owner';const v=S.invoices.filter(i=>i.status==='Valid'&&i.type==='01'&&canCancel(i)).pop();stack=[{s:'invoices',p:{f:'Valid'}}].concat(v?[{s:'inv',p:{id:v.id}}]:[])}},
- {t:'Be honest about what is pretend',b:'Finish here: what was checked against LHDN sources, what was not, and what a real product still needs. End of the demo.',sel:null,go(){S.role='owner';stack=[{s:'settings',p:{}},{s:'notes',p:{}}]}}];
+ {t:'Count stock with a photo',b:'Staff take a photo of the seafood chiller and the app fills in the count. Prawns and lala are less than the app expected. Staff check each amount and press "Save count". Simulated.',sel:'#photonote',go(){S.role='kitchen';const sh=SHELVES[0],items=S.ingredients.filter(i=>i.cat===sh[2]),vals={};items.forEach(i=>vals[i.id]=qf(photoRead(i.id)));stack=[{s:'stock',p:{}},{s:'count',p:{cat:sh[2],vals,photo:{shelf:sh[1],ids:items.map(i=>i.id)}}}]}},
+ {t:'The usage check',b:'Back as Owner. This compares what the recipes used with the stock counts. Lala and prawns keep coming up short, so the owner checks portion sizes with the cook. Differences under 10% are normal, because portions vary.',sel:'#usekpi',go(){S.role='owner';stack=[{s:'stock',p:{}},{s:'usage',p:{}}]}},
+ {t:'Log waste in three taps',b:'Item, amount, reason are filled in as an example. Press "Save waste log". Expired food is added to this log by itself.',sel:'#wastesave',go(){S.role='kitchen';const g=onHand('sprout')>=0.5?'sprout':(S.ingredients.find(i=>onHand(i.id)>=1)||{}).id;stack=[{s:'waste',p:{ing:g,qty:g==='sprout'?'0.5':'1',reason:'Spoiled'}}]}},
+ {t:'What is about to expire, in RM',b:'The expiring-soon report shows the value at risk and a suggested action for each batch: use first, today\'s special, discount or staff meal. Print it for the kitchen, or copy it into a chat.',sel:'#exprisk',go(){S.role='owner';stack=[{s:'stock',p:{tab:'soon'}},{s:'expReport',p:{}}]}},
+ {t:'Already have a POS?',b:'Restaurants that keep their own POS, such as Feed Me, connect it here instead of using the GoodBite till. Each POS dish name is matched to a GoodBite dish once. After that, every sale on the POS takes the recipe off the stock. Simulated.',sel:'#posmap',go(){S.role='owner';stack=[{s:'settings',p:{}},{s:'posLink',p:{step:3,sys:'feedme',ok:{}}}]}},
+ {t:'The weekly summary',b:'Once a week the owner checks food cost against the target, waste, and what to look at. "Copy to share" gives a short text for the team chat. All figures are made up.',sel:'#weekkpi',go(){S.role='owner';stack=[{s:'reports',p:{}},{s:'weekly',p:{}}]}},
+ {t:'Be honest about what is pretend',b:'Finish here: what is simulated, what is estimated, and what a real product still needs. End of the demo.',sel:null,go(){S.role='owner';stack=[{s:'settings',p:{}},{s:'limits',p:{}}]}}];
 function demoDraw(){const el=document.getElementById('demo');if(!el)return;if(demoI<0){el.hidden=true;el.innerHTML='';return}const st=DEMO[demoI];el.hidden=false;
   el.innerHTML=`<span class="dn">Demo tour · step ${demoI+1} of ${DEMO.length}</span><b>${st.t}</b><span class="sm">${st.b}</span><div class="mf"><button class="btn sec sm" ${A('demoEnd')}>End tour</button><div class="row">${demoI?`<button class="btn sec sm" ${A('demoStep',{d:-1})}>Back</button>`:''}<button class="btn sm" id="demonext" ${A('demoStep',{d:1})}>${demoI===DEMO.length-1?'Finish':'Next'}</button></div></div>`;
   document.querySelectorAll('.hl').forEach(e=>e.classList.remove('hl'));if(st.sel){const t=document.querySelector(st.sel);if(t)t.classList.add('hl')}}
@@ -68,8 +71,15 @@ window.GB={reset(role){const _l=curLang();S=seed();S.settings.lang=window.__LANG
   if(c.s==='menuItem'){k.push(p.id?'E':'N',p.d&&p.d.recipe.length?'R':'',p.d&&p.d.add?'A':'',p.d&&p.d.cat==='__new'?'C':'')}
   if(c.s==='bill'){const b=S.bills.find(x=>x.id===p.id);if(b)k.push(b.paid?'p':'',b.einv)}
   if(c.s==='order'){const o=ordBy(p.id);if(o)k.push(o.status)}
+  if(c.s==='posLink')k.push(p.sys||'',S.pos.connected?'C':'',p.edit?'E':'',Object.keys(p.ok||{}).length,Object.keys(p.map||{}).length?'M':'');
+  if(c.s==='shelfScan')k.push(p.shelf||'');
+  if(c.s==='count')k.push(p.cat||'',p.photo?'P':'',Object.keys(p.vals||{}).length?'V':'');
+  if(c.s==='usage')k.push(p.days||'');
+  if(c.s==='push')k.push(todaySpecials().length,Object.keys(S.soldOut).length);
+  if(c.s==='setupRecipes')k.push(Object.values(S.setup.recipes).filter(Boolean).length);
+  if(c.s==='home')k.push(S.setup.hide?'h':'',S.settings.plan,S.pos.syncs.length?'y':'');
   if(c.s==='scan'){const rs=p.rows||[];k.push(p.way||'',p.way==='shop'?p.mode||'receipt':'',rs.length?'R'+Math.min(rs.length,2):'',rs.some(r=>!r.ing&&!r.nonfood)?'U':'',rs.filter(scanIn).length&&rs.filter(scanIn).every(r=>r.ok)?'K':'',rs.some(r=>r.pick)?'P':'')}
   k.push(tourI>=0?'tour'+tourI:'',demoI>=0?'demo'+demoI:'');return k.join('|')},
  info:()=>({screen:cur().s,title:SCREENS[cur().s].title(cur().p),depth:stack.length,modal:!document.getElementById('modal').hidden,role:S.role,p:cur().p}),state:()=>S,go,root,
- fn:{billTotals,onHand,monthStats,validateInv,suggestions,canCancel,riskList,suggestExp,invBy:id=>S.invoices.find(i=>i.id===id)}};
+ fn:{billTotals,onHand,monthStats,validateInv,suggestions,canCancel,riskList,suggestExp,usageCheck,pushList,shortList,weekStats,posSync,dishPortions,avgUse,invBy:id=>S.invoices.find(i=>i.id===id)}};
 boot();

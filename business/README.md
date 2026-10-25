@@ -1,12 +1,39 @@
 # GoodBite for Business (B2B demo)
 
-A demo web app for small cafes, bakeries and restaurants. One app to sell at the till, track stock and expiry dates, order from suppliers, log waste, and prepare e-invoices.
+A demo web app for small Chinese and seafood restaurants (small F&B SMEs). It tracks stock and expiry dates, keeps food cost on target, orders from suppliers and logs waste. Restaurants can keep their own POS (GoodBite Stock) or use the GoodBite till (GoodBite All-in-One).
 
-**Everything in it is pretend.** The cafe, suppliers, prices, sales and tax numbers are made up. Nothing is sent to LHDN, a bank, or a supplier.
+**Everything in it is pretend.** The restaurant, suppliers, prices, sales and tax numbers are made up. Nothing is sent to a POS, LHDN, a bank, or a supplier.
 
-The old household app is untouched. It is still `index.html` in the main Goodbite folder. This new app lives in the `business` folder.
+The old household app is untouched. It is still `index.html` in the main Goodbite folder. This app lives in the `business` folder.
 
+## How to open it
 
+- **Easiest:** open the Claude link (the published artifact).
+- **From the file:** double-click `business/index.html`. It opens in your browser. It needs internet only for the fonts.
+- **GitHub Pages:** upload the whole `business` folder to your `goodbite` repo. The app will be at `your-name.github.io/goodbite/business/`.
+
+Your changes are saved in that browser only. To start fresh: **Settings > Reset demo data**.
+
+If the dates look old when you open it on another day, press **Refresh demo data** on Home.
+
+## Version 2 (25 Oct 2026): after the interviews and the supervisor's BMC comments
+
+The supervisor said small restaurants care about stock, expiry dates and cost control more than food waste, and asked us to keep the scope small. The 5 owner interviews said the same. So this version leads with stock and food cost, and waste is a side benefit.
+
+**The demo outlet is now a restaurant.** "Ombak Biru Seafood Restaurant (demo)" in Puchong: 37 dishes (steamed fish, butter prawns, kam heong lala, sweet and sour pork, char kuey teow and so on), 58 ingredients, 6 suppliers (seafood, wet-market vegetables, meat, tofu and noodles, dry goods, drinks), open 11 am to 10 pm. The save key changed, so a browser that opened the old cafe demo starts fresh with the restaurant.
+
+**New features (each one answers a supervisor point):**
+1. **Count by photo** (Stock > Count stock, or Scan > Shelf photo). Pick a shelf (seafood chiller, meat chiller, vegetable rack, egg and noodle shelf, dry store, drinks fridge), "take a photo", and the app fills in the count. Each amount is marked "From photo" for staff to check before saving. Simulated.
+2. **Works with your POS** (Settings > Plan and POS link). Pick Feed Me, Coox, Loyverse, StoreHub, or upload a sales file. "Allow access" asks for no password. Then match the POS's dish names (such as "CKT" or "LIMAU ICE") to GoodBite dishes once. 5 names the app is not sure about must be checked first. After connecting, the plan becomes **GoodBite Stock**: the GoodBite till, e-invoices and the Cashier view are hidden, and Home shows "Sync POS sales". Each sync brings in sample sales and takes every matched dish's recipe off the stock. Disconnecting brings the till back. Simulated.
+3. **Usage check** (Stock > Usage check). Every stock count keeps the difference between what the app expected and what was counted. The usage check adds those up over 7 or 14 days and compares them with what the recipes used. Differences under 10% are "normal range", because portions vary (Sizzling Hot Plate's point). In the demo, prawns and lala come up short (check portion sizes), and rice comes up over (the recipe says more than the cooks use).
+4. **Dishes to push today** (Home card, Stock, the expiring-soon report). Dishes that use food likely to be left over in the next 3 days, with the reason. "Add to today's specials" puts a star on the till.
+5. **May run out today** (same page). Ingredients that will run out today at the last 14 days' pace (eggs and mud crab in the demo), with "Order more" and a tap to mark a dish **sold out**. Sold-out dishes are greyed out on the till for the rest of the day (Confirm Sedap's point: selling out is their real problem).
+6. **Food cost target and weekly summary.** Settings > Alerts and targets has a food cost target (30% to 45%, the demo starts at 40%, like Chuan Shifu). Home and Reports show this week's food cost against it. Reports > Weekly summary shows food cost per week, waste, value at risk, usage check flags, dishes to push and what may run out, with "Copy to share" for the team chat.
+7. **Get set up in 3 steps** on the owner's Home: count stock with a photo, connect your POS or use the GoodBite till, and check the recipes of your top 5 dishes. "Chat on WhatsApp" and "Book a free video call" replace the old set-up visit (both simulated). The card can be hidden, and brought back from Settings.
+
+**Taken out to keep the scope small:** Food Rescue (the tab, the "Offer for rescue" buttons and the report's food rescue action). The expiring-soon report now suggests "Staff meal" instead. E-invoicing is still in the app (with the GoodBite till) but is no longer part of the demo tour.
+
+**Tests on 25 Oct:** flow 34 of 34, scan 44 of 44, menu editor 9 of 9, and the new `test/v2.js` 50 of 50. Button audit (clicks every button in every role): 26,180 clicks, 0 failed. Not tried by a real restaurant yet.
 
 ## Finding your way around
 
@@ -46,46 +73,83 @@ The old household app is untouched. It is still `index.html` in the main Goodbit
   - **Use first:** little or nothing will be left.
   - **Use in today's special:** names the dishes that use it most.
   - **Discount:** expires very soon and a lot will be left.
-  - **Food rescue:** not in any dish, or expires today and most will be left. These rows have an "Offer for rescue" button.
+  - **Food rescue:** not in any dish, or expires today and most will be left. (Replaced by **Staff meal** in version 2.)
 - How it works: the app takes each item's average use per day over the last 14 days and assumes older batches are used first. Whatever is not likely to be used by the expiry date is "at risk". It is a rough guide.
 - **Print** works from the file or GitHub Pages. **Copy to share** gives plain text for WhatsApp or email, in the app's language.
 - Demo figures on 19 Oct (2-day view): 7 batches, RM 190.85 at risk out of RM 269.80.
 
-**Also fixed (20 Oct):** on a phone, "View bill" on the till now hides the menu and shows the bill straight away. Before, the bill was at the bottom of a long page.
+## 5-minute demo script (version 2, 16 steps)
 
-## 5-minute demo script
+Press **Demo tour** at the top and follow the dark box. Press **Next** to move on. Allow about 6 minutes. To stay within 5, skip steps 7 and 8.
 
+| # | Screen | What to say and do |
+|---|--------|--------------------|
+| 1 | Home (Owner) | "This is what the owner sees each morning." Point at the 3 set-up steps, then the To do cards. |
+| 2 | Dishes to push today | "These dishes use food that will probably be left over, like lala and chicken. One tap puts them on the specials board. Below: eggs and crab may run out today." |
+| 3 | Sell (Cashier) | Tap Butter Prawns, Garlic Kailan and Steamed Rice twice. Type table 5. |
+| 4 | Payment | "Service charge, SST and 5 sen rounding are worked out." Confirm payment. |
+| 5 | Sale done | "The sale took each recipe off the stock." Press "See what was used". |
+| 6 | Stock > Tiger prawns (Kitchen) | "Stock is kept by batch. The oldest batch is used first." |
+| 7 | New order (Owner) | "The 'Ginger is low' card opened this order, already filled in." |
+| 8 | Receive goods (Kitchen) | "Staff check amounts and expiry dates against the order." |
+| 9 | Scan (Kitchen) | "Restaurants buy at the wet market with no delivery order. Staff take a photo." Tap "Date checked". |
+| 10 | Count by photo (Kitchen) | "Staff photograph the seafood chiller. The app fills in the count. Prawns and lala are short." |
+| 11 | Usage check (Owner) | "Prawns and lala keep coming up short against the recipes, so the owner checks portions with the cook. Under 10% is normal." |
+| 12 | Waste (Kitchen) | "Logging waste takes three taps." |
+| 13 | Expiring-soon report (Owner) | "What is about to expire, in ringgit, and what to do: use first, today's special, discount or staff meal." |
+| 14 | Plan and POS link (Owner) | "Most restaurants already have a POS. They keep it. They match its dish names once, and every sale takes the recipe off the stock." |
+| 15 | Weekly summary (Owner) | "Once a week: food cost against the target, waste, and what to check. Copy it to the team chat." |
+| 16 | Limitations | "Here is what is simulated and what a real product still needs." |
 
+Tip: if a step looks wrong because you clicked around, press **Next** or **Back** in the dark box. It puts the right screen back.
+
+## What changed from the brief (please read)
+
+1. **Most small outlets do not have to issue e-invoices today.** LHDN's guideline dated 30 Aug 2026 exempts businesses with yearly turnover under RM3 million. LHDN's own timeline web page still says RM1 million (last updated Dec 2025). The app follows the newer guideline and says so. Either way, a small restaurant is under the line. So e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have for the target customers.
+2. **Most small restaurants do not charge SST either.** Customs says food and drink outlets register only above RM1.5 million a year. The rate is 6% for food and drink. The demo restaurant charges it so you can show the maths, but it can be switched off in Settings.
+3. **Cancel window is 72 hours** from the time LHDN accepts the e-invoice. After that it needs a credit note. The app works this way.
+4. **Walk-in sales go into one combined e-invoice** per month, due within 7 days after the month ends, with buyer "General Public" and TIN EI00000000010. The app has this.
+5. **Version 2 menu:** 37 dishes, 58 ingredients, 6 suppliers, about 2 months of history (the cafe had 44 dishes and 61 ingredients).
+6. **The file is `business/index.html`**, not `index.html`, so the old household prototype is not overwritten.
+7. **Printing and file downloads** only work when the app is opened from the file or GitHub Pages. Inside the Claude preview, those buttons are replaced with "Copy" boxes, because the preview blocks printing and downloads.
+
+All sources are inside the app: **Invoices > E-invoice notes**.
 
 ## Limitations
 
 **Pretend (simulated)**
+- The POS link. Feed Me, Coox, Loyverse and StoreHub are not really connected. "Sync sales now" brings in sample sales. No password is ever asked for.
+- Scanning and shelf photos. Sample pictures only. Nothing is read from a camera.
+- Suggested expiry dates come from typical shelf lives, not from reading the pack. Staff must check each one.
 - E-invoices are not sent to LHDN MyInvois. Statuses, IDs and QR pictures are made up. Nothing is digitally signed.
 - Payments. Cash, card, DuitNow QR and e-wallet buttons do not move money.
 - Sending orders to suppliers. Nothing is emailed or messaged.
-- Food Rescue. The partners are invented and nobody is told about an offer.
+- WhatsApp chat and video call help. Nothing is sent and no call is booked.
 - Staff roles. There are no passwords. Anyone can switch role.
-- Scanning. The Scan button shows how reading a delivery order, receipt, barcode or market photo would work, using sample pictures. Nothing is read from a camera.
-- Suggested expiry dates come from typical shelf lives, not from reading the pack. Staff must check each one.
 
 **Estimated or made up**
-- Every price, cost, weight and sales figure. The 2 months of history are generated by the app.
-- The kg per piece or loaf used to turn waste into kilograms.
-- Suggested order amounts (minimum stock plus the last 14 days of use). A rough guide only.
-- The tax rates in Settings are common examples, not advice.
-- Value at risk and the suggested actions in the expiring-soon report (they also use the last 14 days of use).
+- Every price, cost, weight and sales figure. The 2 months of history and the past stock counts are generated by the app.
+- Suggested order amounts, "may run out today" and "dishes to push today" (they use the last 14 days of use). A rough guide only.
+- The usage check. It adds up past count differences. The 10% normal range is our own rule of thumb.
+- Value at risk and the suggested actions in the expiring-soon report.
+- The food cost target choices and the tax rates in Settings are common examples, not advice.
 
 **What a real product would still need**
 - A server and database, so data is shared between devices.
+- Real links to each POS, using the access each POS company gives partners. We have not checked yet which POS companies allow this.
+- Real text and photo recognition for delivery orders, receipts, market photos and shelf photos.
 - Real logins and permissions.
-- MyInvois API registration, a digital certificate for signing, and handling of LHDN's real replies.
-- A licensed payment partner for card, DuitNow QR and e-wallets.
-- Receipt printer, cash drawer and barcode scanner support.
-- Real text and photo recognition for delivery orders, receipts and market photos, and reading the dates printed on packs.
 - A way to keep working when the internet is down.
+- MyInvois API registration and a licensed payment partner, if the GoodBite till is kept.
 - Checks by an accountant on tax, rounding and e-invoice rules.
-- Interviews and testing with real cafe owners. Nobody from a cafe has tried this yet.
+- A real pilot. Interviews with 5 restaurant owners shaped this version, but none has used it day to day yet.
 
+**Not confirmed** (also listed in the app)
+- Whether service tax is charged on top of the service charge. It is a switch, on by default.
+- How a service charge should appear on an e-invoice. The demo shows it as its own line.
+- The 5 sen rounding rule was not checked against a Bank Negara source.
+- The business activity code (56101) and item code (022 Others) are placeholders.
+- The end date of LHDN's penalty grace period was only seen on non-official sites, so it is left out.
 
 ## Choices made without asking
 
@@ -97,7 +161,10 @@ The old household app is untouched. It is still `index.html` in the main Goodbit
 - A buyer TIN ending in 404 is always rejected. This is how the demo shows an "Invalid" result.
 - The Cashier can start an e-invoice from a sale, even though the Cashier menu only shows Home and Sell.
 - Voiding a sale asks why. "Keyed in by mistake" puts the ingredients back. "Food was already made" does not.
-- Food given to a rescue partner leaves the stock but is not counted as waste.
+- Connecting a POS switches the plan to GoodBite Stock and hides the till, e-invoices and the Cashier view. Disconnecting switches back.
+- A dish marked sold out is greyed out for the rest of that day only. It is back on sale the next day.
+- Photo counts are rounded (to 0.1 kg under 10 kg, 0.5 kg above, whole pieces), so staff check them.
+- The usage check flags a difference only if it is over 10% of what the recipes used and worth RM5 or more.
 - The look is light only (no dark mode), to match the first GoodBite prototype.
 - Dish codes for new dishes start at 601. A new dish with no recipe can be saved, but the app warns that it will not reduce stock.
 - Language is one setting for the whole device, not per staff member.
@@ -106,6 +173,6 @@ The old household app is untouched. It is still `index.html` in the main Goodbit
 
 - `index.html` - the whole app in one file. This is the only file the browser needs.
 - `source/` - the same code split into smaller files (`src/`), plus `build.py` which joins them into `dist/index.html`.
-- `source/test/` - the scripts that click through the app (`audit.js`, `flow.js`, and `scan.js` for the 19 Oct features). They need Node and Playwright.
-- `button-audit.md` - the result of clicking every button in every role (English), plus one run in Chinese and one in Malay. This file is from 7 Oct. The 19 Oct results are in `handoff-note.md`.
+- `source/test/` - the scripts that click through the app (`audit.js`, `flow.js`, `scan.js`, `dish.js`, and `v2.js` for the 25 Oct features). They need Node and Playwright. `tr9.txt` has the version 2 Malay and Chinese; run `python3 test/mkdict.py` then `python3 build.py` after editing it.
+- `button-audit.md` - the result of clicking every button in every role (English), plus one run in Chinese and one in Malay. This file is from 7 Oct. Later results are in `handoff-note.md`.
 - `button-audit-full.csv` - the same, one row per click.

@@ -6,30 +6,36 @@ function alertsFor(role){const a=[],T=today(),k=role==='kitchen',c=role==='cashi
     if(auto.length)add('bad','trash',plural(auto.length,'item')+' passed the expiry date',''+'Moved to the waste log automatically ('+rm(auto.reduce((x,w)=>x+w.cost,0))+').','root',{s:'waste'},'See waste log');
     const soon=soonList(),ids=[...new Set(soon.map(b=>b.ing))];
     if(soon.length){const rk=riskList(S.settings.expDays).reduce((x,y)=>x+y.risk,0);add('warn','clock',plural(ids.length,'item')+' expiring in '+plural(S.settings.expDays,'day'),ids.slice(0,4).map(i=>ING(i).name).join(', ')+(ids.length>4?' and more':'')+(rk?' · '+rm(rk)+' at risk':''),'go',{s:'expReport'},'See the report')}
+    const sh=shortList();if(sh.length)add('bad','alert',plural(sh.length,'ingredient')+' may run out today',sh.slice(0,4).map(x=>x.i.name).join(', ')+(sh.length>4?' and more':''),'go',{s:'push'},'See what to do');
+    const ps=pushList();if(ps.length)add('info','star','Dishes to push today',ps.slice(0,3).map(x=>x.m.name).join(', ')+(ps.length>3?' and more':''),'go',{s:'push'},'See the list');
+    if(o&&S.pos.connected){const y=S.pos.syncs[S.pos.syncs.length-1];add('info','link',posName(S.pos.sys)+' sales '+(y?'last synced '+(y.dt.slice(0,10)===T?'at '+fT(y.dt):'on '+fDs(y.dt)):'not synced yet'),'Sync to keep the stock up to date.','posSyncDo',{},'Sync now')}
     S.orders.filter(x=>(x.status==='sent'||x.status==='part')&&x.expected<=T).forEach(x=>add('info','truck','Delivery from '+SUP(x.sup).name+' is due'+(x.expected===T?' today':''),'Order #'+x.no+(x.status==='part'?' (part received)':''),'go',{s:'receive',p:{order:x.id,step:1}},'Receive goods'));
     const low=lowList();let shown=0;
     low.forEach(i=>{if(shown>=3)return;const oo=onOrder(i.id);if(oo>0)return;shown++;add('bad','box',i.name+' is low',qU(i.id,onHand(i.id))+' left. Minimum is '+qU(i.id,i.min)+'.','go',{s:'newOrder',p:{ing:i.id}},'Order now')});
     const rest=low.length-shown;if(rest>0)add('warn','box',plural(rest,'more item')+' below minimum stock','Some of them are already on order.','root',{s:'stock',p:{tab:'low'}},'See the list');
   }
-  if(o||c){const w=S.sales.filter(x=>x.want&&x.status==='paid'&&!x.inv).length;if(w)add('warn','file',plural(w,'sale')+(w===1?' has':' have')+' no e-invoice yet','The customer asked for an e-invoice.','go',{s:'invoices',p:{f:'wait'}},'Issue them');
+  if(c&&todaySpecials().length)add('info','star',"Today's specials: "+todaySpecials().map(id=>MENU(id)).filter(Boolean).map(m=>m.name).join(', '),'Suggest these to customers. They have a star on the till.','root',{s:'pos'},'Open the till');
+  const allin=S.settings.plan!=='stock';
+  if((o||c)&&allin){const w=S.sales.filter(x=>x.want&&x.status==='paid'&&!x.inv).length;if(w)add('warn','file',plural(w,'sale')+(w===1?' has':' have')+' no e-invoice yet','The customer asked for an e-invoice.','go',{s:'invoices',p:{f:'wait'}},'Issue them');
     if(c&&S.held.length)add('info','bag',plural(S.held.length,'bill')+' on hold','Open the till to bring a bill back.','root',{s:'pos',p:{openHeld:1}},'Open held bills')}
-  if(o){const pm=addMonth(T.slice(0,7),-1);if(!S.cons[pm]&&consDays(pm).length){const due=T.slice(0,7)+'-07';add(T>due?'bad':'warn','file','Combined e-invoice for '+fM(pm)+' walk-in sales is '+(T>due?'overdue':'due by '+fDs(due)),'One e-invoice covers every sale where nobody asked for their own.','go',{s:'invWiz',p:{cons:pm}},'Create it')}
-    S.invoices.filter(i=>i.status==='Invalid').forEach(i=>add('bad','alert','E-invoice '+i.no+' was rejected','Fix the buyer details and send it again.','go',{s:'inv',p:{id:i.id}},'Fix it'));
-    const od=S.bills.filter(b=>!b.paid&&b.due<T);if(od.length)add('warn','truck',plural(od.length,'supplier bill')+(od.length===1?' is':' are')+' overdue',rm(od.reduce((x,b)=>x+b.amount,0))+' in total.','root',{s:'orders',p:{tab:'bills'}},'See bills')}
+  if(o&&allin){const pm=addMonth(T.slice(0,7),-1);if(!S.cons[pm]&&consDays(pm).length){const due=T.slice(0,7)+'-07';add(T>due?'bad':'warn','file','Combined e-invoice for '+fM(pm)+' walk-in sales is '+(T>due?'overdue':'due by '+fDs(due)),'One e-invoice covers every sale where nobody asked for their own.','go',{s:'invWiz',p:{cons:pm}},'Create it')}
+    S.invoices.filter(i=>i.status==='Invalid').forEach(i=>add('bad','alert','E-invoice '+i.no+' was rejected','Fix the buyer details and send it again.','go',{s:'inv',p:{id:i.id}},'Fix it'))}
+  if(o){const od=S.bills.filter(b=>!b.paid&&b.due<T);if(od.length)add('warn','truck',plural(od.length,'supplier bill')+(od.length===1?' is':' are')+' overdue',rm(od.reduce((x,b)=>x+b.amount,0))+' in total.','root',{s:'orders',p:{tab:'bills'}},'See bills')}
   return a}
 SCREENS.home={sec:'home',title:()=>'Home',help:['The big round buttons start the jobs you do most often.','The cards under "To do" are things that need attention. Tap a card to go straight to the fix.','Use "Viewing as" at the top to see the app the way another staff member sees it.'],
  html(){const r=S.role,T=today(),hr=now().getHours(),al=alertsFor(r);
-  const big={owner:[['New sale','bag','root',{s:'pos'}],['Scan','scan','go',{s:'scan'}],['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}]],
+  const big={owner:[S.settings.plan==='stock'?['Sync POS sales','link','posSyncDo',{}]:['New sale','bag','root',{s:'pos'}],['Scan','scan','go',{s:'scan'}],['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}]],
     cashier:[['New sale','bag','root',{s:'pos'}],["See today's sales",'list','go',{s:'salesList'}]],
     kitchen:[['Scan','scan','go',{s:'scan'}],['Receive delivery','truck','go',{s:'receive',p:{step:0}}],['Log waste','trash','root',{s:'waste'}],['Count stock','list','go',{s:'count'}],['Expiring soon','clock','root',{s:'stock',p:{tab:'soon'}}]]}[r];
   let kp='';
-  if(r==='owner'){const d=S.days[T]||{total:0,bills:0},ms=monthStats(T.slice(0,7));
+  if(r==='owner'){const d=S.days[T]||{total:0,bills:0},ms=monthStats(T.slice(0,7)),wk=weekStats(0),fs=fcState(wk.fc);
     kp=`<div><div class="row" style="margin-bottom:10px"><h2>Numbers at a glance</h2>${demoTag}</div><div class="grid g4">
     <button class="kpi" ${A('go',{s:'salesList'})}><span class="l">Sales today</span><span class="v">${rm(d.total)}</span><span class="s lnk">${plural(d.bills,'bill')} · see them ›</span></button>
     <button class="kpi" ${A('root',{s:'reports'})}><span class="l">Sales this month</span><span class="v">${rm(ms.sales)}</span><span class="s lnk">Open report ›</span></button>
     <button class="kpi" ${A('root',{s:'reports',p:{focus:'waste'}})}><span class="l">Waste this month</span><span class="v">${rm(ms.wRM)}</span><span class="s lnk">${qf(ms.wKg)} kg · see why ›</span></button>
-    <button class="kpi" ${A('root',{s:'reports',p:{focus:'cost'}})}><span class="l">Food cost this month</span><span class="v">${ms.fc.toFixed(1)}%</span><span class="s lnk">How it is worked out ›</span></button></div></div>`}
+    <button class="kpi" id="fckpi" ${A('go',{s:'weekly'})}><span class="l">Food cost this week</span><span class="v ${fs==='ok'?'grn-t':fs==='bad'?'red-t':''}">${wk.fc.toFixed(1)}%</span><span class="s lnk">Target ${S.settings.fcTarget}% · weekly summary ›</span></button></div></div>`}
   return `${pageHead((hr<12?'Good morning':hr<18?'Good afternoon':'Good evening')+'. What would you like to do?',h(S.settings.cafe.name)+' · '+fD(T))}
+   ${r==='owner'?setupCard():''}
    ${S.seeded!==T?`<div class="stale"><span class="grow">This demo data was made on ${fD(S.seeded)}, so some dates look old.</span><button class="btn sm" ${A('refreshDemo')}>Refresh demo data</button></div>`:''}
    <div class="bigacts" id="bigacts">${big.map(([l,i,a,p])=>`<button class="biga" ${A(a,p)}><span class="rnd">${ic(i)}</span>${l}</button>`).join('')}</div>
    <div id="todo"><h2 style="margin-bottom:10px">To do ${al.length?`<span class="muted sm">(${al.length})</span>`:''}</h2><div class="grid">${al.length?al.map(x=>`<button class="alert ${x.cls}" ${A(x.act,x.p)}><span class="ai">${ic(x.icn)}</span><span class="grow" style="text-align:left">${h(x.t)}<small>${h(x.sub)}</small></span><span class="go">${x.goTxt}${ic('chev')}</span></button>`).join(''):`<div class="card row"><span class="pill ok">${ic('check')}All caught up</span><span class="muted">Nothing needs your attention right now.</span></div>`}</div></div>
@@ -57,7 +63,7 @@ SCREENS.pos={sec:'sell',wide:true,title:()=>'Sell',help:['Tap a menu item to add
    ${pageHead('Sell','',`<button class="btn sec sm" ${A('go',{s:'salesList'})}>${ic('list')}Today's sales</button>`)}
    ${searchBox('q','Search by name or item code',p.q,'data-enter="posEnter"')}
    <div class="tabs" role="tablist">${['All',...menuCats()].map(c=>`<button class="tab ${cat===c&&!q?'on':''}" ${A('set',{k:'cat',v:c})}>${c}</button>`).join('')}</div>
-   <div class="menug" id="menug">${items.length?items.map(m=>`<button class="mi" ${A('addItem',{id:m.id})}><span class="e" aria-hidden="true">${m.e}</span><b>${h(m.name)}</b><small>Code ${m.id}${m.mods.length?' · has options':''}</small><span>${rm(m.price)}</span></button>`).join(''):empty('No menu item matches "'+h(p.q)+'"','Check the spelling or clear the search.',`<button class="btn sec" ${A('set',{k:'q',v:''})}>Clear search</button>`)}</div>
+   <div class="menug" id="menug">${items.length?items.map(m=>{const so=isSoldOut(m.id),sp=isSpecial(m.id);return`<button class="mi ${so?'so':''} ${sp?'sp':''}" ${A('addItem',{id:m.id})}><span class="e" aria-hidden="true">${m.e}</span><b>${h(m.name)}</b><small>${so?'Sold out today':sp?"⭐ Today's special":'Code '+m.id+(m.mods.length?' · has options':'')}</small><span>${rm(m.price)}</span></button>`}).join(''):empty('No menu item matches "'+h(p.q)+'"','Check the spelling or clear the search.',`<button class="btn sec" ${A('set',{k:'q',v:''})}>Clear search</button>`)}</div>
    <button class="btn big full billbar" ${A('set',{k:'showBill',v:1})}>View bill (${n}) · ${rm(t.total)}</button>
   </div>
   <div class="bill card" id="billbox">
@@ -77,7 +83,7 @@ function modModal(m){const st={id:m.id,sel:{}};m.mods.forEach(g=>{if(MODS[g].one
     return`${mHead(h(mm.e+' '+mm.name))}${mm.mods.map(g=>`<div><div class="flabel" style="margin-bottom:6px">${MODS[g].name} <span class="muted">${MODS[g].one?'(pick one)':'(pick any, or none)'}</span></div><div class="chips">${MODS[g].opts.map((o,i)=>`<button class="chip ${M.sel[g].includes(i)?'on':''}" aria-pressed="${M.sel[g].includes(i)}" ${A('modPick',{g,i})}>${o.n}${o.p?' +'+rm(o.p):''}</button>`).join('')}</div></div>`).join('')}
     <div class="mf"><button class="btn sec" ${A('closeModal')}>Cancel</button><button class="btn" ${A('modAdd')}>Add to bill · ${rm(mm.price+extra)}</button></div>`},st)}
 Object.assign(ACT,{
- addItem:p=>{const m=MENU(p.id);if(m.mods.length)modModal(m);else{addLine(m,[]);render(true);toast(m.name+' added to the bill')}},
+ addItem:p=>{const m=MENU(p.id);if(isSoldOut(m.id)){toast(m.name+' is sold out today. The owner can put it back on sale under "Dishes to push today".');return}if(m.mods.length)modModal(m);else{addLine(m,[]);render(true);toast(m.name+' added to the bill')}},
  posEnter:()=>{const p=cur().p,q=(p.q||'').trim().toLowerCase();if(!q)return;const m=S.menu.find(x=>x.id===q)||S.menu.find(x=>x.name.toLowerCase().includes(q));if(!m){toast('No menu item matches "'+p.q+'". Check the spelling.');return}p.q='';ACT.addItem({id:m.id});if(!m.mods.length)render(true)},
  modPick:p=>{const g=MODS[p.g],s=M.sel[p.g];if(g.one)M.sel[p.g]=[p.i];else if(s.includes(p.i))M.sel[p.g]=s.filter(x=>x!==p.i);else s.push(p.i);drawModal()},
  modAdd:()=>{const m=MENU(M.id),mods=[];m.mods.forEach(g=>M.sel[g].slice().sort().forEach(i=>{const o=MODS[g].opts[i];if(!(MODS[g].one&&i===0))mods.push({n:o.n,p:o.p,add:o.add,remove:o.remove})}));addLine(m,mods);closeModal();render(true);toast(m.name+' added to the bill')},
