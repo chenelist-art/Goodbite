@@ -10,7 +10,7 @@ The old household app is untouched. It is still `index.html` in the main Goodbit
 
 - **Easiest:** open the Claude link (the published artifact).
 - **From the file:** double-click `business/index.html`. It opens in your browser. It needs internet only for the fonts.
-- **GitHub Pages:** the app is in the `business` folder of the `stox` repo, at `chenelist-art.github.io/stox/business/`.
+- **GitHub Pages:** https://chenelist-art.github.io/Stox/ opens the app (the repo root `index.html` is a copy of `business/index.html`).
 
 Your changes are saved in that browser only. To start fresh: **Settings > Reset demo data**.
 
