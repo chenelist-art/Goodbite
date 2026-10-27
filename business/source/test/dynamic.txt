@@ -264,8 +264,8 @@ Sales per day in September #	Sales per day in September 2026
 Sales per day, August #	Sales per day, August 2026
 Sales per day, October #	Sales per day, October 2026
 Sales per day, September #	Sales per day, September 2026
-Saved as goodbite-sales##.csv	Saved as goodbite-sales-2026-10.csv
-Saved as goodbite-waste##.csv	Saved as goodbite-waste-2026-10.csv
+Saved as stox-sales##.csv	Saved as stox-sales-2026-10.csv
+Saved as stox-waste##.csv	Saved as stox-waste-2026-10.csv
 Saved as {DOC}.json	Saved as EINV-26-00002.json
 Saved changes to {X}	Saved changes to Fresh milk
 Saved. Warning # day before expiry.	Saved. Warning 1 day before expiry.
@@ -326,7 +326,7 @@ now # kg	now 8.2 kg
 now # loaves	now 18.8 loaves
 now # pieces	now 59.93 pieces
 of {X} (worth RM#) will leave the stock and go into the waste log as "Spoiled".	of Chicken breast (worth RM 59.50) will leave the stock and go into the waste log as "Spoiled".
-small outlets are mostly exempt. A cafe with yearly turnover under RM# million does not have to issue e-invoices under the current guideline, and one under RM# million does not charge SST. So for GoodBite's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today.	small outlets are mostly exempt. A cafe with yearly turnover under RM3 million does not have to issue e-invoices under the current guideline, and one under RM1.5 million does not charge SST. So for GoodBite's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today.
+small outlets are mostly exempt. A cafe with yearly turnover under RM# million does not have to issue e-invoices under the current guideline, and one under RM# million does not charge SST. So for Stox's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today.	small outlets are mostly exempt. A cafe with yearly turnover under RM3 million does not have to issue e-invoices under the current guideline, and one under RM1.5 million does not charge SST. So for Stox's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today.
 {DATE}	5 Oct
 {DATE} · Expired	11 Sep · Expired
 {DATE} · Overproduced	11 Aug · Overproduced

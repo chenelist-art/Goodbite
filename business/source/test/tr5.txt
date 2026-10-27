@@ -31,7 +31,7 @@ D304 || Ada 4 langkah, ditunjukkan dalam bar di atas. Butang hijau sentiasa memb
 D318 || Apa yang disemak dengan sumber rasmi pada 7 Oktober 2026, dan apa yang tidak. || 2026 年 10 月 7 日对照官方来源核实了哪些，哪些没有。
 D319 || Dikira daripada stok minimum dan jumlah yang digunakan dalam 14 hari lepas. Anda boleh mengubah jumlah sebelum menghantar. || 根据最低库存和过去 14 天的用量算出。发送前可以修改数量。
 D320 || Anda boleh membatalkannya dalam masa 72 jam jika ada yang salah. Selepas itu anda perlukan nota kredit. || 如果有错，可在 72 小时内取消。之后就需要开贷项通知单。
-D329 || kedai kecil kebanyakannya dikecualikan. Kafe dengan perolehan tahunan di bawah RM3 juta tidak perlu mengeluarkan e-invois di bawah garis panduan semasa, dan yang di bawah RM1.5 juta tidak mengenakan SST. Jadi bagi pelanggan sasaran GoodBite, e-invois ialah ciri "sedia apabila anda berkembang, atau apabila pelanggan syarikat meminta", bukan kewajipan undang-undang hari ini. || 小店大多可豁免。年营业额低于 RM300 万的咖啡店，按目前的指南不必开电子发票；低于 RM150 万的不收 SST。所以对 GoodBite 的目标客户来说，电子发票是“等您壮大了，或有公司客户要求时就能用”的功能，现在并不是法律上必须的。
+D329 || kedai kecil kebanyakannya dikecualikan. Kafe dengan perolehan tahunan di bawah RM3 juta tidak perlu mengeluarkan e-invois di bawah garis panduan semasa, dan yang di bawah RM1.5 juta tidak mengenakan SST. Jadi bagi pelanggan sasaran Stox, e-invois ialah ciri "sedia apabila anda berkembang, atau apabila pelanggan syarikat meminta", bukan kewajipan undang-undang hari ini. || 小店大多可豁免。年营业额低于 RM300 万的咖啡店，按目前的指南不必开电子发票；低于 RM150 万的不收 SST。所以对 Stox 的目标客户来说，电子发票是“等您壮大了，或有公司客户要求时就能用”的功能，现在并不是法律上必须的。
 D254 || Resit daripada 3 hari lepas. || 最近 3 天的收据。
 D150 || Contoh: makanan RM 20.00, makan di sini || 例子：RM 20.00 的食物，堂食
 D162 || Contohnya: Teh Lemon Ais || 例如：冰柠檬茶

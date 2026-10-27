@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>[hidden]{display:none!important}</style></head><body>
-<title>GoodBite Business</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
+<title>Stox</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
 <style>
 /* Layout: fixed menu (left rail on wide screens, bottom bar on phones) + one scrolling work area.
-   Single light look on purpose, to keep GoodBite's cream-and-leaf-green identity from the consumer app. */
+   Single light look on purpose, in the Stox brand colours: maroon with a baby blue accent. */
 :root{
   color-scheme:light;
-  --bg:#F6F3EA; --panel:#FFFFFF; --panel-2:#FBF9F3; --line:#E4DFD0; --line-2:#CFC9B6;
-  --green:#2F7D32; --green-d:#1E5E26; --green-s:#E2F0D6; --green-t:#F1F7EA;
-  --ink:#1B2619; --ink-2:#4A5546; --muted:#727A6C;
-  --red:#C23A25; --red-s:#FBE5DC; --amber:#9A6A00; --amber-s:#FBEFC8; --blue:#2B5F8A; --blue-s:#E0ECF5; --grey-s:#ECE9DF;
+  --bg:#F7F5F3; --panel:#FFFFFF; --panel-2:#FBFAF8; --line:#E6E0DC; --line-2:#D0C8C3;
+  --green:#7B1E2E; --green-d:#5E1622; --green-s:#D8EEF9; --green-t:#F1F7FB; --baby:#89CFF0;
+  --ok:#2F7D32; --ok-d:#1E5E26; --ok-s:#E2F0D6;
+  --ink:#221A1C; --ink-2:#4D4447; --muted:#6E6567;
+  --red:#C23A25; --red-s:#FBE5DC; --amber:#9A6A00; --amber-s:#FBEFC8; --blue:#2B5F8A; --blue-s:#E0ECF5; --grey-s:#EEEAE7;
   --display:"Fredoka","Nunito Sans",ui-rounded,"Segoe UI",system-ui,sans-serif;
   --body:"Nunito Sans","Segoe UI",system-ui,-apple-system,sans-serif;
   --mono:ui-monospace,"Cascadia Mono",Consolas,monospace;
@@ -23,7 +24,7 @@ html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.45;overflow:hidden}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none;padding:0;text-align:inherit}
-:focus-visible{outline:3px solid #6fb35f;outline-offset:2px;border-radius:6px}
+:focus-visible{outline:3px solid #2E86C1;outline-offset:2px;border-radius:6px}
 h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance;letter-spacing:.1px}
 h1{font-size:26px;line-height:1.2} h2{font-size:18px} h3{font-size:15.5px}
 p{margin:0}
@@ -33,7 +34,9 @@ svg.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;strok
 /* ---------- shell ---------- */
 #app{display:flex;height:100%;min-height:0}
 #side{flex:none;width:var(--side);background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:14px 10px;gap:4px;overflow-y:auto}
-.logo{display:flex;align-items:center;gap:8px;padding:4px 8px 12px;font-family:var(--display);font-weight:600;font-size:22px;color:var(--green)}
+.logo{display:flex;align-items:center;gap:8px;padding:2px 10px 14px;font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:36px;line-height:1;color:var(--green)}
+.logo .wm{display:inline-flex;align-items:baseline}
+.logo .x{width:.56em;height:.56em;margin-left:.02em;flex:none}
 .logo .lf{font-size:26px;line-height:1}
 .logo small{display:block;font-family:var(--body);font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.6px;text-transform:uppercase}
 .nav{display:flex;align-items:center;gap:12px;min-height:46px;padding:8px 12px;border-radius:10px;font-weight:700;color:var(--ink-2);width:100%}
@@ -88,9 +91,9 @@ svg.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;strok
 .grow{flex:1;min-width:0}
 .muted{color:var(--muted)} .sm{font-size:13.5px} .b{font-weight:800} .num{font-variant-numeric:tabular-nums}
 .r{text-align:right}
-.red-t{color:var(--red)} .grn-t{color:var(--green-d)}
+.red-t{color:var(--red)} .grn-t{color:var(--ok-d)}
 .pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-weight:800;font-size:12.5px;white-space:nowrap;background:var(--grey-s);color:var(--ink-2)}
-.pill.ok{background:var(--green-s);color:var(--green-d)} .pill.warn{background:var(--amber-s);color:#6E4B00}
+.pill.ok{background:var(--ok-s);color:var(--ok-d)} .pill.warn{background:var(--amber-s);color:#6E4B00}
 .pill.bad{background:var(--red-s);color:var(--red)} .pill.info{background:var(--blue-s);color:var(--blue)}
 .q{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-2);font-size:12.5px;font-weight:800;color:var(--ink-2);vertical-align:middle;margin-left:4px;position:relative;background:var(--panel)}
 .q::after{content:"";position:absolute;inset:-11px}
@@ -100,13 +103,13 @@ svg.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;strok
 .bigacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
 .biga{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 10px;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;font-weight:800;font-size:16px;text-align:center}
 .biga:hover{border-color:var(--green);background:var(--green-t)}
-.biga .rnd{width:68px;height:68px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center}
+.biga .rnd{width:68px;height:68px;border-radius:50%;background:var(--baby);color:var(--green-d);display:grid;place-items:center}
 .biga .rnd svg{width:32px;height:32px}
 .alert{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border-radius:var(--r);background:var(--panel);border:1.5px solid var(--line);font-weight:700}
 .alert:hover{border-color:var(--ink-2)}
 .alert .ai{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;flex:none}
 .alert.bad .ai{background:var(--red-s);color:var(--red)} .alert.warn .ai{background:var(--amber-s);color:var(--amber)}
-.alert.info .ai{background:var(--blue-s);color:var(--blue)} .alert.ok .ai{background:var(--green-s);color:var(--green-d)}
+.alert.info .ai{background:var(--blue-s);color:var(--blue)} .alert.ok .ai{background:var(--ok-s);color:var(--ok-d)}
 .alert small{display:block;font-weight:600;color:var(--muted);font-size:13.5px}
 .alert .go{margin-left:auto;display:flex;align-items:center;gap:2px;color:var(--green-d);font-weight:800;white-space:nowrap;font-size:14px}
 .kpi{display:flex;flex-direction:column;gap:2px;padding:14px 16px;background:var(--panel);border:1.5px solid var(--line);border-radius:var(--r);width:100%}
@@ -208,7 +211,7 @@ textarea.inp{padding:10px 12px;min-height:90px;resize:vertical}
 .qr svg{width:100%;height:100%;display:block}
 .qr span{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:13px;color:var(--red);letter-spacing:1px}
 .qr span b{background:#fff;padding:2px 6px;border:2px solid var(--red);border-radius:4px;transform:rotate(-12deg)}
-pre.code{background:#1F2A1D;color:#E4F0DA;padding:14px;border-radius:10px;overflow:auto;font-size:12.5px;max-height:50vh;margin:0;font-family:var(--mono);white-space:pre}
+pre.code{background:#2A1D20;color:#F3E9EA;padding:14px;border-radius:10px;overflow:auto;font-size:12.5px;max-height:50vh;margin:0;font-family:var(--mono);white-space:pre}
 textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5px;border:1.5px solid var(--line-2);border-radius:10px;padding:10px;background:var(--panel-2)}
 
 /* charts */
@@ -236,16 +239,16 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
 .opt.on{border-color:var(--green);background:var(--green-s)}
 .opt small{display:block;color:var(--muted);font-weight:600}
 #toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;font-weight:700;z-index:70;display:flex;gap:14px;align-items:center;max-width:calc(100% - 32px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
-#toast button{color:#BFE8A8;font-weight:800;text-decoration:underline;min-height:44px;padding:0 6px;white-space:nowrap}
+#toast button{color:#89CFF0;font-weight:800;text-decoration:underline;min-height:44px;padding:0 6px;white-space:nowrap}
 #tour{position:fixed;inset:0;z-index:60;pointer-events:none}
-#tour .hole{position:fixed;border-radius:12px;box-shadow:0 0 0 9999px rgba(27,38,25,.6);outline:3px solid #FFD54A;transition:all .2s;pointer-events:none}
+#tour .hole{position:fixed;border-radius:12px;box-shadow:0 0 0 9999px rgba(34,26,28,.6);outline:3px solid #FFD54A;transition:all .2s;pointer-events:none}
 #tour .tcard{position:fixed;background:var(--panel);border-radius:14px;padding:16px;width:min(340px,calc(100% - 24px));display:flex;flex-direction:column;gap:10px;box-shadow:0 12px 40px rgba(0,0,0,.35);pointer-events:auto}
 #tour .tcard .mf{justify-content:space-between;align-items:center}
 #demo{position:fixed;right:14px;bottom:14px;z-index:40;background:var(--ink);color:#fff;border-radius:14px;padding:14px;width:min(350px,calc(100% - 28px));display:flex;flex-direction:column;gap:8px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
-#demo .dn{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#BFE8A8}
+#demo .dn{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#89CFF0}
 #demo .mf{justify-content:space-between}
 #demo .btn{min-height:44px}
-#demo .btn.sec{background:transparent;color:#fff;border-color:#8FA08A}
+#demo .btn.sec{background:transparent;color:#fff;border-color:#A8999C}
 .hl{outline:3px solid #FFC400!important;outline-offset:3px;border-radius:10px}
 
 /* ---------- tablet ---------- */
@@ -255,7 +258,7 @@ textarea.code{width:100%;min-height:240px;font-family:var(--mono);font-size:12.5
 .chip svg.ic{width:18px;height:18px;margin-right:4px;vertical-align:-3px}
 .biga.way{padding:20px 14px;gap:8px}.biga.way small{font-weight:600;color:var(--muted);font-size:13.5px;line-height:1.35}
 .wpic{font-size:44px;line-height:1}
-.cam{position:relative;background:#1E2A1C;border-radius:16px;min-height:300px;display:grid;place-items:center;padding:30px 24px;overflow:hidden}
+.cam{position:relative;background:#2A2224;border-radius:16px;min-height:300px;display:grid;place-items:center;padding:30px 24px;overflow:hidden}
 .cam .cr{position:absolute;width:28px;height:28px;border:3px solid #fff;opacity:.85}
 .cr.tl{top:12px;left:12px;border-right:0;border-bottom:0;border-radius:6px 0 0 0}.cr.tr{top:12px;right:12px;border-left:0;border-bottom:0;border-radius:0 6px 0 0}
 .cr.bl{bottom:12px;left:12px;border-right:0;border-top:0;border-radius:0 0 0 6px}.cr.br{bottom:12px;right:12px;border-left:0;border-top:0;border-radius:0 0 6px 0}
@@ -278,7 +281,7 @@ table.exp td{vertical-align:top}
 @media (max-width:1100px){
   :root{--side:92px}
   #side{padding:10px 6px;align-items:stretch}
-  .logo{flex-direction:column;gap:0;font-size:13px;padding:2px 0 8px;text-align:center}
+  .logo{flex-direction:column;gap:0;font-size:27px;padding:2px 0 10px;text-align:center}
   .logo small{display:none}
   .nav{flex-direction:column;gap:3px;font-size:12px;padding:8px 2px;min-height:58px;justify-content:center;position:relative;text-align:center}
   .nav .cnt{position:absolute;top:2px;right:8px;margin:0}
@@ -483,7 +486,7 @@ function invJSON(inv){const c=S.settings.cafe,b=inv.buyer,M=v=>[{_:+amt(v),curre
   const party=(name,tin,idT,idN,sst,ad,city,post,st,ph,em,msic)=>({Party:[{...(msic?{IndustryClassificationCode:[{_:msic,name:c.activity}]}:{}),PartyIdentification:[{ID:[{_:tin,schemeID:'TIN'}]},{ID:[{_:idN||'NA',schemeID:idT||'BRN'}]},{ID:[{_:sst||'NA',schemeID:'SST'}]}],
     PostalAddress:[{CityName:[{_:city||'NA'}],PostalZone:[{_:post||''}],CountrySubentityCode:[{_:st||'NA'}],AddressLine:[{Line:[{_:ad||'NA'}]}],Country:[{IdentificationCode:[{_:'MYS'}]}]}],PartyLegalEntity:[{RegistrationName:[{_:name}]}],Contact:[{Telephone:[{_:ph||'NA'}],ElectronicMail:[{_:em||''}]}]}]});
   const d=inv.issued||inv.created;
-  return{_DEMO:'Simulated document from the GoodBite demo. Not sent to LHDN MyInvois. Not signed. Not a valid tax document.',
+  return{_DEMO:'Simulated document from the Stox demo. Not sent to LHDN MyInvois. Not signed. Not a valid tax document.',
    Invoice:[{ID:[{_:inv.no}],IssueDate:[{_:d.slice(0,10)}],IssueTime:[{_:d.slice(11)+':00Z'}],InvoiceTypeCode:[{_:inv.type,listVersionID:'1.1'}],DocumentCurrencyCode:[{_:'MYR'}],
     ...(inv.type==='02'?{BillingReference:[{InvoiceDocumentReference:[{ID:[{_:inv.refNo}],UUID:[{_:inv.refUuid||''}]}]}]}:{}),
     AccountingSupplierParty:[party(c.legal,c.tin,'BRN',c.brn,c.sst,c.addr,c.city,c.post,c.state,c.phone,c.email,c.msic)],
@@ -812,7 +815,7 @@ const inp=(id,path,val,o)=>{o=o||{};return`<input class="inp ${o.cls||''}" id="$
 const tog=(on,label,a,p,tipK)=>`<div class="row" style="flex-wrap:nowrap;gap:4px"><button type="button" class="tog ${on?'on':''}" role="switch" aria-checked="${on}" ${A(a,p)}><i></i><span>${label}</span></button>${tipK?tip(tipK):''}</div>`;
 const demoTag='<span class="pill warn">Demo data</span>';
 
-/* with GoodBite Stock the outlet keeps its own POS, so the GoodBite till and e-invoices are hidden */
+/* with Stox Stock the outlet keeps its own POS, so the Stox till and e-invoices are hidden */
 const navFor=role=>ROLES[role].nav.filter(n=>!(S.settings.plan==='stock'&&(n==='sell'||n==='invoices')));
 function navHtml(compact){const r=ROLES[S.role],sec=SCREENS[stack[0].s].sec;let items=NAV.filter(n=>navFor(S.role).includes(n[0]));const all=items;
   if(compact&&items.length>5)items=items.slice(0,4);
@@ -825,7 +828,7 @@ function render(keep){
   const c=cur(),sc=SCREENS[c.s],el=scr(),st=keep?el.scrollTop:0,ae=document.activeElement,fid=ae&&ae.id,ss=ae&&ae.selectionStart;
   BIND=null;
   let body='';try{body=sc.html(c.p)}catch(err){console.error(err);body=empty('This page could not be shown','Go back and try again.',`<button class="btn" ${A('root',{s:'home'})}>Back to Home</button>`)}
-  document.getElementById('side').innerHTML=`<div class="logo"><span class="lf">🥬</span><span>GoodBite<small>for business</small></span></div>${navHtml(false)}<div class="sp"></div><button class="nav" ${A('help')}>${ic('help')}<span>Help</span></button>`;
+  document.getElementById('side').innerHTML=`<div class="logo" role="img" aria-label="Stox"><span class="wm" aria-hidden="true">sto<svg class="x" viewBox="0 0 100 100" aria-hidden="true"><g transform="rotate(45 50 50)"><ellipse cx="50" cy="22" rx="12" ry="17" fill="#89CFF0"/><rect x="46" y="36" width="8" height="58" rx="4" fill="#89CFF0"/></g><g transform="rotate(-45 50 50)"><path d="M36 8H42V30H47V8H53V30H58V8H64V34A14 14 0 0 1 50 48A14 14 0 0 1 36 34Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="46" y="44" width="8" height="50" rx="4" fill="currentColor"/></g></svg></span></div>${navHtml(false)}<div class="sp"></div><button class="nav" ${A('help')}>${ic('help')}<span>Help</span></button>`;
   document.getElementById('bot').innerHTML=navHtml(true);
   const crumbs=stack.map((x,i)=>{const t=h(SCREENS[x.s].title(x.p));return i<stack.length-1?`<button ${A('crumb',{i})}>${t}</button><span aria-hidden="true">›</span>`:`<b aria-current="page">${t}</b>`}).join('');
   document.getElementById('top').innerHTML=`${stack.length>1?`<button class="backb" ${A('back')}>${ic('back')}Back</button>`:''}<nav class="crumbs" aria-label="You are here">${crumbs}</nav>
@@ -1269,8 +1272,8 @@ ACT.wasteRemove=p=>{const w=S.waste.find(x=>x.id===p.id);confirmBox({title:'Remo
 /* ---------- Reports ---------- */
 SCREENS.reports={sec:'reports',title:()=>'Reports',help:['Pick a month at the top. Every number below is for that month.','Tap a number or a row to see what is behind it.','"Copy as spreadsheet" gives you the figures to paste into Excel or Google Sheets.'],
  html(p){const T=today(),m=p.m||T.slice(0,7),ms=[0,-1,-2].map(k=>addMonth(T.slice(0,7),k)),st=monthStats(m),wk=weeklyWaste(9);
-  TEXTS.wasteCsv=()=>toCSV([['Date','Time','Item','Amount','Unit','Reason','Added automatically','Weight (kg)','Cost (RM)'],...st.waste.map(w=>[w.dt.slice(0,10),w.dt.slice(11),ING(w.ing).name,w.qty,ING(w.ing).unit,w.reason,w.auto?'Yes':'No',w.kg,amt(w.cost)])]);TEXTS.wasteCsv.file='goodbite-waste-'+m+'.csv';
-  TEXTS.salesCsv=()=>toCSV([['Date','Bills','Sales incl. tax (RM)','Sales before tax and service charge (RM)','Service charge (RM)','SST (RM)','Ingredient cost (RM)'],...st.daily.map(d=>{const x=S.days[d.d]||{bills:0,total:0,sub:0,sc:0,sst:0,cogs:0};return[d.d,x.bills,amt(x.total),amt(x.sub),amt(x.sc),amt(x.sst),amt(x.cogs)]})]);TEXTS.salesCsv.file='goodbite-sales-'+m+'.csv';
+  TEXTS.wasteCsv=()=>toCSV([['Date','Time','Item','Amount','Unit','Reason','Added automatically','Weight (kg)','Cost (RM)'],...st.waste.map(w=>[w.dt.slice(0,10),w.dt.slice(11),ING(w.ing).name,w.qty,ING(w.ing).unit,w.reason,w.auto?'Yes':'No',w.kg,amt(w.cost)])]);TEXTS.wasteCsv.file='stox-waste-'+m+'.csv';
+  TEXTS.salesCsv=()=>toCSV([['Date','Bills','Sales incl. tax (RM)','Sales before tax and service charge (RM)','Service charge (RM)','SST (RM)','Ingredient cost (RM)'],...st.daily.map(d=>{const x=S.days[d.d]||{bills:0,total:0,sub:0,sc:0,sst:0,cogs:0};return[d.d,x.bills,amt(x.total),amt(x.sub),amt(x.sc),amt(x.sst),amt(x.cogs)]})]);TEXTS.salesCsv.file='stox-sales-'+m+'.csv';
   const maxTop=Math.max(1,...st.top.slice(0,8).map(x=>x.cost)),maxR=Math.max(1,...st.reasons.map(x=>x.cost));
   if(p.focus){const f=p.focus;p.focus='';setTimeout(()=>{const e=document.getElementById('rep-'+f);if(e)e.scrollIntoView({block:'start'})},0)}
   const wkS=weekStats(0),fsS=fcState(wkS.fc);
@@ -1446,7 +1449,7 @@ SCREENS.expReport={sec:'stock',title:()=>'Expiring-soon report',help:['Every bat
  html(p){const days=p.days||S.settings.expDays,xs=riskList(days),T=today(),risk=xs.reduce((a,x)=>a+x.risk,0),val=xs.reduce((a,x)=>a+x.value,0),kg=r3(xs.reduce((a,x)=>a+x.kg,0)),n={};xs.forEach(x=>n[x.act]=(n[x.act]||0)+1);
   TEXTS.expText=()=>[L('Expiring-soon report'),S.settings.cafe.name+' · '+fD(T)+' · '+L('Next '+plural(days,'day')),L('Value at risk')+': '+rm(risk)+' ('+L(plural(xs.length,'batch','batches'))+')','',
     ...xs.map((x,k)=>[(k+1)+'. '+L(x.i.name)+' · '+qU(x.i.id,x.b.qty)+' · '+L(expTxt(x.b))+' ('+fDs(x.b.exp)+')','   '+L('Value at risk')+': '+rm(x.risk)+' · '+L('Suggested')+': '+L(ACTS[x.act][0]),'   '+L(riskWhy(x))].join('\n')),'',L('Demo data. Suggestions use the last 14 days of use. Check before acting.')].join('\n');
-  TEXTS.expText.file='goodbite-expiring-'+T+'.txt';
+  TEXTS.expText.file='stox-expiring-'+T+'.txt';
   return `${pageHead('Expiring-soon report','Food that expires in the next '+plural(days,'day')+', what it is worth, and what to do with it. '+demoTag,`<button class="btn sec noprint" ${A('go',{s:'push'})}>${ic('star')}Dishes to push today</button>${STANDALONE?`<button class="btn" ${A('print')}>Print</button>`:''}<button class="btn ${STANDALONE?'sec':''}" id="expshare" ${A('showText',{t:'Expiring-soon report',k:'expText'})}>${ic('copy')}Copy to share</button>`)}
   <div class="printonly"><b>${h(S.settings.cafe.name)}</b> · ${fD(T)}</div>
   <div class="row noprint"><span class="flabel">Show food that expires in:</span><div class="chips">${[1,2,3,5,7].map(k=>`<button class="chip sm ${days===k?'on':''}" aria-pressed="${days===k}" ${A('set',{k:'days',v:k})}>${plural(k,'day')}</button>`).join('')}</div></div>
@@ -1520,7 +1523,7 @@ function weekText(){const w=weekStats(0),l=weekStats(1),ur=usageCheck(7).filter(
    L('Check these')+':',...ur.map(o=>'- '+L(ING(o.ing).name)+': '+(o.diff>0?'+':'')+qU(o.ing,o.diff)+' ('+L(USE_ST[o.st][0])+')'),...ps.map(x=>'- '+L('Push')+': '+L(x.m.name)),'',L('Demo data.')].join('\n')}
 SCREENS.weekly={sec:'reports',title:()=>'Weekly summary',help:['One page to check once a week: food cost against your target, waste, and what to look at.','"Copy to share" gives a short text for the team chat.','Change the food cost target in Settings, under Alerts and targets.'],
  html(){const w=weekStats(0),l=weekStats(1),t=S.settings.fcTarget,st=fcState(w.fc),risk=riskList(7).reduce((a,x)=>a+x.risk,0),ur=usageCheck(7).filter(o=>o.st!=='ok').slice(0,3),ps=pushList().slice(0,3),sh=shortList().slice(0,3);
-  const wk=[7,6,5,4,3,2,1,0].map(k=>({k,s:weekStats(k)}));TEXTS.weekText=weekText;TEXTS.weekText.file='goodbite-week-'+w.a+'.txt';
+  const wk=[7,6,5,4,3,2,1,0].map(k=>({k,s:weekStats(k)}));TEXTS.weekText=weekText;TEXTS.weekText.file='stox-week-'+w.a+'.txt';
   const diff=w.fc-l.fc;
   return `${pageHead('Weekly summary',fD(w.a)+' – '+fD(w.b)+' '+demoTag,`<button class="btn" id="weekshare" ${A('showText',{t:'Weekly summary',k:'weekText'})}>${ic('copy')}Copy to share</button><button class="btn sec" ${A('go',{s:'setAlerts'})}>Change target</button>`)}
   <div class="grid g4" id="weekkpi"><div class="kpi"><span class="l">Food cost this week ${tip('fc')}</span><span class="v ${st==='ok'?'grn-t':st==='bad'?'red-t':''}">${w.fc.toFixed(1)}%</span><span class="s">${pill(st==='ok'?'On target':'Above target',st==='ok'?'ok':st==='bad'?'bad':'warn')} Target ${t}%</span></div>
@@ -1538,14 +1541,14 @@ function topDishes(n){const by={};S.sales.forEach(s=>{if(s.status==='paid')s.lin
   return Object.keys(by).sort((a,b)=>by[b]-by[a]).slice(0,n).map(id=>({m:MENU(id),q:by[id]}))}
 const recipesDone=()=>topDishes(5).every(x=>S.setup.recipes[x.m.id]);
 function setupSteps(){return[['photo','Count your stock with a photo','Take a photo of each shelf. The app fills in the amounts for you to check.',!!S.setup.photo,{s:'shelfScan'}],
-  ['pos','Connect your POS, or use the GoodBite till','Then every sale takes its ingredients off the stock by itself.',!!S.setup.pos,{s:'posLink'}],
+  ['pos','Connect your POS, or use the Stox till','Then every sale takes its ingredients off the stock by itself.',!!S.setup.pos,{s:'posLink'}],
   ['recipes','Check the recipes of your top 5 dishes','Start with what sells most. Add the rest later.',recipesDone(),{s:'setupRecipes'}]]}
 function setupCard(){if(S.setup.hide)return'';const st=setupSteps(),n=st.filter(x=>x[3]).length;
   return `<div class="card setup" id="setupcard" style="display:flex;flex-direction:column;gap:10px"><div class="row"><h2 class="grow">Get set up in 3 steps</h2>${pill(n+' of 3 done',n===3?'ok':'info')}</div>
    ${st.map(([k,t,d,done,go],i)=>`<button class="alert ${done?'':'info'}" ${A('go',go)}><span class="ai" style="background:${done?'var(--green-s)':'var(--panel-2)'};color:var(--green-d)">${done?ic('check'):'<b>'+(i+1)+'</b>'}</span><span class="grow" style="text-align:left">${t}<small>${d}</small></span><span class="go">${done?'Done':'Start'}${ic('chev')}</span></button>`).join('')}
    <div class="row"><span class="muted sm grow">Stuck? We can help in English, BM or 中文.</span><button class="btn sec sm" ${A('helpChat',{k:'chat'})}>Chat on WhatsApp</button><button class="btn sec sm" ${A('helpChat',{k:'call'})}>Book a free video call</button><button class="btn sec sm" ${A('setupHide')}>${n===3?'Hide this':'Hide for now'}</button></div></div>`}
 Object.assign(ACT,{
- helpChat:p=>modal(()=>`${mHead(p.k==='call'?'Book a free video call':'Chat on WhatsApp')}<p>${p.k==='call'?'Pick a 15-minute slot and someone from GoodBite walks you through connecting your POS on a video call. No visit is needed.':'A real product would open WhatsApp with the GoodBite support number here, so you can ask a question in English, BM or 中文.'}</p><p class="muted sm">Simulated in this demo. Nothing is sent and no call is booked.</p><div class="mf"><button class="btn" ${A('closeModal')}>Got it</button></div>`),
+ helpChat:p=>modal(()=>`${mHead(p.k==='call'?'Book a free video call':'Chat on WhatsApp')}<p>${p.k==='call'?'Pick a 15-minute slot and someone from Stox walks you through connecting your POS on a video call. No visit is needed.':'A real product would open WhatsApp with the Stox support number here, so you can ask a question in English, BM or 中文.'}</p><p class="muted sm">Simulated in this demo. Nothing is sent and no call is booked.</p><div class="mf"><button class="btn" ${A('closeModal')}>Got it</button></div>`),
  setupHide:()=>{S.setup.hide=true;save();render();toast('Set-up steps hidden. Open them again from Settings.',()=>{S.setup.hide=false})},
  setupShow:()=>{S.setup.hide=false;save();root('home')}
 });
@@ -1567,33 +1570,33 @@ const POS_ITEMS=[{k:'p1',n:'BUTTER PRAWN',d:'104',sure:true,w:5},{k:'p2',n:'KAM 
  {k:'p9',n:'TOFU CLAYPOT',d:'304',sure:false,w:5},{k:'p10',n:'WHITE RICE',d:'401',sure:true,w:22},{k:'p11',n:'EGG FRIED RICE',d:'402',sure:true,w:8},{k:'p12',n:'CKT',d:'404',sure:false,w:9},
  {k:'p13',n:'WAT TAN HOR',d:'405',sure:false,w:7},{k:'p14',n:'CHINESE TEA',d:'501',sure:true,w:14},{k:'p15',n:'LIMAU ICE',d:'502',sure:false,w:10},{k:'p16',n:'TAKEAWAY BOX',d:'',sure:true,w:6,nf:true}];
 const posMatch=it=>S.pos.map[it.k]!=null?S.pos.map[it.k]:it.d;
-SCREENS.posLink={sec:'settings',title:()=>'Plan and POS link',help:['Already have a POS? Connect it, and every sale it records takes the recipe off GoodBite\'s stock.','Step 3 matches the names your POS uses to the dishes in GoodBite. You only do this once.','No password is typed into GoodBite. In a real product you would log in on your POS\'s own page.'],
+SCREENS.posLink={sec:'settings',title:()=>'Plan and POS link',help:['Already have a POS? Connect it, and every sale it records takes the recipe off Stox\'s stock.','Step 3 matches the names your POS uses to the dishes in Stox. You only do this once.','No password is typed into Stox. In a real product you would log in on your POS\'s own page.'],
  html(p){const P=S.pos;if(P.connected&&!p.edit)return posConnected();const step=p.step||1,steps=stepsBar(['Pick your POS','Allow access','Match menu items'],step-1),sys=p.sys||P.sys;
   if(step===1)return `${pageHead('Plan and POS link','How do you take orders today? '+pill('Simulated in this demo','warn'))}${steps}
-   <div class="grid g2"><div class="card" style="display:flex;flex-direction:column;gap:10px"><h2>I already have a POS</h2><p class="muted sm">GoodBite Stock, RM39 to RM59 a month. Keep your POS. GoodBite reads its sales and takes the ingredients off the stock.</p>
+   <div class="grid g2"><div class="card" style="display:flex;flex-direction:column;gap:10px"><h2>I already have a POS</h2><p class="muted sm">Stox Stock, RM49 a month. Keep your POS. Stox reads its sales and takes the ingredients off the stock.</p>
      ${POS_SYS.map(([k,l])=>`<button class="opt ${sys===k?'on':''}" aria-pressed="${sys===k}" ${A('set',{k:'sys',v:k})}>${ic('link')}<b>${h(l)}</b></button>`).join('')}
      <button class="btn big" id="posnext" ${A('set',{k:'step',v:2})} ${sys?'':'disabled'}>Next: allow access</button>${sys?'':'<span class="why">Pick your POS first.</span>'}</div>
-    <div class="card" style="display:flex;flex-direction:column;gap:10px"><h2>I want a new till</h2><p class="muted sm">GoodBite All-in-One, RM79 to RM99 a month. Use the GoodBite till on a tablet. Sales take the stock off straight away.</p>
-     <button class="btn sec big" ${A('posUseTill')}>${ic('bag')}Use the GoodBite till</button>${S.settings.plan==='allinone'?`<p class="sm">${pill('This is your plan now','ok')}</p>`:''}</div></div>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px"><h2>I want a new till</h2><p class="muted sm">Stox All-in-One, RM79 a month. Use the Stox till on a tablet. Sales take the stock off straight away.</p>
+     <button class="btn sec big" ${A('posUseTill')}>${ic('bag')}Use the Stox till</button>${S.settings.plan==='allinone'?`<p class="sm">${pill('This is your plan now','ok')}</p>`:''}</div></div>
    <div class="foot"><button class="btn sec" ${A('back')}>Cancel</button></div>`;
-  if(step===2)return `${pageHead('Allow GoodBite to read your sales',h(posName(sys)))}${steps}
+  if(step===2)return `${pageHead('Allow Stox to read your sales',h(posName(sys)))}${steps}
    <div class="card" style="display:flex;flex-direction:column;gap:12px">${sys==='file'?`<p>Export last week's sales from your POS as a spreadsheet (CSV) file, then upload it here. Do this once a day, or once a week.</p><div><button class="btn big" id="posallow" ${A('posAllow')}>${ic('file')}Use the sample sales file (simulated)</button></div>`
-    :`<p>In a real product, this button opens ${h(posName(sys))}'s own log-in page. You log in there and press "Allow".</p><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px"><li>GoodBite can read your menu items and the sales of each item.</li><li>GoodBite cannot change prices, see card numbers or move money.</li><li>You can disconnect at any time.</li></ul><div><button class="btn big" id="posallow" ${A('posAllow')}>${ic('link')}Allow access (simulated)</button></div>`}
+    :`<p>In a real product, this button opens ${h(posName(sys))}'s own log-in page. You log in there and press "Allow".</p><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px"><li>Stox can read your menu items and the sales of each item.</li><li>Stox cannot change prices, see card numbers or move money.</li><li>You can disconnect at any time.</li></ul><div><button class="btn big" id="posallow" ${A('posAllow')}>${ic('link')}Allow access (simulated)</button></div>`}
     <p class="muted sm">Nothing is connected in this demo, and no password is asked for.</p></div>
    <div class="foot"><button class="btn sec" ${A('set',{k:'step',v:1})}>${ic('back')}Pick another POS</button></div>`;
   const mv=it=>(p.map&&p.map[it.k]!=null)?p.map[it.k]:posMatch(it),need=it=>!it.nf&&!it.sure&&!(p.ok||{})[it.k]&&(p.map||{})[it.k]==null&&S.pos.map[it.k]==null,left=POS_ITEMS.filter(need).length;
-  return `${pageHead('Match your menu items','Your POS calls some dishes by other names. Match each one to a GoodBite dish once, and the app remembers.')}${steps}
-   <div class="card pad0" id="posmap"><div class="tw"><table><tr><th>Name in ${h(posName(sys))}</th><th>GoodBite dish</th></tr>${POS_ITEMS.map(it=>{const v=mv(it),chk=need(it);
-     return`<tr><td style="width:34%"><span class="mono b">${h(it.n)}</span><div class="sm muted">${plural(it.w*7,'sold last week','sold last week')}</div></td><td><div class="row" style="flex-wrap:wrap"><select class="inp" style="flex:1;min-width:180px;max-width:360px" id="pm-${it.k}" aria-label="GoodBite dish for ${h(it.n)}" data-m="map.${it.k}" data-r><option value="">Do not track (no recipe)</option>${S.menu.map(m=>`<option value="${m.id}" ${v===m.id?'selected':''}>${h(m.name)}</option>`).join('')}</select>
+  return `${pageHead('Match your menu items','Your POS calls some dishes by other names. Match each one to a Stox dish once, and the app remembers.')}${steps}
+   <div class="card pad0" id="posmap"><div class="tw"><table><tr><th>Name in ${h(posName(sys))}</th><th>Stox dish</th></tr>${POS_ITEMS.map(it=>{const v=mv(it),chk=need(it);
+     return`<tr><td style="width:34%"><span class="mono b">${h(it.n)}</span><div class="sm muted">${plural(it.w*7,'sold last week','sold last week')}</div></td><td><div class="row" style="flex-wrap:wrap"><select class="inp" style="flex:1;min-width:180px;max-width:360px" id="pm-${it.k}" aria-label="Stox dish for ${h(it.n)}" data-m="map.${it.k}" data-r><option value="">Do not track (no recipe)</option>${S.menu.map(m=>`<option value="${m.id}" ${v===m.id?'selected':''}>${h(m.name)}</option>`).join('')}</select>
       ${it.nf?pill('Not food, left out'):chk?`<button class="btn sm" ${A('posOk',{k:it.k})}>Match is right</button>`:v?pill('Matched','ok'):pill('Not tracked')}</div></td></tr>`}).join('')}</table></div></div>
    <div class="foot"><button class="btn sec" ${A('set',{k:'step',v:2})}>${ic('back')}Back</button><div class="rt">${left?`<span class="why">Check ${plural(left,'match','matches')} the app was not sure about.</span>`:''}<button class="btn big" id="posfinish" ${A('posFinish')} ${left?'disabled':''}>Save and connect</button></div></div>`}};
 function posConnected(){const P=S.pos,last=P.syncs[P.syncs.length-1],n=POS_ITEMS.filter(it=>posMatch(it)).length;
   return `${pageHead('Plan and POS link',pill('Connected to '+posName(P.sys)+' (simulated)','ok'),`<button class="btn" id="possync" ${A('posSyncDo')}>${ic('link')}Sync sales now</button><button class="btn sec" ${A('posEdit')}>Change matches</button>`)}
-  <div class="grid g3"><div class="kpi"><span class="l">Your plan</span><span class="v" style="font-size:20px">GoodBite Stock</span><span class="s">RM39 to RM59 a month. The GoodBite till is hidden.</span></div>
+  <div class="grid g3"><div class="kpi"><span class="l">Your plan</span><span class="v" style="font-size:20px">Stox Stock</span><span class="s">RM49 a month. The Stox till is hidden.</span></div>
    <div class="kpi"><span class="l">Last sync</span><span class="v" style="font-size:20px">${last?fT(last.dt):'Not yet'}</span><span class="s">${last?fD(last.dt):'Press "Sync sales now"'}</span></div>
    <div class="kpi"><span class="l">Menu items matched</span><span class="v">${n} of ${POS_ITEMS.length}</span><span class="s">The rest are not tracked</span></div></div>
   <div class="card pad0"><h2 style="padding:14px 16px 8px">Sales synced from ${h(posName(P.sys))}</h2><div class="tw">${P.syncs.length?`<table><tr><th>When</th><th class="r">Dishes sold</th><th class="r hide-s">Sales before tax</th><th class="r">Ingredients cost</th><th class="r">Food cost</th></tr>${P.syncs.slice().reverse().map(y=>`<tr><td>${fDT(y.dt)}</td><td class="r">${y.lines.reduce((a,l)=>a+l.qty,0)}</td><td class="r hide-s">${rm(y.net)}</td><td class="r">${rm(y.cogs)}</td><td class="r">${y.net?(y.cogs/y.net*100).toFixed(1):'0.0'}%</td></tr>`).join('')}</table>`:empty('No sales synced yet','Press "Sync sales now" to bring in the sales from your POS.',`<button class="btn" ${A('posSyncDo')}>Sync sales now</button>`)}</div></div>
-  <div class="foot"><button class="btn red" ${A('posDisconnect')}>Disconnect and use the GoodBite till</button></div>`}
+  <div class="foot"><button class="btn red" ${A('posDisconnect')}>Disconnect and use the Stox till</button></div>`}
 /* bring in sales from the POS: each matched dish takes its recipe off the stock. The sales are sample data. */
 function posSync(){const P=S.pos,R=rng(7919+P.syncs.length*31),T=today(),lines=[],skipped=[],used=[],uses={};let net=0;
   POS_ITEMS.forEach(it=>{const q=Math.max(0,Math.round(it.w*(0.35+R()*0.4)));if(!q)return;const d=posMatch(it),m=d&&MENU(d);if(!m){skipped.push({pos:it.n,qty:q});return}
@@ -1601,13 +1604,13 @@ function posSync(){const P=S.pos,R=rng(7919+P.syncs.length*31),T=today(),lines=[
   const y={id:uid('y'),dt:isoDT(now()),sys:P.sys,lines,skipped,used,uses,net,cogs:used.reduce((a,u)=>a+u.cost,0)};P.syncs.push(y);if(P.syncs.length>40)P.syncs.shift();save();return y}
 function posUnsync(y){giveBack(y.used);const u=S.use[y.dt.slice(0,10)];if(u)Object.keys(y.uses).forEach(g=>{u[g]=r3(Math.max(0,(u[g]||0)-y.uses[g]))});S.pos.syncs=S.pos.syncs.filter(x=>x!==y)}
 Object.assign(ACT,{
- posUseTill:()=>{S.settings.plan='allinone';S.setup.pos=true;save();root('home');toast('Using the GoodBite till (All-in-One). Step 2 is done.')},
+ posUseTill:()=>{S.settings.plan='allinone';S.setup.pos=true;save();root('home');toast('Using the Stox till (All-in-One). Step 2 is done.')},
  posAllow:()=>{const c=cur().p;c.step=3;c.ok={};render();toast('Access allowed (simulated). Now match your menu items.')},
  posOk:p=>{const c=cur().p;c.ok=c.ok||{};c.ok[p.k]=true;render(true)},
  posFinish:()=>{const c=cur().p;POS_ITEMS.forEach(it=>{const v=(c.map||{})[it.k];S.pos.map[it.k]=v!=null?v:(it.nf?'':it.d)});S.pos.sys=c.sys||S.pos.sys;S.pos.connected=true;S.settings.plan='stock';S.setup.pos=true;if(S.role==='cashier')S.role='owner';save();stack=[{s:'settings',p:{}},{s:'posLink',p:{}}];render();toast('Connected to '+posName(S.pos.sys)+' (simulated). Press "Sync sales now" to bring in sales.')},
  posEdit:()=>go('posLink',{edit:1,step:3,sys:S.pos.sys,map:{...S.pos.map},ok:{}}),
  posSyncDo:()=>{const y=posSync();go('posSyncDone',{id:y.id});toast(plural(y.lines.reduce((a,l)=>a+l.qty,0),'dish','dishes')+' synced from '+posName(S.pos.sys),()=>{posUnsync(y);root('home')})},
- posDisconnect:()=>confirmBox({title:'Disconnect '+posName(S.pos.sys)+'?',body:'GoodBite stops reading sales from your POS. The GoodBite till comes back on the menu. Sales already synced stay in the reports.',ok:'Yes, disconnect',no:'No, stay connected',danger:true,yes:()=>{S.pos.connected=false;S.settings.plan='allinone';save();root('settings');toast('Disconnected. The GoodBite till is back on the menu.')}})
+ posDisconnect:()=>confirmBox({title:'Disconnect '+posName(S.pos.sys)+'?',body:'Stox stops reading sales from your POS. The Stox till comes back on the menu. Sales already synced stay in the reports.',ok:'Yes, disconnect',no:'No, stay connected',danger:true,yes:()=>{S.pos.connected=false;S.settings.plan='allinone';save();root('settings');toast('Disconnected. The Stox till is back on the menu.')}})
 });
 SCREENS.posSyncDone={sec:'settings',title:()=>'Sales synced',html(p){const y=S.pos.syncs.find(x=>x.id===p.id);if(!y)return empty('This sync was undone','',`<button class="btn" ${A('root',{s:'home'})}>Back to Home</button>`);const n=y.lines.reduce((a,l)=>a+l.qty,0),ings=Object.keys(y.uses);
   return `<div class="card donebox"><span class="tick">${ic('check')}</span><h1>Sales synced</h1><p>${plural(n,'dish','dishes')} sold on ${h(posName(y.sys))} since the last sync. Stock was reduced for ${plural(ings.length,'ingredient')}, oldest batches first.</p>
@@ -1782,7 +1785,7 @@ const NOTES_NO=[
  'That a supplier\'s e-invoice is your proof of the expense is how LHDN describes it in general material, but the exact wording was not re-checked today.'];
 SCREENS.notes={sec:'invoices',einv:true,title:()=>'E-invoice notes',help:['This page lists the LHDN rules this demo was built around.','Each point has a link to the official page it came from.','The second list is what could not be confirmed. Treat those as open questions.'],
  html(){return `${pageHead('E-invoice notes','What was checked against official sources on 7 October 2026, and what was not.')}
-  <div class="card" style="background:var(--amber-s)"><b>Different from the original brief:</b> small outlets are mostly exempt. A cafe with yearly turnover under RM3 million does not have to issue e-invoices under the current guideline, and one under RM1.5 million does not charge SST. So for GoodBite's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today.</div>
+  <div class="card" style="background:var(--amber-s)"><b>Different from the original brief:</b> small outlets are mostly exempt. A cafe with yearly turnover under RM3 million does not have to issue e-invoices under the current guideline, and one under RM1.5 million does not charge SST. So for Stox's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today.</div>
   <div class="card"><h2>Checked against official sources</h2><div style="display:flex;flex-direction:column;gap:14px">${NOTES_OK.map(([t,b,s])=>`<div><b>${t}</b><p>${b}</p><p class="sm">Source: ${src(...s)}</p></div>`).join('')}</div></div>
   <div class="card"><h2>Not confirmed</h2><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px">${NOTES_NO.map(x=>`<li>${x}</li>`).join('')}</ul><p class="sm" style="margin-top:10px">Also consulted: ${src('t')}</p></div>
   <div class="card"><h2>What a real product would still need</h2><p>Registration with MyInvois for API access, a digital certificate to sign each e-invoice, a real connection that sends the document and reads back LHDN's answer, and secure storage of every e-invoice. None of that exists in this demo.</p><div style="margin-top:10px"><button class="btn sec" ${A('go',{s:'limits'})}>See the full limitations list</button></div></div>`}};
@@ -1792,7 +1795,7 @@ SCREENS.settings={sec:'settings',title:()=>'Settings',help:['Each card opens one
  html(){const card=(icn,t,d,a,p)=>`<button class="alert" ${A(a,p)}><span class="ai" style="background:var(--green-s);color:var(--green-d)">${ic(icn)}</span><span class="grow" style="text-align:left">${t}<small>${d}</small></span><span class="go">Open${ic('chev')}</span></button>`;
   return `${pageHead('Settings','Set the app up for your outlet.')}<div class="grid g2">
    ${card('home','Business details','Name, address, TIN and registration numbers used on receipts and e-invoices.','go',{s:'setBiz'})}${card('sliders','Tax, service charge and rounding','The percentages the till adds to each bill.','go',{s:'setTax'})}
-   ${card('link','Plan and POS link',S.pos.connected?'Connected to '+posName(S.pos.sys)+' (simulated). Sync sales or change matches.':'Keep your own POS (GoodBite Stock) or use the GoodBite till (All-in-One).','go',{s:'posLink'})}${card('bag','Menu and recipes','Add, change or delete dishes, their prices and recipes.','go',{s:'menuList'})}
+   ${card('link','Plan and POS link',S.pos.connected?'Connected to '+posName(S.pos.sys)+' (simulated). Sync sales or change matches.':'Keep your own POS (Stox Stock) or use the Stox till (All-in-One).','go',{s:'posLink'})}${card('bag','Menu and recipes','Add, change or delete dishes, their prices and recipes.','go',{s:'menuList'})}
    ${card('clock','Alerts and targets','When to warn about food close to expiry, and your food cost target.','go',{s:'setAlerts'})}${S.setup.hide?card('check','Set-up steps','Show the 3 set-up steps on Home again.','setupShow'):''}
    ${card('file','E-invoice notes','The LHDN rules this demo follows, with sources.','go',{s:'notes'})}${card('alert','Limitations','What is pretend in this demo and what a real product still needs.','go',{s:'limits'})}
    ${card('user','Language · Bahasa · 语言','English, Bahasa Melayu or Chinese for the whole app.','go',{s:'setLang'})}
@@ -1864,7 +1867,7 @@ Object.assign(ACT,{
 });
 const LIMITS=[['Pretend (simulated)',['The POS link. Feed Me, Coox, Loyverse and StoreHub are not really connected. "Sync sales now" brings in sample sales, and no password is ever asked for.','Scanning and shelf photos. The Scan button shows how reading a delivery order, a receipt, a barcode, a market photo or a shelf photo would work, using sample pictures. Nothing is read from a real camera.','Suggested expiry dates. They come from typical shelf lives, not from reading the pack. Staff must check each one.','E-invoices are not sent to LHDN MyInvois. The statuses, unique IDs and QR pictures are made up, and nothing is digitally signed.','Payments. Cash, card, DuitNow QR and e-wallet buttons do not move money or talk to any bank or terminal.','Sending orders to suppliers. Nothing is emailed or messaged.','WhatsApp chat and video call help. Nothing is sent and no call is booked.','Staff roles. There are no passwords, anyone can switch role.']],
  ['Estimated or made up',['Every price, cost, weight and sales figure. The 2 months of history are generated by the app.','The kilograms per piece used to turn waste into kg.','Suggested order amounts, "may run out today" and "dishes to push today". They use the last 14 days of use, which is a rough guide.','The usage check. It adds up past count differences, and the 10% normal range is our own rule of thumb.','Value at risk and the suggested actions in the expiring-soon report.','The food cost target choices and the tax rates in Settings are common examples, not advice.']],
- ['What a real product would still need',['A server and database, so data is shared between devices and not stuck in one browser.','Real links to each POS, using the access each POS company offers to partners. We have not checked yet which ones allow this.','Real text and photo recognition for delivery orders, receipts, market photos and shelf photos, and reading the dates printed on packs.','Real logins and permissions for each staff member.','A way to work when the internet is down and sync later.','MyInvois API registration and a licensed payment partner, if the GoodBite till is kept.','Checks by an accountant on tax, rounding and e-invoice rules.','A real pilot. Interviews with 5 restaurant owners shaped this version, but none has used it day to day yet.']]];
+ ['What a real product would still need',['A server and database, so data is shared between devices and not stuck in one browser.','Real links to each POS, using the access each POS company offers to partners. We have not checked yet which ones allow this.','Real text and photo recognition for delivery orders, receipts, market photos and shelf photos, and reading the dates printed on packs.','Real logins and permissions for each staff member.','A way to work when the internet is down and sync later.','MyInvois API registration and a licensed payment partner, if the Stox till is kept.','Checks by an accountant on tax, rounding and e-invoice rules.','A real pilot. Interviews with 5 restaurant owners shaped this version, but none has used it day to day yet.']]];
 SCREENS.limits={sec:'settings',title:()=>'Limitations',help:['This page is the honest list of what the demo does not really do.','Use it when someone asks "is this real?" during a presentation.','The same list is in the README file.'],
  html(){return `${pageHead('Limitations','What is pretend, what is estimated, and what a real product would still need.')}${LIMITS.map(([t,ls])=>`<div class="card"><h2>${t}</h2><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">${ls.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}`}};
 
@@ -2056,7 +2059,7 @@ Count your stock with a photo || Kira stok anda dengan gambar || 用照片盘点
 Take a photo of each shelf. The app fills in the amounts for you to check. || Ambil gambar setiap rak. Aplikasi mengisi jumlahnya untuk anda semak. || 给每个货架拍照。应用会填好数量，由您核对。
 Start || Mula || 开始
 Done || Selesai || 完成
-Connect your POS, or use the GoodBite till || Sambungkan POS anda, atau guna kaunter GoodBite || 连接您的 POS，或使用 GoodBite 收银机
+Connect your POS, or use the Stox till || Sambungkan POS anda, atau guna kaunter Stox || 连接您的 POS，或使用 Stox 收银机
 Then every sale takes its ingredients off the stock by itself. || Selepas itu setiap jualan menolak bahannya daripada stok dengan sendiri. || 之后每笔销售都会自动从库存扣除所用食材。
 Check the recipes of your top 5 dishes || Semak resipi 5 hidangan paling laris || 核对 5 道最畅销菜的食谱
 Start with what sells most. Add the rest later. || Mula dengan yang paling laris. Tambah yang lain kemudian. || 从卖得最多的开始，其余的以后再加。
@@ -2081,8 +2084,8 @@ Sync now || Selaraskan sekarang || 立即同步
 Today's specials: {x} || Menu istimewa hari ini: {x} || 今日特餐：{x}
 Suggest these to customers. They have a star on the till. || Cadangkan hidangan ini kepada pelanggan. Ia ada bintang di kaunter. || 向顾客推荐这些菜，它们在收银机上有星号。
 Open the till || Buka kaunter || 打开收银机
-A real product would open WhatsApp with the GoodBite support number here, so you can ask a question in English, BM or 中文. || Produk sebenar akan membuka WhatsApp dengan nombor sokongan GoodBite di sini, supaya anda boleh bertanya dalam English, BM atau 中文. || 真正的产品会在这里打开 WhatsApp 并显示 GoodBite 客服号码，您可用英语、马来语或中文提问。
-Pick a 15-minute slot and someone from GoodBite walks you through connecting your POS on a video call. No visit is needed. || Pilih slot 15 minit dan pasukan GoodBite akan membimbing anda menyambungkan POS melalui panggilan video. Tiada lawatan diperlukan. || 选一个 15 分钟的时段，GoodBite 人员会通过视频通话教您连接 POS，无需上门。
+A real product would open WhatsApp with the Stox support number here, so you can ask a question in English, BM or 中文. || Produk sebenar akan membuka WhatsApp dengan nombor sokongan Stox di sini, supaya anda boleh bertanya dalam English, BM atau 中文. || 真正的产品会在这里打开 WhatsApp 并显示 Stox 客服号码，您可用英语、马来语或中文提问。
+Pick a 15-minute slot and someone from Stox walks you through connecting your POS on a video call. No visit is needed. || Pilih slot 15 minit dan pasukan Stox akan membimbing anda menyambungkan POS melalui panggilan video. Tiada lawatan diperlukan. || 选一个 15 分钟的时段，Stox 人员会通过视频通话教您连接 POS，无需上门。
 Simulated in this demo. Nothing is sent and no call is booked. || Simulasi dalam demo ini. Tiada apa-apa dihantar dan tiada panggilan ditempah. || 本演示为模拟，不会发送任何信息，也不会预约通话。
 Set-up steps hidden. Open them again from Settings. || Langkah persediaan disembunyikan. Buka semula dari Tetapan. || 设置步骤已隐藏，可在设置中重新打开。
 Set-up steps || Langkah persediaan || 设置步骤
@@ -2241,20 +2244,20 @@ Pick your POS || Pilih POS anda || 选择您的 POS
 Allow access || Benarkan akses || 允许访问
 Match menu items || Padankan item menu || 匹配菜单品项
 I already have a POS || Saya sudah ada POS || 我已经有 POS
-GoodBite Stock, RM39 to RM59 a month. Keep your POS. GoodBite reads its sales and takes the ingredients off the stock. || GoodBite Stock, RM39 hingga RM59 sebulan. Kekalkan POS anda. GoodBite membaca jualannya dan menolak bahan daripada stok. || GoodBite Stock，每月 RM39 至 RM59。保留您的 POS，GoodBite 读取它的销售并扣除食材库存。
+Stox Stock, RM49 a month. Keep your POS. Stox reads its sales and takes the ingredients off the stock. || Stox Stock, RM49 sebulan. Kekalkan POS anda. Stox membaca jualannya dan menolak bahan daripada stok. || Stox Stock，每月 RM49。保留您的 POS，Stox 读取它的销售并扣除食材库存。
 Next: allow access || Seterusnya: benarkan akses || 下一步：允许访问
 Pick your POS first. || Pilih POS anda dahulu. || 请先选择您的 POS。
 I want a new till || Saya mahu kaunter baharu || 我想要新的收银机
-GoodBite All-in-One, RM79 to RM99 a month. Use the GoodBite till on a tablet. Sales take the stock off straight away. || GoodBite All-in-One, RM79 hingga RM99 sebulan. Guna kaunter GoodBite pada tablet. Jualan terus menolak stok. || GoodBite All-in-One，每月 RM79 至 RM99。在平板上使用 GoodBite 收银机，销售会马上扣库存。
-Use the GoodBite till || Guna kaunter GoodBite || 使用 GoodBite 收银机
+Stox All-in-One, RM79 a month. Use the Stox till on a tablet. Sales take the stock off straight away. || Stox All-in-One, RM79 sebulan. Guna kaunter Stox pada tablet. Jualan terus menolak stok. || Stox All-in-One，每月 RM79。在平板上使用 Stox 收银机，销售会马上扣库存。
+Use the Stox till || Guna kaunter Stox || 使用 Stox 收银机
 This is your plan now || Ini pelan anda sekarang || 这是您目前的方案
-Already have a POS? Connect it, and every sale it records takes the recipe off GoodBite's stock. || Sudah ada POS? Sambungkannya, dan setiap jualan yang direkodnya menolak resipi daripada stok GoodBite. || 已经有 POS？连接后，它记录的每笔销售都会按食谱扣除 GoodBite 的库存。
-Step 3 matches the names your POS uses to the dishes in GoodBite. You only do this once. || Langkah 3 memadankan nama yang digunakan POS anda dengan hidangan dalam GoodBite. Anda hanya perlu buat sekali. || 第 3 步把 POS 用的名称与 GoodBite 的菜对应起来，只需做一次。
-No password is typed into GoodBite. In a real product you would log in on your POS's own page. || Tiada kata laluan ditaip ke dalam GoodBite. Dalam produk sebenar anda log masuk di halaman POS anda sendiri. || 不需要在 GoodBite 输入密码。真正的产品会让您在 POS 自己的页面登录。
-Allow GoodBite to read your sales || Benarkan GoodBite membaca jualan anda || 允许 GoodBite 读取您的销售
+Already have a POS? Connect it, and every sale it records takes the recipe off Stox's stock. || Sudah ada POS? Sambungkannya, dan setiap jualan yang direkodnya menolak resipi daripada stok Stox. || 已经有 POS？连接后，它记录的每笔销售都会按食谱扣除 Stox 的库存。
+Step 3 matches the names your POS uses to the dishes in Stox. You only do this once. || Langkah 3 memadankan nama yang digunakan POS anda dengan hidangan dalam Stox. Anda hanya perlu buat sekali. || 第 3 步把 POS 用的名称与 Stox 的菜对应起来，只需做一次。
+No password is typed into Stox. In a real product you would log in on your POS's own page. || Tiada kata laluan ditaip ke dalam Stox. Dalam produk sebenar anda log masuk di halaman POS anda sendiri. || 不需要在 Stox 输入密码。真正的产品会让您在 POS 自己的页面登录。
+Allow Stox to read your sales || Benarkan Stox membaca jualan anda || 允许 Stox 读取您的销售
 In a real product, this button opens {x}'s own log-in page. You log in there and press "Allow". || Dalam produk sebenar, butang ini membuka halaman log masuk {x} sendiri. Anda log masuk di sana dan tekan "Benarkan". || 在真正的产品中，这个按钮会打开 {x} 自己的登录页面，您在那里登录并按“允许”。
-GoodBite can read your menu items and the sales of each item. || GoodBite boleh membaca item menu anda dan jualan setiap item. || GoodBite 可以读取您的菜单品项和每个品项的销售。
-GoodBite cannot change prices, see card numbers or move money. || GoodBite tidak boleh menukar harga, melihat nombor kad atau memindahkan wang. || GoodBite 不能修改价格、查看卡号或转账。
+Stox can read your menu items and the sales of each item. || Stox boleh membaca item menu anda dan jualan setiap item. || Stox 可以读取您的菜单品项和每个品项的销售。
+Stox cannot change prices, see card numbers or move money. || Stox tidak boleh menukar harga, melihat nombor kad atau memindahkan wang. || Stox 不能修改价格、查看卡号或转账。
 You can disconnect at any time. || Anda boleh putuskan sambungan pada bila-bila masa. || 您可以随时断开连接。
 Allow access (simulated) || Benarkan akses (simulasi) || 允许访问（模拟）
 Nothing is connected in this demo, and no password is asked for. || Tiada apa-apa disambungkan dalam demo ini, dan tiada kata laluan diminta. || 本演示不会连接任何系统，也不会要求密码。
@@ -2263,12 +2266,12 @@ Export last week's sales from your POS as a spreadsheet (CSV) file, then upload 
 Use the sample sales file (simulated) || Guna fail jualan contoh (simulasi) || 使用示例销售文件（模拟）
 Access allowed (simulated). Now match your menu items. || Akses dibenarkan (simulasi). Sekarang padankan item menu anda. || 已允许访问（模拟），现在匹配您的菜单品项。
 Match your menu items || Padankan item menu anda || 匹配您的菜单品项
-Your POS calls some dishes by other names. Match each one to a GoodBite dish once, and the app remembers. || POS anda memanggil sesetengah hidangan dengan nama lain. Padankan setiap satu dengan hidangan GoodBite sekali, dan aplikasi akan ingat. || 您的 POS 对有些菜用了别的名称。把每一个与 GoodBite 的菜对应一次，应用就会记住。
+Your POS calls some dishes by other names. Match each one to a Stox dish once, and the app remembers. || POS anda memanggil sesetengah hidangan dengan nama lain. Padankan setiap satu dengan hidangan Stox sekali, dan aplikasi akan ingat. || 您的 POS 对有些菜用了别的名称。把每一个与 Stox 的菜对应一次，应用就会记住。
 Name in {x} || Nama dalam {x} || 在 {x} 中的名称
 Sold last week || Dijual minggu lepas || 上周售出
 {n} sold last week || {n} dijual minggu lepas || 上周售出 {n}
-GoodBite dish || Hidangan GoodBite || GoodBite 菜品
-GoodBite dish for {x} || Hidangan GoodBite untuk {x} || {x} 对应的 GoodBite 菜品
+Stox dish || Hidangan Stox || Stox 菜品
+Stox dish for {x} || Hidangan Stox untuk {x} || {x} 对应的 Stox 菜品
 Do not track (no recipe) || Jangan jejak (tiada resipi) || 不追踪（无食谱）
 Not food, left out || Bukan makanan, dikecualikan || 非食物，已排除
 Match is right || Padanan betul || 匹配正确
@@ -2283,7 +2286,7 @@ Connected to {x} (simulated). Press "Sync sales now" to bring in sales. || Disam
 Sync sales now || Selaraskan jualan sekarang || 立即同步销售
 Change matches || Tukar padanan || 修改匹配
 Your plan || Pelan anda || 您的方案
-RM39 to RM59 a month. The GoodBite till is hidden. || RM39 hingga RM59 sebulan. Kaunter GoodBite disembunyikan. || 每月 RM39 至 RM59。GoodBite 收银机已隐藏。
+RM49 a month. The Stox till is hidden. || RM49 sebulan. Kaunter Stox disembunyikan. || 每月 RM49。Stox 收银机已隐藏。
 Last sync || Penyelarasan terakhir || 上次同步
 Not yet || Belum lagi || 还没有
 Press "Sync sales now" || Tekan "Selaraskan jualan sekarang" || 按“立即同步销售”
@@ -2295,13 +2298,13 @@ Sales before tax || Jualan sebelum cukai || 税前销售
 Ingredients cost || Kos bahan || 食材成本
 No sales synced yet || Belum ada jualan diselaraskan || 还没有同步销售
 Press "Sync sales now" to bring in the sales from your POS. || Tekan "Selaraskan jualan sekarang" untuk membawa masuk jualan dari POS anda. || 按“立即同步销售”导入 POS 的销售。
-Disconnect and use the GoodBite till || Putuskan sambungan dan guna kaunter GoodBite || 断开连接并使用 GoodBite 收银机
+Disconnect and use the Stox till || Putuskan sambungan dan guna kaunter Stox || 断开连接并使用 Stox 收银机
 Disconnect {x}? || Putuskan sambungan {x}? || 断开 {x}？
-GoodBite stops reading sales from your POS. The GoodBite till comes back on the menu. Sales already synced stay in the reports. || GoodBite berhenti membaca jualan dari POS anda. Kaunter GoodBite kembali dalam menu. Jualan yang sudah diselaraskan kekal dalam laporan. || GoodBite 会停止读取 POS 的销售，GoodBite 收银机会回到菜单上，已同步的销售仍保留在报告中。
+Stox stops reading sales from your POS. The Stox till comes back on the menu. Sales already synced stay in the reports. || Stox berhenti membaca jualan dari POS anda. Kaunter Stox kembali dalam menu. Jualan yang sudah diselaraskan kekal dalam laporan. || Stox 会停止读取 POS 的销售，Stox 收银机会回到菜单上，已同步的销售仍保留在报告中。
 Yes, disconnect || Ya, putuskan sambungan || 是的，断开
 No, stay connected || Tidak, kekal bersambung || 不，保持连接
-Disconnected. The GoodBite till is back on the menu. || Sambungan diputuskan. Kaunter GoodBite kembali dalam menu. || 已断开，GoodBite 收银机已回到菜单上。
-Using the GoodBite till (All-in-One). Step 2 is done. || Menggunakan kaunter GoodBite (All-in-One). Langkah 2 selesai. || 使用 GoodBite 收银机（All-in-One），第 2 步完成。
+Disconnected. The Stox till is back on the menu. || Sambungan diputuskan. Kaunter Stox kembali dalam menu. || 已断开，Stox 收银机已回到菜单上。
+Using the Stox till (All-in-One). Step 2 is done. || Menggunakan kaunter Stox (All-in-One). Langkah 2 selesai. || 使用 Stox 收银机（All-in-One），第 2 步完成。
 {n} dishes synced from {x} || {n} hidangan diselaraskan dari {x} || 已从 {x} 同步 {n} 道菜
 1 dish synced from {x} || 1 hidangan diselaraskan dari {x} || 已从 {x} 同步 1 道菜
 Sales synced || Jualan diselaraskan || 销售已同步
@@ -2318,7 +2321,7 @@ Many small restaurants aim for about 30% to 40%. The owners we interviewed work 
 A bigger number gives you more time to use the food in a special. || Nombor lebih besar memberi anda lebih masa untuk menggunakan makanan dalam menu istimewa. || 数字越大，您就有越多时间把食材用在特餐里。
 Set the food cost you aim for. Home and the weekly summary compare each week with it. || Tetapkan kos makanan yang anda sasarkan. Laman Utama dan ringkasan mingguan membandingkan setiap minggu dengannya. || 设定您的食材成本目标，主页和每周总结会拿每周的数字与它对比。
 Saved. Food cost target is now {n}%. || Disimpan. Sasaran kos makanan kini {n}%. || 已保存，食材成本目标现在是 {n}%。
-Keep your own POS (GoodBite Stock) or use the GoodBite till (All-in-One). || Kekalkan POS anda sendiri (GoodBite Stock) atau guna kaunter GoodBite (All-in-One). || 保留自己的 POS（GoodBite Stock）或使用 GoodBite 收银机（All-in-One）。
+Keep your own POS (Stox Stock) or use the Stox till (All-in-One). || Kekalkan POS anda sendiri (Stox Stock) atau guna kaunter Stox (All-in-One). || 保留自己的 POS（Stox Stock）或使用 Stox 收银机（All-in-One）。
 When to warn about food close to expiry, and your food cost target. || Bila perlu beri amaran tentang makanan yang hampir luput, dan sasaran kos makanan anda. || 何时提醒快过期的食材，以及您的食材成本目标。
 Puts back the made-up restaurant: {n} dishes, {n2} ingredients, {n3} suppliers and 2 months of sales and waste. Everything you added or changed in this browser is erased. || Memulihkan restoran rekaan: {n} hidangan, {n2} bahan, {n3} pembekal dan 2 bulan jualan dan pembaziran. Semua yang anda tambah atau ubah dalam pelayar ini dipadam. || 恢复虚构的餐馆：{n} 道菜、{n2} 种食材、{n3} 家供应商，以及 2 个月的销售和浪费记录。您在这个浏览器中添加或修改的内容都会被清除。
 The POS link. Feed Me, Coox, Loyverse and StoreHub are not really connected. "Sync sales now" brings in sample sales, and no password is ever asked for. || Pautan POS. Feed Me, Coox, Loyverse dan StoreHub tidak benar-benar disambungkan. "Selaraskan jualan sekarang" membawa masuk jualan contoh, dan tiada kata laluan pernah diminta. || POS 连接。Feed Me、Coox、Loyverse 和 StoreHub 并没有真正连接。“立即同步销售”导入的是示例销售，也从不要求密码。
@@ -2331,9 +2334,9 @@ Value at risk and the suggested actions in the expiring-soon report. || Nilai be
 The food cost target choices and the tax rates in Settings are common examples, not advice. || Pilihan sasaran kos makanan dan kadar cukai dalam Tetapan ialah contoh biasa, bukan nasihat. || 设置中的食材成本目标选项和税率只是常见例子，不是建议。
 Real links to each POS, using the access each POS company offers to partners. We have not checked yet which ones allow this. || Pautan sebenar ke setiap POS, menggunakan akses yang ditawarkan setiap syarikat POS kepada rakan kongsi. Kami belum menyemak yang mana membenarkannya. || 与每个 POS 的真正连接，需使用各 POS 公司提供给合作伙伴的接口。我们还没查清哪些允许这样做。
 Real text and photo recognition for delivery orders, receipts, market photos and shelf photos, and reading the dates printed on packs. || Pengecaman teks dan gambar sebenar untuk pesanan penghantaran, resit, gambar pasar dan gambar rak, serta membaca tarikh yang dicetak pada bungkusan. || 对送货单、收据、市场照片和货架照片进行真正的文字和图像识别，并读取包装上印的日期。
-MyInvois API registration and a licensed payment partner, if the GoodBite till is kept. || Pendaftaran API MyInvois dan rakan pembayaran berlesen, jika kaunter GoodBite dikekalkan. || 如果保留 GoodBite 收银机，就需要注册 MyInvois API 并找持牌支付伙伴。
+MyInvois API registration and a licensed payment partner, if the Stox till is kept. || Pendaftaran API MyInvois dan rakan pembayaran berlesen, jika kaunter Stox dikekalkan. || 如果保留 Stox 收银机，就需要注册 MyInvois API 并找持牌支付伙伴。
 A real pilot. Interviews with 5 restaurant owners shaped this version, but none has used it day to day yet. || Perintis sebenar. Temu bual dengan 5 pemilik restoran membentuk versi ini, tetapi belum ada yang menggunakannya setiap hari. || 真正的试用。这个版本参考了 5 位餐馆老板的访谈，但还没有人每天实际使用过。
-One place for a small restaurant to track stock and expiry dates, keep food cost on target, order from suppliers and log waste. Use your own POS, or the GoodBite till. || Satu tempat untuk restoran kecil menjejak stok dan tarikh luput, mengekalkan kos makanan pada sasaran, membuat pesanan daripada pembekal dan merekod pembaziran. Guna POS anda sendiri, atau kaunter GoodBite. || 小餐馆的一站式工具：追踪库存和有效期、把食材成本控制在目标内、向供应商订货、记录浪费。可用自己的 POS，也可用 GoodBite 收银机。
+One place for a small restaurant to track stock and expiry dates, keep food cost on target, order from suppliers and log waste. Use your own POS, or the Stox till. || Satu tempat untuk restoran kecil menjejak stok dan tarikh luput, mengekalkan kos makanan pada sasaran, membuat pesanan daripada pembekal dan merekod pembaziran. Guna POS anda sendiri, atau kaunter Stox. || 小餐馆的一站式工具：追踪库存和有效期、把食材成本控制在目标内、向供应商订货、记录浪费。可用自己的 POS，也可用 Stox 收银机。
 These start the things you do most: make a sale, scan a delivery, log waste, count stock. || Ini memulakan tugas yang paling kerap anda buat: membuat jualan, mengimbas penghantaran, merekod pembaziran, mengira stok. || 这些按钮用来开始最常做的事：开单、扫描送货、记录浪费、盘点库存。
 Say: "This is what the owner sees first." The 3 set-up steps are at the top. The To do cards below each open the fix. Then press Next. || Katakan: "Inilah yang pemilik lihat dahulu." 3 langkah persediaan di bahagian atas. Setiap kad Tugasan di bawah membuka cara membetulkannya. Kemudian tekan Seterusnya. || 说：“这是老板最先看到的。”3 个设置步骤在最上面，下面每张待办卡片都能直接打开处理页面。然后按下一步。
 These dishes use food that will probably be left over soon, such as lala (clams) and chicken. "Add to today's specials" puts a star on the till. Below, "May run out today" shows what to order or mark sold out. || Hidangan ini menggunakan makanan yang mungkin berbaki tidak lama lagi, seperti lala dan ayam. "Tambah ke menu istimewa hari ini" meletakkan bintang di kaunter. Di bawah, "Mungkin habis hari ini" menunjukkan apa perlu dipesan atau ditanda habis dijual. || 这些菜会用到快要剩下的食材，例如啦啦和鸡肉。“加入今日特餐”会在收银机上加星号。下面的“今天可能用完”显示要订什么、或把什么标为售完。
@@ -2348,7 +2351,7 @@ The usage check || Semakan penggunaan || 用量核对
 Back as Owner. This compares what the recipes used with the stock counts. Lala and prawns keep coming up short, so the owner checks portion sizes with the cook. Differences under 10% are normal, because portions vary. || Kembali sebagai Pemilik. Ini membandingkan apa yang resipi gunakan dengan kiraan stok. Lala dan udang asyik kurang, jadi pemilik menyemak saiz hidangan dengan tukang masak. Perbezaan bawah 10% adalah biasa, kerana saiz hidangan berbeza. || 回到老板身份。这里把食谱用量与盘点结果相比。啦啦和虾一直短缺，所以老板与厨师核对份量。差异低于 10% 属正常，因为份量本来就有差别。
 The expiring-soon report shows the value at risk and a suggested action for each batch: use first, today's special, discount or staff meal. Print it for the kitchen, or copy it into a chat. || Laporan hampir luput menunjukkan nilai berisiko dan tindakan dicadangkan untuk setiap kelompok: guna dahulu, menu istimewa hari ini, diskaun atau makanan pekerja. Cetak untuk dapur, atau salin ke dalam sembang. || 即将过期报告显示每个批次的风险价值和建议做法：先用、今日特餐、打折或员工餐。可以打印给厨房，或复制到聊天群。
 Already have a POS? || Sudah ada POS? || 已经有 POS？
-Restaurants that keep their own POS, such as Feed Me, connect it here instead of using the GoodBite till. Each POS dish name is matched to a GoodBite dish once. After that, every sale on the POS takes the recipe off the stock. Simulated. || Restoran yang mengekalkan POS sendiri, seperti Feed Me, menyambungkannya di sini dan tidak menggunakan kaunter GoodBite. Setiap nama hidangan POS dipadankan dengan hidangan GoodBite sekali. Selepas itu, setiap jualan di POS menolak resipi daripada stok. Simulasi. || 保留自己 POS（例如 Feed Me）的餐馆在这里连接，不用 GoodBite 收银机。每个 POS 菜名只需与 GoodBite 的菜对应一次，之后 POS 上的每笔销售都会按食谱扣库存。模拟。
+Restaurants that keep their own POS, such as Feed Me, connect it here instead of using the Stox till. Each POS dish name is matched to a Stox dish once. After that, every sale on the POS takes the recipe off the stock. Simulated. || Restoran yang mengekalkan POS sendiri, seperti Feed Me, menyambungkannya di sini dan tidak menggunakan kaunter Stox. Setiap nama hidangan POS dipadankan dengan hidangan Stox sekali. Selepas itu, setiap jualan di POS menolak resipi daripada stok. Simulasi. || 保留自己 POS（例如 Feed Me）的餐馆在这里连接，不用 Stox 收银机。每个 POS 菜名只需与 Stox 的菜对应一次，之后 POS 上的每笔销售都会按食谱扣库存。模拟。
 The weekly summary || Ringkasan mingguan || 每周总结
 Once a week the owner checks food cost against the target, waste, and what to look at. "Copy to share" gives a short text for the team chat. All figures are made up. || Seminggu sekali pemilik menyemak kos makanan berbanding sasaran, pembaziran, dan apa yang perlu dilihat. "Salin untuk kongsi" memberi teks ringkas untuk sembang pasukan. Semua angka adalah rekaan. || 老板每周看一次食材成本与目标的对比、浪费，以及需要留意的事。“复制分享”会生成一段简短文字发到团队群组。所有数字都是虚构的。
 Finish here: what is simulated, what is estimated, and what a real product still needs. End of the demo. || Tamatkan di sini: apa yang disimulasikan, apa yang dianggarkan, dan apa yang produk sebenar masih perlukan. Tamat demo. || 在这里结束：哪些是模拟的、哪些是估算的，以及真正的产品还需要什么。演示结束。
@@ -2722,8 +2725,8 @@ Picture {e} || Gambar {e} || 图片 {e}
 Now viewing as {r} || Kini melihat sebagai {r} || 现在以{r}身份查看
 Step {n} of {n2} || Langkah {n} daripada {n2} || 第 {n} 步，共 {n2} 步
 step {n} of {n2} || langkah {n} daripada {n2} || 第 {n} 步，共 {n2} 步
-Welcome to GoodBite for business || Selamat datang ke GoodBite untuk perniagaan || 欢迎使用 GoodBite 商家版
-🥬 Welcome to GoodBite for business || 🥬 Selamat datang ke GoodBite untuk perniagaan || 🥬 欢迎使用 GoodBite 商家版
+Welcome to Stox || Selamat datang ke Stox || 欢迎使用 Stox
+Welcome to Stox || Selamat datang ke Stox || 欢迎使用 Stox
 One place for a small cafe to sell, track stock and expiry dates, order from suppliers, log waste and prepare e-invoices. || Satu tempat untuk kafe kecil menjual, menjejak stok dan tarikh luput, memesan daripada pembekal, mencatat pembaziran dan menyediakan e-invois. || 小咖啡店可以在这一个地方销售、追踪库存和到期日、向供应商订货、记录浪费，以及准备电子发票。
 Everything here is a demo with made-up data. Nothing is sent anywhere. || Semua di sini ialah demo dengan data rekaan. Tiada apa dihantar ke mana-mana. || 这里的一切都是用虚构数据做的演示。不会发送任何东西到任何地方。
 Skip for now || Langkau dahulu || 先跳过
@@ -3921,7 +3924,7 @@ There are 4 steps, shown in the bar at the top. The green button always takes yo
 What was checked against official sources on 7 October 2026, and what was not. || Apa yang disemak dengan sumber rasmi pada 7 Oktober 2026, dan apa yang tidak. || 2026 年 10 月 7 日对照官方来源核实了哪些，哪些没有。
 Worked out from minimum stock and how much was used in the last 14 days. You can change the amounts before sending. || Dikira daripada stok minimum dan jumlah yang digunakan dalam 14 hari lepas. Anda boleh mengubah jumlah sebelum menghantar. || 根据最低库存和过去 14 天的用量算出。发送前可以修改数量。
 You can cancel it within 72 hours if something is wrong. After that you need a credit note. || Anda boleh membatalkannya dalam masa 72 jam jika ada yang salah. Selepas itu anda perlukan nota kredit. || 如果有错，可在 72 小时内取消。之后就需要开贷项通知单。
-small outlets are mostly exempt. A cafe with yearly turnover under RM3 million does not have to issue e-invoices under the current guideline, and one under RM1.5 million does not charge SST. So for GoodBite's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today. || kedai kecil kebanyakannya dikecualikan. Kafe dengan perolehan tahunan di bawah RM3 juta tidak perlu mengeluarkan e-invois di bawah garis panduan semasa, dan yang di bawah RM1.5 juta tidak mengenakan SST. Jadi bagi pelanggan sasaran GoodBite, e-invois ialah ciri "sedia apabila anda berkembang, atau apabila pelanggan syarikat meminta", bukan kewajipan undang-undang hari ini. || 小店大多可豁免。年营业额低于 RM300 万的咖啡店，按目前的指南不必开电子发票；低于 RM150 万的不收 SST。所以对 GoodBite 的目标客户来说，电子发票是“等您壮大了，或有公司客户要求时就能用”的功能，现在并不是法律上必须的。
+small outlets are mostly exempt. A cafe with yearly turnover under RM3 million does not have to issue e-invoices under the current guideline, and one under RM1.5 million does not charge SST. So for Stox's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today. || kedai kecil kebanyakannya dikecualikan. Kafe dengan perolehan tahunan di bawah RM3 juta tidak perlu mengeluarkan e-invois di bawah garis panduan semasa, dan yang di bawah RM1.5 juta tidak mengenakan SST. Jadi bagi pelanggan sasaran Stox, e-invois ialah ciri "sedia apabila anda berkembang, atau apabila pelanggan syarikat meminta", bukan kewajipan undang-undang hari ini. || 小店大多可豁免。年营业额低于 RM300 万的咖啡店，按目前的指南不必开电子发票；低于 RM150 万的不收 SST。所以对 Stox 的目标客户来说，电子发票是“等您壮大了，或有公司客户要求时就能用”的功能，现在并不是法律上必须的。
 Example: RM 20.00 of food, dine-in || Contoh: makanan RM 20.00, makan di sini || 例子：RM 20.00 的食物，堂食
 For example: 2 || Contohnya: 2 || 例如：2
 For example: INV-1234 || Contohnya: INV-1234 || 例如：INV-1234
@@ -3956,7 +3959,7 @@ Object.assign(ACT,{
  tourEnd:()=>{tourI=-1;tourDraw();S.toured=true;save()},
  welcomeSkip:()=>{closeModal();S.toured=true;save()}
 });
-function welcome(){modal(()=>`${mHead('🥬 Welcome to GoodBite for business')}<p>One place for a small restaurant to track stock and expiry dates, keep food cost on target, order from suppliers and log waste. Use your own POS, or the GoodBite till.</p><p class="muted">Everything here is a demo with made-up data. Nothing is sent anywhere.</p><div class="mf"><button class="btn sec" ${A('welcomeSkip')}>Skip for now</button><button class="btn" ${A('tourStart')}>Show me around (5 short steps)</button></div>`)}
+function welcome(){modal(()=>`${mHead('Welcome to Stox')}<p>One place for a small restaurant to track stock and expiry dates, keep food cost on target, order from suppliers and log waste. Use your own POS, or the Stox till.</p><p class="muted">Everything here is a demo with made-up data. Nothing is sent anywhere.</p><div class="mf"><button class="btn sec" ${A('welcomeSkip')}>Skip for now</button><button class="btn" ${A('tourStart')}>Show me around (5 short steps)</button></div>`)}
 addEventListener('resize',()=>{if(tourI>=0)tourDraw()});
 
 /* ---------- demo tour: walks through the 5-minute presentation ---------- */
@@ -3978,7 +3981,7 @@ const DEMO=[
  {t:'The usage check',b:'Back as Owner. This compares what the recipes used with the stock counts. Lala and prawns keep coming up short, so the owner checks portion sizes with the cook. Differences under 10% are normal, because portions vary.',sel:'#usekpi',go(){S.role='owner';stack=[{s:'stock',p:{}},{s:'usage',p:{}}]}},
  {t:'Log waste in three taps',b:'Item, amount, reason are filled in as an example. Press "Save waste log". Expired food is added to this log by itself.',sel:'#wastesave',go(){S.role='kitchen';const g=onHand('sprout')>=0.5?'sprout':(S.ingredients.find(i=>onHand(i.id)>=1)||{}).id;stack=[{s:'waste',p:{ing:g,qty:g==='sprout'?'0.5':'1',reason:'Spoiled'}}]}},
  {t:'What is about to expire, in RM',b:'The expiring-soon report shows the value at risk and a suggested action for each batch: use first, today\'s special, discount or staff meal. Print it for the kitchen, or copy it into a chat.',sel:'#exprisk',go(){S.role='owner';stack=[{s:'stock',p:{tab:'soon'}},{s:'expReport',p:{}}]}},
- {t:'Already have a POS?',b:'Restaurants that keep their own POS, such as Feed Me, connect it here instead of using the GoodBite till. Each POS dish name is matched to a GoodBite dish once. After that, every sale on the POS takes the recipe off the stock. Simulated.',sel:'#posmap',go(){S.role='owner';stack=[{s:'settings',p:{}},{s:'posLink',p:{step:3,sys:'feedme',ok:{}}}]}},
+ {t:'Already have a POS?',b:'Restaurants that keep their own POS, such as Feed Me, connect it here instead of using the Stox till. Each POS dish name is matched to a Stox dish once. After that, every sale on the POS takes the recipe off the stock. Simulated.',sel:'#posmap',go(){S.role='owner';stack=[{s:'settings',p:{}},{s:'posLink',p:{step:3,sys:'feedme',ok:{}}}]}},
  {t:'The weekly summary',b:'Once a week the owner checks food cost against the target, waste, and what to look at. "Copy to share" gives a short text for the team chat. All figures are made up.',sel:'#weekkpi',go(){S.role='owner';stack=[{s:'reports',p:{}},{s:'weekly',p:{}}]}},
  {t:'Be honest about what is pretend',b:'Finish here: what is simulated, what is estimated, and what a real product still needs. End of the demo.',sel:null,go(){S.role='owner';stack=[{s:'settings',p:{}},{s:'limits',p:{}}]}}];
 function demoDraw(){const el=document.getElementById('demo');if(!el)return;if(demoI<0){el.hidden=true;el.innerHTML='';return}const st=DEMO[demoI];el.hidden=false;

@@ -149,7 +149,7 @@ SCREENS.expReport={sec:'stock',title:()=>'Expiring-soon report',help:['Every bat
  html(p){const days=p.days||S.settings.expDays,xs=riskList(days),T=today(),risk=xs.reduce((a,x)=>a+x.risk,0),val=xs.reduce((a,x)=>a+x.value,0),kg=r3(xs.reduce((a,x)=>a+x.kg,0)),n={};xs.forEach(x=>n[x.act]=(n[x.act]||0)+1);
   TEXTS.expText=()=>[L('Expiring-soon report'),S.settings.cafe.name+' · '+fD(T)+' · '+L('Next '+plural(days,'day')),L('Value at risk')+': '+rm(risk)+' ('+L(plural(xs.length,'batch','batches'))+')','',
     ...xs.map((x,k)=>[(k+1)+'. '+L(x.i.name)+' · '+qU(x.i.id,x.b.qty)+' · '+L(expTxt(x.b))+' ('+fDs(x.b.exp)+')','   '+L('Value at risk')+': '+rm(x.risk)+' · '+L('Suggested')+': '+L(ACTS[x.act][0]),'   '+L(riskWhy(x))].join('\n')),'',L('Demo data. Suggestions use the last 14 days of use. Check before acting.')].join('\n');
-  TEXTS.expText.file='goodbite-expiring-'+T+'.txt';
+  TEXTS.expText.file='stox-expiring-'+T+'.txt';
   return `${pageHead('Expiring-soon report','Food that expires in the next '+plural(days,'day')+', what it is worth, and what to do with it. '+demoTag,`<button class="btn sec noprint" ${A('go',{s:'push'})}>${ic('star')}Dishes to push today</button>${STANDALONE?`<button class="btn" ${A('print')}>Print</button>`:''}<button class="btn ${STANDALONE?'sec':''}" id="expshare" ${A('showText',{t:'Expiring-soon report',k:'expText'})}>${ic('copy')}Copy to share</button>`)}
   <div class="printonly"><b>${h(S.settings.cafe.name)}</b> · ${fD(T)}</div>
   <div class="row noprint"><span class="flabel">Show food that expires in:</span><div class="chips">${[1,2,3,5,7].map(k=>`<button class="chip sm ${days===k?'on':''}" aria-pressed="${days===k}" ${A('set',{k:'days',v:k})}>${plural(k,'day')}</button>`).join('')}</div></div>

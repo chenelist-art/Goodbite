@@ -5,8 +5,8 @@ js='\n'.join(rd(n) for n in ['core.js','data.js','ui.js','s_home_sell.js','s_sto
 def page(standalone):
     global js
     code=js if standalone else '\n'.join(l for l in js.split('\n') if not l.startswith('ACT.download='))
-    body=f'''<title>GoodBite Business</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
+    body=f'''<title>Stox</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
 <style>
 {rd('style.css')}</style>
 <div id="app"><aside id="side" aria-label="Main menu"></aside><div id="main"><header id="top"></header><div id="demo" hidden></div><main id="scr" tabindex="-1"></main></div><nav id="bot" aria-label="Main menu"></nav></div>
