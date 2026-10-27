@@ -1,6 +1,6 @@
-# GoodBite for Business (B2B demo)
+# Stox (B2B demo, formerly GoodBite for Business)
 
-A demo web app for small Chinese and seafood restaurants (small F&B SMEs). It tracks stock and expiry dates, keeps food cost on target, orders from suppliers and logs waste. Restaurants can keep their own POS (GoodBite Stock) or use the GoodBite till (GoodBite All-in-One).
+A demo web app for small Chinese and seafood restaurants (small F&B SMEs). It tracks stock and expiry dates, keeps food cost on target, orders from suppliers and logs waste. Restaurants can keep their own POS (Stox Stock) or use the Stox till (Stox All-in-One).
 
 **Everything in it is pretend.** The restaurant, suppliers, prices, sales and tax numbers are made up. Nothing is sent to a POS, LHDN, a bank, or a supplier.
 
@@ -10,7 +10,7 @@ The old household app is untouched. It is still `index.html` in the main Goodbit
 
 - **Easiest:** open the Claude link (the published artifact).
 - **From the file:** double-click `business/index.html`. It opens in your browser. It needs internet only for the fonts.
-- **GitHub Pages:** upload the whole `business` folder to your `goodbite` repo. The app will be at `your-name.github.io/goodbite/business/`.
+- **GitHub Pages:** the app is in the `business` folder of the `stox` repo, at `chenelist-art.github.io/stox/business/`.
 
 Your changes are saved in that browser only. To start fresh: **Settings > Reset demo data**.
 
@@ -24,14 +24,14 @@ The supervisor said small restaurants care about stock, expiry dates and cost co
 
 **New features (each one answers a supervisor point):**
 1. **Count by photo** (Stock > Count stock, or Scan > Shelf photo). Pick a shelf (seafood chiller, meat chiller, vegetable rack, egg and noodle shelf, dry store, drinks fridge), "take a photo", and the app fills in the count. Each amount is marked "From photo" for staff to check before saving. Simulated.
-2. **Works with your POS** (Settings > Plan and POS link). Pick Feed Me, Coox, Loyverse, StoreHub, or upload a sales file. "Allow access" asks for no password. Then match the POS's dish names (such as "CKT" or "LIMAU ICE") to GoodBite dishes once. 5 names the app is not sure about must be checked first. After connecting, the plan becomes **GoodBite Stock**: the GoodBite till, e-invoices and the Cashier view are hidden, and Home shows "Sync POS sales". Each sync brings in sample sales and takes every matched dish's recipe off the stock. Disconnecting brings the till back. Simulated.
+2. **Works with your POS** (Settings > Plan and POS link). Pick Feed Me, Coox, Loyverse, StoreHub, or upload a sales file. "Allow access" asks for no password. Then match the POS's dish names (such as "CKT" or "LIMAU ICE") to Stox dishes once. 5 names the app is not sure about must be checked first. After connecting, the plan becomes **Stox Stock**: the Stox till, e-invoices and the Cashier view are hidden, and Home shows "Sync POS sales". Each sync brings in sample sales and takes every matched dish's recipe off the stock. Disconnecting brings the till back. Simulated.
 3. **Usage check** (Stock > Usage check). Every stock count keeps the difference between what the app expected and what was counted. The usage check adds those up over 7 or 14 days and compares them with what the recipes used. Differences under 10% are "normal range", because portions vary (Sizzling Hot Plate's point). In the demo, prawns and lala come up short (check portion sizes), and rice comes up over (the recipe says more than the cooks use).
 4. **Dishes to push today** (Home card, Stock, the expiring-soon report). Dishes that use food likely to be left over in the next 3 days, with the reason. "Add to today's specials" puts a star on the till.
 5. **May run out today** (same page). Ingredients that will run out today at the last 14 days' pace (eggs and mud crab in the demo), with "Order more" and a tap to mark a dish **sold out**. Sold-out dishes are greyed out on the till for the rest of the day (Confirm Sedap's point: selling out is their real problem).
 6. **Food cost target and weekly summary.** Settings > Alerts and targets has a food cost target (30% to 45%, the demo starts at 40%, like Chuan Shifu). Home and Reports show this week's food cost against it. Reports > Weekly summary shows food cost per week, waste, value at risk, usage check flags, dishes to push and what may run out, with "Copy to share" for the team chat.
-7. **Get set up in 3 steps** on the owner's Home: count stock with a photo, connect your POS or use the GoodBite till, and check the recipes of your top 5 dishes. "Chat on WhatsApp" and "Book a free video call" replace the old set-up visit (both simulated). The card can be hidden, and brought back from Settings.
+7. **Get set up in 3 steps** on the owner's Home: count stock with a photo, connect your POS or use the Stox till, and check the recipes of your top 5 dishes. "Chat on WhatsApp" and "Book a free video call" replace the old set-up visit (both simulated). The card can be hidden, and brought back from Settings.
 
-**Taken out to keep the scope small:** Food Rescue (the tab, the "Offer for rescue" buttons and the report's food rescue action). The expiring-soon report now suggests "Staff meal" instead. E-invoicing is still in the app (with the GoodBite till) but is no longer part of the demo tour.
+**Taken out to keep the scope small:** Food Rescue (the tab, the "Offer for rescue" buttons and the report's food rescue action). The expiring-soon report now suggests "Staff meal" instead. E-invoicing is still in the app (with the Stox till) but is no longer part of the demo tour.
 
 **Tests on 25 Oct:** flow 34 of 34, scan 44 of 44, menu editor 9 of 9, and the new `test/v2.js` 50 of 50. Button audit (clicks every button in every role): 26,180 clicks, 0 failed. Not tried by a real restaurant yet.
 
@@ -140,7 +140,7 @@ All sources are inside the app: **Invoices > E-invoice notes**.
 - Real text and photo recognition for delivery orders, receipts, market photos and shelf photos.
 - Real logins and permissions.
 - A way to keep working when the internet is down.
-- MyInvois API registration and a licensed payment partner, if the GoodBite till is kept.
+- MyInvois API registration and a licensed payment partner, if the Stox till is kept.
 - Checks by an accountant on tax, rounding and e-invoice rules.
 - A real pilot. Interviews with 5 restaurant owners shaped this version, but none has used it day to day yet.
 
@@ -161,11 +161,11 @@ All sources are inside the app: **Invoices > E-invoice notes**.
 - A buyer TIN ending in 404 is always rejected. This is how the demo shows an "Invalid" result.
 - The Cashier can start an e-invoice from a sale, even though the Cashier menu only shows Home and Sell.
 - Voiding a sale asks why. "Keyed in by mistake" puts the ingredients back. "Food was already made" does not.
-- Connecting a POS switches the plan to GoodBite Stock and hides the till, e-invoices and the Cashier view. Disconnecting switches back.
+- Connecting a POS switches the plan to Stox Stock and hides the till, e-invoices and the Cashier view. Disconnecting switches back.
 - A dish marked sold out is greyed out for the rest of that day only. It is back on sale the next day.
 - Photo counts are rounded (to 0.1 kg under 10 kg, 0.5 kg above, whole pieces), so staff check them.
 - The usage check flags a difference only if it is over 10% of what the recipes used and worth RM5 or more.
-- The look is light only (no dark mode), to match the first GoodBite prototype.
+- The look is light only (no dark mode), to match the first Stox prototype.
 - Dish codes for new dishes start at 601. A new dish with no recipe can be saved, but the app warns that it will not reduce stock.
 - Language is one setting for the whole device, not per staff member.
 

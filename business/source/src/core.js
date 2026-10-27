@@ -149,7 +149,7 @@ function invJSON(inv){const c=S.settings.cafe,b=inv.buyer,M=v=>[{_:+amt(v),curre
   const party=(name,tin,idT,idN,sst,ad,city,post,st,ph,em,msic)=>({Party:[{...(msic?{IndustryClassificationCode:[{_:msic,name:c.activity}]}:{}),PartyIdentification:[{ID:[{_:tin,schemeID:'TIN'}]},{ID:[{_:idN||'NA',schemeID:idT||'BRN'}]},{ID:[{_:sst||'NA',schemeID:'SST'}]}],
     PostalAddress:[{CityName:[{_:city||'NA'}],PostalZone:[{_:post||''}],CountrySubentityCode:[{_:st||'NA'}],AddressLine:[{Line:[{_:ad||'NA'}]}],Country:[{IdentificationCode:[{_:'MYS'}]}]}],PartyLegalEntity:[{RegistrationName:[{_:name}]}],Contact:[{Telephone:[{_:ph||'NA'}],ElectronicMail:[{_:em||''}]}]}]});
   const d=inv.issued||inv.created;
-  return{_DEMO:'Simulated document from the GoodBite demo. Not sent to LHDN MyInvois. Not signed. Not a valid tax document.',
+  return{_DEMO:'Simulated document from the Stox demo. Not sent to LHDN MyInvois. Not signed. Not a valid tax document.',
    Invoice:[{ID:[{_:inv.no}],IssueDate:[{_:d.slice(0,10)}],IssueTime:[{_:d.slice(11)+':00Z'}],InvoiceTypeCode:[{_:inv.type,listVersionID:'1.1'}],DocumentCurrencyCode:[{_:'MYR'}],
     ...(inv.type==='02'?{BillingReference:[{InvoiceDocumentReference:[{ID:[{_:inv.refNo}],UUID:[{_:inv.refUuid||''}]}]}]}:{}),
     AccountingSupplierParty:[party(c.legal,c.tin,'BRN',c.brn,c.sst,c.addr,c.city,c.post,c.state,c.phone,c.email,c.msic)],

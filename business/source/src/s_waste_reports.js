@@ -37,8 +37,8 @@ ACT.wasteRemove=p=>{const w=S.waste.find(x=>x.id===p.id);confirmBox({title:'Remo
 /* ---------- Reports ---------- */
 SCREENS.reports={sec:'reports',title:()=>'Reports',help:['Pick a month at the top. Every number below is for that month.','Tap a number or a row to see what is behind it.','"Copy as spreadsheet" gives you the figures to paste into Excel or Google Sheets.'],
  html(p){const T=today(),m=p.m||T.slice(0,7),ms=[0,-1,-2].map(k=>addMonth(T.slice(0,7),k)),st=monthStats(m),wk=weeklyWaste(9);
-  TEXTS.wasteCsv=()=>toCSV([['Date','Time','Item','Amount','Unit','Reason','Added automatically','Weight (kg)','Cost (RM)'],...st.waste.map(w=>[w.dt.slice(0,10),w.dt.slice(11),ING(w.ing).name,w.qty,ING(w.ing).unit,w.reason,w.auto?'Yes':'No',w.kg,amt(w.cost)])]);TEXTS.wasteCsv.file='goodbite-waste-'+m+'.csv';
-  TEXTS.salesCsv=()=>toCSV([['Date','Bills','Sales incl. tax (RM)','Sales before tax and service charge (RM)','Service charge (RM)','SST (RM)','Ingredient cost (RM)'],...st.daily.map(d=>{const x=S.days[d.d]||{bills:0,total:0,sub:0,sc:0,sst:0,cogs:0};return[d.d,x.bills,amt(x.total),amt(x.sub),amt(x.sc),amt(x.sst),amt(x.cogs)]})]);TEXTS.salesCsv.file='goodbite-sales-'+m+'.csv';
+  TEXTS.wasteCsv=()=>toCSV([['Date','Time','Item','Amount','Unit','Reason','Added automatically','Weight (kg)','Cost (RM)'],...st.waste.map(w=>[w.dt.slice(0,10),w.dt.slice(11),ING(w.ing).name,w.qty,ING(w.ing).unit,w.reason,w.auto?'Yes':'No',w.kg,amt(w.cost)])]);TEXTS.wasteCsv.file='stox-waste-'+m+'.csv';
+  TEXTS.salesCsv=()=>toCSV([['Date','Bills','Sales incl. tax (RM)','Sales before tax and service charge (RM)','Service charge (RM)','SST (RM)','Ingredient cost (RM)'],...st.daily.map(d=>{const x=S.days[d.d]||{bills:0,total:0,sub:0,sc:0,sst:0,cogs:0};return[d.d,x.bills,amt(x.total),amt(x.sub),amt(x.sc),amt(x.sst),amt(x.cogs)]})]);TEXTS.salesCsv.file='stox-sales-'+m+'.csv';
   const maxTop=Math.max(1,...st.top.slice(0,8).map(x=>x.cost)),maxR=Math.max(1,...st.reasons.map(x=>x.cost));
   if(p.focus){const f=p.focus;p.focus='';setTimeout(()=>{const e=document.getElementById('rep-'+f);if(e)e.scrollIntoView({block:'start'})},0)}
   const wkS=weekStats(0),fsS=fcState(wkS.fc);

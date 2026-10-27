@@ -315,7 +315,7 @@ Go back
 Go back to Reports to change the month.
 Go to payment
 Good evening. What would you like to do?
-GoodBite
+Stox
 Goods received
 Got it
 Group

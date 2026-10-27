@@ -373,8 +373,8 @@ Picture {e} || Gambar {e} || 图片 {e}
 Now viewing as {r} || Kini melihat sebagai {r} || 现在以{r}身份查看
 Step {n} of {n2} || Langkah {n} daripada {n2} || 第 {n} 步，共 {n2} 步
 step {n} of {n2} || langkah {n} daripada {n2} || 第 {n} 步，共 {n2} 步
-Welcome to GoodBite for business || Selamat datang ke GoodBite untuk perniagaan || 欢迎使用 GoodBite 商家版
-🥬 Welcome to GoodBite for business || 🥬 Selamat datang ke GoodBite untuk perniagaan || 🥬 欢迎使用 GoodBite 商家版
+Welcome to Stox || Selamat datang ke Stox || 欢迎使用 Stox
+Welcome to Stox || Selamat datang ke Stox || 欢迎使用 Stox
 One place for a small cafe to sell, track stock and expiry dates, order from suppliers, log waste and prepare e-invoices. || Satu tempat untuk kafe kecil menjual, menjejak stok dan tarikh luput, memesan daripada pembekal, mencatat pembaziran dan menyediakan e-invois. || 小咖啡店可以在这一个地方销售、追踪库存和到期日、向供应商订货、记录浪费，以及准备电子发票。
 Everything here is a demo with made-up data. Nothing is sent anywhere. || Semua di sini ialah demo dengan data rekaan. Tiada apa dihantar ke mana-mana. || 这里的一切都是用虚构数据做的演示。不会发送任何东西到任何地方。
 Skip for now || Langkau dahulu || 先跳过

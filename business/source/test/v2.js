@@ -88,8 +88,8 @@ const {chromium}=require('playwright');const path=require('path');
  ok(!(await pg.locator('#posfinish').isDisabled()),'Picking a dish by hand also counts as checked');
  await pg.locator('#posfinish').click();await pg.waitForTimeout(40);
  const pc=await ev(()=>({c:GB.state().pos.connected,plan:GB.state().settings.plan,nav:[...document.querySelectorAll('#side .nav')].map(e=>e.dataset.nav).filter(Boolean).join(','),setup:GB.state().setup.pos}));
- ok(pc.c&&pc.plan==='stock'&&pc.setup,'Connected (simulated): the plan is now GoodBite Stock and set-up step 2 is done');
- ok(!/sell|invoices/.test(pc.nav),'With GoodBite Stock the till and e-invoices are hidden from the menu ('+pc.nav+')');
+ ok(pc.c&&pc.plan==='stock'&&pc.setup,'Connected (simulated): the plan is now Stox Stock and set-up step 2 is done');
+ ok(!/sell|invoices/.test(pc.nav),'With Stox Stock the till and e-invoices are hidden from the menu ('+pc.nav+')');
  await pg.locator('#rolebtn').click();ok(await pg.locator('#modal .opt').count()===2&&await pg.locator('#modal .opt',{hasText:'Cashier'}).count()===0,'The Cashier view is hidden, because sales come from the POS');await pg.locator('#modal .xb').click();
  const s0=await ev(()=>({lala:GB.fn.onHand('lala'),rice:GB.fn.onHand('rice'),w:GB.fn.weekStats(0)}));
  await pg.locator('#possync').click();await pg.waitForTimeout(40);
@@ -100,8 +100,8 @@ const {chromium}=require('playwright');const path=require('path');
  await pg.locator('#toast button').click();await pg.waitForTimeout(40);
  ok(near(await ev(()=>GB.fn.onHand('rice')),s0.rice,0.002)&&await ev(()=>GB.state().pos.syncs.length)===0,'Undo takes the synced sales back out');
  await ev(()=>GB.root('home'));await pg.waitForTimeout(40);ok(await pg.locator('#bigacts .biga',{hasText:'Sync POS sales'}).count()===1,'Home has a "Sync POS sales" button instead of "New sale"');
- await ev(()=>{GB.root('settings');GB.go('posLink')});await pg.waitForTimeout(40);await pg.getByRole('button',{name:'Disconnect and use the GoodBite till'}).click();await pg.getByRole('button',{name:'Yes, disconnect'}).click();await pg.waitForTimeout(40);
- ok(await ev(()=>GB.state().settings.plan==='allinone'&&!!document.querySelector('#side [data-nav=sell]')),'Disconnecting brings the GoodBite till back');
+ await ev(()=>{GB.root('settings');GB.go('posLink')});await pg.waitForTimeout(40);await pg.getByRole('button',{name:'Disconnect and use the Stox till'}).click();await pg.getByRole('button',{name:'Yes, disconnect'}).click();await pg.waitForTimeout(40);
+ ok(await ev(()=>GB.state().settings.plan==='allinone'&&!!document.querySelector('#side [data-nav=sell]')),'Disconnecting brings the Stox till back');
 
  // --- 3. top 5 recipes
  await ev(()=>{GB.root('home');GB.go('setupRecipes')});await pg.waitForTimeout(40);

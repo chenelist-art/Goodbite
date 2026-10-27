@@ -123,3 +123,11 @@ Built after the 5 physical interviews and the supervisor's BMC comments (stock, 
 **Translations:** 460 new lines in `test/tr9.txt` (read first by `mkdict.py`, so they win over old lines). Dictionary now 2,023 entries. Names with brackets have their own lines for "(x in stock)" and "(unit)". Written by Claude, not checked by a native speaker. Camera papers and POS item names stay as printed.
 
 **Tests (25 Oct, final build):** flow 34 of 34, scan 44 of 44 (updated for the new receipt, barcodes and 4 scan ways), menu editor 9 of 9 (Iced Lime Tea), new `test/v2.js` 50 of 50. Button audit on the final build, English, desktop width: 26,180 clicks (Owner 9,154, Kitchen 8,287, Cashier 8,739), 0 failed. No sideways overflow at 390 px on the new screens. Chinese and Malay audits and a phone-width audit were not re-run this round. `test/harvest-v2.js` lists any untranslated text in `test/miss-v2.txt`.
+
+## Fifth round, 27 Oct 2026: renamed to Stox
+- Team renamed GoodBite to **Stox**. Logo: "sto" in DM Serif Display maroon, with a crossed spoon (baby blue) and fork (maroon) as the x. Design canvas: "Stox Logo Concepts" artifact.
+- App: every "GoodBite" in the code and all translation files (tr1 to tr9, dict.js) is now "Stox"; "GoodBite for business" is just "Stox". Plans are now "Stox Stock" and "Stox All-in-One". Prices follow the BMC: Stox Stock RM49 a month, All-in-One RM79 a month (was RM39 to 59 and RM79 to 99). File names of copied reports start with "stox-".
+- Look: primary colour maroon #7B1E2E (the CSS variables are still called --green), soft fills baby blue #D8EEF9, round Home buttons baby blue, success pills keep a real green (--ok). Sidebar shows the new logo (needs DM Serif Display from Google Fonts).
+- The save key is still `goodbite_b2b_v2`, so a browser that already ran the demo keeps its data.
+- Tests after the change: flow 34/34, scan 44/44, menu editor 9/9, v2 50/50. Button audit not re-run (only names, prices and colours changed).
+- New Claude link for the Stox app: https://claude.ai/artifact/T2WRj9pzmUi6tzQzjJdb3U. The old GoodBite links still show the old versions.

@@ -148,7 +148,7 @@ Count your stock with a photo || Kira stok anda dengan gambar || 用照片盘点
 Take a photo of each shelf. The app fills in the amounts for you to check. || Ambil gambar setiap rak. Aplikasi mengisi jumlahnya untuk anda semak. || 给每个货架拍照。应用会填好数量，由您核对。
 Start || Mula || 开始
 Done || Selesai || 完成
-Connect your POS, or use the GoodBite till || Sambungkan POS anda, atau guna kaunter GoodBite || 连接您的 POS，或使用 GoodBite 收银机
+Connect your POS, or use the Stox till || Sambungkan POS anda, atau guna kaunter Stox || 连接您的 POS，或使用 Stox 收银机
 Then every sale takes its ingredients off the stock by itself. || Selepas itu setiap jualan menolak bahannya daripada stok dengan sendiri. || 之后每笔销售都会自动从库存扣除所用食材。
 Check the recipes of your top 5 dishes || Semak resipi 5 hidangan paling laris || 核对 5 道最畅销菜的食谱
 Start with what sells most. Add the rest later. || Mula dengan yang paling laris. Tambah yang lain kemudian. || 从卖得最多的开始，其余的以后再加。
@@ -173,8 +173,8 @@ Sync now || Selaraskan sekarang || 立即同步
 Today's specials: {x} || Menu istimewa hari ini: {x} || 今日特餐：{x}
 Suggest these to customers. They have a star on the till. || Cadangkan hidangan ini kepada pelanggan. Ia ada bintang di kaunter. || 向顾客推荐这些菜，它们在收银机上有星号。
 Open the till || Buka kaunter || 打开收银机
-A real product would open WhatsApp with the GoodBite support number here, so you can ask a question in English, BM or 中文. || Produk sebenar akan membuka WhatsApp dengan nombor sokongan GoodBite di sini, supaya anda boleh bertanya dalam English, BM atau 中文. || 真正的产品会在这里打开 WhatsApp 并显示 GoodBite 客服号码，您可用英语、马来语或中文提问。
-Pick a 15-minute slot and someone from GoodBite walks you through connecting your POS on a video call. No visit is needed. || Pilih slot 15 minit dan pasukan GoodBite akan membimbing anda menyambungkan POS melalui panggilan video. Tiada lawatan diperlukan. || 选一个 15 分钟的时段，GoodBite 人员会通过视频通话教您连接 POS，无需上门。
+A real product would open WhatsApp with the Stox support number here, so you can ask a question in English, BM or 中文. || Produk sebenar akan membuka WhatsApp dengan nombor sokongan Stox di sini, supaya anda boleh bertanya dalam English, BM atau 中文. || 真正的产品会在这里打开 WhatsApp 并显示 Stox 客服号码，您可用英语、马来语或中文提问。
+Pick a 15-minute slot and someone from Stox walks you through connecting your POS on a video call. No visit is needed. || Pilih slot 15 minit dan pasukan Stox akan membimbing anda menyambungkan POS melalui panggilan video. Tiada lawatan diperlukan. || 选一个 15 分钟的时段，Stox 人员会通过视频通话教您连接 POS，无需上门。
 Simulated in this demo. Nothing is sent and no call is booked. || Simulasi dalam demo ini. Tiada apa-apa dihantar dan tiada panggilan ditempah. || 本演示为模拟，不会发送任何信息，也不会预约通话。
 Set-up steps hidden. Open them again from Settings. || Langkah persediaan disembunyikan. Buka semula dari Tetapan. || 设置步骤已隐藏，可在设置中重新打开。
 Set-up steps || Langkah persediaan || 设置步骤
@@ -333,20 +333,20 @@ Pick your POS || Pilih POS anda || 选择您的 POS
 Allow access || Benarkan akses || 允许访问
 Match menu items || Padankan item menu || 匹配菜单品项
 I already have a POS || Saya sudah ada POS || 我已经有 POS
-GoodBite Stock, RM39 to RM59 a month. Keep your POS. GoodBite reads its sales and takes the ingredients off the stock. || GoodBite Stock, RM39 hingga RM59 sebulan. Kekalkan POS anda. GoodBite membaca jualannya dan menolak bahan daripada stok. || GoodBite Stock，每月 RM39 至 RM59。保留您的 POS，GoodBite 读取它的销售并扣除食材库存。
+Stox Stock, RM49 a month. Keep your POS. Stox reads its sales and takes the ingredients off the stock. || Stox Stock, RM49 sebulan. Kekalkan POS anda. Stox membaca jualannya dan menolak bahan daripada stok. || Stox Stock，每月 RM49。保留您的 POS，Stox 读取它的销售并扣除食材库存。
 Next: allow access || Seterusnya: benarkan akses || 下一步：允许访问
 Pick your POS first. || Pilih POS anda dahulu. || 请先选择您的 POS。
 I want a new till || Saya mahu kaunter baharu || 我想要新的收银机
-GoodBite All-in-One, RM79 to RM99 a month. Use the GoodBite till on a tablet. Sales take the stock off straight away. || GoodBite All-in-One, RM79 hingga RM99 sebulan. Guna kaunter GoodBite pada tablet. Jualan terus menolak stok. || GoodBite All-in-One，每月 RM79 至 RM99。在平板上使用 GoodBite 收银机，销售会马上扣库存。
-Use the GoodBite till || Guna kaunter GoodBite || 使用 GoodBite 收银机
+Stox All-in-One, RM79 a month. Use the Stox till on a tablet. Sales take the stock off straight away. || Stox All-in-One, RM79 sebulan. Guna kaunter Stox pada tablet. Jualan terus menolak stok. || Stox All-in-One，每月 RM79。在平板上使用 Stox 收银机，销售会马上扣库存。
+Use the Stox till || Guna kaunter Stox || 使用 Stox 收银机
 This is your plan now || Ini pelan anda sekarang || 这是您目前的方案
-Already have a POS? Connect it, and every sale it records takes the recipe off GoodBite's stock. || Sudah ada POS? Sambungkannya, dan setiap jualan yang direkodnya menolak resipi daripada stok GoodBite. || 已经有 POS？连接后，它记录的每笔销售都会按食谱扣除 GoodBite 的库存。
-Step 3 matches the names your POS uses to the dishes in GoodBite. You only do this once. || Langkah 3 memadankan nama yang digunakan POS anda dengan hidangan dalam GoodBite. Anda hanya perlu buat sekali. || 第 3 步把 POS 用的名称与 GoodBite 的菜对应起来，只需做一次。
-No password is typed into GoodBite. In a real product you would log in on your POS's own page. || Tiada kata laluan ditaip ke dalam GoodBite. Dalam produk sebenar anda log masuk di halaman POS anda sendiri. || 不需要在 GoodBite 输入密码。真正的产品会让您在 POS 自己的页面登录。
-Allow GoodBite to read your sales || Benarkan GoodBite membaca jualan anda || 允许 GoodBite 读取您的销售
+Already have a POS? Connect it, and every sale it records takes the recipe off Stox's stock. || Sudah ada POS? Sambungkannya, dan setiap jualan yang direkodnya menolak resipi daripada stok Stox. || 已经有 POS？连接后，它记录的每笔销售都会按食谱扣除 Stox 的库存。
+Step 3 matches the names your POS uses to the dishes in Stox. You only do this once. || Langkah 3 memadankan nama yang digunakan POS anda dengan hidangan dalam Stox. Anda hanya perlu buat sekali. || 第 3 步把 POS 用的名称与 Stox 的菜对应起来，只需做一次。
+No password is typed into Stox. In a real product you would log in on your POS's own page. || Tiada kata laluan ditaip ke dalam Stox. Dalam produk sebenar anda log masuk di halaman POS anda sendiri. || 不需要在 Stox 输入密码。真正的产品会让您在 POS 自己的页面登录。
+Allow Stox to read your sales || Benarkan Stox membaca jualan anda || 允许 Stox 读取您的销售
 In a real product, this button opens {x}'s own log-in page. You log in there and press "Allow". || Dalam produk sebenar, butang ini membuka halaman log masuk {x} sendiri. Anda log masuk di sana dan tekan "Benarkan". || 在真正的产品中，这个按钮会打开 {x} 自己的登录页面，您在那里登录并按“允许”。
-GoodBite can read your menu items and the sales of each item. || GoodBite boleh membaca item menu anda dan jualan setiap item. || GoodBite 可以读取您的菜单品项和每个品项的销售。
-GoodBite cannot change prices, see card numbers or move money. || GoodBite tidak boleh menukar harga, melihat nombor kad atau memindahkan wang. || GoodBite 不能修改价格、查看卡号或转账。
+Stox can read your menu items and the sales of each item. || Stox boleh membaca item menu anda dan jualan setiap item. || Stox 可以读取您的菜单品项和每个品项的销售。
+Stox cannot change prices, see card numbers or move money. || Stox tidak boleh menukar harga, melihat nombor kad atau memindahkan wang. || Stox 不能修改价格、查看卡号或转账。
 You can disconnect at any time. || Anda boleh putuskan sambungan pada bila-bila masa. || 您可以随时断开连接。
 Allow access (simulated) || Benarkan akses (simulasi) || 允许访问（模拟）
 Nothing is connected in this demo, and no password is asked for. || Tiada apa-apa disambungkan dalam demo ini, dan tiada kata laluan diminta. || 本演示不会连接任何系统，也不会要求密码。
@@ -355,12 +355,12 @@ Export last week's sales from your POS as a spreadsheet (CSV) file, then upload 
 Use the sample sales file (simulated) || Guna fail jualan contoh (simulasi) || 使用示例销售文件（模拟）
 Access allowed (simulated). Now match your menu items. || Akses dibenarkan (simulasi). Sekarang padankan item menu anda. || 已允许访问（模拟），现在匹配您的菜单品项。
 Match your menu items || Padankan item menu anda || 匹配您的菜单品项
-Your POS calls some dishes by other names. Match each one to a GoodBite dish once, and the app remembers. || POS anda memanggil sesetengah hidangan dengan nama lain. Padankan setiap satu dengan hidangan GoodBite sekali, dan aplikasi akan ingat. || 您的 POS 对有些菜用了别的名称。把每一个与 GoodBite 的菜对应一次，应用就会记住。
+Your POS calls some dishes by other names. Match each one to a Stox dish once, and the app remembers. || POS anda memanggil sesetengah hidangan dengan nama lain. Padankan setiap satu dengan hidangan Stox sekali, dan aplikasi akan ingat. || 您的 POS 对有些菜用了别的名称。把每一个与 Stox 的菜对应一次，应用就会记住。
 Name in {x} || Nama dalam {x} || 在 {x} 中的名称
 Sold last week || Dijual minggu lepas || 上周售出
 {n} sold last week || {n} dijual minggu lepas || 上周售出 {n}
-GoodBite dish || Hidangan GoodBite || GoodBite 菜品
-GoodBite dish for {x} || Hidangan GoodBite untuk {x} || {x} 对应的 GoodBite 菜品
+Stox dish || Hidangan Stox || Stox 菜品
+Stox dish for {x} || Hidangan Stox untuk {x} || {x} 对应的 Stox 菜品
 Do not track (no recipe) || Jangan jejak (tiada resipi) || 不追踪（无食谱）
 Not food, left out || Bukan makanan, dikecualikan || 非食物，已排除
 Match is right || Padanan betul || 匹配正确
@@ -375,7 +375,7 @@ Connected to {x} (simulated). Press "Sync sales now" to bring in sales. || Disam
 Sync sales now || Selaraskan jualan sekarang || 立即同步销售
 Change matches || Tukar padanan || 修改匹配
 Your plan || Pelan anda || 您的方案
-RM39 to RM59 a month. The GoodBite till is hidden. || RM39 hingga RM59 sebulan. Kaunter GoodBite disembunyikan. || 每月 RM39 至 RM59。GoodBite 收银机已隐藏。
+RM49 a month. The Stox till is hidden. || RM49 sebulan. Kaunter Stox disembunyikan. || 每月 RM49。Stox 收银机已隐藏。
 Last sync || Penyelarasan terakhir || 上次同步
 Not yet || Belum lagi || 还没有
 Press "Sync sales now" || Tekan "Selaraskan jualan sekarang" || 按“立即同步销售”
@@ -387,13 +387,13 @@ Sales before tax || Jualan sebelum cukai || 税前销售
 Ingredients cost || Kos bahan || 食材成本
 No sales synced yet || Belum ada jualan diselaraskan || 还没有同步销售
 Press "Sync sales now" to bring in the sales from your POS. || Tekan "Selaraskan jualan sekarang" untuk membawa masuk jualan dari POS anda. || 按“立即同步销售”导入 POS 的销售。
-Disconnect and use the GoodBite till || Putuskan sambungan dan guna kaunter GoodBite || 断开连接并使用 GoodBite 收银机
+Disconnect and use the Stox till || Putuskan sambungan dan guna kaunter Stox || 断开连接并使用 Stox 收银机
 Disconnect {x}? || Putuskan sambungan {x}? || 断开 {x}？
-GoodBite stops reading sales from your POS. The GoodBite till comes back on the menu. Sales already synced stay in the reports. || GoodBite berhenti membaca jualan dari POS anda. Kaunter GoodBite kembali dalam menu. Jualan yang sudah diselaraskan kekal dalam laporan. || GoodBite 会停止读取 POS 的销售，GoodBite 收银机会回到菜单上，已同步的销售仍保留在报告中。
+Stox stops reading sales from your POS. The Stox till comes back on the menu. Sales already synced stay in the reports. || Stox berhenti membaca jualan dari POS anda. Kaunter Stox kembali dalam menu. Jualan yang sudah diselaraskan kekal dalam laporan. || Stox 会停止读取 POS 的销售，Stox 收银机会回到菜单上，已同步的销售仍保留在报告中。
 Yes, disconnect || Ya, putuskan sambungan || 是的，断开
 No, stay connected || Tidak, kekal bersambung || 不，保持连接
-Disconnected. The GoodBite till is back on the menu. || Sambungan diputuskan. Kaunter GoodBite kembali dalam menu. || 已断开，GoodBite 收银机已回到菜单上。
-Using the GoodBite till (All-in-One). Step 2 is done. || Menggunakan kaunter GoodBite (All-in-One). Langkah 2 selesai. || 使用 GoodBite 收银机（All-in-One），第 2 步完成。
+Disconnected. The Stox till is back on the menu. || Sambungan diputuskan. Kaunter Stox kembali dalam menu. || 已断开，Stox 收银机已回到菜单上。
+Using the Stox till (All-in-One). Step 2 is done. || Menggunakan kaunter Stox (All-in-One). Langkah 2 selesai. || 使用 Stox 收银机（All-in-One），第 2 步完成。
 {n} dishes synced from {x} || {n} hidangan diselaraskan dari {x} || 已从 {x} 同步 {n} 道菜
 1 dish synced from {x} || 1 hidangan diselaraskan dari {x} || 已从 {x} 同步 1 道菜
 Sales synced || Jualan diselaraskan || 销售已同步
@@ -410,7 +410,7 @@ Many small restaurants aim for about 30% to 40%. The owners we interviewed work 
 A bigger number gives you more time to use the food in a special. || Nombor lebih besar memberi anda lebih masa untuk menggunakan makanan dalam menu istimewa. || 数字越大，您就有越多时间把食材用在特餐里。
 Set the food cost you aim for. Home and the weekly summary compare each week with it. || Tetapkan kos makanan yang anda sasarkan. Laman Utama dan ringkasan mingguan membandingkan setiap minggu dengannya. || 设定您的食材成本目标，主页和每周总结会拿每周的数字与它对比。
 Saved. Food cost target is now {n}%. || Disimpan. Sasaran kos makanan kini {n}%. || 已保存，食材成本目标现在是 {n}%。
-Keep your own POS (GoodBite Stock) or use the GoodBite till (All-in-One). || Kekalkan POS anda sendiri (GoodBite Stock) atau guna kaunter GoodBite (All-in-One). || 保留自己的 POS（GoodBite Stock）或使用 GoodBite 收银机（All-in-One）。
+Keep your own POS (Stox Stock) or use the Stox till (All-in-One). || Kekalkan POS anda sendiri (Stox Stock) atau guna kaunter Stox (All-in-One). || 保留自己的 POS（Stox Stock）或使用 Stox 收银机（All-in-One）。
 When to warn about food close to expiry, and your food cost target. || Bila perlu beri amaran tentang makanan yang hampir luput, dan sasaran kos makanan anda. || 何时提醒快过期的食材，以及您的食材成本目标。
 Puts back the made-up restaurant: {n} dishes, {n2} ingredients, {n3} suppliers and 2 months of sales and waste. Everything you added or changed in this browser is erased. || Memulihkan restoran rekaan: {n} hidangan, {n2} bahan, {n3} pembekal dan 2 bulan jualan dan pembaziran. Semua yang anda tambah atau ubah dalam pelayar ini dipadam. || 恢复虚构的餐馆：{n} 道菜、{n2} 种食材、{n3} 家供应商，以及 2 个月的销售和浪费记录。您在这个浏览器中添加或修改的内容都会被清除。
 The POS link. Feed Me, Coox, Loyverse and StoreHub are not really connected. "Sync sales now" brings in sample sales, and no password is ever asked for. || Pautan POS. Feed Me, Coox, Loyverse dan StoreHub tidak benar-benar disambungkan. "Selaraskan jualan sekarang" membawa masuk jualan contoh, dan tiada kata laluan pernah diminta. || POS 连接。Feed Me、Coox、Loyverse 和 StoreHub 并没有真正连接。“立即同步销售”导入的是示例销售，也从不要求密码。
@@ -423,9 +423,9 @@ Value at risk and the suggested actions in the expiring-soon report. || Nilai be
 The food cost target choices and the tax rates in Settings are common examples, not advice. || Pilihan sasaran kos makanan dan kadar cukai dalam Tetapan ialah contoh biasa, bukan nasihat. || 设置中的食材成本目标选项和税率只是常见例子，不是建议。
 Real links to each POS, using the access each POS company offers to partners. We have not checked yet which ones allow this. || Pautan sebenar ke setiap POS, menggunakan akses yang ditawarkan setiap syarikat POS kepada rakan kongsi. Kami belum menyemak yang mana membenarkannya. || 与每个 POS 的真正连接，需使用各 POS 公司提供给合作伙伴的接口。我们还没查清哪些允许这样做。
 Real text and photo recognition for delivery orders, receipts, market photos and shelf photos, and reading the dates printed on packs. || Pengecaman teks dan gambar sebenar untuk pesanan penghantaran, resit, gambar pasar dan gambar rak, serta membaca tarikh yang dicetak pada bungkusan. || 对送货单、收据、市场照片和货架照片进行真正的文字和图像识别，并读取包装上印的日期。
-MyInvois API registration and a licensed payment partner, if the GoodBite till is kept. || Pendaftaran API MyInvois dan rakan pembayaran berlesen, jika kaunter GoodBite dikekalkan. || 如果保留 GoodBite 收银机，就需要注册 MyInvois API 并找持牌支付伙伴。
+MyInvois API registration and a licensed payment partner, if the Stox till is kept. || Pendaftaran API MyInvois dan rakan pembayaran berlesen, jika kaunter Stox dikekalkan. || 如果保留 Stox 收银机，就需要注册 MyInvois API 并找持牌支付伙伴。
 A real pilot. Interviews with 5 restaurant owners shaped this version, but none has used it day to day yet. || Perintis sebenar. Temu bual dengan 5 pemilik restoran membentuk versi ini, tetapi belum ada yang menggunakannya setiap hari. || 真正的试用。这个版本参考了 5 位餐馆老板的访谈，但还没有人每天实际使用过。
-One place for a small restaurant to track stock and expiry dates, keep food cost on target, order from suppliers and log waste. Use your own POS, or the GoodBite till. || Satu tempat untuk restoran kecil menjejak stok dan tarikh luput, mengekalkan kos makanan pada sasaran, membuat pesanan daripada pembekal dan merekod pembaziran. Guna POS anda sendiri, atau kaunter GoodBite. || 小餐馆的一站式工具：追踪库存和有效期、把食材成本控制在目标内、向供应商订货、记录浪费。可用自己的 POS，也可用 GoodBite 收银机。
+One place for a small restaurant to track stock and expiry dates, keep food cost on target, order from suppliers and log waste. Use your own POS, or the Stox till. || Satu tempat untuk restoran kecil menjejak stok dan tarikh luput, mengekalkan kos makanan pada sasaran, membuat pesanan daripada pembekal dan merekod pembaziran. Guna POS anda sendiri, atau kaunter Stox. || 小餐馆的一站式工具：追踪库存和有效期、把食材成本控制在目标内、向供应商订货、记录浪费。可用自己的 POS，也可用 Stox 收银机。
 These start the things you do most: make a sale, scan a delivery, log waste, count stock. || Ini memulakan tugas yang paling kerap anda buat: membuat jualan, mengimbas penghantaran, merekod pembaziran, mengira stok. || 这些按钮用来开始最常做的事：开单、扫描送货、记录浪费、盘点库存。
 Say: "This is what the owner sees first." The 3 set-up steps are at the top. The To do cards below each open the fix. Then press Next. || Katakan: "Inilah yang pemilik lihat dahulu." 3 langkah persediaan di bahagian atas. Setiap kad Tugasan di bawah membuka cara membetulkannya. Kemudian tekan Seterusnya. || 说：“这是老板最先看到的。”3 个设置步骤在最上面，下面每张待办卡片都能直接打开处理页面。然后按下一步。
 These dishes use food that will probably be left over soon, such as lala (clams) and chicken. "Add to today's specials" puts a star on the till. Below, "May run out today" shows what to order or mark sold out. || Hidangan ini menggunakan makanan yang mungkin berbaki tidak lama lagi, seperti lala dan ayam. "Tambah ke menu istimewa hari ini" meletakkan bintang di kaunter. Di bawah, "Mungkin habis hari ini" menunjukkan apa perlu dipesan atau ditanda habis dijual. || 这些菜会用到快要剩下的食材，例如啦啦和鸡肉。“加入今日特餐”会在收银机上加星号。下面的“今天可能用完”显示要订什么、或把什么标为售完。
@@ -440,7 +440,7 @@ The usage check || Semakan penggunaan || 用量核对
 Back as Owner. This compares what the recipes used with the stock counts. Lala and prawns keep coming up short, so the owner checks portion sizes with the cook. Differences under 10% are normal, because portions vary. || Kembali sebagai Pemilik. Ini membandingkan apa yang resipi gunakan dengan kiraan stok. Lala dan udang asyik kurang, jadi pemilik menyemak saiz hidangan dengan tukang masak. Perbezaan bawah 10% adalah biasa, kerana saiz hidangan berbeza. || 回到老板身份。这里把食谱用量与盘点结果相比。啦啦和虾一直短缺，所以老板与厨师核对份量。差异低于 10% 属正常，因为份量本来就有差别。
 The expiring-soon report shows the value at risk and a suggested action for each batch: use first, today's special, discount or staff meal. Print it for the kitchen, or copy it into a chat. || Laporan hampir luput menunjukkan nilai berisiko dan tindakan dicadangkan untuk setiap kelompok: guna dahulu, menu istimewa hari ini, diskaun atau makanan pekerja. Cetak untuk dapur, atau salin ke dalam sembang. || 即将过期报告显示每个批次的风险价值和建议做法：先用、今日特餐、打折或员工餐。可以打印给厨房，或复制到聊天群。
 Already have a POS? || Sudah ada POS? || 已经有 POS？
-Restaurants that keep their own POS, such as Feed Me, connect it here instead of using the GoodBite till. Each POS dish name is matched to a GoodBite dish once. After that, every sale on the POS takes the recipe off the stock. Simulated. || Restoran yang mengekalkan POS sendiri, seperti Feed Me, menyambungkannya di sini dan tidak menggunakan kaunter GoodBite. Setiap nama hidangan POS dipadankan dengan hidangan GoodBite sekali. Selepas itu, setiap jualan di POS menolak resipi daripada stok. Simulasi. || 保留自己 POS（例如 Feed Me）的餐馆在这里连接，不用 GoodBite 收银机。每个 POS 菜名只需与 GoodBite 的菜对应一次，之后 POS 上的每笔销售都会按食谱扣库存。模拟。
+Restaurants that keep their own POS, such as Feed Me, connect it here instead of using the Stox till. Each POS dish name is matched to a Stox dish once. After that, every sale on the POS takes the recipe off the stock. Simulated. || Restoran yang mengekalkan POS sendiri, seperti Feed Me, menyambungkannya di sini dan tidak menggunakan kaunter Stox. Setiap nama hidangan POS dipadankan dengan hidangan Stox sekali. Selepas itu, setiap jualan di POS menolak resipi daripada stok. Simulasi. || 保留自己 POS（例如 Feed Me）的餐馆在这里连接，不用 Stox 收银机。每个 POS 菜名只需与 Stox 的菜对应一次，之后 POS 上的每笔销售都会按食谱扣库存。模拟。
 The weekly summary || Ringkasan mingguan || 每周总结
 Once a week the owner checks food cost against the target, waste, and what to look at. "Copy to share" gives a short text for the team chat. All figures are made up. || Seminggu sekali pemilik menyemak kos makanan berbanding sasaran, pembaziran, dan apa yang perlu dilihat. "Salin untuk kongsi" memberi teks ringkas untuk sembang pasukan. Semua angka adalah rekaan. || 老板每周看一次食材成本与目标的对比、浪费，以及需要留意的事。“复制分享”会生成一段简短文字发到团队群组。所有数字都是虚构的。
 Finish here: what is simulated, what is estimated, and what a real product still needs. End of the demo. || Tamatkan di sini: apa yang disimulasikan, apa yang dianggarkan, dan apa yang produk sebenar masih perlukan. Tamat demo. || 在这里结束：哪些是模拟的、哪些是估算的，以及真正的产品还需要什么。演示结束。
@@ -814,8 +814,8 @@ Picture {e} || Gambar {e} || 图片 {e}
 Now viewing as {r} || Kini melihat sebagai {r} || 现在以{r}身份查看
 Step {n} of {n2} || Langkah {n} daripada {n2} || 第 {n} 步，共 {n2} 步
 step {n} of {n2} || langkah {n} daripada {n2} || 第 {n} 步，共 {n2} 步
-Welcome to GoodBite for business || Selamat datang ke GoodBite untuk perniagaan || 欢迎使用 GoodBite 商家版
-🥬 Welcome to GoodBite for business || 🥬 Selamat datang ke GoodBite untuk perniagaan || 🥬 欢迎使用 GoodBite 商家版
+Welcome to Stox || Selamat datang ke Stox || 欢迎使用 Stox
+Welcome to Stox || Selamat datang ke Stox || 欢迎使用 Stox
 One place for a small cafe to sell, track stock and expiry dates, order from suppliers, log waste and prepare e-invoices. || Satu tempat untuk kafe kecil menjual, menjejak stok dan tarikh luput, memesan daripada pembekal, mencatat pembaziran dan menyediakan e-invois. || 小咖啡店可以在这一个地方销售、追踪库存和到期日、向供应商订货、记录浪费，以及准备电子发票。
 Everything here is a demo with made-up data. Nothing is sent anywhere. || Semua di sini ialah demo dengan data rekaan. Tiada apa dihantar ke mana-mana. || 这里的一切都是用虚构数据做的演示。不会发送任何东西到任何地方。
 Skip for now || Langkau dahulu || 先跳过
@@ -2013,7 +2013,7 @@ There are 4 steps, shown in the bar at the top. The green button always takes yo
 What was checked against official sources on 7 October 2026, and what was not. || Apa yang disemak dengan sumber rasmi pada 7 Oktober 2026, dan apa yang tidak. || 2026 年 10 月 7 日对照官方来源核实了哪些，哪些没有。
 Worked out from minimum stock and how much was used in the last 14 days. You can change the amounts before sending. || Dikira daripada stok minimum dan jumlah yang digunakan dalam 14 hari lepas. Anda boleh mengubah jumlah sebelum menghantar. || 根据最低库存和过去 14 天的用量算出。发送前可以修改数量。
 You can cancel it within 72 hours if something is wrong. After that you need a credit note. || Anda boleh membatalkannya dalam masa 72 jam jika ada yang salah. Selepas itu anda perlukan nota kredit. || 如果有错，可在 72 小时内取消。之后就需要开贷项通知单。
-small outlets are mostly exempt. A cafe with yearly turnover under RM3 million does not have to issue e-invoices under the current guideline, and one under RM1.5 million does not charge SST. So for GoodBite's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today. || kedai kecil kebanyakannya dikecualikan. Kafe dengan perolehan tahunan di bawah RM3 juta tidak perlu mengeluarkan e-invois di bawah garis panduan semasa, dan yang di bawah RM1.5 juta tidak mengenakan SST. Jadi bagi pelanggan sasaran GoodBite, e-invois ialah ciri "sedia apabila anda berkembang, atau apabila pelanggan syarikat meminta", bukan kewajipan undang-undang hari ini. || 小店大多可豁免。年营业额低于 RM300 万的咖啡店，按目前的指南不必开电子发票；低于 RM150 万的不收 SST。所以对 GoodBite 的目标客户来说，电子发票是“等您壮大了，或有公司客户要求时就能用”的功能，现在并不是法律上必须的。
+small outlets are mostly exempt. A cafe with yearly turnover under RM3 million does not have to issue e-invoices under the current guideline, and one under RM1.5 million does not charge SST. So for Stox's target customers, e-invoicing is a "ready when you grow, or when a company customer asks" feature, not a legal must-have today. || kedai kecil kebanyakannya dikecualikan. Kafe dengan perolehan tahunan di bawah RM3 juta tidak perlu mengeluarkan e-invois di bawah garis panduan semasa, dan yang di bawah RM1.5 juta tidak mengenakan SST. Jadi bagi pelanggan sasaran Stox, e-invois ialah ciri "sedia apabila anda berkembang, atau apabila pelanggan syarikat meminta", bukan kewajipan undang-undang hari ini. || 小店大多可豁免。年营业额低于 RM300 万的咖啡店，按目前的指南不必开电子发票；低于 RM150 万的不收 SST。所以对 Stox 的目标客户来说，电子发票是“等您壮大了，或有公司客户要求时就能用”的功能，现在并不是法律上必须的。
 Example: RM 20.00 of food, dine-in || Contoh: makanan RM 20.00, makan di sini || 例子：RM 20.00 的食物，堂食
 For example: 2 || Contohnya: 2 || 例如：2
 For example: INV-1234 || Contohnya: INV-1234 || 例如：INV-1234

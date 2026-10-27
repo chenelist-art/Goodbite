@@ -64,7 +64,7 @@ const inp=(id,path,val,o)=>{o=o||{};return`<input class="inp ${o.cls||''}" id="$
 const tog=(on,label,a,p,tipK)=>`<div class="row" style="flex-wrap:nowrap;gap:4px"><button type="button" class="tog ${on?'on':''}" role="switch" aria-checked="${on}" ${A(a,p)}><i></i><span>${label}</span></button>${tipK?tip(tipK):''}</div>`;
 const demoTag='<span class="pill warn">Demo data</span>';
 
-/* with GoodBite Stock the outlet keeps its own POS, so the GoodBite till and e-invoices are hidden */
+/* with Stox Stock the outlet keeps its own POS, so the Stox till and e-invoices are hidden */
 const navFor=role=>ROLES[role].nav.filter(n=>!(S.settings.plan==='stock'&&(n==='sell'||n==='invoices')));
 function navHtml(compact){const r=ROLES[S.role],sec=SCREENS[stack[0].s].sec;let items=NAV.filter(n=>navFor(S.role).includes(n[0]));const all=items;
   if(compact&&items.length>5)items=items.slice(0,4);
@@ -77,7 +77,7 @@ function render(keep){
   const c=cur(),sc=SCREENS[c.s],el=scr(),st=keep?el.scrollTop:0,ae=document.activeElement,fid=ae&&ae.id,ss=ae&&ae.selectionStart;
   BIND=null;
   let body='';try{body=sc.html(c.p)}catch(err){console.error(err);body=empty('This page could not be shown','Go back and try again.',`<button class="btn" ${A('root',{s:'home'})}>Back to Home</button>`)}
-  document.getElementById('side').innerHTML=`<div class="logo"><span class="lf">🥬</span><span>GoodBite<small>for business</small></span></div>${navHtml(false)}<div class="sp"></div><button class="nav" ${A('help')}>${ic('help')}<span>Help</span></button>`;
+  document.getElementById('side').innerHTML=`<div class="logo" role="img" aria-label="Stox"><span class="wm" aria-hidden="true">sto<svg class="x" viewBox="0 0 100 100" aria-hidden="true"><g transform="rotate(45 50 50)"><ellipse cx="50" cy="22" rx="12" ry="17" fill="#89CFF0"/><rect x="46" y="36" width="8" height="58" rx="4" fill="#89CFF0"/></g><g transform="rotate(-45 50 50)"><path d="M36 8H42V30H47V8H53V30H58V8H64V34A14 14 0 0 1 50 48A14 14 0 0 1 36 34Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="46" y="44" width="8" height="50" rx="4" fill="currentColor"/></g></svg></span></div>${navHtml(false)}<div class="sp"></div><button class="nav" ${A('help')}>${ic('help')}<span>Help</span></button>`;
   document.getElementById('bot').innerHTML=navHtml(true);
   const crumbs=stack.map((x,i)=>{const t=h(SCREENS[x.s].title(x.p));return i<stack.length-1?`<button ${A('crumb',{i})}>${t}</button><span aria-hidden="true">›</span>`:`<b aria-current="page">${t}</b>`}).join('');
   document.getElementById('top').innerHTML=`${stack.length>1?`<button class="backb" ${A('back')}>${ic('back')}Back</button>`:''}<nav class="crumbs" aria-label="You are here">${crumbs}</nav>
